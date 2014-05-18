@@ -195,6 +195,9 @@ static NSString *users = @"users";
     NSString *resource = [NSString stringWithFormat:@"users/me/profilepicture"];
     
     [self.client DELETE:resource parameters:nil callback:^(id json, NSError *error) {
+        // TODO - kind of hacky. Should I investigate presuming fields not returned mean nil?
+        self.profilePictureUrl = nil;
+        self.profilePictureID = nil;
         [self refresh:^(NSError *error) {
             callback ? callback(error) : nil;
         }];

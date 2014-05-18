@@ -31,7 +31,7 @@
 
 @interface BPObjectSearch : NSObject<BuddyObjectProperties>
 
-@property (nonatomic, strong) BPCoordinateRange *range;
+@property (nonatomic, strong) BPCoordinateRange *locationRange;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, assign) NSInteger limit;

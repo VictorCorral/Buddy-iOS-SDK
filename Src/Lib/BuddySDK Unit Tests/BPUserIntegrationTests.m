@@ -109,8 +109,7 @@ describe(@"BPUser", ^{
             [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
         });
         
-#pragma message ("Deleting a profile picture has breaking consequences: 5/1")
-        xit(@"Should allow the user to delete the profile picture", ^{
+        it(@"Should allow the user to delete the profile picture", ^{
             [[Buddy user] deleteUserProfilePicture:^(NSError *error) {
                 [[error should] beNil];
 

@@ -92,6 +92,13 @@ describe(@"Metadata", ^{
                 }];
             }];
 
+            __block BOOL foo = NO;
+            [Buddy deleteMetadataWithKey:@"HeyHeyyy" permissions:BPPermissionsApp callback:^(NSError *error) {
+                foo = YES;
+            }];
+            [[expectFutureValue(theValue(foo)) shouldEventually] beYes];
+
+            
             BPMetadataItem *item2 = [BPMetadataItem new];
             item2.key = @"HeyHeyyy";
             item2.value = @"There";

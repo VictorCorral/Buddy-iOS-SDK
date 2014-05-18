@@ -11,7 +11,7 @@
 
 @implementation BPSearchLocation
 
-@synthesize name, description, address1, address2, city, region, country, postalcode, fax, phone, website, category, isPublic;
+@synthesize name, description, address1, address2, city, region, country, postalCode, fax, phone, website, category, isPublic;
 
 @end
 
@@ -30,7 +30,7 @@
 @synthesize city;
 @synthesize region;
 @synthesize country;
-@synthesize postalcode;
+@synthesize postalCode;
 @synthesize fax;
 @synthesize phone;
 @synthesize website;
@@ -48,7 +48,7 @@
     [self registerProperty:@selector(city)];
     [self registerProperty:@selector(region)];
     [self registerProperty:@selector(country)];
-    [self registerProperty:@selector(postalcode)];
+    [self registerProperty:@selector(postalCode)];
     [self registerProperty:@selector(fax)];
     [self registerProperty:@selector(phone)];
     [self registerProperty:@selector(website)];

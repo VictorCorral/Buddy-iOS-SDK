@@ -29,7 +29,7 @@
 
 - (void)searchVideos:(BPVideoSearch *)searchVideo callback:(BuddyCollectionCallback)callback;
 {
-    id parameters = [searchVideo parametersFromProperties:@protocol(BPVideoProperties)];
+    id parameters = [searchVideo parametersFromProperties];
     
     [self search:parameters callback:callback];
 }

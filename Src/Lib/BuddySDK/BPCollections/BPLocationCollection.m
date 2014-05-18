@@ -28,10 +28,14 @@
     [location savetoServer:callback];
 }
 
+- (void)getLocation:(NSString *)locationId callback:(BuddyObjectCallback)callback
+{
+    [self getItem:locationId callback:callback];
+}
 
 - (void)searchLocation:(BPSearchLocation *)searchLocations callback:(BuddyCollectionCallback)callback
 {
-    id parameters = [searchLocations parametersFromProperties:@protocol(BPLocationProperties)];
+    id parameters = [searchLocations parametersFromProperties];
     
     [self search:parameters callback:callback];
 }

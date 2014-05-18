@@ -15,7 +15,7 @@
 @property (nonatomic, copy) NSString *city;
 @property (nonatomic, copy) NSString *region;
 @property (nonatomic, copy) NSString *country;
-@property (nonatomic, copy) NSString *postalcode;
+@property (nonatomic, copy) NSString *postalCode;
 @property (nonatomic, copy) NSString *fax;
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *website;

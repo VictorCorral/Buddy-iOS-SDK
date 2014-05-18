@@ -36,7 +36,7 @@
 
 -(void)searchAlbums:(BPSearchAlbum *)searchAlbum callback:(BuddyCollectionCallback)callback
 {
-    id parameters = [searchAlbum parametersFromProperties:@protocol(BPAlbumProperties)];
+    id parameters = [searchAlbum parametersFromProperties];
     
     [self search:parameters callback:callback];
 }

@@ -31,7 +31,7 @@
 
 - (void)searchCheckins:(BPSearchCheckins *)searchCheckin callback:(BuddyCollectionCallback)callback;
 {
-    id parameters = [searchCheckin parametersFromProperties:@protocol(BPCheckinProperties)];
+    id parameters = [searchCheckin parametersFromProperties];
     
     [self search:parameters callback:callback];
 }

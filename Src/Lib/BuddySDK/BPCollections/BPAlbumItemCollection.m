@@ -53,7 +53,7 @@
 
 - (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItems callback:(BuddyObjectCallback)callback
 {
-    id parameters = [searchAlbumItems parametersFromProperties:@protocol(BPAlbumItemProperties)];
+    id parameters = [searchAlbumItems parametersFromProperties];
     
     [self search:parameters callback:callback];
 }

@@ -57,7 +57,7 @@
 
 - (void)setMetadata:(BPMetadataItem *)metadata callback:(BuddyCompletionCallback)callback
 {
-    id parameters = [metadata parametersFromProperties:@protocol(BPMetadataProperties)];
+    id parameters = [metadata parametersFromProperties];
     
     [self.client PUT:[self metadataPath:parameters[@"key"]] parameters:parameters callback:^(id json, NSError *error) {
         callback ? callback(error) : nil;
@@ -66,7 +66,7 @@
 
 - (void)setMetadataValues:(BPMetadataCollection *)metadata callback:(BuddyCompletionCallback)callback
 {
-    id parameters = [metadata parametersFromProperties:@protocol(BPMetadataCollectionProperties)];
+    id parameters = [metadata parametersFromProperties];
     
     [self.client PUT:[self metadataPath:nil] parameters:parameters callback:^(id json, NSError *error) {
         callback ? callback(error) : nil;
@@ -76,7 +76,7 @@
 
 - (void)searchMetadata:(BPSearchMetadata *)search callback:(BuddyCollectionCallback)callback
 {
-    id searchParameters = [search parametersFromProperties:@protocol(BPMetadataProperties)];
+    id searchParameters = [search parametersFromProperties];
     
     NSString *resource = [self metadataPath:nil];
     
@@ -103,7 +103,7 @@
 
 - (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions)permissions callback:(BPMetadataCallback)callback
 {
-    NSDictionary *parameters = @{@"permission": [[self class] enumMap][@"readPermissions"][@(permissions)]};
+    NSDictionary *parameters = @{@"visibility": [[self class] enumMap][@"readPermissions"][@(permissions)]};
     
     [self.client GET:[self metadataPath:key] parameters:parameters callback:^(id metadata, NSError *error) {
         BPMetadataItem *item = [[BPMetadataItem alloc] initBuddyWithResponse:metadata];
@@ -113,7 +113,7 @@
 
 - (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions)permissions callback:(BuddyCompletionCallback)callback
 {
-    NSDictionary *parameters = @{@"permission": [[self class] enumMap][@"readPermissions"][@(permissions)]};
+    NSDictionary *parameters = @{@"visibility": [[self class] enumMap][@"readPermissions"][@(permissions)]};
     [self.client DELETE:[self metadataPath:key] parameters:parameters callback:^(id metadata, NSError *error) {
         callback ? callback(error) : nil;
     }];

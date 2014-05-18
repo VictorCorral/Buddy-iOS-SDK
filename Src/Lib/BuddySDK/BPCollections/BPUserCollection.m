@@ -33,7 +33,7 @@
 
 - (void)searchUsers:(BPSearchUsers *)searchUsers callback:(BuddyCollectionCallback)callback
 {
-    id parameters = [searchUsers parametersFromProperties:@protocol(BPUserProperties)];
+    id parameters = [searchUsers parametersFromProperties];
     
     [self search:parameters callback:callback];
 }

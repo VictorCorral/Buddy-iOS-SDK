@@ -68,20 +68,34 @@ describe(@"BPLocationIntegrationSpec", ^{
             [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
         });
         
-        
+        it(@"Should allow retrieving a location", ^{
+
+            [[Buddy locations] getLocation:tempLocation.id callback:^(BPLocation *retrievedLocation, NSError *error) {
+                [[error should] beNil];
+                [[retrievedLocation.name should] equal:@"New Name"];
+                fin = YES;
+            }];
+            [tempLocation save:^(NSError *error) {
+                [[error should] beNil];
+                [[tempLocation.name should] equal:@"New Name"];
+                fin = YES;
+            }];
+            [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
+        });
+
         it(@"Should allow you to search for a location.", ^{
             __block NSArray *locations;
-            
+        
             BPSearchLocation *searchLocations = [BPSearchLocation new];
-            searchLocations.range = BPCoordinateRangeMake(1.2345, 3.4567, 100);
             searchLocations.limit = 9;
+            searchLocations.locationRange = BPCoordinateRangeMake(44.987293, -93.2484864, 10);
             
             [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *buddyObjects, NSError *error) {
                 [[error should] beNil];
                 locations = buddyObjects;
                 [[locations should] beNonNil];
                 [[theValue([locations count]) should] beGreaterThan:theValue(0)];
-
+                [[[[locations firstObject] city] should] equal:@"Minneapolis"];
                 fin = YES;
             }];
             

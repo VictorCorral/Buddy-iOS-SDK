@@ -28,17 +28,10 @@
 
     #import "BPAFURLRequestSerialization.h"
     #import "BPAFURLResponseSerialization.h"
-    #import "BPAFSecurityPolicy.h"
     #import "BPAFNetworkReachabilityManager.h"
 
     #import "BPAFURLConnectionOperation.h"
     #import "BPAFHTTPRequestOperation.h"
     #import "BPAFHTTPRequestOperationManager.h"
-
-#if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
-      ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
-    #import "BPAFURLSessionManager.h"
-    #import "BPAFHTTPSessionManager.h"
-#endif
 
 #endif /* _AFNETWORKING_ */

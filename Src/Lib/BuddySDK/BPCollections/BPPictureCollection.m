@@ -32,7 +32,7 @@
 
 -(void)searchPictures:(BPSearchPictures *)searchPictures callback:(BuddyCollectionCallback)callback
 {
-    id parameters = [searchPictures parametersFromProperties:@protocol(BPPictureProperties)];
+    id parameters = [searchPictures parametersFromProperties];
     
     [self search:parameters callback:callback];
 }

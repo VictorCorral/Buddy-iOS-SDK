@@ -12,7 +12,7 @@
 
 - (NSString *)stringValue
 {
-    return [NSString stringWithFormat:@"%.4f, %.4f", self.lat, self.lng];
+    return [NSString stringWithFormat:@"%.4f,%.4f", self.lat, self.lng];
 }
 
 @end
@@ -21,7 +21,7 @@
 
 - (NSString *)stringValue
 {
-    return [NSString stringWithFormat:@"%.4f, %.4f, %li", self.lat, self.lng, (long)self.range];
+    return [NSString stringWithFormat:@"%.4f,%.4f,%li", self.lat, self.lng, (long)self.range];
 }
 
 @end
