@@ -70,21 +70,21 @@
 		5BCF829A191300DD00A26EA7 /* NSArray+BPSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF8298191300DD00A26EA7 /* NSArray+BPSugar.m */; };
 		5BCF9D7C192947A6000D173B /* BPAFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BCF9D7A192947A6000D173B /* BPAFSecurityPolicy.h */; };
 		5BCF9D7D192947A6000D173B /* BPAFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF9D7B192947A6000D173B /* BPAFSecurityPolicy.m */; };
-		5BF07F7F18DD1BD000CC50E9 /* BPAlbumCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F6D18DD1BD000CC50E9 /* BPAlbumCollection.h */; };
+		5BF07F7F18DD1BD000CC50E9 /* BPAlbumCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F6D18DD1BD000CC50E9 /* BPAlbumCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F8018DD1BD000CC50E9 /* BPAlbumCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F6E18DD1BD000CC50E9 /* BPAlbumCollection.m */; };
-		5BF07F8118DD1BD000CC50E9 /* BPAlbumItemCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F6F18DD1BD000CC50E9 /* BPAlbumItemCollection.h */; };
+		5BF07F8118DD1BD000CC50E9 /* BPAlbumItemCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F6F18DD1BD000CC50E9 /* BPAlbumItemCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F8218DD1BD000CC50E9 /* BPAlbumItemCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F7018DD1BD000CC50E9 /* BPAlbumItemCollection.m */; };
-		5BF07F8318DD1BD000CC50E9 /* BPBlobCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7118DD1BD000CC50E9 /* BPBlobCollection.h */; };
+		5BF07F8318DD1BD000CC50E9 /* BPBlobCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7118DD1BD000CC50E9 /* BPBlobCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F8418DD1BD000CC50E9 /* BPBlobCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F7218DD1BD000CC50E9 /* BPBlobCollection.m */; };
 		5BF07F8518DD1BD000CC50E9 /* BPCheckinCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7318DD1BD000CC50E9 /* BPCheckinCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F8618DD1BD000CC50E9 /* BPCheckinCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F7418DD1BD000CC50E9 /* BPCheckinCollection.m */; };
 		5BF07F8718DD1BD000CC50E9 /* BPLocationCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7518DD1BD000CC50E9 /* BPLocationCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F8818DD1BD000CC50E9 /* BPLocationCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F7618DD1BD000CC50E9 /* BPLocationCollection.m */; };
-		5BF07F8918DD1BD000CC50E9 /* BPPictureCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7718DD1BD000CC50E9 /* BPPictureCollection.h */; };
+		5BF07F8918DD1BD000CC50E9 /* BPPictureCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7718DD1BD000CC50E9 /* BPPictureCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F8A18DD1BD000CC50E9 /* BPPictureCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F7818DD1BD000CC50E9 /* BPPictureCollection.m */; };
-		5BF07F8B18DD1BD000CC50E9 /* BPUserCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7918DD1BD000CC50E9 /* BPUserCollection.h */; };
+		5BF07F8B18DD1BD000CC50E9 /* BPUserCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7918DD1BD000CC50E9 /* BPUserCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F8C18DD1BD000CC50E9 /* BPUserCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F7A18DD1BD000CC50E9 /* BPUserCollection.m */; };
-		5BF07F8F18DD1BD000CC50E9 /* BPVideoCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7D18DD1BD000CC50E9 /* BPVideoCollection.h */; };
+		5BF07F8F18DD1BD000CC50E9 /* BPVideoCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F7D18DD1BD000CC50E9 /* BPVideoCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F9018DD1BD000CC50E9 /* BPVideoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F7E18DD1BD000CC50E9 /* BPVideoCollection.m */; };
 		5BF07F9218DD2C1D00CC50E9 /* BuddyCollection+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F9118DD2C1D00CC50E9 /* BuddyCollection+Private.h */; };
 		5BF07F9918DE0CA300CC50E9 /* UIImageView+BPAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F9718DE0CA300CC50E9 /* UIImageView+BPAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -743,8 +743,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BF07F9918DE0CA300CC50E9 /* UIImageView+BPAdditions.h in Headers */,
-				5BF07F9D18DE108400CC50E9 /* BPLocationManager.h in Headers */,
+				5BF07F8F18DD1BD000CC50E9 /* BPVideoCollection.h in Headers */,
+				5BF07F8118DD1BD000CC50E9 /* BPAlbumItemCollection.h in Headers */,
+				5BF07F7F18DD1BD000CC50E9 /* BPAlbumCollection.h in Headers */,
+				5BF07F8318DD1BD000CC50E9 /* BPBlobCollection.h in Headers */,
+				5BF07F8918DD1BD000CC50E9 /* BPPictureCollection.h in Headers */,
+				5BF07F8B18DD1BD000CC50E9 /* BPUserCollection.h in Headers */,
 				5BF07F8718DD1BD000CC50E9 /* BPLocationCollection.h in Headers */,
+				5BF07F9D18DE108400CC50E9 /* BPLocationManager.h in Headers */,
 				5BF07F8518DD1BD000CC50E9 /* BPCheckinCollection.h in Headers */,
 				C1ADA71E18AB32D900BCCC12 /* BPBase.h in Headers */,
 				C1B0F54B18937B08000403E0 /* BPAlbumItemContainer.h in Headers */,
@@ -758,7 +764,6 @@
 				C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */,
 				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
 				5B32F36C18E071C600C07019 /* BPAFHTTPRequestOperationManager.h in Headers */,
-				5BF07F8F18DD1BD000CC50E9 /* BPVideoCollection.h in Headers */,
 				5B0302F918DFB81C00EA6B08 /* BPPermissions.h in Headers */,
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
 				C1B959F91837061F000C8417 /* BuddyObject.h in Headers */,
@@ -786,26 +791,21 @@
 				5B32F37918E071C600C07019 /* BPAFURLResponseSerialization.h in Headers */,
 				5B32F37718E071C600C07019 /* BPAFURLRequestSerialization.h in Headers */,
 				C1E0D1D81831BAD3001A7A01 /* JAGPropertyFinder.h in Headers */,
-				5BF07F8118DD1BD000CC50E9 /* BPAlbumItemCollection.h in Headers */,
 				5BF07F9218DD2C1D00CC50E9 /* BuddyCollection+Private.h in Headers */,
 				5BCF8299191300DD00A26EA7 /* NSArray+BPSugar.h in Headers */,
 				5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */,
 				C11E6C9A184D58670034E1EB /* BuddyObject+Private.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
-				5BF07F7F18DD1BD000CC50E9 /* BPAlbumCollection.h in Headers */,
 				C1AA90D818371FF70074B7E8 /* BPServiceController.h in Headers */,
 				C1B3752018A477C3004CCE6D /* NSObject+ToJSON.h in Headers */,
-				5BF07F8318DD1BD000CC50E9 /* BPBlobCollection.h in Headers */,
 				C1D7094818832983003D112C /* BPDescriptors.h in Headers */,
 				C1E0D1D11831BAD3001A7A01 /* JAGProperty.h in Headers */,
 				C1E0D1D41831BAD3001A7A01 /* JAGPropertyConverter-Prefix.pch in Headers */,
-				5BF07F8918DD1BD000CC50E9 /* BPPictureCollection.h in Headers */,
 				C1C2395318789594000D0089 /* BPBlob.h in Headers */,
 				2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */,
 				C1AA90DD1837376E0074B7E8 /* NSDictionary+Merge.h in Headers */,
 				C1B2375F1865569F005C841E /* NSString+JSON.h in Headers */,
 				C1E0D1D51831BAD3001A7A01 /* JAGPropertyConverter.h in Headers */,
-				5BF07F8B18DD1BD000CC50E9 /* BPUserCollection.h in Headers */,
 				5BCF9D7C192947A6000D173B /* BPAFSecurityPolicy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
