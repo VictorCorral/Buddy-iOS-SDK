@@ -47,7 +47,7 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
         _httpResponseSerializer = [AFHTTPResponseSerializer serializer];
         
         [_jsonRequestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [_jsonRequestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [_jsonRequestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [_httpRequestSerializer setValue:@"*/*" forHTTPHeaderField:@"Accept"];
 
         [self addObserver:self forKeyPath:@"appSettings.userToken" options:NSKeyValueObservingOptionNew context:nil];
