@@ -262,7 +262,7 @@
 {
     NSDictionary *parameters = @{ @"password": password };
     
-    id options = [user parametersFromProperties];
+    id options = [user buildUpdateDictionary];
 
     parameters = [NSDictionary dictionaryByMerging:parameters with:options];
     
