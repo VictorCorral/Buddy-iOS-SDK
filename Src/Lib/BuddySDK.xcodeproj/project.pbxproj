@@ -26,7 +26,7 @@
 		2F7E079318A2EC08003FC524 /* BuddyAppDelegateDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E079118A2EC08003FC524 /* BuddyAppDelegateDecorator.m */; };
 		3FAAE60BA41844428107236D /* libPods-BuddySDK Unit Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B6B8A0BC8C4474A7F6BC3E /* libPods-BuddySDK Unit Tests.a */; };
 		5B0302F918DFB81C00EA6B08 /* BPPermissions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0302F818DFB81C00EA6B08 /* BPPermissions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0302FA18DFDB2000EA6B08 /* BPRestProvider.h */; };
+		5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0302FA18DFDB2000EA6B08 /* BPRestProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B0B23D019131DE3005CB913 /* BPIdentityValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0B23CE19131DE3005CB913 /* BPIdentityValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B0B23D119131DE3005CB913 /* BPIdentityValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B23CF19131DE3005CB913 /* BPIdentityValue.m */; };
 		5B0B23D419133E4E005CB913 /* BPSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0B23D219133E4E005CB913 /* BPSize.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,6 +91,8 @@
 		5BF07F9A18DE0CA300CC50E9 /* UIImageView+BPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F9818DE0CA300CC50E9 /* UIImageView+BPAdditions.m */; };
 		5BF07F9D18DE108400CC50E9 /* BPLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BF07F9B18DE108400CC50E9 /* BPLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BF07F9E18DE108400CC50E9 /* BPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF07F9C18DE108400CC50E9 /* BPLocationManager.m */; };
+		BFAEEC331929EA5F004B324A /* BPEnumMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = C1D7094A1883942D003D112C /* BPEnumMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFAEEC341929EA9E004B324A /* BPLocationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB7738C18E26916007428B8 /* BPLocationProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1010D31187A4CC3009EB04E /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D2C187A4CC3009EB04E /* 0.jpg */; };
 		C1010D32187A4CC3009EB04E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D2D187A4CC3009EB04E /* 1.jpg */; };
 		C1010D33187A4CC3009EB04E /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D2E187A4CC3009EB04E /* 2.jpg */; };
@@ -762,7 +764,6 @@
 				5B19875B18CB67D800FBB502 /* NSDate+BPDateHelper.h in Headers */,
 				5B984DA018C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h in Headers */,
 				C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */,
-				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
 				5B32F36C18E071C600C07019 /* BPAFHTTPRequestOperationManager.h in Headers */,
 				5B0302F918DFB81C00EA6B08 /* BPPermissions.h in Headers */,
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
@@ -775,7 +776,10 @@
 				C10E2BA6186950D8007A0136 /* BPPicture.h in Headers */,
 				5B984DB018C791C900CE8E2C /* BPVideo.h in Headers */,
 				5B32F37518E071C600C07019 /* BPAFURLConnectionOperation.h in Headers */,
+				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
+				BFAEEC331929EA5F004B324A /* BPEnumMapping.h in Headers */,
 				C10E2BB1186951C3007A0136 /* BuddyDevice.h in Headers */,
+				BFAEEC341929EA9E004B324A /* BPLocationProvider.h in Headers */,
 				C1B959D2183703E8000C8417 /* BuddyCollection.h in Headers */,
 				5BCF3F1718D641440065842D /* BPCrashManager.h in Headers */,
 				C10E2BA0186950D8007A0136 /* BPCoordinate.h in Headers */,
