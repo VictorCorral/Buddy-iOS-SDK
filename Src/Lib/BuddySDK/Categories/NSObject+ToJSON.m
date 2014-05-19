@@ -52,7 +52,8 @@
             }
         }
         
-        if ([class isSubclassOfClass:[BuddyObject class]]) {
+        if (([class isSubclassOfClass:[BuddyObject class]] && class != [BuddyObject class]) ||
+            ([class isSubclassOfClass:[BPObjectSearch class]] && class != [BPObjectSearch class])) {
             [parameters addEntriesFromDictionary:[self parametersFromProperties:[class superclass]]];
         }
         
