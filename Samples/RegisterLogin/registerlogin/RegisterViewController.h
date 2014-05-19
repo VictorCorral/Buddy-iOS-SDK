@@ -31,7 +31,5 @@
 
 -(void) resignTextFields;
 
--(BuddyObjectCallback) getRegisterCallback;
--(BuddyObjectCallback) getLoginCallback;
 
 @end
