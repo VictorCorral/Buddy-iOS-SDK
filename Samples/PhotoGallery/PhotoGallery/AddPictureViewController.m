@@ -66,17 +66,7 @@
 
 }
 
--(BuddyCompletionCallback) getAddPhotoCallback
-{
-    AddPictureViewController * __weak weakSelf = self;
-    
-    return ^(NSError *error)
-    {
 
-        
-    };
-
-}
 -(void) goBack
 {
     [[CommonAppDelegate navController] popViewControllerAnimated:YES];
