@@ -193,7 +193,7 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
 
 - (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds callback:(BuddyMetricCallback)callback;
 
-- (void)registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback;
+- (void)registerPushToken:(NSString *)token isProduction:(BOOL)isProduction callback:(BuddyObjectCallback)callback;
 
 - (void) registerForPushes;
 
