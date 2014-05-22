@@ -32,7 +32,7 @@ static NSString* _pushToken = @"";
 
 +(void)pushToken:(NSString*)pushToken{
     _pushToken = pushToken;
-    [[BPClient defaultClient] registerPushToken:pushToken callback:^(id device, NSError *error){
+    [[BPClient defaultClient] registerPushToken:pushToken isProduction:[BuddyDevice usesProductionPush] callback:^(id device, NSError *error){
         NSLog(@"token registered");
     }];
 }
@@ -83,6 +83,67 @@ static NSString* _pushToken = @"";
     
 	return deviceModel;
 }
+
+
+/*
+ Parts of this method are taken from Urban Airship's Config implementation
+ https://github.com/urbanairship/ios-library/blob/3049cec171ed50a04a5ee11d00d91a0522442389/Airship/Common/UAConfig.m
+ Copyright 2009-2013 Urban Airship Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ 
+ 1. Redistributions of source code must retain the above copyright notice, this
+ list of conditions and the following disclaimer.
+ 
+ 2. Redistributions in binaryform must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided withthe distribution.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE URBAN AIRSHIP INC``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+ EVENT SHALL URBAN AIRSHIP INC OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
++(BOOL) usesProductionPush{
+    NSString* provisioningProfilePath = [[NSBundle mainBundle] pathForResource:@"embedded" ofType:@"mobileprovision"];
+    if(provisioningProfilePath){
+        NSError *err;
+        NSString *embeddedProfile = [NSString stringWithContentsOfFile:provisioningProfilePath encoding:NSASCIIStringEncoding error:&err];
+        if(err){
+            //can't read mobile provisioning profile
+            return YES;
+        }
+        NSDictionary *plistDict = nil;
+        NSScanner *scanner = [[NSScanner alloc] initWithString:embeddedProfile];
+        if([scanner scanUpToString:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" intoString:nil]){
+            NSString *plistString = nil;
+            if([scanner scanUpToString:@"</plist>" intoString:&plistString]){
+                NSData *data = [[plistString stringByAppendingString:@"</plist>"] dataUsingEncoding:NSUTF8StringEncoding];
+                plistDict = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:nil errorDescription:nil];
+                
+            }
+        }
+        
+        if([@"development" isEqualToString: [plistDict valueForKeyPath:@"Entitlements.aps-environment"]]){
+            //looks like an ad-hoc or dev profile?
+            return NO;
+        }
+        return YES;
+        
+    } else {
+        return NO; // the simulator is never production
+    }
+}
+
+
 /*
 - (void)recordInformation:(NSString *)osVersion
                deviceType:(NSString *)deviceType
