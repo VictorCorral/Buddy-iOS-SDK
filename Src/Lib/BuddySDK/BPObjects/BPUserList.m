@@ -12,6 +12,11 @@
 #import "BPRestProvider.h"
 #import "BPCLient.h"
 
+@interface BPUserList()
+
++(NSString *) requestPath;
+
+@end
 
 
 @implementation BPUserList
@@ -55,6 +60,101 @@
 static NSString *userLists = @"users/lists";
 +(NSString *) requestPath{
     return userLists;
+}
+
+- (void)addUser:(BPUser *)user
+       callback:(BuddyResultCallback)callback
+{
+    [self addUserId:user.id callback:callback];
+}
+
+- (void)addUserId:(NSString*)userId
+         callback:(BuddyResultCallback)callback
+{
+    NSString *requestPath = [NSString stringWithFormat:@"%@/%@/items/%@",[BPUserList requestPath],self.id,userId];
+    
+    id params = [self buildUpdateDictionary];
+    
+    [self.client PUT:requestPath parameters:params callback:^(id json, NSError *error) {
+        
+        BOOL result=NO;
+        NSNumber *resultNum= json; // Its not really JSON, just a number
+        if(resultNum >0)
+        {
+            result=YES;
+        }
+        callback(result,error);
+    }];
+}
+
+@end
+
+
+@implementation BPUserListItem
+
+@synthesize itemType=_itemType;
+@synthesize id=_id;
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self registerProperties];
+    }
+    return self;
+}
+
+- (instancetype)initBuddyWithClient:(id<BPRestProvider>)client {
+    self = [super initBuddyWithClient:client];
+    if(self)
+    {
+        [self registerProperties];
+    }
+    return self;
+}
+
+- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProvider>)rest {
+    self = [super initBuddyWithResponse:response andClient:rest];
+    if(self)
+    {
+        [self registerProperties];
+    }
+    return self;
+}
+
+
++ (NSDictionary *)enumMap
+{
+    return [[[self class] baseEnumMap] dictionaryByMergingWith: @{
+                                                                  NSStringFromSelector(@selector(itemType)) : @{
+                                                                          @(BPUserListItem_User) : @"User",
+                                                                          @(BPUserListItem_UserList) : @"UserList",
+                                                                          },
+                                                                  }];
+}
+
+/*
++ (NSString *)requestPath
+{
+    return @"items";
+}
+*/
+
+/*
+- (NSString *)buildRequestPath
+{
+    return [NSString stringWithFormat:@"users/lists/%@/items", self.albumID];
+}
+ */
+
+
+- (void)registerProperties
+{
+    [super registerProperties];
+    
+    [self registerProperty:@selector(itemType)];
+    [self registerProperty:@selector(id)];
 }
 
 @end

@@ -42,6 +42,19 @@
 
 }
 
++(void)createRandomUser:(BPUser *)user callback:(BuddyCompletionCallback)callback
+{
+    user.firstName = [BuddyIntegrationHelper randomString:8];
+    user.lastName = [BuddyIntegrationHelper randomString:8];
+    user.gender = BPUserGender_Unknown;
+    user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:10]];
+    user.dateOfBirth = [BuddyIntegrationHelper randomDate];
+    user.userName = [BuddyIntegrationHelper randomString:8];
+    [Buddy createUser:user password:[BuddyIntegrationHelper randomString:8] callback:^(NSError *error) {
+        callback(error);
+    }];
+}
+
 + (NSDate *)randomDate
 {
     NSDate *today = [[NSDate alloc] init];

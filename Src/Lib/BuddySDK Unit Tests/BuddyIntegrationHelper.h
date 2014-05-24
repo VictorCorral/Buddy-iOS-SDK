@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class BPUser;
+
 @interface BuddyIntegrationHelper : NSObject
 
 + (void) bootstrapInit;
@@ -17,5 +19,7 @@
 + (NSDate *)randomDate;
 
 + (NSString *)randomString:(int)len;
+
++(void)createRandomUser:(BPUser *)user callback:(BuddyCompletionCallback)callback;
 
 @end

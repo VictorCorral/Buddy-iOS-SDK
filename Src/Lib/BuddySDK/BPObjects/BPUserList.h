@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BPBase.h"
+
+@class BPUser;
+
 /**
 Enum for specifying UserListItemType.
 */
@@ -28,7 +32,7 @@ typedef NS_ENUM(NSInteger, BPUserListItemType)
 @interface BPSearchUserList : BPObjectSearch<BPUserListProperties>
 @end
 
-@interface UserListItem
+@protocol BPUserListItemProperties
 
 @property (nonatomic,assign) BPUserListItemType itemType;
 @property (nonatomic,copy) NSString *id;
@@ -37,5 +41,15 @@ typedef NS_ENUM(NSInteger, BPUserListItemType)
 
 
 @interface BPUserList : BuddyObject<BPUserListProperties>
+
+- (void)addUser:(BPUser *)user
+       callback:(BuddyResultCallback)callback;
+
+- (void)addUserId:(NSString*)userId
+       callback:(BuddyResultCallback)callback;
+
+@end
+
+@interface BPUserListItem : BuddyObject<BPUserListItemProperties>
 
 @end

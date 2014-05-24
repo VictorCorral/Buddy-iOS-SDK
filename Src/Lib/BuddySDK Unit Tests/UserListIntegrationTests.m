@@ -109,18 +109,69 @@ describe(@"BuddyUserListsSpec", ^{
         });
         
         
-        it(@"Should allow you to delete a User List.", ^{
+            it(@"Should allow you to add users to the User List",^{
             __block BOOL fin = NO;
-            __block NSString *userListId =tempUserList.id;
-            
-            [tempUserList destroy:^(NSError *error) {
+            BPUser *user = [BPUser new];
+           [BuddyIntegrationHelper createRandomUser:(BPUser *)user callback:^(NSError *error)
+            {
                 [[error should] beNil];
-                [[Buddy userLists] getUserList:userListId callback:^(id newBuddyObject, NSError *error) {
-                    [[error shouldNot] beNil];
-                    [[newBuddyObject should] beNil];
-                    fin = YES;
+                [tempUserList addUser:user callback:^(BOOL result, NSError *error) {
+                    
+                    [[error should] beNil];
+                    [[theValue(result) shouldNot] equal: NO];
+                    
+                    fin=YES;
                 }];
             }];
+            
+        });
+        
+    });
+    
+        context(@"When a user is logged in", ^{
+            
+            
+            
+            beforeAll(^{
+                __block BOOL fin = NO;
+                
+                [BuddyIntegrationHelper bootstrapLogin:^{
+                    fin = YES;
+                }];
+                
+                [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
+            });
+            
+            afterAll(^{
+                
+            });
+            
+        
+        it(@"Should allow you to delete a User List.", ^{
+            __block BOOL fin = NO;
+            __block BPUserList *tempUserList2;
+            tempUserList2 = [BPUserList new];
+            NSString *userListName2 =[NSString stringWithFormat:@"userList_%@",[BuddyIntegrationHelper randomString:10] ] ;
+            tempUserList2.name =userListName2;
+            
+            [[Buddy userLists] addUserList:tempUserList2 callback:^(NSError *error) {
+                
+                [error shouldBeNil];
+                [[tempUserList2.id shouldNot] beNil];
+                [[tempUserList2.name should] equal: userListName2];
+                
+                __block NSString *userListId2 =tempUserList2.id;
+                
+                [tempUserList2 destroy:^(NSError *error) {
+                    [[error should] beNil];
+                    [[Buddy userLists] getUserList:userListId2 callback:^(id newBuddyObject, NSError *error) {
+                        [[error shouldNot] beNil];
+                        [[newBuddyObject should] beNil];
+                        fin = YES;
+                    }];
+                }];
+            }];
+            
             
             [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
         });
