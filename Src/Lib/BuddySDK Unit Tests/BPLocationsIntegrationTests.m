@@ -88,7 +88,7 @@ describe(@"BPLocationIntegrationSpec", ^{
         
             BPSearchLocation *searchLocations = [BPSearchLocation new];
             searchLocations.limit = 9;
-            searchLocations.locationRange = BPCoordinateRangeMake(44.987293, -93.2484864, 10);
+            searchLocations.locationRange = BPCoordinateRangeMake(44.987293, -93.2484864, 100);
             
             [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *buddyObjects, NSError *error) {
                 [[error should] beNil];
