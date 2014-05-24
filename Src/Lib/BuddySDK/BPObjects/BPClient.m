@@ -369,13 +369,9 @@
     }];
 }
 
--(void) registerPushToken:(NSString *)token isProduction:(BOOL)isProduction callback:(BuddyObjectCallback)callback{
+-(void) registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback{
     NSString *resource = @"devices/current";
-
-    [self checkDeviceToken:^(void){
-    
-        [self PATCH:resource parameters:@{@"pushToken": token, @"isProduction": [NSNumber numberWithBool:isProduction]} callback:callback];
-    }];
+        [self PATCH:resource parameters:@{@"pushToken": token} callback:callback];
 }
 
 

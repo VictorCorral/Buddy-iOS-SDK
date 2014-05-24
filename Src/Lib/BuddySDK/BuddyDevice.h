@@ -35,7 +35,6 @@ typedef void (^BuddyDeviceCallback)(id response);
 
 +(void) pushToken:(NSString*)pushToken;
 
-+(BOOL) usesProductionPush;
 
 /*
 /// <summary>
