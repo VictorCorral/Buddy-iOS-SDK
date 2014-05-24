@@ -9,7 +9,6 @@
 #import "BPAlbumCollection.h"
 #import "BuddyCollection+Private.h"
 #import "BuddyObject+Private.h"
-#import "BuddyObject+Private.h"
 #import "BPAlbum.h"
 
 @implementation BPAlbumCollection

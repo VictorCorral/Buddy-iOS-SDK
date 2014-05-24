@@ -29,6 +29,7 @@
 #import "BPLocation.h"
 #import "BPMetricCompletionHandler.h"
 #import "BPMetadataItem.h"
+#import "BPUserListCollection.h"
 #import "BPNotification.h"
 #import "BPIdentityValue.h"
 #import "BPSize.h"
@@ -76,6 +77,11 @@
  Accessor to create and query albums.
  */
 + (BPAlbumCollection *)albums;
+
+/**
+ Accesor to create and query user lists
+ */
++ (BPUserListCollection*)userLists;
 
 /**
  Accessor to create and query locations.
@@ -143,9 +149,27 @@
  */
 + (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
 
-
+/** Records a metric.
+ 
+ Signals completion via the BuddyCompletion callback
+ 
+ @param key     The name of the metric
+ 
+ @param value   The value of the metric
+ 
+ */
 + (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value callback:(BuddyCompletionCallback)callback;
 
+/** Records a timed metric.
+ @param key     The name of the metric
+ 
+ @param value   The value of the metric
+ 
+ @param timeout The time after which the metric automatically expires (in seconds)
+ 
+ @param callback A callback that returns the ID of the metric which allows the metric to be signaled as finished
+                 via "signalComplete"
+ */
 + (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds callback:(BuddyMetricCallback)callback;
 
 + (void)setMetadata:(BPMetadataItem *)metadata callback:(BuddyCompletionCallback)callback;
