@@ -16,4 +16,6 @@
 
 - (void)getUserList:(NSString *)userListId callback:(BuddyObjectCallback)callback;
 
+- (void)searchUserLists:(BPSearchUserList *)searchUserList callback:(BuddyCollectionCallback)callback;
+
 @end

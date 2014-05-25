@@ -48,6 +48,12 @@ typedef NS_ENUM(NSInteger, BPUserListItemType)
 - (void)addUserId:(NSString*)userId
        callback:(BuddyResultCallback)callback;
 
+- (void)deleteUser:(BPUser *)user
+       callback:(BuddyResultCallback)callback;
+
+- (void)deleteUserId:(NSString*)userId
+         callback:(BuddyResultCallback)callback;
+
 @end
 
 @interface BPUserListItem : BuddyObject<BPUserListItemProperties>

@@ -20,6 +20,7 @@
 
 + (NSString *)randomString:(int)len;
 
+/* Not ready yet. This needs to take a BPClient to avoid overwriting currentUser I think */
 +(void)createRandomUser:(BPUser *)user callback:(BuddyCompletionCallback)callback;
 
 @end

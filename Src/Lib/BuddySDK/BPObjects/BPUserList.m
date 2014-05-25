@@ -12,6 +12,12 @@
 #import "BPRestProvider.h"
 #import "BPCLient.h"
 
+@implementation BPSearchUserList
+
+@synthesize name;
+
+@end
+
 @interface BPUserList()
 
 +(NSString *) requestPath;
@@ -86,6 +92,32 @@ static NSString *userLists = @"users/lists";
         callback(result,error);
     }];
 }
+
+- (void)deleteUser:(BPUser *)user
+       callback:(BuddyResultCallback)callback
+{
+    [self addUserId:user.id callback:callback];
+}
+
+- (void)deleteUserId:(NSString*)userId
+         callback:(BuddyResultCallback)callback
+{
+    NSString *requestPath = [NSString stringWithFormat:@"%@/%@/items/%@",[BPUserList requestPath],self.id,userId];
+    
+    id params = [self buildUpdateDictionary];
+    
+    [self.client DELETE:requestPath parameters:params callback:^(id json, NSError *error) {
+        
+        BOOL result=NO;
+        NSNumber *resultNum= json; // Its not really JSON, just a number
+        if(resultNum >0)
+        {
+            result=YES;
+        }
+        callback(result,error);
+    }];
+}
+
 
 @end
 
