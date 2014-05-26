@@ -11,7 +11,7 @@
 #import "BuddyObject+Private.h"
 #import "BuddyCollection+Private.h"
 
-#define DEFAULT_SEARCH_LIMIT 25
+#define DEFAULT_SEARCH_LIMIT 100
 
 @interface BuddyCollection()
 
