@@ -201,7 +201,7 @@
  * @param timeout The time after which the metric automatically expires (in seconds).
  *
  * @param callback A callback that returns the ID of the metric which allows the metric to be signaled as finished
-                 via "signalComplete."
+                 via "finishMetric."
  *
  */
 + (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds callback:(BuddyMetricCallback)callback;

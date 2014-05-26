@@ -47,7 +47,7 @@ describe(@"Metrics", ^{
 
             [Buddy recordMetric:@"MetricKey" andValue:myVals timeout:10 callback:^(BPMetricCompletionHandler *completionHandler, NSError *error) {
                 [[error should] beNil];
-                [completionHandler signalComplete:^(NSInteger elapsedTimeInMs, NSError *error) {
+                [completionHandler finishMetric:^(NSInteger elapsedTimeInMs, NSError *error) {
                     [[theValue(elapsedTimeInMs) should] beGreaterThan:theValue(0)];
                     [[error should] beNil];
                     fin = YES;

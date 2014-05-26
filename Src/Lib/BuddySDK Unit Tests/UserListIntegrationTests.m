@@ -148,7 +148,7 @@ describe(@"BuddyUserListsSpec", ^{
             tempUserList2 = [BPUserList new];
             __block NSString *userListName2 =[NSString stringWithFormat:@"userList_%@",[BuddyIntegrationHelper randomString:10] ] ;
             tempUserList2.name =userListName2;
-            
+            __weak BPUserList *tempUserList3 = tempUserList2;
             [[Buddy userLists] addUserList:tempUserList2 callback:^(NSError *error) {
                 
                 [error shouldBeNil];
@@ -159,7 +159,7 @@ describe(@"BuddyUserListsSpec", ^{
                     [[error should] beNil];
                     [[theValue(result) shouldNot] equal: NO];
                     
-                    __weak BPUserList *tempUserList3 = tempUserList2;
+                    
                     
                     
                     [tempUserList3 deleteUser:Buddy.user callback:^(BOOL result, NSError *error) {
