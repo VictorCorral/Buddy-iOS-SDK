@@ -33,11 +33,8 @@
 
 - (void)searchUserLists:(BPSearchUserList *)searchUserList callback:(BuddyCollectionCallback)callback
 {
+    searchUserList.limit = 25;
     id parameters = [searchUserList parametersFromProperties];
-    
-    NSMutableDictionary *params = parameters;
-    
-    params[@"limit"]=[NSNumber numberWithInt:25]; // Temporary Hack for page size ?
     
     [self search:parameters callback:callback];
 }

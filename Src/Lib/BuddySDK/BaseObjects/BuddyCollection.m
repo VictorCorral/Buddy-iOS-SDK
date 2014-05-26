@@ -11,6 +11,8 @@
 #import "BuddyObject+Private.h"
 #import "BuddyCollection+Private.h"
 
+#define DEFAULT_SEARCH_LIMIT 25
+
 @interface BuddyCollection()
 
 @property (nonatomic, copy) NSString *requestPrefix;
@@ -49,6 +51,12 @@
 {
     NSString *resource = [self.requestPrefix stringByAppendingFormat:@"%@",
                           [[self type] requestPath]];
+    
+    NSNumber *limit  = [searchParmeters objectForKey:@"limit"];
+    if(limit==nil || ([limit isEqualToNumber:[NSNumber numberWithInt:0]]))
+    {
+        [searchParmeters setValue:[NSNumber numberWithInt:DEFAULT_SEARCH_LIMIT] forKey:@"limit"];
+    }
     
     [self.client GET:resource parameters:searchParmeters callback:^(id json, NSError *error) {
         NSArray *results = [json[@"pageResults"] bp_map:^id(id object) {

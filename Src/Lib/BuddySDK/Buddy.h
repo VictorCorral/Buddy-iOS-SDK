@@ -42,73 +42,89 @@
 @interface Buddy : NSObject
 
 /**
- The currently logged in user. Will be nil if no login session has occurred.
+ * The currently logged in user. Will be nil if no login session has occurred.
  */
 + (BPUser *)user;
 
 //+ (BuddyDevice *)device;
 
 /**
- Accessor to create and query checkins
+ * Accessor to create and query checkins.
  */
 + (BPUserCollection *)users;
 
 /**
- Accessor to create and query checkins
+ * Accessor to create and query checkins.
  */
 + (BPCheckinCollection *) checkins;
 
 /**
- Accessor to create and query pictures.
+ * Accessor to create and query pictures.
  */
 + (BPPictureCollection *) pictures;
 
 /**
- Accessor to create and query videos.
+ * Accessor to create and query videos.
  */
 + (BPVideoCollection *) videos;
 
 /**
- Accessor to create and query data and files.
+ * Accessor to create and query data and files.
  */
 + (BPBlobCollection *)blobs;
     
 /**
- Accessor to create and query albums.
+ * Accessor to create and query albums.
  */
 + (BPAlbumCollection *)albums;
 
 /**
- Accesor to create and query user lists
+ * Accesor to create and query user lists.
  */
 + (BPUserListCollection*)userLists;
 
 /**
- Accessor to create and query locations.
+ * Accessor to create and query locations.
  */
 + (BPLocationCollection *)locations;
 
 /**
-  Public REST provider for passthrough access.
+ * Public REST provider for passthrough access.
  */
 + (id<BPRestProvider>)buddyRestProvider;
 
 
+/**
+ * Used to check if location information is automatically being sent to the server or not.
+ *
+ * If set to YES then location information will automatically be sent to the server.
+ * If set to NO then location information will not be sent.
+ *
+ * Default: NO
+ *
+ */
 + (BOOL) locationEnabled;
 
+/**
+ * Determines whether location information will be automatically sent to the server or not.
+ *
+ * @param enabled     If set to YES then location information will automatically be sent to the server.
+ *                    If set to NO then location information will not be sent.
+ *
+ *                    Default: NO
+ */
 + (void) setLocationEnabled:(BOOL)enabled;
 
 + (void)setClientDelegate:(id<BPClientDelegate>)delegate;
 
 /**
  *
- * Initialize the Buddy SDK with your App ID and App Key
+ * Initialize the Buddy SDK with your App ID and App Key.
  *
  * @param appID  Your application ID.
  *
  * @param appKey Your application key.
  *
- * @param callback A BuddyCompletionBlock that has an error, if any.
  */
 + (void)initClient:(NSString *)appID
             appKey:(NSString *)appKey;
@@ -118,65 +134,145 @@
  *
  * Create a new Buddy User.
  *
- * @param username The new user's username
+ * @param user     A BPUser object populated with the users information.
  *
- * @param password THe new user's password
+ * @param password The new user's password.
  *
- * @param options The set of creation options for the user.
  */
 + (void)createUser:(BPUser *)user password:(NSString *)password callback:(BuddyCompletionCallback)callback;
 
 /**
  *
  * Login a user using the provided username and password.
+ *
+ * @param username  The username of the user.
+ *
+ * @param password  The user's password.
+ *
  */
 + (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
 
 /**
  *
- * Login the app using a social provider such as Facebook or Twitter.
+ * Login using a social provider such as Facebook or Twitter.
+ *
  */
 + (void)socialLogin:(NSString *)provider providerId:(NSString *)providerId token:(NSString *)token success:(BuddyObjectCallback) callback;
 
 /**
  *
- * Logout of the current app
+ * Logout the current user.
+ *
  */
 + (void)logout:(BuddyCompletionCallback)callback;
 
 /* 
- * Notification
+ * Send a push Notification to one or more users, or user lists.
+ *
+ * @param notification  a BPNotification object with the notification information populated.
+ * 
+ * @callback            a callback that is called once the server has accepted the request.
+ *                      NOTE: The server sends push notifications asynchronously so the callback
+ *                            may be called before all notifications have been sent out.
+ *
  */
 + (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
 
-/** Records a metric.
- 
- Signals completion via the BuddyCompletion callback
- 
- @param key     The name of the metric
- 
- @param value   The value of the metric
- 
+/** 
+ * Records a metric.
+ *
+ * Signals completion via the BuddyCompletion callback.
+ *
+ * @param key       The name of the metric.
+ *
+ * @param value     The value of the metric.
+ *
+ * @param callback  A callback that is called once the server has processed the request.
+ *
  */
 + (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value callback:(BuddyCompletionCallback)callback;
 
-/** Records a timed metric.
- @param key     The name of the metric
- 
- @param value   The value of the metric
- 
- @param timeout The time after which the metric automatically expires (in seconds)
- 
- @param callback A callback that returns the ID of the metric which allows the metric to be signaled as finished
-                 via "signalComplete"
+/** 
+ * Records a timed metric.
+ * @param key     The name of the metric.
+ *
+ * @param value   The value of the metric.
+ *
+ * @param timeout The time after which the metric automatically expires (in seconds).
+ *
+ * @param callback A callback that returns the ID of the metric which allows the metric to be signaled as finished
+                 via "signalComplete."
+ *
  */
 + (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds callback:(BuddyMetricCallback)callback;
 
+/**
+ * Sets an app-level metadata item.
+ *
+ * @param metadata      A BPMetaDataItem object prepopulated with the metadata information.
+ *
+ * @param callback      A callback that is called once the server has processed the request.
+ *
+ */
 + (void)setMetadata:(BPMetadataItem *)metadata callback:(BuddyCompletionCallback)callback;
+
+/**
+ * Sets multiple app-level metadata items
+ *
+ * @param metadata  A BPMetadataCollection prepopulated with the metadata information.
+ *
+ * @param callback      A callback that is called once the server has processed the request.
+ *
+ */
 + (void)setMetadataValues:(BPMetadataCollection *)metadata callback:(BuddyCompletionCallback)callback;
+
+/**
+ * Retrieves a metadata item for a given key
+ *
+ * @param key           The metadata key to retrieve.
+ *
+ * @param permissions   The permissions of the metadataitem.
+ *
+ * @param callback      A callback which is called with the results of the request.
+ *
+ */
 + (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BPMetadataCallback)callback;
-+ (void)searchMetadata:(BPSearchMetadata *)search callback:(BuddyObjectCallback)callback;
+
+/**
+ *
+ * Searches for multiple metadata items
+ *
+ * @param search        A BPSearchMetadata prepopulated with the information to search for.
+ *
+ * @param callback      A callback which is called with the results of the search.
+ *
+ */
++ (void)searchMetadata:(BPSearchMetadata *)search callback:(BuddyCollectionCallback)callback;
+
+/**
+ * Increment a metadata item's value by a given amount.
+ *
+ * @param key           The key of the metadata item to increment.
+ *
+ * @param delta         The amount to increment the value.
+ * 
+ * @param callback      A callback that is called once the server has processed the request.
+ *
+ * NOTE: The type of the metadata item must be numeric for this call to succeed. If not, an error will be returned.
+ *
+ */
 + (void)incrementMetadata:(NSString *)key delta:(NSInteger)delta callback:(BuddyCompletionCallback)callback;
+
+/**
+ * Deletes a metadata item for a given key.
+ *
+ * @param key           The key of the metadata item to delete.
+ *
+ * @param permissions   The permissions of the metadata item.
+ *
+ * @param callback      A callback that is called once the server has processed the request.
+ *
+ */
 + (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions)permissions callback:(BuddyCompletionCallback)callback;
 
 @end
