@@ -112,10 +112,13 @@ static NSString *userLists = @"users/lists";
     [self.client DELETE:requestPath parameters:params callback:^(id json, NSError *error) {
         
         BOOL result=NO;
-        NSNumber *resultNum= json; // Its not really JSON, just a number
-        if(resultNum >0)
+        if(error==nil)
         {
-            result=YES;
+            NSNumber *resultNum= json; // Its not really JSON, just a number
+            if(resultNum >0)
+            {
+                result=YES;
+            }
         }
         callback(result,error);
     }];
