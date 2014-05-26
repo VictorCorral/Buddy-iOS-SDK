@@ -35,6 +35,7 @@ typedef void (^BuddyDeviceCallback)(id response);
 
 +(void) pushToken:(NSString*)pushToken;
 
+
 /*
 /// <summary>
 /// Record runtime device type information. This info will be uploaded to the Buddy service and can later be used for analytics purposes.

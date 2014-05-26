@@ -38,8 +38,29 @@
 {
     NSString *url = @"notifications";
     
+    NSString *pushType=nil;
+    switch(notification.notificationType)
+    {
+        case BPNotificationType_None:
+            // TODO: Construct an error here?
+            callback(nil);
+            return;
+        case BPNotificationType_Alert:
+            pushType = @"alert";
+            break;
+        case BPNotificationType_Raw:
+            pushType = @"raw";
+            break;
+        case BPNotificationType_Badge:
+            pushType = @"badge";
+            break;
+        case BPNotificationType_Custom:
+            pushType=@"custom";
+            break;
+    }
+    
     NSDictionary *parameters = @{
-                                 @"type": notification.notificationType == BPNotificationType_Alert ? @"alert" : @"raw",
+                                 @"type": pushType,
                                  @"message": BOXNIL(notification.message),
                                  @"payload": BOXNIL(notification.payload),
                                  @"counterValue": @(notification.counterValue),

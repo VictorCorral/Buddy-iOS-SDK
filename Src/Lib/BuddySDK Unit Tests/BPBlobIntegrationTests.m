@@ -91,6 +91,7 @@ describe(@"BPBlobIntegrationSpec", ^{
             
             BPBlobSearch *search = [BPBlobSearch new];
             search.friendlyName = @"So friendly";
+            search.limit=25;
             
             [[Buddy blobs] searchBlobs:search callback:^(NSArray *buddyObjects, NSError *error) {
                 [[theValue([buddyObjects count]) should] beGreaterThan:theValue(0)];

@@ -21,7 +21,7 @@ describe(@"Metrics", ^{
     context(@"When an app has a valid device token", ^{
         __block BOOL fin = NO;
         beforeAll(^{
-            [Buddy initClient:APP_NAME appKey:APP_KEY];
+            [Buddy initClient:APP_ID appKey:APP_KEY];
         });
         
         afterAll(^{
@@ -47,7 +47,7 @@ describe(@"Metrics", ^{
 
             [Buddy recordMetric:@"MetricKey" andValue:myVals timeout:10 callback:^(BPMetricCompletionHandler *completionHandler, NSError *error) {
                 [[error should] beNil];
-                [completionHandler signalComplete:^(NSInteger elapsedTimeInMs, NSError *error) {
+                [completionHandler finishMetric:^(NSInteger elapsedTimeInMs, NSError *error) {
                     [[theValue(elapsedTimeInMs) should] beGreaterThan:theValue(0)];
                     [[error should] beNil];
                     fin = YES;

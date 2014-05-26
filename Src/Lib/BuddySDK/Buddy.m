@@ -72,6 +72,11 @@
     return [[BPClient defaultClient] locations];
 }
 
++ (BPUserListCollection *) userLists
+{
+    return [[BPClient defaultClient] userLists];
+}
+
 + (BOOL) locationEnabled
 {
     return [[BPClient defaultClient] locationEnabled];
@@ -180,7 +185,7 @@
     [[BPClient defaultClient] setMetadataValues:metadata callback:callback];
 }
 
-+ (void)searchMetadata:(BPSearchMetadata *)search callback:(BuddyObjectCallback)callback
++ (void)searchMetadata:(BPSearchMetadata *)search callback:(BuddyCollectionCallback)callback
 {
     [[BPClient defaultClient] searchMetadata:search callback:callback];
 }

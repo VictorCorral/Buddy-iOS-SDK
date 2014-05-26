@@ -83,6 +83,7 @@ static NSString* _pushToken = @"";
     
 	return deviceModel;
 }
+
 /*
 - (void)recordInformation:(NSString *)osVersion
                deviceType:(NSString *)deviceType

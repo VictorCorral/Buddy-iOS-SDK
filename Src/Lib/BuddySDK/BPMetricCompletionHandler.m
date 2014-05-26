@@ -28,6 +28,11 @@
 
 - (void)signalComplete:(BuddyTimedMetricResult)callback
 {
+        [self finishMetric:callback];
+}
+
+- (void)finishMetric:(BuddyTimedMetricResult)callback
+{
     NSString *resource = [NSString stringWithFormat:@"/metrics/events/%@", self.metricId];
     [self.client DELETE:resource parameters:nil callback:^(id json, NSError *error) {
         NSInteger time = -1;

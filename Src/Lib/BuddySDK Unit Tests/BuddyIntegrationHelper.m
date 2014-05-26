@@ -13,12 +13,12 @@
 
 + (void) bootstrapInit
 {
-    [Buddy initClient:APP_NAME appKey:APP_KEY];
+    [Buddy initClient:APP_ID appKey:APP_KEY];
 }
 
 + (void) bootstrapLogin:(void(^)())callback
 {
-    [Buddy initClient:APP_NAME appKey:APP_KEY];
+    [Buddy initClient:APP_ID appKey:APP_KEY];
     
     [Buddy login:TEST_USERNAME password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
         
@@ -40,6 +40,19 @@
     }];
         
 
+}
+
++(void)createRandomUser:(BPUser *)user callback:(BuddyCompletionCallback)callback
+{
+    user.firstName = [BuddyIntegrationHelper randomString:8];
+    user.lastName = [BuddyIntegrationHelper randomString:8];
+    user.gender = BPUserGender_Unknown;
+    user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:10]];
+    user.dateOfBirth = [BuddyIntegrationHelper randomDate];
+    user.userName = [BuddyIntegrationHelper randomString:8];
+    [Buddy createUser:user password:[BuddyIntegrationHelper randomString:8] callback:^(NSError *error) {
+        callback(error);
+    }];
 }
 
 + (NSDate *)randomDate

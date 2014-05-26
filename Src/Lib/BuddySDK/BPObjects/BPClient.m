@@ -15,6 +15,7 @@
 #import "BPAlbumCollection.h"
 #import "BPBlobCollection.h"
 #import "BPLocationCollection.h"
+#import "BPUserListCollection.h"
 #import "BPRestProvider.h"
 #import "BuddyObject+Private.h"
 #import "BPLocationManager.h"
@@ -54,6 +55,7 @@
 @synthesize albums = _albums;
 @synthesize locations = _locations;
 @synthesize users = _users;
+@synthesize userLists = _userLists;
 #pragma mark - Init
 
 - (instancetype)init
@@ -100,6 +102,7 @@
     _blobs = nil;
     _albums = nil;
     _locations = nil;
+    _userLists=nil;
 }
 
 -(void)setupWithApp:(NSString *)appID
@@ -248,6 +251,16 @@
     return _locations;
 }
 
+-(BPUserListCollection *)userLists
+{
+    
+    if(!_userLists)
+    {
+        _userLists = [[BPUserListCollection alloc] initWithClient:self];
+    }
+    return _userLists;
+}
+
 #pragma mark - User
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -358,10 +371,7 @@
 
 -(void) registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback{
     NSString *resource = @"devices/current";
-    [self checkDeviceToken:^(void){
-    
         [self PATCH:resource parameters:@{@"pushToken": token} callback:callback];
-    }];
 }
 
 
