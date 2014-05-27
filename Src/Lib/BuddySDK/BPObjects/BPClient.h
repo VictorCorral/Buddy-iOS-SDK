@@ -27,9 +27,10 @@
 @class BPUserCollection;
 @class BPCoordinate;
 @class BPNotification;
+@class BPUserListCollection;
 
 /**
- Enum specifying the current authentication level.
+ * Enum specifying the current authentication level.
  */
 typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
     /** No authentication */
@@ -41,7 +42,7 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
 };
 
 /**
- Enum specifying the current authentication level.
+ * Enum specifying the current authentication level.
  */
 typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
     /** No network reachability */
@@ -140,6 +141,11 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
 @property (readonly, nonatomic, strong) BPLocationCollection *locations;
 
 /// <summary>
+/// A collection of User Lists. Each User List consists either of Users or further UserLists
+/// </summary>
+@property (readonly, nonatomic, strong) BPUserListCollection *userLists;
+
+/// <summary>
 /// TODO
 /// </summary>
 @property (nonatomic, assign) BOOL locationEnabled;
@@ -183,18 +189,44 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
 
 - (void)socialLogin:(NSString *)provider providerId:(NSString *)providerId token:(NSString *)token success:(BuddyObjectCallback) callback;
 
+/**
+ * Logs out the current user.
+ */
 - (void)logout:(BuddyCompletionCallback)callback;
 
+/**
+ * Sends a Ping message to the server to verify connectivity
+ */
 - (void)ping:(BPPingCallback)callback;
 
 - (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
 
+/** Records a metric.
+ *
+ * Signals completion via the BuddyCompletion callback.
+ *
+ * @param key     The name of the metric.
+ *
+ * @param value   The value of the metric.
+ *
+ */
 - (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value callback:(BuddyCompletionCallback)callback;
 
+/** Records a timed metric.
+ * @param key     The name of the metric
+ *
+ * @param value   The value of the metric
+ *
+ * @param timeout The time after which the metric automatically expires (in seconds)
+ *
+ * @param callback A callback that returns the ID of the metric which allows the metric to be signaled as finished
+ via "signalComplete"
+ *
+ */
 - (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds callback:(BuddyMetricCallback)callback;
 
-- (void)registerPushToken:(NSString *)token isProduction:(BOOL)isProduction callback:(BuddyObjectCallback)callback;
+- (void)registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback;
 
-- (void) registerForPushes;
+- (void)registerForPushes;
 
 @end

@@ -37,6 +37,7 @@
 typedef void (^BuddyCompletionCallback)(NSError *error);
 typedef void (^BuddyObjectCallback)(id newBuddyObject, NSError *error);
 typedef void (^BuddyIdCallback)(NSString *buddyId, NSError *error);
+typedef void (^BuddyResultCallback)(BOOL result, NSError *error);
 
 @interface BPBase : NSObject
 

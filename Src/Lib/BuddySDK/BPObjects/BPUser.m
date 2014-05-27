@@ -60,6 +60,7 @@
 {
     return [[[self class] baseEnumMap] dictionaryByMergingWith: @{
                                                                   NSStringFromSelector(@selector(gender)) : @{
+                                                                          @(BPUserGender_Unknown) : @"Unknown",
                                                                           @(BPUserGender_Male) : @"Male",
                                                                           @(BPUserGender_Female) : @"Female",
                                                                           },

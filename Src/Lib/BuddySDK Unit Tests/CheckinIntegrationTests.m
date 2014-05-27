@@ -61,10 +61,12 @@ describe(@"BPCheckinIntegrationSpec", ^{
             
             BPSearchCheckins *searchCheckins = [BPSearchCheckins new];
             searchCheckins.comment = @"Checking in!";
+            searchCheckins.limit=25;
             
             [[Buddy checkins] searchCheckins:searchCheckins callback:^(NSArray *buddyObjects, NSError *error) {
                 NSArray *cins = buddyObjects;
                 
+                [[theValue([cins count]) should] beGreaterThan:theValue(0)];
                 for(BPCheckin *c in cins) {
                     [[c.comment should] equal:@"Checking in!"];
                 }
@@ -72,7 +74,7 @@ describe(@"BPCheckinIntegrationSpec", ^{
                 checkins = buddyObjects;
             }];
             
-            [[expectFutureValue(theValue([checkins count])) shouldEventually] beGreaterThan:theValue(0)];
+            //[[expectFutureValue(theValue([checkins count])) shouldEventually] beGreaterThan:theValue(0)];
         });
 
         it(@"Should allow you to retrieve a specific checkin.", ^{

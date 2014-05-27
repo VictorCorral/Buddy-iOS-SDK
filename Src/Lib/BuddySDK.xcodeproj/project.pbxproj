@@ -22,6 +22,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		013B2A4D193121BE00607718 /* BPUserListCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 013B2A4B193121BE00607718 /* BPUserListCollection.h */; };
+		013B2A4E193121BE00607718 /* BPUserListCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B2A4C193121BE00607718 /* BPUserListCollection.m */; };
+		013B2A51193122CF00607718 /* BPUserList.h in Headers */ = {isa = PBXBuildFile; fileRef = 013B2A4F193122CF00607718 /* BPUserList.h */; };
+		013B2A52193122CF00607718 /* BPUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B2A50193122CF00607718 /* BPUserList.m */; };
+		013B2A55193129E400607718 /* UserListIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B2A54193129E400607718 /* UserListIntegrationTests.m */; };
 		2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */; };
 		2F7E079318A2EC08003FC524 /* BuddyAppDelegateDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E079118A2EC08003FC524 /* BuddyAppDelegateDecorator.m */; };
 		3FAAE60BA41844428107236D /* libPods-BuddySDK Unit Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B6B8A0BC8C4474A7F6BC3E /* libPods-BuddySDK Unit Tests.a */; };
@@ -215,6 +220,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		013B2A4B193121BE00607718 /* BPUserListCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPUserListCollection.h; sourceTree = "<group>"; };
+		013B2A4C193121BE00607718 /* BPUserListCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPUserListCollection.m; sourceTree = "<group>"; };
+		013B2A4F193122CF00607718 /* BPUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPUserList.h; sourceTree = "<group>"; };
+		013B2A50193122CF00607718 /* BPUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPUserList.m; sourceTree = "<group>"; };
+		013B2A54193129E400607718 /* UserListIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListIntegrationTests.m; sourceTree = "<group>"; };
 		0183A51C188F4D2C0065C76C /* BPClient+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BPClient+Private.h"; sourceTree = "<group>"; };
 		29345A5A1773D2A400EEB8F5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		29345ABD1773DB3B00EEB8F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -534,6 +544,8 @@
 				5BF07F7A18DD1BD000CC50E9 /* BPUserCollection.m */,
 				5BF07F7D18DD1BD000CC50E9 /* BPVideoCollection.h */,
 				5BF07F7E18DD1BD000CC50E9 /* BPVideoCollection.m */,
+				013B2A4B193121BE00607718 /* BPUserListCollection.h */,
+				013B2A4C193121BE00607718 /* BPUserListCollection.m */,
 			);
 			path = BPCollections;
 			sourceTree = "<group>";
@@ -645,6 +657,8 @@
 				5B984DAF18C791C900CE8E2C /* BPVideo.m */,
 				5B0B23CE19131DE3005CB913 /* BPIdentityValue.h */,
 				5B0B23CF19131DE3005CB913 /* BPIdentityValue.m */,
+				013B2A4F193122CF00607718 /* BPUserList.h */,
+				013B2A50193122CF00607718 /* BPUserList.m */,
 			);
 			name = BPObjects;
 			path = ../../Lib/BuddySDK/BPObjects;
@@ -723,6 +737,7 @@
 				C1FEEB52187E4B0300B45505 /* BPMessagesIntegrationTests.m */,
 				C1FEEB50187E493400B45505 /* BPLocationsIntegrationTests.m */,
 				C1FEEB56187E4B4500B45505 /* BPVideosIntegrationTests.m */,
+				013B2A54193129E400607718 /* UserListIntegrationTests.m */,
 			);
 			path = "BuddySDK Unit Tests";
 			sourceTree = "<group>";
@@ -751,6 +766,7 @@
 				5BF07F8318DD1BD000CC50E9 /* BPBlobCollection.h in Headers */,
 				5BF07F8918DD1BD000CC50E9 /* BPPictureCollection.h in Headers */,
 				5BF07F8B18DD1BD000CC50E9 /* BPUserCollection.h in Headers */,
+				013B2A51193122CF00607718 /* BPUserList.h in Headers */,
 				5BF07F8718DD1BD000CC50E9 /* BPLocationCollection.h in Headers */,
 				5BF07F9D18DE108400CC50E9 /* BPLocationManager.h in Headers */,
 				5BF07F8518DD1BD000CC50E9 /* BPCheckinCollection.h in Headers */,
@@ -797,6 +813,7 @@
 				C1E0D1D81831BAD3001A7A01 /* JAGPropertyFinder.h in Headers */,
 				5BF07F9218DD2C1D00CC50E9 /* BuddyCollection+Private.h in Headers */,
 				5BCF8299191300DD00A26EA7 /* NSArray+BPSugar.h in Headers */,
+				013B2A4D193121BE00607718 /* BPUserListCollection.h in Headers */,
 				5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */,
 				C11E6C9A184D58670034E1EB /* BuddyObject+Private.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
@@ -1006,6 +1023,7 @@
 				C1CEA7F818C5543500D5C9DC /* BPAlbumItem.m in Sources */,
 				C1E0D1D91831BAD3001A7A01 /* JAGPropertyFinder.m in Sources */,
 				C1AA90D918371FF70074B7E8 /* BPServiceController.m in Sources */,
+				013B2A4E193121BE00607718 /* BPUserListCollection.m in Sources */,
 				5B5FE15818E3C90C00518440 /* BPNotificationManager.m in Sources */,
 				5B32F37618E071C600C07019 /* BPAFURLConnectionOperation.m in Sources */,
 				5B19875C18CB67D800FBB502 /* NSDate+BPDateHelper.m in Sources */,
@@ -1020,6 +1038,7 @@
 				5B984DB118C791C900CE8E2C /* BPVideo.m in Sources */,
 				5BF07F8618DD1BD000CC50E9 /* BPCheckinCollection.m in Sources */,
 				5BF07F9A18DE0CA300CC50E9 /* UIImageView+BPAdditions.m in Sources */,
+				013B2A52193122CF00607718 /* BPUserList.m in Sources */,
 				5B32F37818E071C600C07019 /* BPAFURLRequestSerialization.m in Sources */,
 				C1B3752118A477C3004CCE6D /* NSObject+ToJSON.m in Sources */,
 				C1D7094918832983003D112C /* BPDescriptors.m in Sources */,
@@ -1061,6 +1080,7 @@
 				C1A58FFD1890A57A00C5A50F /* MetadataTests.m in Sources */,
 				C1FEEB57187E4B4500B45505 /* BPVideosIntegrationTests.m in Sources */,
 				C1FEEB4B187E481900B45505 /* BPAlbumsIntegrationTests.m in Sources */,
+				013B2A55193129E400607718 /* UserListIntegrationTests.m in Sources */,
 				C1ADD127184D96B800246313 /* CheckinIntegrationTests.m in Sources */,
 				C1ADD12A184E2BF300246313 /* BPPictureIntegrationTests.m in Sources */,
 				5B6E84CE18F2138E005E7FEE /* NotificationTests.m in Sources */,

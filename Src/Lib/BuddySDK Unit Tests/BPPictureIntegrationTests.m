@@ -165,18 +165,19 @@ describe(@"BPPictureIntegrationSpec", ^{
             __block NSArray *retrievedPictures;
 
             BPSearchPictures *searchPicture = [BPSearchPictures new];
+            // Test "Default" limit code.
             searchPicture.caption = @"Hakuna matata";
             
             [[Buddy pictures] searchPictures:searchPicture callback:^(NSArray *buddyObjects, NSError *error) {
                 NSArray *p = buddyObjects;
                 
+                [[theValue([p count]) should]beGreaterThan:theValue(0)];
                 for(BPPicture *picture in p) {
                     [[picture.caption should] equal:@"Hakuna matata"];
                 }
                 retrievedPictures = buddyObjects;
             }];
             
-            [[expectFutureValue(theValue([retrievedPictures count])) shouldEventually] beGreaterThan:theValue(0)];
         });
         
         it(@"Should allow searching for images2", ^{

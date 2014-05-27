@@ -15,10 +15,14 @@
  Badge = 1<<2,
  Toast = 1<<3,
  Sync  = 1<<4
+ 
  */
 typedef NS_ENUM(NSInteger, BPNotificationType) {
+    BPNotificationType_None=0,
     BPNotificationType_Raw = 1,
-    BPNotificationType_Alert = 2
+    BPNotificationType_Badge = 2,
+    BPNotificationType_Alert = 4,
+    BPNotificationType_Custom = 8
 };
 
 @interface BPNotification : NSObject
