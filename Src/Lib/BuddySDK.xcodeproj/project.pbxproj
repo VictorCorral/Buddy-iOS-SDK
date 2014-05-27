@@ -68,7 +68,7 @@
 		5B984DB018C791C900CE8E2C /* BPVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B984DAE18C791C900CE8E2C /* BPVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B984DB118C791C900CE8E2C /* BPVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B984DAF18C791C900CE8E2C /* BPVideo.m */; };
 		5B984DB318C7B03A00CE8E2C /* bigbunny.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5B984DB218C79E2800CE8E2C /* bigbunny.mp4 */; };
-		5BB244C219342E82004AD7CD /* BPPagingTokens.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB244C019342E82004AD7CD /* BPPagingTokens.h */; };
+		5BB244C219342E82004AD7CD /* BPPagingTokens.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB244C019342E82004AD7CD /* BPPagingTokens.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BB244C319342E82004AD7CD /* BPPagingTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB244C119342E82004AD7CD /* BPPagingTokens.m */; };
 		5BCF3F1718D641440065842D /* BPCrashManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BCF3F1518D641440065842D /* BPCrashManager.h */; };
 		5BCF3F1818D641440065842D /* BPCrashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF3F1618D641440065842D /* BPCrashManager.m */; };
@@ -765,6 +765,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB244C219342E82004AD7CD /* BPPagingTokens.h in Headers */,
 				5BF07F9918DE0CA300CC50E9 /* UIImageView+BPAdditions.h in Headers */,
 				5BF07F8F18DD1BD000CC50E9 /* BPVideoCollection.h in Headers */,
 				5BF07F8118DD1BD000CC50E9 /* BPAlbumItemCollection.h in Headers */,
@@ -829,7 +830,6 @@
 				C1E0D1D11831BAD3001A7A01 /* JAGProperty.h in Headers */,
 				C1E0D1D41831BAD3001A7A01 /* JAGPropertyConverter-Prefix.pch in Headers */,
 				C1C2395318789594000D0089 /* BPBlob.h in Headers */,
-				5BB244C219342E82004AD7CD /* BPPagingTokens.h in Headers */,
 				2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */,
 				C1AA90DD1837376E0074B7E8 /* NSDictionary+Merge.h in Headers */,
 				C1B2375F1865569F005C841E /* NSString+JSON.h in Headers */,
