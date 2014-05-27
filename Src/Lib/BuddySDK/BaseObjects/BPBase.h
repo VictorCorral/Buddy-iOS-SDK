@@ -45,7 +45,7 @@ typedef void (^BuddyResultCallback)(BOOL result, NSError *error);
 
 - (void)setMetadata:(BPMetadataItem *)metadata callback:(BuddyCompletionCallback)callback;
 - (void)setMetadataValues:(BPMetadataCollection *)metadata callback:(BuddyCompletionCallback)callback;
-- (void)searchMetadata:(BPSearchMetadata *)search callback:(void (^) (NSArray *buddyObjects, NSError *error))callback;
+- (void)searchMetadata:(BPSearchMetadata *)search callback:(void (^) (NSArray *buddyObjects, NSString *pagingToken, NSError *error))callback;
 - (void)incrementMetadata:(NSString *)key delta:(NSInteger)delta callback:(BuddyCompletionCallback)callback;
 - (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BPMetadataCallback) callback;
 - (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BuddyCompletionCallback)callback;

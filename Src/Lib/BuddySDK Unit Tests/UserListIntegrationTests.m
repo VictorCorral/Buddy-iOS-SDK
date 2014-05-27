@@ -213,7 +213,7 @@ describe(@"BuddyUserListsSpec", ^{
                 __block BPSearchUserList *searchUserList = [BPSearchUserList new];
                 searchUserList.name =userListName2;
                 
-                    [[Buddy userLists] searchUserLists:searchUserList callback:^(NSArray *buddyObjects, NSError *error) {
+                    [[Buddy userLists] searchUserLists:searchUserList callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
                         userLists = buddyObjects;
                         [[theValue([userLists count]) should] beGreaterThan:theValue(0)];
                         [[[[userLists firstObject] name] should] equal:userListName2];

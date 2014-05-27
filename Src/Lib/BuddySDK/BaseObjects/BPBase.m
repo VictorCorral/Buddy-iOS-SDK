@@ -74,19 +74,20 @@
 }
 
 
-- (void)searchMetadata:(BPSearchMetadata *)search callback:(BuddyCollectionCallback)callback
+- (void)searchMetadata:(BPSearchMetadata *)search callback:(BPSearchCallback)callback
 {
     id searchParameters = [search parametersFromProperties];
     
     NSString *resource = [self metadataPath:nil];
     
     [self.client GET:resource parameters:searchParameters callback:^(id json, NSError *error) {
+        NSString *pagingToken = json[@"nextToken"];
         NSArray *results = [json[@"pageResults"] bp_map:^id(id object) {
             id metadata = [[BPMetadataItem alloc] init];
             [[JAGPropertyConverter converter] setPropertiesOf:metadata fromDictionary:object];
             return metadata;
         }];
-        callback ? callback(results, error) : nil;
+        callback ? callback(results, pagingToken, error) : nil;
     }];
 }
 

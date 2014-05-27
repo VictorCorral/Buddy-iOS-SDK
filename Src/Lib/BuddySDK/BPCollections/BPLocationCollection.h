@@ -15,6 +15,6 @@
 - (void)addLocation:(BPLocation *)location
            callback:(BuddyCompletionCallback)callback;
 - (void)getLocation:(NSString *)locationId callback:(BuddyObjectCallback)callback;
-- (void)searchLocation:(BPSearchLocation *)searchLocations callback:(BuddyCollectionCallback)callback;
+- (void)searchLocation:(BPSearchLocation *)searchLocations callback:(BPSearchCallback)callback;
 
 @end

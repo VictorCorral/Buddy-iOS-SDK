@@ -27,7 +27,7 @@ describe(@"Buddy", ^{
 
         beforeAll(^{
             
-            [Buddy initClient:APP_ID appKey:APP_KEY];
+            [Buddy initClient:APP_NAME appKey:APP_KEY];
             
             [Buddy login:testCreateDeleteName password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
                 if (!error) {
@@ -57,7 +57,7 @@ describe(@"Buddy", ^{
             
             [[mock shouldEventually] receive:@selector(apiErrorOccurred:)];
             [[[mock shouldEventually] receive] authorizationNeedsUserLogin];
-            [[Buddy pictures] searchPictures:nil callback:^(NSArray *buddyObjects, NSError *error) {
+            [[Buddy pictures] searchPictures:nil callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
                 [Buddy setClientDelegate:nil];
             }];
         });

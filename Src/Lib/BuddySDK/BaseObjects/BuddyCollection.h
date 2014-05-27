@@ -11,6 +11,7 @@
 #import "BuddyObject.h"
 
 typedef void (^BuddyCollectionCallback)(NSArray *buddyObjects, NSError *error);
+typedef void (^BPSearchCallback)(NSArray *buddyObjects, NSString *pagingToken, NSError *error);
 
 @interface BuddyCollection : NSObject
 
@@ -22,7 +23,7 @@ typedef void (^BuddyCollectionCallback)(NSArray *buddyObjects, NSError *error);
 
 - (instancetype)initWithClient:(id<BPRestProvider>)client;
 
-- (void)getAll:(BuddyCollectionCallback)callback;
+- (void)getAll:(BPSearchCallback)callback;
 
 - (void)getItem:(NSString *)identifier callback:(BuddyObjectCallback)callback;
 

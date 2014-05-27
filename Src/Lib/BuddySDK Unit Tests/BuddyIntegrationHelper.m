@@ -13,12 +13,12 @@
 
 + (void) bootstrapInit
 {
-    [Buddy initClient:APP_ID appKey:APP_KEY];
+    [Buddy initClient:APP_NAME appKey:APP_KEY];
 }
 
 + (void) bootstrapLogin:(void(^)())callback
 {
-    [Buddy initClient:APP_ID appKey:APP_KEY];
+    [Buddy initClient:APP_NAME appKey:APP_KEY];
     
     [Buddy login:TEST_USERNAME password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
         

@@ -51,7 +51,7 @@
     }];
 }
 
-- (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItems callback:(BuddyObjectCallback)callback
+- (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItems callback:(BPSearchCallback)callback
 {
     id parameters = [searchAlbumItems parametersFromProperties];
     

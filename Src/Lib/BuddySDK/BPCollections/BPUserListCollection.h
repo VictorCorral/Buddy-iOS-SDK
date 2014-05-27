@@ -42,6 +42,6 @@
  *                        The matching UserLists will be passed to the callback.
  *
  */
-- (void)searchUserLists:(BPSearchUserList *)searchUserList callback:(BuddyCollectionCallback)callback;
+- (void)searchUserLists:(BPSearchUserList *)searchUserList callback:(BPSearchCallback)callback;
 
 @end

@@ -93,7 +93,7 @@ describe(@"BPBlobIntegrationSpec", ^{
             search.friendlyName = @"So friendly";
             search.limit=25;
             
-            [[Buddy blobs] searchBlobs:search callback:^(NSArray *buddyObjects, NSError *error) {
+            [[Buddy blobs] searchBlobs:search callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
                 [[theValue([buddyObjects count]) should] beGreaterThan:theValue(0)];
                 fin = YES;
             }];
