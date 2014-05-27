@@ -68,6 +68,8 @@
 		5B984DB018C791C900CE8E2C /* BPVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B984DAE18C791C900CE8E2C /* BPVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B984DB118C791C900CE8E2C /* BPVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B984DAF18C791C900CE8E2C /* BPVideo.m */; };
 		5B984DB318C7B03A00CE8E2C /* bigbunny.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5B984DB218C79E2800CE8E2C /* bigbunny.mp4 */; };
+		5BB244C219342E82004AD7CD /* BPPagingTokens.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB244C019342E82004AD7CD /* BPPagingTokens.h */; };
+		5BB244C319342E82004AD7CD /* BPPagingTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB244C119342E82004AD7CD /* BPPagingTokens.m */; };
 		5BCF3F1718D641440065842D /* BPCrashManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BCF3F1518D641440065842D /* BPCrashManager.h */; };
 		5BCF3F1818D641440065842D /* BPCrashManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF3F1618D641440065842D /* BPCrashManager.m */; };
 		5BCF3F4B18D692200065842D /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCF3F4A18D692200065842D /* CrashReporter.framework */; };
@@ -268,6 +270,8 @@
 		5B984DAE18C791C900CE8E2C /* BPVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPVideo.h; sourceTree = "<group>"; };
 		5B984DAF18C791C900CE8E2C /* BPVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPVideo.m; sourceTree = "<group>"; };
 		5B984DB218C79E2800CE8E2C /* bigbunny.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigbunny.mp4; sourceTree = "<group>"; };
+		5BB244C019342E82004AD7CD /* BPPagingTokens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPPagingTokens.h; sourceTree = "<group>"; };
+		5BB244C119342E82004AD7CD /* BPPagingTokens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPPagingTokens.m; sourceTree = "<group>"; };
 		5BB7738C18E26916007428B8 /* BPLocationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPLocationProvider.h; sourceTree = "<group>"; };
 		5BCF3F1518D641440065842D /* BPCrashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPCrashManager.h; sourceTree = "<group>"; };
 		5BCF3F1618D641440065842D /* BPCrashManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPCrashManager.m; sourceTree = "<group>"; };
@@ -512,6 +516,8 @@
 				5B5FE15618E3C90C00518440 /* BPNotificationManager.m */,
 				5B5FE15918E3CD1C00518440 /* BPNotification.h */,
 				5B5FE15A18E3CD1C00518440 /* BPNotification.m */,
+				5BB244C019342E82004AD7CD /* BPPagingTokens.h */,
+				5BB244C119342E82004AD7CD /* BPPagingTokens.m */,
 			);
 			path = BuddySDK;
 			sourceTree = "<group>";
@@ -823,6 +829,7 @@
 				C1E0D1D11831BAD3001A7A01 /* JAGProperty.h in Headers */,
 				C1E0D1D41831BAD3001A7A01 /* JAGPropertyConverter-Prefix.pch in Headers */,
 				C1C2395318789594000D0089 /* BPBlob.h in Headers */,
+				5BB244C219342E82004AD7CD /* BPPagingTokens.h in Headers */,
 				2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */,
 				C1AA90DD1837376E0074B7E8 /* NSDictionary+Merge.h in Headers */,
 				C1B2375F1865569F005C841E /* NSString+JSON.h in Headers */,
@@ -1028,6 +1035,7 @@
 				5B32F37618E071C600C07019 /* BPAFURLConnectionOperation.m in Sources */,
 				5B19875C18CB67D800FBB502 /* NSDate+BPDateHelper.m in Sources */,
 				5B32F37A18E071C600C07019 /* BPAFURLResponseSerialization.m in Sources */,
+				5BB244C319342E82004AD7CD /* BPPagingTokens.m in Sources */,
 				5BCF829A191300DD00A26EA7 /* NSArray+BPSugar.m in Sources */,
 				5B984DA118C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.m in Sources */,
 				C10E2B9E186950D8007A0136 /* BPClient.m in Sources */,

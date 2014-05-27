@@ -57,7 +57,7 @@ describe(@"Buddy", ^{
             
             [[mock shouldEventually] receive:@selector(apiErrorOccurred:)];
             [[[mock shouldEventually] receive] authorizationNeedsUserLogin];
-            [[Buddy pictures] searchPictures:nil callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
+            [[Buddy pictures] searchPictures:nil callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 [Buddy setClientDelegate:nil];
             }];
         });

@@ -90,7 +90,7 @@ describe(@"BPLocationIntegrationSpec", ^{
             searchLocations.limit = 9;
             searchLocations.locationRange = BPCoordinateRangeMake(44.987293, -93.2484864, 100);
             
-            [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
+            [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 [[error should] beNil];
                 locations = buddyObjects;
                 [[locations should] beNonNil];
@@ -106,15 +106,15 @@ describe(@"BPLocationIntegrationSpec", ^{
             BPSearchLocation *searchLocations = [BPSearchLocation new];
             //searchLocations.locationRange = BPCoordinateRangeMake(44.987293, -93.2484864, 100000);
             
-            [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *locations, NSString *pagingToken, NSError *error) {
+            [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *locations, BPPagingTokens *tokens, NSError *error) {
                 [[error should] beNil];
                 [[locations should] beNonNil];
                 BPLocation *oldFirst = [locations firstObject];
                 
                 
-                searchLocations.pagingToken = pagingToken;
+                searchLocations.pagingToken = tokens.nextToken;
                 
-                [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *secondLocations, NSString *pagingToken, NSError *error) {
+                [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *secondLocations, BPPagingTokens *tokens, NSError *error) {
                     BPLocation *newFirst = [secondLocations firstObject];
                     [[oldFirst.id shouldNot] equal:newFirst.id];
                     fin = YES;

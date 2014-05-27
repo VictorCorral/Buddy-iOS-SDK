@@ -10,6 +10,7 @@
 #import "BPEnumMapping.h"
 #import "BPMetadataItem.h"
 #import "JAGPropertyConverter.h"
+#import "BPPagingTokens.h"
 
 @interface BPBase()<BPEnumMapping>
 
@@ -81,13 +82,15 @@
     NSString *resource = [self metadataPath:nil];
     
     [self.client GET:resource parameters:searchParameters callback:^(id json, NSError *error) {
-        NSString *pagingToken = json[@"nextToken"];
+        BPPagingTokens *tokens = [BPPagingTokens new];
+        [[JAGPropertyConverter converter] setPropertiesOf:tokens fromDictionary:json];
+        
         NSArray *results = [json[@"pageResults"] bp_map:^id(id object) {
             id metadata = [[BPMetadataItem alloc] init];
             [[JAGPropertyConverter converter] setPropertiesOf:metadata fromDictionary:object];
             return metadata;
         }];
-        callback ? callback(results, pagingToken, error) : nil;
+        callback ? callback(results, tokens, error) : nil;
     }];
 }
 

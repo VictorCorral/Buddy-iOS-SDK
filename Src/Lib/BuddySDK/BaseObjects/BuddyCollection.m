@@ -59,11 +59,12 @@
     }
     
     [self.client GET:resource parameters:searchParmeters callback:^(id json, NSError *error) {
-        NSString *pagingToken = json[@"nextToken"];
+        BPPagingTokens *tokens = [BPPagingTokens new];
+        [[JAGPropertyConverter converter] setPropertiesOf:tokens fromDictionary:json];
         NSArray *results = [json[@"pageResults"] bp_map:^id(id object) {
             return [[self.type alloc] initBuddyWithResponse:object andClient:self.client];
         }];
-        callback ? callback(results, pagingToken, error) : nil;
+        callback ? callback(results, tokens, error) : nil;
     }];
 }
 

@@ -73,7 +73,7 @@ describe(@"BPAlbumIntegrationSpec", ^{
         it(@"Should allow you to search for albums.", ^{
             __block NSArray *retrievedAlbums;
             
-            [[Buddy albums] searchAlbums:nil callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
+            [[Buddy albums] searchAlbums:nil callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 retrievedAlbums = buddyObjects;
             }];
             
@@ -131,10 +131,10 @@ describe(@"BPAlbumIntegrationSpec", ^{
         it(@"Should allow searching from retrieved albums (Github issue #23", ^{
             __block BOOL fin = NO;
             
-            [[Buddy albums] searchAlbums:nil callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
+            [[Buddy albums] searchAlbums:nil callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 BPAlbum *album = [buddyObjects firstObject];
                                 
-                [album searchAlbumItems:nil callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
+                [album searchAlbumItems:nil callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                     [[error should] beNil];
                     [[buddyObjects shouldNot] beNil];
                     [[theValue([buddyObjects count]) should] beGreaterThan:theValue(0)];
@@ -156,7 +156,7 @@ describe(@"BPAlbumIntegrationSpec", ^{
         });
         it(@"Should allow you to search for items in an album.", ^{
             __block NSArray *retrievedPictures;
-            [tempAlbum searchAlbumItems:nil callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
+            [tempAlbum searchAlbumItems:nil callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 [[error should] beNil];
                 retrievedPictures = buddyObjects;
             }];

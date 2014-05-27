@@ -168,7 +168,7 @@ describe(@"BPPictureIntegrationSpec", ^{
             // Test "Default" limit code.
             searchPicture.caption = @"Hakuna matata";
             
-            [[Buddy pictures] searchPictures:searchPicture callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
+            [[Buddy pictures] searchPictures:searchPicture callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 NSArray *p = buddyObjects;
                 
                 [[theValue([p count]) should]beGreaterThan:theValue(0)];
@@ -186,7 +186,7 @@ describe(@"BPPictureIntegrationSpec", ^{
             BPSearchPictures *searchPicture = [BPSearchPictures new];
             searchPicture.caption = @"Hakuna matataX";
             
-            [[Buddy pictures] searchPictures:searchPicture callback:^(NSArray *buddyObjects, NSString *pagingToken, NSError *error) {
+            [[Buddy pictures] searchPictures:searchPicture callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 retrievedPictures = buddyObjects;
             }];
             

@@ -33,6 +33,7 @@
 #import "BPNotification.h"
 #import "BPIdentityValue.h"
 #import "BPSize.h"
+#import "BPPagingTokens.h"
 
 /**
  * TODO
