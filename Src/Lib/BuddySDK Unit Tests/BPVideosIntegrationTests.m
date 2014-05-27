@@ -42,7 +42,6 @@ describe(@"BPVideosIntegrationSpec", ^{
             
             NSBundle *bundle = [NSBundle bundleForClass:[self class]];
             NSString *videoPath = [bundle pathForResource:@"small" ofType:@"mp4"];
-//            NSString *videoPath = [bundle pathForResource:@"bigbunny" ofType:@"mp4"];
             NSData *video = [NSData dataWithContentsOfFile:videoPath];
             
             tempVideo = [BPVideo new];
@@ -55,13 +54,8 @@ describe(@"BPVideosIntegrationSpec", ^{
                     // Silly framework crashes, not fails the assert if there is no tempVideo.
                     [[tempVideo.signedUrl should] haveLengthOfAtLeast:1];
                 }
-                if (!tempVideo.thumbnailID) {
-                    // This is now asynchronous, and is not guarenteed to come back.
-                    //fail(@"thumbnailID nil");
-                } else {
-                    [[tempVideo.thumbnailID shouldNot] beNil];
-                }
-
+                
+                [[tempVideo.thumbnailID shouldNot] beNil];
                 fin = YES;
             }];
             
