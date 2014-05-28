@@ -279,7 +279,7 @@
 
     parameters = [NSDictionary dictionaryByMerging:parameters with:options];
     
-    [user savetoServerWithSupplementaryParameters:parameters callback:^(NSError *error) {
+    [user savetoServerWithSupplementaryParameters:parameters client:self.client callback:^(NSError *error) {
         if (error) {
             callback ? callback(error) : nil;
             return;

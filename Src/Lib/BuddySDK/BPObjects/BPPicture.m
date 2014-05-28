@@ -43,11 +43,11 @@ static NSString *pictureMimeType = @"image/png";
     return pictureMimeType;
 }
 
-- (void)savetoServerWithImage:(UIImage *)image callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithImage:(UIImage *)image client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
 {
     NSData *data = UIImagePNGRepresentation(image);
     
-    [self savetoServerWithData:data callback:callback];
+    [self savetoServerWithData:data client:client callback:callback];
 }
 
 - (void)getImage:(BuddyImageResponse)callback

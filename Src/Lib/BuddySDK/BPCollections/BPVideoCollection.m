@@ -24,7 +24,7 @@
        videoData:(NSData *)videoData
         callback:(BuddyCompletionCallback)callback
 {
-    [video savetoServerWithData:videoData callback:callback];
+    [video savetoServerWithData:videoData client:self.client callback:callback];
 }
 
 - (void)searchVideos:(BPVideoSearch *)searchVideo callback:(BuddyCollectionCallback)callback;

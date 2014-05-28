@@ -36,7 +36,6 @@
     self = [super init];
     if (self) {
         [self registerProperties];
-        _items = [[BPAlbumItemCollection alloc] initWithAlbum:self andClient:self.client];
     }
     return self;
 }
@@ -67,6 +66,16 @@
     
     [self registerProperty:@selector(name)];
     [self registerProperty:@selector(caption)];
+}
+
+- (BPAlbumItemCollection *)items
+{
+    assert(self.client);
+    
+    if (!_items && self.client) {
+        _items = [[BPAlbumItemCollection alloc] initWithAlbum:self andClient:self.client];
+    }
+    return _items;
 }
 
 static NSString *albums = @"albums";

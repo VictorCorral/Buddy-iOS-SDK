@@ -50,9 +50,5 @@ typedef void (^BuddyResultCallback)(BOOL result, NSError *error);
 - (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BPMetadataCallback) callback;
 - (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BuddyCompletionCallback)callback;
 
-@property (nonatomic, readonly, weak) id<BPRestProvider> client;
-
-@property (nonatomic, readonly, weak) id<BPLocationProvider> locationProvider;
-
 
 @end

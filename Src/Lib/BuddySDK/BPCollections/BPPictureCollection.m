@@ -27,7 +27,7 @@
              image:(UIImage *)image
           callback:(BuddyCompletionCallback)callback
 {
-    [picture savetoServerWithImage:image callback:callback];
+    [picture savetoServerWithImage:image client:self.client callback:callback];
 }
 
 -(void)searchPictures:(BPSearchPictures *)searchPictures callback:(BuddyCollectionCallback)callback

@@ -25,7 +25,7 @@
 - (void)addLocation:(BPLocation *)location
            callback:(BuddyCompletionCallback)callback
 {
-    [location savetoServer:callback];
+    [location savetoServerWithClient:self.client callback:callback];
 }
 
 - (void)getLocation:(NSString *)locationId callback:(BuddyObjectCallback)callback
