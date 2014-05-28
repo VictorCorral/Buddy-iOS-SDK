@@ -42,15 +42,86 @@
 
 }
 
-+(void)createRandomUser:(BPUser *)user callback:(BuddyCompletionCallback)callback
++(void)createRandomUsers:(NSMutableArray*)users
+                   count:(int)count
+                callback:(BuddyCompletionCallback)callback
+{
+    __block int numTimesCallbackCalled = 0;
+    __block NSError *capturedError=nil;
+    
+    NSString *usernamePrefix =[BuddyIntegrationHelper randomString:8];
+    
+    for(int index=0;index<count;index++)
+    {
+        BPUser *user = [BPUser new];
+        user.userName= [NSString stringWithFormat:@"%@_%d",usernamePrefix,index];
+        
+        __block BPClient *client=[[BPClient alloc] init];
+        [client setupWithApp:APP_ID appKey:APP_KEY options:nil delegate:nil];
+        
+        [BuddyIntegrationHelper createRandomUser:user withClient:client callback:^(NSError *error)
+        {
+            numTimesCallbackCalled++;
+            if( (error!=nil) && (capturedError==nil))
+            {
+                capturedError = error;
+            }
+            
+            if(error==nil)
+            {
+                [users addObject:user];
+            }
+            
+            if(numTimesCallbackCalled == count && callback!=nil)
+            {
+                callback(capturedError);
+            }
+        }];
+    }
+}
+
++(void)deleteUsers:(NSArray*)users callback:(BuddyCompletionCallback)callback
+{
+    __block int numTimesCallbackCalled = 0;
+    __block NSError *capturedError=nil;
+    
+    
+    for(int index=0;index<[users count];index++)
+    {
+        BPUser *user = [users objectAtIndex:index];
+        [user destroy:^(NSError *error) {
+            numTimesCallbackCalled++;
+            if( (error!=nil) && (capturedError==nil))
+            {
+                capturedError = error;
+            }
+            
+            if( (numTimesCallbackCalled == [users count]) && callback!=nil)
+            {
+                callback(capturedError);
+            }
+            
+        }];
+    }
+}
+
++(void)createRandomUser:(BPUser *)user withClient:(BPClient*)client callback:(BuddyCompletionCallback)callback
 {
     user.firstName = [BuddyIntegrationHelper randomString:8];
     user.lastName = [BuddyIntegrationHelper randomString:8];
     user.gender = BPUserGender_Unknown;
-    user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:10]];
+    
+    if(user.email==nil)
+    {
+        user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:10]];
+    }
     user.dateOfBirth = [BuddyIntegrationHelper randomDate];
-    user.userName = [BuddyIntegrationHelper randomString:8];
-    [Buddy createUser:user password:[BuddyIntegrationHelper randomString:8] callback:^(NSError *error) {
+    
+    if(user.userName==nil)
+    {
+        user.userName = [BuddyIntegrationHelper randomString:8];
+    }
+    [client createUser:user password:user.userName callback:^(NSError *error) {
         callback(error);
     }];
 }
