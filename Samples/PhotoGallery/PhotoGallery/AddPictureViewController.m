@@ -28,7 +28,6 @@
 -(void) goBack;
 
 -(void) resignTextFields;
--(BuddyObjectCallback) getAddPhotoCallback;
 @end
 
 @implementation AddPictureViewController
