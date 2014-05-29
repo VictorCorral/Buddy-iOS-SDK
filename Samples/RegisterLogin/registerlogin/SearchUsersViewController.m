@@ -24,7 +24,7 @@
 
 -(void) loadAllUsers;
 - (void) putAllUsers:(NSMutableArray *)users;
--(BuddyCollectionCallback) getAllUsersCallback;
+-(BPSearchCallback) getAllUsersCallback;
 
 @end
 
@@ -75,11 +75,11 @@
     [[Buddy users] getAll:[self getAllUsersCallback]];
 }
 
--(BuddyCollectionCallback) getAllUsersCallback
+-(BPSearchCallback) getAllUsersCallback
 {
     SearchUsersViewController * __weak weakSelf = self;
     
-    return ^(NSArray *buddyObjects, NSError *error)
+    return ^(NSArray *buddyObjects, BPPagingTokens *tokens,NSError *error)
     {
         [weakSelf.HUD hide:TRUE afterDelay:0.1];
         weakSelf.HUD = nil;

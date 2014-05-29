@@ -23,13 +23,9 @@
 
 
 @interface RegisterViewController ()
+
 @property (nonatomic,strong) MBProgressHUD *HUD;
-
-
-
 -(void) resignTextFields;
-
--(BuddyObjectCallback) getRegisterCallback;
 -(BuddyObjectCallback) getLoginCallback;
 
 @end
