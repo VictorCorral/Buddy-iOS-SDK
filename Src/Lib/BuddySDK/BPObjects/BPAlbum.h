@@ -23,6 +23,6 @@
 
 - (void)addItemToAlbum:(BPAlbumItem *)albumItem withItem:(BuddyObject<BPMediaItem> *)itemToAdd callback:(BuddyCompletionCallback)callback;
 - (void)getAlbumItem:(NSString *)itemId callback:(BuddyObjectCallback)callback;
-- (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItem callback:(BuddyCollectionCallback)callback;
+- (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItem callback:(BPSearchCallback)callback;
 
 @end

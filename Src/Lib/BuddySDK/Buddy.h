@@ -33,6 +33,7 @@
 #import "BPNotification.h"
 #import "BPIdentityValue.h"
 #import "BPSize.h"
+#import "BPPagingTokens.h"
 
 /**
  * TODO
@@ -247,7 +248,7 @@
  * @param callback      A callback which is called with the results of the search.
  *
  */
-+ (void)searchMetadata:(BPSearchMetadata *)search callback:(BuddyCollectionCallback)callback;
++ (void)searchMetadata:(BPSearchMetadata *)search callback:(BPSearchCallback)callback;
 
 /**
  * Increment a metadata item's value by a given amount.

@@ -27,13 +27,13 @@
     [album savetoServer:callback];
 }
     
--(void)getAlbums:(BuddyCollectionCallback)callback
+-(void)getAlbums:(BPSearchCallback)callback
 {
     [self getAll:callback];
 }
     
 
--(void)searchAlbums:(BPSearchAlbum *)searchAlbum callback:(BuddyCollectionCallback)callback
+-(void)searchAlbums:(BPSearchAlbum *)searchAlbum callback:(BPSearchCallback)callback
 {
     id parameters = [searchAlbum parametersFromProperties];
     

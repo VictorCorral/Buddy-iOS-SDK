@@ -14,9 +14,9 @@
            data:(NSData *)data
        callback:(BuddyCompletionCallback)callback;
 
-- (void)getBlobs:(BuddyCollectionCallback)callback;
+- (void)getBlobs:(BPSearchCallback)callback;
 
-- (void)searchBlobs:(BPBlobSearch *)searchBlobs callback:(BuddyCollectionCallback)callback;
+- (void)searchBlobs:(BPBlobSearch *)searchBlobs callback:(BPSearchCallback)callback;
 
 - (void)getBlob:(NSString *)blobId callback:(BuddyObjectCallback)callback;
 

@@ -14,7 +14,7 @@
 - (void)addAlbum:(BPAlbum *)album
         callback:(BuddyCompletionCallback)callback;
 
-- (void)searchAlbums:(BPSearchAlbum *)searchAlbum callback:(BuddyCollectionCallback)callback;
+- (void)searchAlbums:(BPSearchAlbum *)searchAlbum callback:(BPSearchCallback)callback;
 
 - (void)getAlbum:(NSString *)albumId callback:(BuddyObjectCallback)callback;
     

@@ -19,7 +19,7 @@
             withItem:(BuddyObject<BPMediaItem> *)itemToAdd
             callback:(BuddyCompletionCallback)callback;
 
-- (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItems callback:(BuddyObjectCallback)callback;
+- (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItems callback:(BPSearchCallback)callback;
 
 - (void)getAlbumItem:(NSString *)pictureId callback:(BuddyObjectCallback)callback;
 
