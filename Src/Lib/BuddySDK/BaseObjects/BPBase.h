@@ -9,6 +9,7 @@
 #import "BPMetadataItem.h"
 #import "BPPermissions.h"
 #import "BPLocationProvider.h"
+#import "BPPagingTokens.h"
 
 @protocol BuddyObjectProperties <NSObject>
 
@@ -29,7 +30,7 @@
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, assign) NSInteger limit;
-@property (nonatomic, copy) NSString *pagingToken;
+@property (nonatomic, copy) BPPagingTokens *tokens;
 @property (nonatomic, copy) NSString *userID;
 
 @end
@@ -45,7 +46,7 @@ typedef void (^BuddyResultCallback)(BOOL result, NSError *error);
 
 - (void)setMetadata:(BPMetadataItem *)metadata callback:(BuddyCompletionCallback)callback;
 - (void)setMetadataValues:(BPMetadataCollection *)metadata callback:(BuddyCompletionCallback)callback;
-- (void)searchMetadata:(BPSearchMetadata *)search callback:(void (^) (NSArray *buddyObjects, NSError *error))callback;
+- (void)searchMetadata:(BPSearchMetadata *)search callback:(void (^) (NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error))callback;
 - (void)incrementMetadata:(NSString *)key delta:(NSInteger)delta callback:(BuddyCompletionCallback)callback;
 - (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BPMetadataCallback) callback;
 - (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BuddyCompletionCallback)callback;

@@ -42,12 +42,12 @@
     return _client ?: (id<BPRestProvider>)[BPClient defaultClient];
 }
 
-- (void)getAll:(BuddyCollectionCallback)callback
+- (void)getAll:(BPSearchCallback)callback
 {
     [self search:nil callback:callback];
 }
 
-- (void)search:(NSDictionary *)searchParmeters callback:(BuddyCollectionCallback)callback
+- (void)search:(NSDictionary *)searchParmeters callback:(BPSearchCallback)callback
 {
     NSString *resource = [self.requestPrefix stringByAppendingFormat:@"%@",
                           [[self type] requestPath]];
@@ -59,10 +59,12 @@
     }
     
     [self.client GET:resource parameters:searchParmeters callback:^(id json, NSError *error) {
+        BPPagingTokens *tokens = [BPPagingTokens new];
+        [[JAGPropertyConverter converter] setPropertiesOf:tokens fromDictionary:json];
         NSArray *results = [json[@"pageResults"] bp_map:^id(id object) {
             return [[self.type alloc] initBuddyWithResponse:object andClient:self.client];
         }];
-        callback ? callback(results, error) : nil;
+        callback ? callback(results, tokens, error) : nil;
     }];
 }
 

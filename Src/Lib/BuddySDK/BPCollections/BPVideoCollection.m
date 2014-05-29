@@ -27,7 +27,7 @@
     [video savetoServerWithData:videoData callback:callback];
 }
 
-- (void)searchVideos:(BPVideoSearch *)searchVideo callback:(BuddyCollectionCallback)callback;
+- (void)searchVideos:(BPVideoSearch *)searchVideo callback:(BPSearchCallback)callback;
 {
     id parameters = [searchVideo parametersFromProperties];
     
