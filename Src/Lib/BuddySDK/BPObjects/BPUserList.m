@@ -87,7 +87,7 @@ static NSString *userLists = @"users/lists";
         if(error==nil)
         {
             NSNumber *resultNum= json; // Its not really JSON, just a number
-            if(resultNum >0)
+            if([resultNum intValue] >0)
             {
                 result=YES;
             }
@@ -99,7 +99,7 @@ static NSString *userLists = @"users/lists";
 - (void)deleteUser:(BPUser *)user
        callback:(BuddyResultCallback)callback
 {
-    [self addUserId:user.id callback:callback];
+    [self deleteUserId:user.id callback:callback];
 }
 
 - (void)deleteUserId:(NSString*)userId
@@ -115,7 +115,7 @@ static NSString *userLists = @"users/lists";
         if(error==nil)
         {
             NSNumber *resultNum= json; // Its not really JSON, just a number
-            if(resultNum >0)
+            if([resultNum intValue] >0)
             {
                 result=YES;
             }

@@ -1,18 +1,19 @@
 //
 //  AppDelegate.h
-//  registerlogin
+//  PushChat
 //
-//  Created by Nick Ambrose on 1/13/14.
+//  Created by Nick Ambrose on 5/30/14.
 //  Copyright (c) 2014 Buddy Platform. All rights reserved.
 //
 
-#import <BuddySDK/BPClient.h>
+#import <UIKit/UIKit.h>
+#import <BuddySDK/Buddy.h>
 
 @class MainViewController;
+@class ChannelList;
+@class ReceivedMessageTable;
 
 #define CommonAppDelegate (AppDelegate*)[[UIApplication sharedApplication] delegate]
-
-#import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,BPClientDelegate>
 
@@ -20,6 +21,9 @@
 @property (nonatomic,strong) UINavigationController *navController;
 @property (nonatomic,strong) MainViewController *topController;
 @property (nonatomic,assign) BOOL loginPresented;
+
+@property (nonatomic,strong) ChannelList* channels;
+@property (nonatomic,strong) ReceivedMessageTable *receivedMessages;
 
 -(void) storeUsername:(NSString*)userName;
 -(NSString*) fetchUsername;
