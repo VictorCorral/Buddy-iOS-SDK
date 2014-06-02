@@ -13,12 +13,12 @@
 
 @implementation NSObject (ToJSON)
 
-- (NSDictionary *)parametersFromProperties
+- (NSMutableDictionary *)parametersFromProperties
 {
     return  [self parametersFromProperties:[self class]];
 }
 
-- (NSDictionary *)parametersFromProperties:(Class)class
+- (NSMutableDictionary *)parametersFromProperties:(Class)class
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
@@ -62,7 +62,7 @@
     return parameters;
 }
 
-- (NSDictionary *)parametersFromProtocol:(Protocol *)protocol
+- (NSMutableDictionary *)parametersFromProtocol:(Protocol *)protocol
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
