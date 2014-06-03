@@ -42,6 +42,8 @@ typedef NS_ENUM(NSInteger, BPUserGender)
 
 @interface BPSearchUsers : BPObjectSearch<BPUserProperties>
 
+@property (nonatomic,strong) NSString *userListId;
+
 @end
 
 @interface BPUser : BuddyObject<BPUserProperties>
