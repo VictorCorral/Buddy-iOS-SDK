@@ -288,4 +288,13 @@ static NSString *metadataRoute = @"metadata";
 
 @synthesize location, created, lastModified, readPermissions, writePermissions, tag, id;
 
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize
+{
+    return [NSString stringWithFormat:@"%ld;0",pageSize];
+}
+
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount
+{
+    return [NSString stringWithFormat:@"%ld;%ld",pageSize,skipCount];
+}
 @end

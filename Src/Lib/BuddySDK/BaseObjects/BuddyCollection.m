@@ -58,11 +58,11 @@
     {
         if(pageSize==nil || ([pageSize isEqualToNumber:[NSNumber numberWithInt:0]]) )
         {
-            pagingToken = [NSString stringWithFormat:@"%d;0",DEFAULT_SEARCH_LIMIT];
+            pagingToken = [BPObjectSearch pagingTokenFromPageSize:DEFAULT_SEARCH_LIMIT];
         }
         else
         {
-            pagingToken = [NSString stringWithFormat:@"%@;0",pageSize];
+            pagingToken = [BPObjectSearch pagingTokenFromPageSize:[pageSize unsignedLongValue]];
         }
         [searchParmeters setObject:pagingToken forKey:@"pagingToken"];
     }

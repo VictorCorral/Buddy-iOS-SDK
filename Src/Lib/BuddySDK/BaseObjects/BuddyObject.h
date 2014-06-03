@@ -38,4 +38,7 @@
 @property (nonatomic, copy) NSString *pagingToken;
 @property (nonatomic, copy) NSString *userID;
 
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize;
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount;
+
 @end
