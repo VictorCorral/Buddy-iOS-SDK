@@ -290,11 +290,11 @@ static NSString *metadataRoute = @"metadata";
 
 +(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize
 {
-    return [NSString stringWithFormat:@"%ld;0",pageSize];
+    return [NSString stringWithFormat:@"%lu;0",pageSize];
 }
 
 +(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount
 {
-    return [NSString stringWithFormat:@"%ld;%ld",pageSize,skipCount];
+    return [NSString stringWithFormat:@"%lu;%lu",pageSize,skipCount];
 }
 @end
