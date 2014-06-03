@@ -47,15 +47,29 @@
     [self search:nil callback:callback];
 }
 
-- (void)search:(NSDictionary *)searchParmeters callback:(BPSearchCallback)callback
+- (void)search:(NSMutableDictionary *)searchParmeters callback:(BPSearchCallback)callback
 {
     NSString *resource = [self.requestPrefix stringByAppendingFormat:@"%@",
                           [[self type] requestPath]];
     
-    NSNumber *limit  = [searchParmeters objectForKey:@"limit"];
-    if(limit==nil || ([limit isEqualToNumber:[NSNumber numberWithInt:0]]))
+    NSNumber *pageSize  = [searchParmeters objectForKey:@"pageSize"];
+    NSString *pagingToken =[searchParmeters objectForKey:@"pagingToken"];
+    if(pagingToken==nil)
     {
-        [searchParmeters setValue:[NSNumber numberWithInt:DEFAULT_SEARCH_LIMIT] forKey:@"limit"];
+        if(pageSize==nil || ([pageSize isEqualToNumber:[NSNumber numberWithInt:0]]) )
+        {
+            pagingToken = [BPObjectSearch pagingTokenFromPageSize:DEFAULT_SEARCH_LIMIT];
+        }
+        else
+        {
+            pagingToken = [BPObjectSearch pagingTokenFromPageSize:[pageSize unsignedLongValue]];
+        }
+        [searchParmeters setObject:pagingToken forKey:@"pagingToken"];
+    }
+    
+    if(pageSize!=nil)
+    {
+        [searchParmeters removeObjectForKey:@"pageSize"];
     }
     
     [self.client GET:resource parameters:searchParmeters callback:^(id json, NSError *error) {

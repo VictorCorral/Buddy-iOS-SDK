@@ -61,7 +61,6 @@ describe(@"BPCheckinIntegrationSpec", ^{
             
             BPSearchCheckins *searchCheckins = [BPSearchCheckins new];
             searchCheckins.comment = @"Checking in!";
-            searchCheckins.limit=25;
             
             [[Buddy checkins] searchCheckins:searchCheckins callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 NSArray *cins = buddyObjects;

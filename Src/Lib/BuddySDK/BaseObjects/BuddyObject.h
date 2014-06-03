@@ -34,8 +34,11 @@
 @property (nonatomic, strong) BPCoordinateRange *locationRange;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
-@property (nonatomic, assign) NSInteger limit;
+@property (nonatomic, assign) NSInteger pageSize;
 @property (nonatomic, copy) NSString *pagingToken;
 @property (nonatomic, copy) NSString *userID;
+
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize;
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount;
 
 @end
