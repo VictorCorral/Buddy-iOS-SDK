@@ -12,9 +12,10 @@
 #define USERNAME_PREF_KEY @"BD_USERNAME"
 #define PASSWORD_PREF_KEY @"BD_PASSWORD"
 
-#pragma message ("Insert your own AppID and Key")
-#define APP_ID @"\YOUR APPID"
-#define APP_KEY @\YOUR APPKEY"
+
+//[Buddy initClient:@"bbbbbc.rcdbvlNmjKbj" appKey:@"BDE88F15-D1DA-4DD2-BA8B-566B9F33385E"];
+#define APP_ID @"bbbbbc.rcdbvlNmjKbj"
+#define APP_KEY @"BDE88F15-D1DA-4DD2-BA8B-566B9F33385E"
 
 #define DEFAULT_BUT_CORNER_RAD 10
 #define DEFAULT_BUT_BORDER_WIDTH 1

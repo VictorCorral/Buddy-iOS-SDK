@@ -41,29 +41,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setTitle:@"Change Profile Picture"];
+    
     // Do any additional setup after loading the view from its nib.
     [UIButton buttonWithType:UIButtonTypeSystem];
     
-    self.choosePhotoBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.choosePhotoBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.choosePhotoBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.choosePhotoBut.clipsToBounds = YES;
-    
-    self.saveBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.saveBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.saveBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.saveBut.clipsToBounds = YES;
-    
-    self.deletePhotoBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.deletePhotoBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.deletePhotoBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.deletePhotoBut.clipsToBounds = YES;
-    
-    self.cancelBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.cancelBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.cancelBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.cancelBut.clipsToBounds = YES;
-
+  
     [self populateUI];
 }
 
@@ -82,17 +66,36 @@
         return;
     }
     
-    NSData *data = [NSData dataWithContentsOfURL:picURL];
-    UIImage *pictureImage = [[UIImage alloc] initWithData:data];
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        
+        [self.choosePhotoBut setTitle:@"Loading..." forState:UIControlStateNormal];
+        NSData *data = [NSData dataWithContentsOfURL:picURL];
+        UIImage *img = [[UIImage alloc] initWithData:data];
+   
+        // Make a trivial (1x1) graphics context, and draw the image into it
+        UIGraphicsBeginImageContext(CGSizeMake(1,1));
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), [img CGImage]);
+        UIGraphicsEndImageContext();
+        
+        // Now the image will have been loaded and decoded and is ready to rock for the main thread
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if(img!=nil)
+            {
+                [self.choosePhotoBut setImage:img forState:UIControlStateNormal];
+            }
+            else
+            {
+                [self.choosePhotoBut setBackgroundColor:[UIColor blackColor]];
+            }
 
-    if(pictureImage!=nil)
-    {
-        [self.choosePhotoBut setImage:pictureImage forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.choosePhotoBut setBackgroundColor:[UIColor blackColor]];
-    }
+        });
+    });
+    
+    
     
     [self.HUD hide:YES];
 }
@@ -102,11 +105,7 @@
     [[CommonAppDelegate navController] popViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 - (IBAction)showCamera:(id)sender
 {

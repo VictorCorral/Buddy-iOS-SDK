@@ -40,24 +40,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
     
-    self.searchBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.searchBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.searchBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.searchBut.clipsToBounds = YES;
-    
-    self.backBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.backBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.backBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.backBut.clipsToBounds = YES;
-    
-    self.addIdentityBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.addIdentityBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.addIdentityBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.addIdentityBut.clipsToBounds = YES;
-}
+    [self setTitle:@"Manage Identities"];
+
+  }
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -86,7 +72,11 @@
     }
     
     BPIdentityValue *aValue = [self.identityList objectAtIndex:indexPath.row];
-    cell.textLabel.text = aValue.identityProviderID;
+    
+    
+    cell.textLabel.text =
+    [NSString stringWithFormat:@"%@  = %@",
+     aValue.identityProviderName, aValue.identityProviderID];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -97,24 +87,19 @@
     
     IdentityDetailViewController *subVC = [[IdentityDetailViewController alloc]
                                            initWithNibName:@"IdentityDetailViewController" bundle:nil];
-    subVC.identityProviderString = self.searchField.text;
+    subVC.identityProviderString = aValue.identityProviderName;
     subVC.valueString = aValue.identityProviderID;
     subVC.isNew = NO;
     [ [CommonAppDelegate navController] pushViewController:subVC animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 - (IBAction)doSearch:(id)sender {
     if ([self.searchField.text length]==0)
     {
         [self.identityList removeAllObjects];
         [self.tableView reloadData];
-        return;
     }
     
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

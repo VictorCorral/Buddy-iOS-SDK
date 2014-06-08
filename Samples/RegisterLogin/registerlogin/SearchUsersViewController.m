@@ -46,18 +46,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setTitle:@"Search Users"];
+    
+
+    
     // Do any additional setup after loading the view from its nib.
     [UIButton buttonWithType:UIButtonTypeSystem];
     
-    self.searchBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.searchBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.searchBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.searchBut.clipsToBounds = YES;
-    
-    self.backBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.backBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.backBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.backBut.clipsToBounds = YES;
+   
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -140,11 +137,7 @@
     [ [CommonAppDelegate navController] pushViewController:subVC animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 - (IBAction)doSearch:(id)sender
 {

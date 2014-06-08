@@ -39,19 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setTitle:@"Change Info"];
+    
+
     // Do any additional setup after loading the view from its nib.
     [UIButton buttonWithType:UIButtonTypeSystem];
     
-    self.saveBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.saveBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.saveBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.saveBut.clipsToBounds = YES;
-    
-    self.cancelBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.cancelBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.cancelBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.cancelBut.clipsToBounds = YES;
-    
+       
     self.birthdayPicker.datePickerMode = UIDatePickerModeDate;
     [self populateUI];
 }
