@@ -40,23 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[CommonAppDelegate navController] setNavigationBarHidden:TRUE] ;
-    
-    self.loginBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.loginBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.loginBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.loginBut.clipsToBounds = YES;
-    
-    self.goRegisterBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.goRegisterBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.goRegisterBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.goRegisterBut.clipsToBounds = YES;
-    
-    self.socialLoginBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.socialLoginBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.socialLoginBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.socialLoginBut.clipsToBounds = YES;
-    
+       
     if ([CommonAppDelegate isUsernameSet])
     {
         [self populateFields];

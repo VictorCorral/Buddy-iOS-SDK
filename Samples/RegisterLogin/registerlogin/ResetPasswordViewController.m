@@ -39,24 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setTitle:@"Reset Password"];
+    
+
     // Do any additional setup after loading the view from its nib.
     [UIButton buttonWithType:UIButtonTypeSystem];
-    
-    self.resetBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.resetBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.resetBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.resetBut.clipsToBounds = YES;
-    
-    self.requestResetBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.requestResetBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.requestResetBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.requestResetBut.clipsToBounds = YES;
-    
-    self.cancelBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.cancelBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.cancelBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.cancelBut.clipsToBounds = YES;
-    
+        
 }
 
 - (void) goBack
@@ -113,11 +102,7 @@
     return YES;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 - (IBAction)doReset:(id)sender
 {
