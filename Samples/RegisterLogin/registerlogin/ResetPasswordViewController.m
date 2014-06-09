@@ -18,7 +18,7 @@
 
 @property (nonatomic,strong) MBProgressHUD *HUD;
 
-- (void) goBack;
+
 - (BOOL) isPasswordValid;
 
 @end
@@ -185,14 +185,11 @@
         }
         
         NSLog(@"Reset password request - success Called");
-        [self goBack];
+        [[self navigationController] popViewControllerAnimated:YES];
         
     };
 }
 
-- (IBAction)doCancel:(id)sender
-{
-    [self goBack];
-}
+
 
 @end

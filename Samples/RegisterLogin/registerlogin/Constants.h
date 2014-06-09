@@ -13,9 +13,8 @@
 #define PASSWORD_PREF_KEY @"BD_PASSWORD"
 
 
-//[Buddy initClient:@"bbbbbc.rcdbvlNmjKbj" appKey:@"BDE88F15-D1DA-4DD2-BA8B-566B9F33385E"];
-#define APP_ID @"bbbbbc.rcdbvlNmjKbj"
-#define APP_KEY @"BDE88F15-D1DA-4DD2-BA8B-566B9F33385E"
+#define APP_ID @"\Your App ID"
+#define APP_KEY @"\Your App Key"
 
 #define DEFAULT_BUT_CORNER_RAD 10
 #define DEFAULT_BUT_BORDER_WIDTH 1

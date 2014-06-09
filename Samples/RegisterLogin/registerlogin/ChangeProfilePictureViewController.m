@@ -18,7 +18,7 @@
 
 @property (nonatomic,strong) MBProgressHUD *HUD;
 
--(void) goBack;
+
 
 -(BuddyCompletionCallback) getSavePhotoCallback;
 -(BuddyCompletionCallback) getDeletePhotoCallback;
@@ -240,7 +240,7 @@
         }
         
         NSLog(@"Delete User profile picture - success Called");
-        [self goBack];
+        [[self navigationController] popViewControllerAnimated:YES];
         
     };
     
