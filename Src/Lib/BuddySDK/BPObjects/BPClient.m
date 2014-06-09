@@ -121,7 +121,12 @@
     
     serviceUrl = serviceUrl ?: BuddyDefaultURL;
     
-    _appSettings = [[BPAppSettings alloc] initWithBaseUrl:serviceUrl];
+    // Try to restore. If none exist, create a new settings object.
+    _appSettings = [BPAppSettings restoreSettings];
+    if (!_appSettings) {
+        _appSettings = [[BPAppSettings alloc] initWithBaseUrl:serviceUrl];
+    }
+    
     _service = [[BPServiceController alloc] initWithAppSettings:_appSettings];
     
     _appSettings.appKey = appKey;
@@ -171,7 +176,6 @@
 
 - (void)setUser:(BPUser *)user
 {
-    
     BPUser *oldUser = _user;
     _user = user;
     
@@ -223,7 +227,6 @@
 
 -(BPBlobCollection *)blobs
 {
-    
     if(!_blobs)
     {
         _blobs = [[BPBlobCollection alloc] initWithClient:self];
@@ -233,7 +236,6 @@
 
 -(BPAlbumCollection *)albums
 {
-    
     if(!_albums)
     {
         _albums = [[BPAlbumCollection alloc] initWithClient:self];
@@ -243,7 +245,6 @@
 
 -(BPLocationCollection *)locations
 {
-    
     if(!_locations)
     {
         _locations = [[BPLocationCollection alloc] initWithClient:self];
@@ -253,7 +254,6 @@
 
 -(BPUserListCollection *)userLists
 {
-    
     if(!_userLists)
     {
         _userLists = [[BPUserListCollection alloc] initWithClient:self];
@@ -269,6 +269,7 @@
         _user = nil;
     }
 }
+
 - (void)createUser:(BPUser *)user
           password:(NSString *)password
           callback:(BuddyCompletionCallback)callback

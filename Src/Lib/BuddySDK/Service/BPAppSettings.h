@@ -30,4 +30,6 @@
 - (void)clear;
 - (void)clearUser;
 
++ (BPAppSettings *)restoreSettings;
+
 @end
