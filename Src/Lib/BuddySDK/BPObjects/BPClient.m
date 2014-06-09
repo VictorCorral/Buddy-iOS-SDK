@@ -103,6 +103,8 @@
     _albums = nil;
     _locations = nil;
     _userLists=nil;
+    
+    [self.appSettings clearUser];
 }
 
 -(void)setupWithApp:(NSString *)appID

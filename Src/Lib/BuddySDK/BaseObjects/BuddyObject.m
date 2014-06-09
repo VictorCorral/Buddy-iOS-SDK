@@ -55,6 +55,32 @@
     return self;
 }
 
+
+- (instancetype)initWithId:(NSString*)id
+{
+    return [self initWithId:id andClient:nil];
+}
+
+
+- (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProvider>)client
+{
+    
+    
+    if (!id) {
+        return nil;
+    }
+    
+    self = [super init];
+    
+    if (self) {
+        [self registerProperties];
+        self.id = id;
+        client = client;
+    }
+    
+    return self;
+}
+
 - (instancetype)initBuddyWithClient:(id<BPRestProvider>)client
 {
     self = [super init];

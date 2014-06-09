@@ -66,9 +66,11 @@
         return;
     }
     
-    [[Buddy pictures] getPicture:picId callback:^(id newBuddyObject, NSError *error) {
-        if (!error && newBuddyObject) {
-            BPPicture* pic = newBuddyObject;
+    BPPicture* pic = [[BPPicture alloc] initWithId:picId];
+    
+  
+    [pic refresh:^(NSError *error) {
+       if (!error) {
             [self.captionField setText:pic.caption];
             [self.choosePhotoBut setTitle:@"Loading..." forState:UIControlStateNormal];
             
