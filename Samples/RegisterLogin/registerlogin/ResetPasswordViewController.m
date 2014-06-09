@@ -43,15 +43,14 @@
     [self setTitle:@"Reset Password"];
     
 
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doReset:)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
+    
         
 }
 
-- (void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
-}
+
 
 - (void) resignTextFields
 {
@@ -145,7 +144,7 @@
         }
         
         NSLog(@"Reset password - success Called");
-        [self goBack];
+       [[self navigationController ] popViewControllerAnimated:YES];
         
     };
 }

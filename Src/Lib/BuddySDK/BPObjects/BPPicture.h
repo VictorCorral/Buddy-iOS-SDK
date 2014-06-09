@@ -31,5 +31,6 @@ typedef void(^BuddyImageResponse)(UIImage *image, NSError *error);
 - (void)savetoServerWithImage:(UIImage *)image callback:(BuddyCompletionCallback)callback;
 
 - (void)getImage:(BuddyImageResponse)callback;
+- (void)getImageWithSize:(BPSize*)size callback:(BuddyImageResponse)callback;
 
 @end

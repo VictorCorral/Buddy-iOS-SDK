@@ -20,8 +20,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *birthdayField;
 
-@property (weak, nonatomic) IBOutlet UIButton *backBut;
-
-- (IBAction)doBack:(id)sender;
 
 @end

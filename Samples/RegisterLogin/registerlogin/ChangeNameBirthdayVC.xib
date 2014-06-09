@@ -10,7 +10,6 @@
                 <outlet property="birthdayPicker" destination="bak-5q-dR5" id="EYW-51-rsI"/>
                 <outlet property="firstNameField" destination="YML-Xh-pRN" id="NaJ-up-R7H"/>
                 <outlet property="lastNameField" destination="rE6-8y-djn" id="eSi-q6-va7"/>
-                <outlet property="saveBut" destination="Kxn-TG-2MQ" id="fur-p7-TVv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -90,18 +89,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                             </timeZone>
                         </datePicker>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kxn-TG-2MQ">
-                            <rect key="frame" x="197" y="298" width="123" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Save"/>
-                            <connections>
-                                <action selector="doSave:" destination="-1" eventType="touchUpInside" id="xZB-w0-kzg"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Kxn-TG-2MQ" firstAttribute="top" secondItem="bak-5q-dR5" secondAttribute="bottom" constant="8" id="G2m-s9-HKd"/>
                         <constraint firstItem="bak-5q-dR5" firstAttribute="top" secondItem="axJ-Lp-ejH" secondAttribute="bottom" constant="19" id="RwI-AZ-9nS"/>
                     </constraints>
                 </view>

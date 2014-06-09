@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IdentityDetailViewController">
             <connections>
-                <outlet property="actionBut" destination="HHI-Ie-bme" id="Qh0-Fc-ial"/>
                 <outlet property="identityProviderField" destination="GRj-Nn-gxR" id="SB3-8w-FXe"/>
                 <outlet property="valueField" destination="XAx-EG-Sas" id="feU-5e-d0Q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -47,14 +46,6 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHI-Ie-bme">
-                            <rect key="frame" x="175" y="327" width="125" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Add Identity"/>
-                            <connections>
-                                <action selector="doAction:" destination="-1" eventType="touchUpInside" id="GiG-eA-HL2"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="BxZ-CO-hXm">
                             <rect key="frame" x="20" y="72" width="280" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -68,7 +59,6 @@
                         <constraint firstItem="zQR-Gu-Nfu" firstAttribute="top" secondItem="GRj-Nn-gxR" secondAttribute="bottom" constant="8" id="6yD-6y-6kb"/>
                         <constraint firstItem="GRj-Nn-gxR" firstAttribute="top" secondItem="p3F-xd-lMz" secondAttribute="bottom" constant="8" id="Gwi-lP-NF9"/>
                         <constraint firstItem="zQR-Gu-Nfu" firstAttribute="top" secondItem="GRj-Nn-gxR" secondAttribute="bottom" constant="13" id="W2d-IT-aF5"/>
-                        <constraint firstItem="HHI-Ie-bme" firstAttribute="top" secondItem="XAx-EG-Sas" secondAttribute="bottom" constant="20" id="i14-WT-SiB"/>
                         <constraint firstItem="p3F-xd-lMz" firstAttribute="top" secondItem="BxZ-CO-hXm" secondAttribute="bottom" constant="8" id="wLV-rr-yn3"/>
                         <constraint firstItem="XAx-EG-Sas" firstAttribute="top" secondItem="zQR-Gu-Nfu" secondAttribute="bottom" constant="8" id="xsl-f0-Luz"/>
                     </constraints>

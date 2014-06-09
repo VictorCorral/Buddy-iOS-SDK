@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IdentitiesViewController">
             <connections>
-                <outlet property="addIdentityBut" destination="ksA-Sq-Dqj" id="43E-Vg-2xq"/>
                 <outlet property="searchBut" destination="jg5-Q8-uCC" id="cBL-Gn-Orz"/>
                 <outlet property="searchField" destination="PSo-CF-hme" id="Fbh-Ni-FJA"/>
                 <outlet property="tableView" destination="oiW-yw-55B" id="ORl-EM-tjU"/>
@@ -19,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jg5-Q8-uCC">
-                    <rect key="frame" x="238" y="119" width="78" height="30"/>
+                    <rect key="frame" x="238" y="118" width="78" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Search"/>
                     <connections>
@@ -44,14 +43,6 @@
                         <outlet property="delegate" destination="-1" id="OgG-4H-mgK"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksA-Sq-Dqj">
-                    <rect key="frame" x="206" y="452" width="110" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Add Identity"/>
-                    <connections>
-                        <action selector="doAddIdentity:" destination="-1" eventType="touchUpInside" id="S1e-zi-rn3"/>
-                    </connections>
-                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buddy Identities allow you to tag a user with another unique idenifier, such as Facebook ID, Twitter handle, etc." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="w2k-xb-KAN">
                     <rect key="frame" x="20" y="67" width="280" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -63,7 +54,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="oiW-yw-55B" firstAttribute="top" secondItem="PSo-CF-hme" secondAttribute="bottom" constant="23" id="hmO-x2-RkF"/>
-                <constraint firstItem="ksA-Sq-Dqj" firstAttribute="top" secondItem="oiW-yw-55B" secondAttribute="bottom" constant="25" id="r7o-lI-A5V"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

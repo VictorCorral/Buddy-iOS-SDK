@@ -41,11 +41,10 @@
     [super viewDidLoad];
     [self setTitle:@"Change Info"];
     
-
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
+    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonTapped:)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
     
-       
+    
     self.birthdayPicker.datePickerMode = UIDatePickerModeDate;
     [self populateUI];
 }
@@ -68,14 +67,11 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-- (IBAction)doSave:(id)sender
+
+- (void)saveButtonTapped:(UIBarButtonItem *)sender
 {
+
     if ([self.firstNameField.text length]==0)
     {
         UIAlertView *alert =
@@ -135,18 +131,9 @@
         }
         
         NSLog(@"Change name and birthday - success Called");
-        [self goBack];
-        
+        [[self navigationController] popViewControllerAnimated:YES];
     };
 }
 
-- (IBAction)doCancel:(id)sender
-{
-    [self goBack];
-}
 
--(void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
-}
 @end

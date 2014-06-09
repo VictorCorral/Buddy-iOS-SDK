@@ -41,21 +41,20 @@
     [super viewDidLoad];
     [self setTitle:@"Identity Details"];
     
-
+    UIBarButtonSystemItem item = UIBarButtonSystemItemSave;
     
-    if (self.isNew)
+    
+    if (!self.isNew)
     {
-        [self.actionBut setTitle:@"Add" forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.actionBut setTitle:@"Delete" forState:UIControlStateNormal];
+        item = UIBarButtonSystemItemTrash;
         self.identityProviderField.text = self.identityProviderString;
         self.valueField.text = self.valueString;
         self.identityProviderField.enabled = NO;
         self.valueField.enabled = NO;
     }
     
+    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:item target:self action:@selector(doAction:)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
 }
 
 
@@ -118,7 +117,7 @@
         }
         
         NSLog(@"Add identity - success Called");
-        [self goBack];
+        [[self navigationController] popViewControllerAnimated:YES];
         
     };
 }
@@ -146,17 +145,9 @@
         }
         
         NSLog(@"Remove identity - success Called");
-        [self goBack];
-        
+        [[self navigationController] popViewControllerAnimated:YES];
     };
 }
 
-- (IBAction)doBack:(id)sender {
-    [self goBack];
-}
 
--(void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
-}
 @end

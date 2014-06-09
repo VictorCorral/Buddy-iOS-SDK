@@ -59,14 +59,6 @@
 }
 
 
-- (IBAction)doBack:(id)sender
-{
-    [self goBack];
-}
 
-- (void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
-}
 
 @end
