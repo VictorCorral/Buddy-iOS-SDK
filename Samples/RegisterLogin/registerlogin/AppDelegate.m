@@ -20,6 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    [Buddy initClient: APP_ID appKey: APP_KEY];
+    
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.window.backgroundColor = [UIColor whiteColor];
@@ -32,17 +38,9 @@
     mainVC.title = @"User Info";
     
     self.topController =mainVC;
-    
     self.navController=[[UINavigationController alloc] initWithRootViewController:self.topController];
-    
-    [self.navController setNavigationBarHidden:TRUE];
     self.window.rootViewController=self.navController;
-
-    
     [self.window makeKeyAndVisible];
-    
-    [Buddy initClient: APP_ID appKey: APP_KEY];
-
     
     return YES;
 }
