@@ -29,7 +29,7 @@
     self.loginPresented=FALSE;
     
     MainViewController *mainVC = [[MainViewController alloc]
-                                  initWithNibName:@"MainViewController" bundle:nil];
+                                  initWithNibName:@"LoginViewController" bundle:nil];
     
     mainVC.title = @"Channels";
     
