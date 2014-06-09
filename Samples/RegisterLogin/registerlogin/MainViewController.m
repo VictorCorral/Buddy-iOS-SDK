@@ -162,7 +162,7 @@
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	if (buttonIndex == 0)
+	if (buttonIndex == 1)
 	{
 		self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.HUD.labelText= @"Deleting...";

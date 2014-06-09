@@ -63,7 +63,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEF-D0-emT">
                     <rect key="frame" x="20" y="378" width="232" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Search Users"/>
+                    <state key="normal" title="List Users"/>
                     <connections>
                         <action selector="doSearchUsers:" destination="-1" eventType="touchUpInside" id="cYq-fI-02c"/>
                     </connections>

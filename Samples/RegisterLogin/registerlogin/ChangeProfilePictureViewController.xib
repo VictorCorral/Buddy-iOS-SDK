@@ -9,7 +9,6 @@
                 <outlet property="captionField" destination="xgj-mc-GM6" id="yDs-NN-OLl"/>
                 <outlet property="choosePhotoBut" destination="10M-kw-58a" id="u3c-SB-jXg"/>
                 <outlet property="deletePhotoBut" destination="d83-GC-ba1" id="8cS-Vk-67s"/>
-                <outlet property="saveBut" destination="r8j-oN-MVG" id="oDi-YD-12c"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -35,21 +34,13 @@
                                 <action selector="showCamera:" destination="-1" eventType="touchUpInside" id="f21-a8-yI2"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8j-oN-MVG">
-                            <rect key="frame" x="137" y="219" width="150" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Save"/>
-                            <connections>
-                                <action selector="doSave:" destination="-1" eventType="touchUpInside" id="ypv-Z4-dLv"/>
-                            </connections>
-                        </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xgj-mc-GM6">
                             <rect key="frame" x="20" y="181" width="271" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d83-GC-ba1">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d83-GC-ba1">
                             <rect key="frame" x="137" y="284" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Delete Photo"/>
@@ -60,8 +51,6 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="r8j-oN-MVG" firstAttribute="top" secondItem="xgj-mc-GM6" secondAttribute="bottom" constant="8" id="HoK-1s-SXz"/>
-                        <constraint firstItem="d83-GC-ba1" firstAttribute="top" secondItem="r8j-oN-MVG" secondAttribute="bottom" constant="35" id="jTY-ez-63h"/>
                         <constraint firstItem="xgj-mc-GM6" firstAttribute="top" secondItem="10M-kw-58a" secondAttribute="bottom" constant="8" id="nkz-Og-Ur8"/>
                     </constraints>
                 </view>

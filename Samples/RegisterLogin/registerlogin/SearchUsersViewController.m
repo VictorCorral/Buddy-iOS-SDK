@@ -50,10 +50,6 @@
     [self setTitle:@"Search Users"];
     
 
-    
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
-    
    
 }
 
@@ -123,7 +119,17 @@
     }
     
     BPUser *aUser = [self.filteredUserList objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", aUser.firstName, aUser.lastName];
+    
+    if (aUser.firstName || aUser.lastName) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@ %@)",
+                               aUser.userName,
+                               aUser.firstName ? aUser.firstName :  @"",
+                               aUser.lastName ? aUser.lastName : @""];
+    }
+    else {
+         cell.textLabel.text = [NSString stringWithFormat:@"%@ ", aUser.userName];
+    
+    }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -167,8 +173,5 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)doBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 @end

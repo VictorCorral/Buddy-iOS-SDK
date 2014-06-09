@@ -44,8 +44,8 @@
     
     [self setTitle:@"Change Profile Picture"];
     
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
+    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(doSave:)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
     
   
     [self populateUI];
@@ -58,51 +58,45 @@
     self.HUD.dimBackground = YES;
     self.HUD.delegate=self;
     
-    NSURL *picURL = [NSURL URLWithString:Buddy.user.profilePictureUrl];
+    NSString *picId = [NSURL URLWithString:Buddy.user.profilePictureID];
     
-    if (picURL==nil)
+    if (picId==nil)
     {
         [self.HUD hide:YES];
         return;
     }
     
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    [[Buddy pictures] getPicture:picId callback:^(id newBuddyObject, NSError *error) {
+        if (!error && newBuddyObject) {
+            BPPicture* pic = newBuddyObject;
+            [self.captionField setText:pic.caption];
+            [self.choosePhotoBut setTitle:@"Loading..." forState:UIControlStateNormal];
+            
+            BPSize* size = BPSizeMake(150, 0);
         
-        
-        [self.choosePhotoBut setTitle:@"Loading..." forState:UIControlStateNormal];
-        NSData *data = [NSData dataWithContentsOfURL:picURL];
-        UIImage *img = [[UIImage alloc] initWithData:data];
-   
-        // Make a trivial (1x1) graphics context, and draw the image into it
-        UIGraphicsBeginImageContext(CGSizeMake(1,1));
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), [img CGImage]);
-        UIGraphicsEndImageContext();
-        
-        // Now the image will have been loaded and decoded and is ready to rock for the main thread
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if(img!=nil)
-            {
-                [self.choosePhotoBut setImage:img forState:UIControlStateNormal];
-            }
-            else
-            {
-                [self.choosePhotoBut setBackgroundColor:[UIColor blackColor]];
-            }
-
-        });
-    });
+            [pic getImageWithSize:size callback:^(UIImage *img, NSError *error) {
+               
+                        UIGraphicsBeginImageContext(CGSizeMake(1,1));
+                        CGContextRef context = UIGraphicsGetCurrentContext();
+                        CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), [img CGImage]);
+                        UIGraphicsEndImageContext();
+                        [self.choosePhotoBut setTitle:@"" forState:UIControlStateNormal];
+                
+                        if(img!=nil)
+                        {
+                            [self.choosePhotoBut setImage:img forState:UIControlStateNormal];
+                        }
+                        else
+                        {
+                            [self.choosePhotoBut setBackgroundColor:[UIColor blackColor]];
+                        }
+            }];
+        }
+    }];
     
     
     
     [self.HUD hide:YES];
-}
-
--(void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
 }
 
 
@@ -136,10 +130,19 @@
 {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    
+    
+    CGSize newSize = CGSizeMake(150, 150);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [chosenImage drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
     self.selectedImage = chosenImage;
     [self.choosePhotoBut setTitle:@"" forState:UIControlStateNormal];
-    [self.choosePhotoBut setImage:self.selectedImage forState: UIControlStateNormal];
-    [self.choosePhotoBut setImage:self.selectedImage forState:UIControlStateSelected];
+    [self.choosePhotoBut setImage:newImage forState: UIControlStateNormal];
+    [self.choosePhotoBut setImage:newImage forState:UIControlStateSelected];
     [self.choosePhotoBut setContentMode:UIViewContentModeScaleToFill];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -155,12 +158,8 @@
     
 }
 
-- (IBAction)doCancel:(id)sender
-{
-    [self goBack];
-}
 
-- (IBAction)doSave:(id)sender
+- (void)doSave:(id)sender
 {
     if (self.selectedImage==nil)
     {
@@ -212,7 +211,7 @@
         }
         
         NSLog(@"Save User profile picture - success Called");
-        [self goBack];
+        [[self navigationController] popViewControllerAnimated:YES];
         
     };
     

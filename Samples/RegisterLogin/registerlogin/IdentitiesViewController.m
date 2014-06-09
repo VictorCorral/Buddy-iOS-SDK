@@ -42,6 +42,11 @@
     [super viewDidLoad];
     
     [self setTitle:@"Manage Identities"];
+    
+    
+    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(doAddIdentity:)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
+    
 
   }
 
@@ -133,9 +138,6 @@
     };
 }
 
-- (IBAction)doBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (IBAction)doAddIdentity:(id)sender {
     IdentityDetailViewController *subVC = [[IdentityDetailViewController alloc]

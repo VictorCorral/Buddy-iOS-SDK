@@ -15,12 +15,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 
-@property (weak, nonatomic) IBOutlet UIButton *resetBut;
 @property (weak, nonatomic) IBOutlet UIButton *requestResetBut;
-@property (weak, nonatomic) IBOutlet UIButton *cancelBut;
 
-- (IBAction)doReset:(id)sender;
+
 - (IBAction)doRequestSent:(id)sender;
-- (IBAction)doCancel:(id)sender;
+
 
 @end
