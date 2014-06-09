@@ -15,6 +15,7 @@
 #import "BPCoordinate.h"
 #import "NSDate+JSON.h"
 #import "BPEnumMapping.h"
+#import <objc/runtime.h>
 
 @interface BuddyObject()
 
@@ -314,9 +315,40 @@ static NSString *metadataRoute = @"metadata";
 
 @end
 
+@interface BPObjectSearch()
+
+@property (strong, nonatomic) NSMutableArray *dirtyKeys;
+
+@end
+
 @implementation BPObjectSearch
 
 @synthesize location, created, lastModified, readPermissions, writePermissions, tag, id;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _dirtyKeys = [NSMutableArray array];
+        
+        unsigned int count;
+        objc_property_t *props = class_copyPropertyList([self class], &count);
+        
+        for (int i = 0; i < count; ++i){
+            NSString *propName = [NSString stringWithUTF8String:property_getName(props[i])];
+            
+            [self addObserver:self forKeyPath:propName options:NSKeyValueObservingOptionNew context:nil];
+        }
+        
+        free(props);
+    }
+    return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self.dirtyKeys addObject:keyPath];
+}
 
 +(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize
 {
@@ -326,5 +358,19 @@ static NSString *metadataRoute = @"metadata";
 +(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount
 {
     return [NSString stringWithFormat:@"%lu;%lu",pageSize,skipCount];
+}
+
+- (NSDictionary *)parametersFromDirtyProperties
+{
+    NSDictionary *parameters = [self parametersFromProperties];
+    NSMutableDictionary *dirtyParameters = [NSMutableDictionary dictionary];
+    
+    for (id key in parameters) {
+        if ([self.dirtyKeys indexOfObject:key] != NSNotFound) {
+            [dirtyParameters setObject:parameters[key] forKey:key];
+        }
+    }
+    
+    return dirtyParameters;
 }
 @end

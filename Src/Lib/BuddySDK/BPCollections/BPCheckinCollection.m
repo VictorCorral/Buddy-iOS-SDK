@@ -31,7 +31,7 @@
 
 - (void)searchCheckins:(BPSearchCheckins *)searchCheckin callback:(BPSearchCallback)callback;
 {
-    id parameters = [searchCheckin parametersFromProperties];
+    id parameters = [searchCheckin parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }
