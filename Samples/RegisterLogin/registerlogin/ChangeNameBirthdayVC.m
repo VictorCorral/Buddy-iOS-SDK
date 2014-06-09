@@ -18,7 +18,7 @@
 
 @property (nonatomic,strong) MBProgressHUD *HUD;
 
-- (void) goBack;
+
 - (BuddyCompletionCallback) getUpdateProfileCallback;
 
 @end
