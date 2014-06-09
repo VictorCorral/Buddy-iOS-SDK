@@ -290,6 +290,84 @@ describe(@"BuddyUserListsSpec", ^{
         });
     });
 
+    context(@"When a user is logged in", ^{
+        
+        __block NSMutableArray *userArray=[[NSMutableArray alloc]init];
+        
+        __block BPUserList *tempUserList;
+        
+        beforeAll(^{
+            __block BOOL fin = NO;
+            
+            [BuddyIntegrationHelper bootstrapLogin:^{
+                fin = YES;
+            }];
+            
+            [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
+            
+        });
+        
+        afterAll(^{
+            [BuddyIntegrationHelper deleteUsers:userArray callback:^(NSError *error) {
+                //[error shouldBeNil];
+            }];
+            
+            if(tempUserList!=nil)
+            {
+                [tempUserList destroy:^(NSError *error){
+                    [error shouldBeNil];
+                }];
+            }
+        });
+        
+        
+        it(@"Should allow you to get the users in a user list.", ^{
+            __block BOOL fin = NO;
+            
+            tempUserList = [BPUserList new];
+            __block NSString *userListName =[NSString stringWithFormat:@"userList_%@",[BuddyIntegrationHelper randomString:10] ] ;
+            tempUserList.name =userListName;
+            __weak BPUserList *weakTempUserList = tempUserList;
+            [[Buddy userLists] addUserList:tempUserList callback:^(NSError *error) {
+                
+                [error shouldBeNil];
+                [[tempUserList.id shouldNot] beNil];
+                [[tempUserList.name should] equal: userListName];
+                
+                [BuddyIntegrationHelper createRandomUsers:userArray count:NUM_USERS callback:^(NSError *error) {
+                    [error shouldBeNil];
+                    __block int numTimesCallbackCalled = 0;
+                    for(int index=0;index<NUM_USERS;index++)
+                    {
+                        [tempUserList addUser:[userArray objectAtIndex:index] callback:^(BOOL result, NSError *error) {
+                            numTimesCallbackCalled++;
+                            [error shouldBeNil];
+                            [[theValue(result) shouldNot] equal: NO];
+                            if(numTimesCallbackCalled==NUM_USERS)
+                            {
+                                
+                                BPSearchUsers *searchUsers = [BPSearchUsers new];
+                                searchUsers.userListId = weakTempUserList.id;
+                                
+                                [[Buddy users] searchUsers:searchUsers callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
+                                    [[error should] beNil];
+                                    [[theValue([buddyObjects count]) should] equal:theValue(NUM_USERS)];
+                                    [[theValue([[buddyObjects firstObject] gender]) should] equal:theValue(BPUserGender_Unknown)];
+                                    fin = YES;
+                                }];
+
+                                
+                            }
+                        }];
+                    }
+                }];
+            }];
+            
+            [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
+        });
+    });
+    
+
     
 
         context(@"When a user is logged in", ^{
