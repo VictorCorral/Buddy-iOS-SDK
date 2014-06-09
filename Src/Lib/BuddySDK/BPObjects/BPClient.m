@@ -473,11 +473,12 @@ NSMutableArray *queuedRequests;
                         
                         // We have a device token. Start monitoring for crashes.
                         [self.crashManager startReporting:self.appSettings.deviceToken];
-                        
-                        for (void(^block)() in queuedRequests) {
-                            block();
-                        }
                     }
+                    
+                    for (void(^block)() in queuedRequests) {
+                        block();
+                    }
+                    
                     [queuedRequests removeAllObjects];
                 }]];
             }
