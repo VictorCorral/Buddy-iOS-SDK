@@ -37,11 +37,6 @@
     return @"";
 }
 
-- (id<BPRestProvider>)client
-{   
-    return _client ?: (id<BPRestProvider>)[BPClient defaultClient];
-}
-
 - (void)getAll:(BPSearchCallback)callback
 {
     [self search:nil callback:callback];

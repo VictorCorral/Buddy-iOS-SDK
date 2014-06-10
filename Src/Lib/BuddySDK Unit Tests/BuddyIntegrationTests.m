@@ -27,7 +27,7 @@ describe(@"Buddy", ^{
 
         beforeAll(^{
             
-            [Buddy initClient:APP_ID appKey:APP_KEY];
+            [Buddy initClient:APP_NAME appKey:APP_KEY];
             
             [Buddy login:testCreateDeleteName password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
                 if (!error) {

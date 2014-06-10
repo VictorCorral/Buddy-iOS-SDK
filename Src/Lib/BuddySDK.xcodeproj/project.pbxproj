@@ -260,6 +260,7 @@
 		5B5FE15618E3C90C00518440 /* BPNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPNotificationManager.m; sourceTree = "<group>"; };
 		5B5FE15918E3CD1C00518440 /* BPNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPNotification.h; sourceTree = "<group>"; };
 		5B5FE15A18E3CD1C00518440 /* BPNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPNotification.m; sourceTree = "<group>"; };
+		5B6A0C7E1935972D006EBC44 /* BPBase+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BPBase+Private.h"; sourceTree = "<group>"; };
 		5B6E84CD18F2138E005E7FEE /* NotificationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTests.m; sourceTree = "<group>"; };
 		5B91C50D18D0CE3900CB7119 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
 		5B94D05A18FE0DFB00ED3292 /* PasswordResetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordResetTests.m; sourceTree = "<group>"; };
@@ -590,6 +591,7 @@
 				C11E6C98184D58670034E1EB /* BuddyObject+Private.h */,
 				C1ADA71C18AB32D900BCCC12 /* BPBase.h */,
 				C1ADA71D18AB32D900BCCC12 /* BPBase.m */,
+				5B6A0C7E1935972D006EBC44 /* BPBase+Private.h */,
 			);
 			name = BaseObjects;
 			path = ../../Lib/BuddySDK/BaseObjects;

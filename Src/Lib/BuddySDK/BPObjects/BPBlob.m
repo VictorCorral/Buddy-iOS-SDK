@@ -47,11 +47,13 @@ static NSString *blobMimeType = @"application/octet-stream";
     return blobMimeType;
 }
 
-- (void)savetoServerWithData:(NSData *)data callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithData:(NSData *)data client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
 {
     NSDictionary *multipartParameters = @{@"data": BOXNIL(data)};
     
     NSDictionary *parameters = [self buildUpdateDictionary];
+    
+    self.client = client;
     
     [self.client MULTIPART_POST:[[self class] requestPath]
                 parameters:parameters
