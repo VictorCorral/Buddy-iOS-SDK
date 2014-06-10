@@ -95,7 +95,7 @@
         BPMetadataItem *i = [BPMetadataItem new];
         i.value = weakSelf.tagString;
         i.key = TAG_META_KEY;
-        i.permissions = BPPermissionsApp;
+        i.visibility = BPPermissionsApp;
         NSLog(@"SavePhotoCallback - success Called");
         [weakSelf.picture setMetadata:i callback:[weakSelf getSaveTagCallback]];
         
@@ -244,7 +244,7 @@
     self.HUD.labelText= @"Loading Tag Info";
     self.HUD.dimBackground = YES;
     self.HUD.delegate=self;
-    [self.picture getMetadataWithKey:TAG_META_KEY permissions:BPPermissionsApp callback:[self getFetchMetadataCallback]];
+    [self.picture getMetadataWithKey:TAG_META_KEY visibility:BPPermissionsApp callback:[self getFetchMetadataCallback]];
 }
 - (void)didReceiveMemoryWarning
 {
