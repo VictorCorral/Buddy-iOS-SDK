@@ -220,7 +220,7 @@
 /**
  * Sets multiple app-level metadata items
  *
- * @param metadata      A BPMetadataCKeyValues prepopulated with the metadata information.
+ * @param metadata      A BPMetadataKeyValues prepopulated with the metadata information.
  *
  * @param callback      A callback that is called once the server has processed the request.
  *
