@@ -37,7 +37,6 @@
 - (IBAction)doIdentities:(id)sender;
 - (void)doLogout;
 
--(BuddyCompletionCallback) getRefreshCallback;
--(BuddyCompletionCallback) getClearUserCallback;
+
 
 @end
