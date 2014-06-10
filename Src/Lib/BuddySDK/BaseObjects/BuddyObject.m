@@ -117,7 +117,10 @@
 
 - (void)registerProperties
 {
-    self.keyPaths = [NSMutableArray array];
+    if(!self.keyPaths)
+    {
+        self.keyPaths = [NSMutableArray array];
+    }
     
     [self registerProperty:@selector(location)];
     [self registerProperty:@selector(created)];
