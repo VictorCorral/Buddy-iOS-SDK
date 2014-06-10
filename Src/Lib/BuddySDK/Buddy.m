@@ -180,7 +180,7 @@
     [[BPClient defaultClient] setMetadata:metadata callback:callback];
 }
 
-+ (void)setMetadataValues:(BPMetadataCollection *)metadata callback:(BuddyCompletionCallback)callback
++ (void)setMetadataValues:(BPMetadataKeyValues *)metadata callback:(BuddyCompletionCallback)callback
 {
     [[BPClient defaultClient] setMetadataValues:metadata callback:callback];
 }
@@ -196,14 +196,14 @@
     [[BPClient defaultClient] incrementMetadata:key delta:delta callback:callback];
 }
 
-+ (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BPMetadataCallback)callback
++ (void)getMetadataWithKey:(NSString *)key visibility:(BPPermissions) visibility callback:(BPMetadataCallback)callback
 {
-    [[BPClient defaultClient] getMetadataWithKey:key permissions:(BPPermissions)permissions callback:callback];
+    [[BPClient defaultClient] getMetadataWithKey:key visibility:(BPPermissions)visibility callback:callback];
 }
 
-+ (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BuddyCompletionCallback)callback
++ (void)deleteMetadataWithKey:(NSString *)key visibility:(BPPermissions) visibility callback:(BuddyCompletionCallback)callback
 {
-    [[BPClient defaultClient] deleteMetadataWithKey:key permissions:(BPPermissions)permissions callback:callback];
+    [[BPClient defaultClient] deleteMetadataWithKey:key visibility:(BPPermissions)visibility callback:callback];
 }
 
 @end

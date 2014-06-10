@@ -78,7 +78,7 @@
     }];
 }
 
-- (void)setMetadataValues:(BPMetadataCollection *)metadata callback:(BuddyCompletionCallback)callback
+- (void)setMetadataValues:(BPMetadataKeyValues *)metadata callback:(BuddyCompletionCallback)callback
 {
     id parameters = [metadata parametersFromProperties];
     
@@ -118,9 +118,9 @@
     }];
 }
 
-- (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions)permissions callback:(BPMetadataCallback)callback
+- (void)getMetadataWithKey:(NSString *)key visibility:(BPPermissions)visibility callback:(BPMetadataCallback)callback
 {
-    NSDictionary *parameters = @{@"visibility": [[self class] enumMap][@"readPermissions"][@(permissions)]};
+    NSDictionary *parameters = @{@"visibility": [[self class] enumMap][@"readPermissions"][@(visibility)]};
     
     [self.client GET:[self metadataPath:key] parameters:parameters callback:^(id metadata, NSError *error) {
         BPMetadataItem *item = [[BPMetadataItem alloc] initBuddyWithResponse:metadata];
@@ -128,9 +128,9 @@
     }];
 }
 
-- (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions)permissions callback:(BuddyCompletionCallback)callback
+- (void)deleteMetadataWithKey:(NSString *)key visibility:(BPPermissions)visibility callback:(BuddyCompletionCallback)callback
 {
-    NSDictionary *parameters = @{@"visibility": [[self class] enumMap][@"readPermissions"][@(permissions)]};
+    NSDictionary *parameters = @{@"visibility": [[self class] enumMap][@"readPermissions"][@(visibility)]};
     [self.client DELETE:[self metadataPath:key] parameters:parameters callback:^(id metadata, NSError *error) {
         callback ? callback(error) : nil;
     }];
