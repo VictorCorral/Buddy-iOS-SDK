@@ -141,6 +141,11 @@
 {
     NSString *propertyName = NSStringFromSelector(property);
     
+    if([self.keyPaths indexOfObject:propertyName] != NSNotFound)
+    {
+        return;
+    }
+    
     [self.keyPaths addObject:propertyName];
     
     [self addObserver:self forKeyPath:propertyName options:NSKeyValueObservingOptionNew context:NULL];
