@@ -24,14 +24,14 @@
 @property (nonatomic, readonly, strong) BPCoordinateRange *locationRange;
 @property (nonatomic, readonly, strong) BPDateRange *created;
 @property (nonatomic, readonly, strong) BPDateRange *modified;
-@property (nonatomic, assign) BPPermissions permissions;
+@property (nonatomic, assign) BPPermissions visibility;
 
 @end
 
 @protocol BPMetadataCollectionProperties <NSObject>
 
 @property (nonatomic, strong) NSDictionary *values;
-@property (nonatomic, assign) BPPermissions permissions;
+@property (nonatomic, assign) BPPermissions visibility;
 
 @end
 
@@ -47,6 +47,6 @@ typedef void(^BPMetadataCallback)(BPMetadataItem *metadata, NSError *error);
 - (instancetype)initBuddyWithResponse:(id)response;
 @end
 
-@interface BPMetadataCollection : BPMetadataBase<BPMetadataCollectionProperties>
+@interface BPMetadataKeyValues : BPMetadataBase<BPMetadataCollectionProperties>
 
 @end
