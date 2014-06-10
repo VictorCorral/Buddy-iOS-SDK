@@ -220,24 +220,24 @@
 /**
  * Sets multiple app-level metadata items
  *
- * @param metadata  A BPMetadataCollection prepopulated with the metadata information.
+ * @param metadata      A BPMetadataKeyValues prepopulated with the metadata information.
  *
  * @param callback      A callback that is called once the server has processed the request.
  *
  */
-+ (void)setMetadataValues:(BPMetadataCollection *)metadata callback:(BuddyCompletionCallback)callback;
++ (void)setMetadataValues:(BPMetadataKeyValues *)metadata callback:(BuddyCompletionCallback)callback;
 
 /**
  * Retrieves a metadata item for a given key
  *
  * @param key           The metadata key to retrieve.
  *
- * @param permissions   The permissions of the metadataitem.
+ * @param visibility    The visibility of the metadata item (User or App etc)
  *
  * @param callback      A callback which is called with the results of the request.
  *
  */
-+ (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BPMetadataCallback)callback;
++ (void)getMetadataWithKey:(NSString *)key visibility:(BPPermissions) visibility callback:(BPMetadataCallback)callback;
 
 /**
  *
@@ -269,11 +269,11 @@
  *
  * @param key           The key of the metadata item to delete.
  *
- * @param permissions   The permissions of the metadata item.
+ * @param permissions   The visibility of the metadata item (User or App etc)
  *
  * @param callback      A callback that is called once the server has processed the request.
  *
  */
-+ (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions)permissions callback:(BuddyCompletionCallback)callback;
++ (void)deleteMetadataWithKey:(NSString *)key visibility:(BPPermissions)visibility callback:(BuddyCompletionCallback)callback;
 
 @end
