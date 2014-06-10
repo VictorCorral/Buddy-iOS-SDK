@@ -21,17 +21,12 @@
     return self;
 }
 
--(void)getUsers:(BuddyCollectionCallback)callback
-{
-    [self getAll:callback];
-}
-
 - (void)getUser:(NSString *)userId callback:(BuddyObjectCallback)callback
 {
     [self getItem:userId callback:callback];
 }
 
-- (void)searchUsers:(BPSearchUsers *)searchUsers callback:(BuddyCollectionCallback)callback
+- (void)searchUsers:(BPSearchUsers *)searchUsers callback:(BPSearchCallback)callback
 {
     id parameters = [searchUsers parametersFromProperties];
     

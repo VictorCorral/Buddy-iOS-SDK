@@ -15,7 +15,7 @@
              image:(UIImage *)image
           callback:(BuddyCompletionCallback)callback;
 
-- (void)searchPictures:(BPSearchPictures *)searchPicture callback:(BuddyCollectionCallback)callback;
+- (void)searchPictures:(BPSearchPictures *)searchPicture callback:(BPSearchCallback)callback;
 
 - (void)getPicture:(NSString *)pictureId callback:(BuddyObjectCallback)callback;
 

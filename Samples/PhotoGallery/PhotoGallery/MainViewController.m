@@ -29,7 +29,7 @@
 
 
 -(void) loadUserPhotos;
--(BuddyCollectionCallback) getLoadUserPhotosCallback;
+-(BPSearchCallback) getLoadUserPhotosCallback;
 -(BuddyImageResponse) getLoadPhotoDataCallback:(BPPicture*)picture withImage:(UIImageView*)imageView;
 -(void)doRefreshCollection;
 @end
@@ -115,11 +115,11 @@
     [self loadUserPhotos];
 }
 
--(BuddyCollectionCallback) getLoadUserPhotosCallback
+-(BPSearchCallback) getLoadUserPhotosCallback
 {
     MainViewController * __weak weakSelf = self;
     
-    return ^(NSArray *buddyObjects, NSError *error)
+    return ^(NSArray *buddyObjects, BPPagingTokens *tokens,NSError *error)
     {
         if(error!=nil)
         {

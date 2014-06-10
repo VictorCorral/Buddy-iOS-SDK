@@ -31,9 +31,8 @@
     [self getItem:userListId callback:callback];
 }
 
-- (void)searchUserLists:(BPSearchUserList *)searchUserList callback:(BuddyCollectionCallback)callback
+- (void)searchUserLists:(BPSearchUserList *)searchUserList callback:(BPSearchCallback)callback
 {
-    searchUserList.limit = 25;
     id parameters = [searchUserList parametersFromProperties];
     
     [self search:parameters callback:callback];

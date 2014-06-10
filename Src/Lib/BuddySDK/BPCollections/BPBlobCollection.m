@@ -27,7 +27,7 @@
     [blob savetoServerWithData:data client:self.client callback:callback];
 }
 
--(void)getBlobs:(BuddyCollectionCallback)callback
+-(void)getBlobs:(BPSearchCallback)callback
 {
     [self getAll:callback];
 }
@@ -37,7 +37,7 @@
     [self getItem:blobId callback:callback];
 }
 
-- (void)searchBlobs:(BPBlobSearch *)searchBlobs callback:(BuddyCollectionCallback)callback
+- (void)searchBlobs:(BPBlobSearch *)searchBlobs callback:(BPSearchCallback)callback
 {
     id parameters = [searchBlobs parametersFromProperties];
     

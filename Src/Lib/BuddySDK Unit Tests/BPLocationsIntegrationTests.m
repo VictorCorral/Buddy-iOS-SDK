@@ -87,19 +87,43 @@ describe(@"BPLocationIntegrationSpec", ^{
             __block NSArray *locations;
         
             BPSearchLocation *searchLocations = [BPSearchLocation new];
-            searchLocations.limit = 9;
-            searchLocations.locationRange = BPCoordinateRangeMake(44.987293, -93.2484864, 100);
+            searchLocations.pageSize = 9;
+            searchLocations.locationRange = BPCoordinateRangeMake(44.987293, -93.2484864, 1000);
             
-            [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *buddyObjects, NSError *error) {
+            [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 [[error should] beNil];
                 locations = buddyObjects;
                 [[locations should] beNonNil];
-                [[theValue([locations count]) should] beGreaterThan:theValue(0)];
+                [[theValue([locations count]) should] equal: theValue(9)];
                 [[[[locations firstObject] city] should] equal:@"Minneapolis"];
                 fin = YES;
             }];
             
             [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
+        });
+        
+        it(@"Should allow paging location searches.", ^{
+            BPSearchLocation *searchLocations = [BPSearchLocation new];
+            //searchLocations.locationRange = BPCoordinateRangeMake(44.987293, -93.2484864, 100000);
+            
+            [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *locations, BPPagingTokens *tokens, NSError *error) {
+                [[error should] beNil];
+                [[locations should] beNonNil];
+                BPLocation *oldFirst = [locations firstObject];
+                
+                
+                searchLocations.pagingToken = tokens.nextToken;
+                
+                [[Buddy locations] searchLocation:searchLocations callback:^(NSArray *secondLocations, BPPagingTokens *tokens, NSError *error) {
+                    BPLocation *newFirst = [secondLocations firstObject];
+                    [[oldFirst.id shouldNot] equal:newFirst.id];
+                    fin = YES;
+                }];
+                
+            }];
+            
+            [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
+
         });
         
         it(@"Should allow deleting a location.", ^{

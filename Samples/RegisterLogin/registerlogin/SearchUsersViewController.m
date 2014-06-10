@@ -24,7 +24,7 @@
 
 -(void) loadAllUsers;
 - (void) putAllUsers:(NSMutableArray *)users;
--(BuddyCollectionCallback) getAllUsersCallback;
+-(BPSearchCallback) getAllUsersCallback;
 
 @end
 
@@ -46,18 +46,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
     
-    self.searchBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.searchBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.searchBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.searchBut.clipsToBounds = YES;
+    [self setTitle:@"Search Users"];
     
-    self.backBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.backBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.backBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.backBut.clipsToBounds = YES;
+
+   
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -75,11 +68,11 @@
     [[Buddy users] getAll:[self getAllUsersCallback]];
 }
 
--(BuddyCollectionCallback) getAllUsersCallback
+-(BPSearchCallback) getAllUsersCallback
 {
     SearchUsersViewController * __weak weakSelf = self;
     
-    return ^(NSArray *buddyObjects, NSError *error)
+    return ^(NSArray *buddyObjects, BPPagingTokens *tokens,NSError *error)
     {
         [weakSelf.HUD hide:TRUE afterDelay:0.1];
         weakSelf.HUD = nil;
@@ -126,7 +119,17 @@
     }
     
     BPUser *aUser = [self.filteredUserList objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", aUser.firstName, aUser.lastName];
+    
+    if (aUser.firstName || aUser.lastName) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@ %@)",
+                               aUser.userName,
+                               aUser.firstName ? aUser.firstName :  @"",
+                               aUser.lastName ? aUser.lastName : @""];
+    }
+    else {
+         cell.textLabel.text = [NSString stringWithFormat:@"%@ ", aUser.userName];
+    
+    }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -140,11 +143,7 @@
     [ [CommonAppDelegate navController] pushViewController:subVC animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 - (IBAction)doSearch:(id)sender
 {
@@ -174,8 +173,5 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)doBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 @end

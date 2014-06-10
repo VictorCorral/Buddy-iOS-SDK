@@ -18,7 +18,7 @@
 
 @property (nonatomic,strong) MBProgressHUD *HUD;
 
--(void) goBack;
+
 
 -(BuddyCompletionCallback) getSavePhotoCallback;
 -(BuddyCompletionCallback) getDeletePhotoCallback;
@@ -41,29 +41,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
     
-    self.choosePhotoBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.choosePhotoBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.choosePhotoBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.choosePhotoBut.clipsToBounds = YES;
+    [self setTitle:@"Change Profile Picture"];
     
-    self.saveBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.saveBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.saveBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.saveBut.clipsToBounds = YES;
+    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(doSave:)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
     
-    self.deletePhotoBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.deletePhotoBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.deletePhotoBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.deletePhotoBut.clipsToBounds = YES;
-    
-    self.cancelBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.cancelBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.cancelBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.cancelBut.clipsToBounds = YES;
-
+  
     [self populateUI];
 }
 
@@ -74,39 +58,48 @@
     self.HUD.dimBackground = YES;
     self.HUD.delegate=self;
     
-    NSURL *picURL = [NSURL URLWithString:Buddy.user.profilePictureUrl];
+    NSString *picId = [NSURL URLWithString:Buddy.user.profilePictureID];
     
-    if (picURL==nil)
+    if (picId==nil)
     {
         [self.HUD hide:YES];
         return;
     }
     
-    NSData *data = [NSData dataWithContentsOfURL:picURL];
-    UIImage *pictureImage = [[UIImage alloc] initWithData:data];
-
-    if(pictureImage!=nil)
-    {
-        [self.choosePhotoBut setImage:pictureImage forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.choosePhotoBut setBackgroundColor:[UIColor blackColor]];
-    }
+    [[Buddy pictures] getPicture:picId callback:^(id newBuddyObject, NSError *error) {
+        if (!error && newBuddyObject) {
+            BPPicture* pic = newBuddyObject;
+            [self.captionField setText:pic.caption];
+            [self.choosePhotoBut setTitle:@"Loading..." forState:UIControlStateNormal];
+            
+            BPSize* size = BPSizeMake(150, 0);
+        
+            [pic getImageWithSize:size callback:^(UIImage *img, NSError *error) {
+               
+                        UIGraphicsBeginImageContext(CGSizeMake(1,1));
+                        CGContextRef context = UIGraphicsGetCurrentContext();
+                        CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), [img CGImage]);
+                        UIGraphicsEndImageContext();
+                        [self.choosePhotoBut setTitle:@"" forState:UIControlStateNormal];
+                
+                        if(img!=nil)
+                        {
+                            [self.choosePhotoBut setImage:img forState:UIControlStateNormal];
+                        }
+                        else
+                        {
+                            [self.choosePhotoBut setBackgroundColor:[UIColor blackColor]];
+                        }
+            }];
+        }
+    }];
+    
+    
     
     [self.HUD hide:YES];
 }
 
--(void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)showCamera:(id)sender
 {
@@ -137,10 +130,19 @@
 {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    
+    
+    CGSize newSize = CGSizeMake(150, 150);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [chosenImage drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
     self.selectedImage = chosenImage;
     [self.choosePhotoBut setTitle:@"" forState:UIControlStateNormal];
-    [self.choosePhotoBut setImage:self.selectedImage forState: UIControlStateNormal];
-    [self.choosePhotoBut setImage:self.selectedImage forState:UIControlStateSelected];
+    [self.choosePhotoBut setImage:newImage forState: UIControlStateNormal];
+    [self.choosePhotoBut setImage:newImage forState:UIControlStateSelected];
     [self.choosePhotoBut setContentMode:UIViewContentModeScaleToFill];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -156,12 +158,8 @@
     
 }
 
-- (IBAction)doCancel:(id)sender
-{
-    [self goBack];
-}
 
-- (IBAction)doSave:(id)sender
+- (void)doSave:(id)sender
 {
     if (self.selectedImage==nil)
     {
@@ -213,7 +211,7 @@
         }
         
         NSLog(@"Save User profile picture - success Called");
-        [self goBack];
+        [[self navigationController] popViewControllerAnimated:YES];
         
     };
     
@@ -242,7 +240,7 @@
         }
         
         NSLog(@"Delete User profile picture - success Called");
-        [self goBack];
+        [[self navigationController] popViewControllerAnimated:YES];
         
     };
     

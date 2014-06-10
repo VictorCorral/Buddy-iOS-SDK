@@ -29,7 +29,7 @@
     [checkin savetoServerWithClient:self.client callback:callback];
 }
 
-- (void)searchCheckins:(BPSearchCheckins *)searchCheckin callback:(BuddyCollectionCallback)callback;
+- (void)searchCheckins:(BPSearchCheckins *)searchCheckin callback:(BPSearchCallback)callback;
 {
     id parameters = [searchCheckin parametersFromProperties];
     

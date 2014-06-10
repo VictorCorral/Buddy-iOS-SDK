@@ -254,7 +254,7 @@ describe(@"Metadata", ^{
             BPSearchMetadata *searchMetadata = [BPSearchMetadata new];
             searchMetadata.keyPrefix = @"MYPREFIX";
             
-            [c searchMetadata:searchMetadata callback:^(id newBuddyObject, NSError *error) {
+            [c searchMetadata:searchMetadata callback:^(id newBuddyObject, BPPagingTokens *tokens, NSError *error) {
                 [[theValue([newBuddyObject count]) should] beGreaterThan:theValue(0)];
                 for(BPMetadataItem *i in newBuddyObject) {
                     [[i.key should] startWithString:@"MYPREFIX"];
@@ -265,7 +265,7 @@ describe(@"Metadata", ^{
             // Make sure start and end bracked the server timestamp (they may not be completely in sync)
             __block NSDate *end =[[NSDate date] dateByAddingTimeInterval:10];
             
-            [c searchMetadata:nil callback:^(id newBuddyObject, NSError *error) {
+            [c searchMetadata:nil callback:^(id newBuddyObject, BPPagingTokens *tokens, NSError *error) {
                 NSLog(@"METAMETA From: %@ To: %@",start,end);
                 [[theValue([newBuddyObject count]) should] beGreaterThan:theValue(0)];
                 for(BPMetadataItem *i in newBuddyObject) {

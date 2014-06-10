@@ -167,8 +167,8 @@ describe(@"BPUser", ^{
             
             BPSearchUsers *searchUsers = [BPSearchUsers new];
             searchUsers.gender = BPUserGender_Unknown;
-            searchUsers.limit=25;
-            [[Buddy users] searchUsers:searchUsers callback:^(NSArray *buddyObjects, NSError *error) {
+            
+            [[Buddy users] searchUsers:searchUsers callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 [[error should] beNil];
                 [[theValue([buddyObjects count]) should] beGreaterThan:theValue(0)];
                 [[theValue([[buddyObjects firstObject] gender]) should] equal:theValue(BPUserGender_Unknown)];

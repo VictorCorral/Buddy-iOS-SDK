@@ -15,8 +15,7 @@ typedef void (^BuddyTimedMetricResult)(NSInteger elapsedTimeInMs, NSError *error
 
 - (instancetype)initWithMetricId:(NSString *)metricId andClient:(id<BPRestProvider>)restProvider;
 
-/* signalComplete is deprecated. Please use finishMetric */
-- (void)signalComplete:(BuddyTimedMetricResult)callback;
+- (void)signalComplete:(BuddyTimedMetricResult)callback __attribute__ ((deprecated));
 
 - (void)finishMetric:(BuddyTimedMetricResult)callback;
 

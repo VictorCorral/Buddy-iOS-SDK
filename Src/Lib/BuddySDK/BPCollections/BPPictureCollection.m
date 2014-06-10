@@ -30,7 +30,7 @@
     [picture savetoServerWithImage:image client:self.client callback:callback];
 }
 
--(void)searchPictures:(BPSearchPictures *)searchPictures callback:(BuddyCollectionCallback)callback
+-(void)searchPictures:(BPSearchPictures *)searchPictures callback:(BPSearchCallback)callback
 {
     id parameters = [searchPictures parametersFromProperties];
     

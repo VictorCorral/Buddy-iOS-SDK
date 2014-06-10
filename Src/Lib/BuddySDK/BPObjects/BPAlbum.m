@@ -91,7 +91,7 @@ static NSString *albums = @"albums";
     
 }
 
-- (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItem callback:(BuddyCollectionCallback)callback
+- (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItem callback:(BPSearchCallback)callback
 {
     [self.items searchAlbumItems:searchAlbumItem callback:callback];
 }

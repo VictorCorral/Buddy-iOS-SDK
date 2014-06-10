@@ -185,7 +185,7 @@
     [[BPClient defaultClient] setMetadataValues:metadata callback:callback];
 }
 
-+ (void)searchMetadata:(BPSearchMetadata *)search callback:(BuddyCollectionCallback)callback
++ (void)searchMetadata:(BPSearchMetadata *)search callback:(BPSearchCallback)callback
 {
     [[BPClient defaultClient] searchMetadata:search callback:callback];
 }

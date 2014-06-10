@@ -33,7 +33,7 @@
     [self getItem:locationId callback:callback];
 }
 
-- (void)searchLocation:(BPSearchLocation *)searchLocations callback:(BuddyCollectionCallback)callback
+- (void)searchLocation:(BPSearchLocation *)searchLocations callback:(BPSearchCallback)callback
 {
     id parameters = [searchLocations parametersFromProperties];
     
