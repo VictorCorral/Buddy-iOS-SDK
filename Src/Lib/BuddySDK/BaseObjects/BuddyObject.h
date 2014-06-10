@@ -17,6 +17,9 @@
 @property (nonatomic, readonly, assign) BOOL deleted;
 @property (nonatomic, readonly, assign) BOOL isDirty;
 
+
+- (instancetype)initWithId:(NSString*)id;
+- (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProvider>)client;
 - (void)registerProperty:(SEL)property;
 
 + (NSString *)requestPath;
