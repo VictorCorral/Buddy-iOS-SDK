@@ -1,8 +1,5 @@
 //
 //  LoginViewController.h
-//  registerlogin
-//
-//  Created by Nick Ambrose on 1/14/14.
 //  Copyright (c) 2014 Buddy Platform. All rights reserved.
 //
 
@@ -15,8 +12,8 @@
 
 // login
 @property (weak, nonatomic) IBOutlet UIView *loginView;
-@property (nonatomic,weak) IBOutlet UITextField *userNameTextField;
-@property (nonatomic,weak) IBOutlet UITextField *passwordTextField;
+@property (nonatomic,weak) IBOutlet UITextField *loginUsername;
+@property (nonatomic,weak) IBOutlet UITextField *loginPassword;
 
 - (IBAction)loginDidClick:(id)sender;
 

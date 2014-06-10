@@ -8,8 +8,9 @@
             <connections>
                 <outlet property="loginBut" destination="VkP-Rk-T99" id="drr-Fh-p5U"/>
                 <outlet property="loginChooser" destination="UIW-HS-acf" id="py9-j2-iPG"/>
+                <outlet property="loginPassword" destination="Z6F-AP-qMR" id="CA0-tK-kx0"/>
+                <outlet property="loginUsername" destination="Jhv-fh-78t" id="Cj8-VI-tBm"/>
                 <outlet property="loginView" destination="5MW-Zy-m3c" id="qQR-S0-na0"/>
-                <outlet property="passwordTextField" destination="Z6F-AP-qMR" id="IWv-Gw-kSI"/>
                 <outlet property="signupConfirmPassword" destination="0OD-Bk-BIt" id="wla-1O-EvP"/>
                 <outlet property="signupEmail" destination="wrw-ee-YMA" id="uFv-XN-OGC"/>
                 <outlet property="signupFirstName" destination="zPZ-Vg-da4" id="K4R-Wx-S3g"/>
@@ -17,7 +18,6 @@
                 <outlet property="signupPassword" destination="vm8-f7-xCa" id="kUD-3V-Snf"/>
                 <outlet property="signupUsername" destination="IRz-Et-Hj3" id="YPI-gL-mHG"/>
                 <outlet property="signupView" destination="nzO-DY-KQd" id="Eyt-Ih-E4t"/>
-                <outlet property="userNameTextField" destination="Jhv-fh-78t" id="dfg-2t-dQc"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>

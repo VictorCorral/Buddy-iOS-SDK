@@ -22,8 +22,8 @@
 
 @implementation BPStarterLoginViewController
 
-@synthesize userNameTextField;
-@synthesize passwordTextField;
+@synthesize loginUsername;
+@synthesize loginPassword;
 @synthesize signupConfirmPassword;
 @synthesize signupEmail;
 @synthesize signupFirstName;
@@ -103,8 +103,8 @@
             return;
         }
         
-        passwordTextField.text = @"";
-        signupConfirmPassword.text = signupPassword.text = @"";
+        self.loginPassword.text = @"";
+        self.signupConfirmPassword.text = signupPassword.text = @"";
         
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
         
@@ -239,7 +239,7 @@
     // handle login click
     //
     
-    if( [self.userNameTextField.text length]==0)
+    if( [self.loginUsername.text length]==0)
     {
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle: @"Empty Field"
@@ -251,7 +251,7 @@
         return;
     }
     
-    if( [self.passwordTextField.text length]==0)
+    if( [self.loginPassword.text length]==0)
     {
         UIAlertView *alert =
         [[UIAlertView alloc] initWithTitle: @"Empty Field"
@@ -264,8 +264,8 @@
     }
 
     
-    [Buddy login:self.userNameTextField.text
-        password:self.passwordTextField.text
+    [Buddy login:self.loginUsername.text
+        password:self.loginPassword.text
         callback:[self getLoginCallback]];
 
 }

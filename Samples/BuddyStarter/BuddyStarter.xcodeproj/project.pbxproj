@@ -135,12 +135,12 @@
 			isa = PBXGroup;
 			children = (
 				2900D8B31946750F007F5A89 /* BPStarterLoginViewController.h */,
+				2900D8BA1946750F007F5A89 /* BPStarterLoginViewController.m */,
 				2900D8B41946750F007F5A89 /* BPStarterViewController.h */,
 				2900D8B51946750F007F5A89 /* BPStarterViewController.xib */,
 				2900D8B61946750F007F5A89 /* BPStarterViewController.m */,
 				2900D8B81946750F007F5A89 /* BPStarterLoginViewController.xib */,
 				2900D8B91946750F007F5A89 /* BPStarterAppDelegate.m */,
-				2900D8BA1946750F007F5A89 /* BPStarterLoginViewController.m */,
 				2900D8BC1946750F007F5A89 /* Images.xcassets */,
 				293ABF8319453942003B8922 /* Supporting Files */,
 			);
