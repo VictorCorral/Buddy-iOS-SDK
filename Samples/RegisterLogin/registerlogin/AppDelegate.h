@@ -33,6 +33,6 @@
 
 -(void) storeUsername:(NSString *)userName andPassword:(NSString*)password;
 
--(void)authorizationNeedsUserLogin;
+-(void) authorizationNeedsUserLogin;
 
 @end

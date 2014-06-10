@@ -17,6 +17,9 @@
 @property (nonatomic, readonly, assign) BOOL deleted;
 @property (nonatomic, readonly, assign) BOOL isDirty;
 
+
+- (instancetype)initWithId:(NSString*)id;
+- (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProvider>)client;
 - (void)registerProperty:(SEL)property;
 
 + (NSString *)requestPath;
@@ -34,8 +37,11 @@
 @property (nonatomic, strong) BPCoordinateRange *locationRange;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSDate *endDate;
-@property (nonatomic, assign) NSInteger limit;
+@property (nonatomic, assign) NSInteger pageSize;
 @property (nonatomic, copy) NSString *pagingToken;
 @property (nonatomic, copy) NSString *userID;
+
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize;
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount;
 
 @end

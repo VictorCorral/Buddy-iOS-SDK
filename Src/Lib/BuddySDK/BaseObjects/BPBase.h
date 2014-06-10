@@ -45,15 +45,11 @@ typedef void (^BuddyResultCallback)(BOOL result, NSError *error);
 - (NSString *) metadataPath:(NSString *)key;
 
 - (void)setMetadata:(BPMetadataItem *)metadata callback:(BuddyCompletionCallback)callback;
-- (void)setMetadataValues:(BPMetadataCollection *)metadata callback:(BuddyCompletionCallback)callback;
+- (void)setMetadataValues:(BPMetadataKeyValues *)metadata callback:(BuddyCompletionCallback)callback;
 - (void)searchMetadata:(BPSearchMetadata *)search callback:(void (^) (NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error))callback;
 - (void)incrementMetadata:(NSString *)key delta:(NSInteger)delta callback:(BuddyCompletionCallback)callback;
-- (void)getMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BPMetadataCallback) callback;
-- (void)deleteMetadataWithKey:(NSString *)key permissions:(BPPermissions) permissions callback:(BuddyCompletionCallback)callback;
-
-@property (nonatomic, readonly, weak) id<BPRestProvider> client;
-
-@property (nonatomic, readonly, weak) id<BPLocationProvider> locationProvider;
+- (void)getMetadataWithKey:(NSString *)key visibility:(BPPermissions) visibility callback:(BPMetadataCallback) callback;
+- (void)deleteMetadataWithKey:(NSString *)key visibility:(BPPermissions) visibility callback:(BuddyCompletionCallback)callback;
 
 
 @end

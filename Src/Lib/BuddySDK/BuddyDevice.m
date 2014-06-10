@@ -33,7 +33,14 @@ static NSString* _pushToken = @"";
 +(void)pushToken:(NSString*)pushToken{
     _pushToken = pushToken;
     [[BPClient defaultClient] registerPushToken:pushToken callback:^(id device, NSError *error){
-        NSLog(@"token registered");
+        if(error==nil)
+        {
+            NSLog(@"token registered");
+        }
+        else
+        {
+            NSLog(@"token registration failed: %@",[error localizedDescription]);
+        }
     }];
 }
 

@@ -18,7 +18,7 @@
 
 @property (nonatomic,strong) MBProgressHUD *HUD;
 
-- (void) goBack;
+
 - (BuddyCompletionCallback) getUpdateProfileCallback;
 
 @end
@@ -39,18 +39,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
+    [self setTitle:@"Change Info"];
     
-    self.saveBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.saveBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.saveBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.saveBut.clipsToBounds = YES;
+    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonTapped:)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
     
-    self.cancelBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.cancelBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.cancelBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.cancelBut.clipsToBounds = YES;
     
     self.birthdayPicker.datePickerMode = UIDatePickerModeDate;
     [self populateUI];
@@ -74,14 +67,11 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-- (IBAction)doSave:(id)sender
+
+- (void)saveButtonTapped:(UIBarButtonItem *)sender
 {
+
     if ([self.firstNameField.text length]==0)
     {
         UIAlertView *alert =
@@ -141,18 +131,9 @@
         }
         
         NSLog(@"Change name and birthday - success Called");
-        [self goBack];
-        
+        [[self navigationController] popViewControllerAnimated:YES];
     };
 }
 
-- (IBAction)doCancel:(id)sender
-{
-    [self goBack];
-}
 
--(void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
-}
 @end

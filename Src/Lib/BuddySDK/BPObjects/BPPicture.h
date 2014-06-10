@@ -28,8 +28,9 @@ typedef void(^BuddyImageResponse)(UIImage *image, NSError *error);
 
 @interface BPPicture : BPBlob<BPPictureProperties>
 
-- (void)savetoServerWithImage:(UIImage *)image callback:(BuddyCompletionCallback)callback;
+- (void)savetoServerWithImage:(UIImage *)image client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback;
 
 - (void)getImage:(BuddyImageResponse)callback;
+- (void)getImageWithSize:(BPSize*)size callback:(BuddyImageResponse)callback;
 
 @end

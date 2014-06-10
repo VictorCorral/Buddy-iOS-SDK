@@ -40,21 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.loginBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.loginBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.loginBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.loginBut.clipsToBounds = YES;
     
-    self.backBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.backBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.backBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.backBut.clipsToBounds = YES;
-    
-    self.registerBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.registerBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.registerBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.registerBut.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning

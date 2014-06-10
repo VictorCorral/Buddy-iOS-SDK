@@ -39,39 +39,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setTitle:@"Identity Details"];
     
-    if (self.isNew)
+    UIBarButtonSystemItem item = UIBarButtonSystemItemSave;
+    
+    
+    if (!self.isNew)
     {
-        [self.actionBut setTitle:@"Add" forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.actionBut setTitle:@"Delete" forState:UIControlStateNormal];
+        item = UIBarButtonSystemItemTrash;
         self.identityProviderField.text = self.identityProviderString;
         self.valueField.text = self.valueString;
         self.identityProviderField.enabled = NO;
         self.valueField.enabled = NO;
     }
     
-    [UIButton buttonWithType:UIButtonTypeSystem];
-    
-    self.actionBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.actionBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.actionBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.actionBut.clipsToBounds = YES;
-    
-    self.backBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.backBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.backBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.backBut.clipsToBounds = YES;
+    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:item target:self action:@selector(doAction:)];
+    [[self navigationItem] setRightBarButtonItem:saveButton];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 - (IBAction)doAction:(id)sender {
     if (self.isNew)
@@ -131,7 +117,7 @@
         }
         
         NSLog(@"Add identity - success Called");
-        [self goBack];
+        [[self navigationController] popViewControllerAnimated:YES];
         
     };
 }
@@ -159,17 +145,9 @@
         }
         
         NSLog(@"Remove identity - success Called");
-        [self goBack];
-        
+        [[self navigationController] popViewControllerAnimated:YES];
     };
 }
 
-- (IBAction)doBack:(id)sender {
-    [self goBack];
-}
 
--(void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
-}
 @end

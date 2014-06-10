@@ -32,13 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [UIButton buttonWithType:UIButtonTypeSystem];
     
-    self.backBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.backBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.backBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.backBut.clipsToBounds = YES;
+    [self setTitle:@"User Details"];
+    
     
     [self populateFields];
 }
@@ -62,20 +58,7 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-- (IBAction)doBack:(id)sender
-{
-    [self goBack];
-}
 
-- (void) goBack
-{
-    [[CommonAppDelegate navController] popViewControllerAnimated:YES];
-}
 
 @end

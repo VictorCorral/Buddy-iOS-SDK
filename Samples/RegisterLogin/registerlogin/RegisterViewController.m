@@ -39,18 +39,8 @@
 {
     [super viewDidLoad];
     
-    [[CommonAppDelegate navController] setNavigationBarHidden:TRUE];
-    
-    self.registerBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.registerBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.registerBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.registerBut.clipsToBounds = YES;
-
-    self.goLoginBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.goLoginBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.goLoginBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.goLoginBut.clipsToBounds = YES;
-    
+    [self setTitle:@"Register"];
+        
 }
 
 
@@ -160,17 +150,17 @@
     user.dateOfBirth= nil;
     user.email = self.emailTextField.text;
     user.userName = self.userNameTextField.text;
-    
+
     __weak RegisterViewController *weakSelf = self;
-    
+
     [Buddy createUser:user
-                      password:self.passwordTextField.text
-                      callback:^(NSError *error) {
-                          [Buddy login:weakSelf.userNameTextField.text
-                                  password:weakSelf.passwordTextField.text
-                                  callback:[weakSelf getLoginCallback]];
-                          
-                      }];
+          password:self.passwordTextField.text
+          callback:^(NSError *error) {
+              [Buddy login:weakSelf.userNameTextField.text
+                      password:weakSelf.passwordTextField.text
+                      callback:[weakSelf getLoginCallback]];
+              
+          }];
 }
 
 -(IBAction) goLogin:(id)sender

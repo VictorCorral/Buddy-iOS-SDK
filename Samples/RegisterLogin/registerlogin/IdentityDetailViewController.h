@@ -17,10 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *identityProviderField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 
-@property (weak, nonatomic) IBOutlet UIButton *actionBut;
-@property (weak, nonatomic) IBOutlet UIButton *backBut;
 
-- (IBAction)doAction:(id)sender;
-- (IBAction)doBack:(id)sender;
+
 
 @end
