@@ -66,7 +66,7 @@ BOOL loginPresented;
     UIViewController* rootController = (UINavigationController*) self.window.rootViewController;
 
     [rootController presentViewController:self.loginViewController animated:YES completion:^{
-        NSLog(@"Login done");
+        
     }];
 }
 
