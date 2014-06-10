@@ -23,7 +23,7 @@
 - (void)addUserList:(BPUserList *)userList
            callback:(BuddyCompletionCallback)callback
 {
-    [userList savetoServer:callback];
+    [userList savetoServerWithClient:self.client callback:callback];
 }
 
 - (void)getUserList:(NSString *)userListId callback:(BuddyObjectCallback)callback
@@ -33,7 +33,6 @@
 
 - (void)searchUserLists:(BPSearchUserList *)searchUserList callback:(BPSearchCallback)callback
 {
-    searchUserList.limit = 25;
     id parameters = [searchUserList parametersFromProperties];
     
     [self search:parameters callback:callback];

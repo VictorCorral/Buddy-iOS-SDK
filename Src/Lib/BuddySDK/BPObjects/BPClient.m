@@ -42,6 +42,7 @@
 @property (nonatomic, strong) BPNotificationManager *notifications;
 @property (nonatomic, strong) BuddyAppDelegateDecorator *decorator;
 @property (nonatomic, strong) BPCrashManager *crashManager;
+@property (nonatomic, strong) NSMutableArray *queuedRequests;
 
 @end
 
@@ -103,6 +104,8 @@
     _albums = nil;
     _locations = nil;
     _userLists=nil;
+    
+    [self.appSettings clearUser];
 }
 
 -(void)setupWithApp:(NSString *)appID
@@ -279,7 +282,7 @@
 
     parameters = [NSDictionary dictionaryByMerging:parameters with:options];
     
-    [user savetoServerWithSupplementaryParameters:parameters callback:^(NSError *error) {
+    [user savetoServerWithSupplementaryParameters:parameters client:self.client callback:^(NSError *error) {
         if (error) {
             callback ? callback(error) : nil;
             return;
@@ -436,25 +439,24 @@
 }
 
 // Data struct to keep track of requests waiting on device token.
-NSMutableArray *queuedRequests;
 - (void)checkDeviceToken:(void(^)())method
 {
     [method copy];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        queuedRequests = [NSMutableArray array];
-    });
+    
+    if (!self.queuedRequests) {
+        self.queuedRequests = [NSMutableArray array];
+    }
     
     if ([self.appSettings.deviceToken length] > 0) {
         method();
     } else {
         @synchronized (self) {
-            if ([queuedRequests count] > 0) {
-                [queuedRequests addObject:method];
+            if ([self.queuedRequests count] > 0) {
+                [self.queuedRequests addObject:method];
                 return;
             }
             else {
-                [queuedRequests addObject:method];
+                [self.queuedRequests addObject:method];
                 
                 NSDictionary *getTokenParams = @{
                                                  @"appId": BOXNIL(self.appSettings.appID),
@@ -473,11 +475,11 @@ NSMutableArray *queuedRequests;
                         // We have a device token. Start monitoring for crashes.
                         [self.crashManager startReporting:self.appSettings.deviceToken];
                         
-                        for (void(^block)() in queuedRequests) {
+                        for (void(^block)() in self.queuedRequests) {
                             block();
                         }
                     }
-                    [queuedRequests removeAllObjects];
+                    [self.queuedRequests removeAllObjects];
                 }]];
             }
         }

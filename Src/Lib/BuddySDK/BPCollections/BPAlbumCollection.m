@@ -24,7 +24,7 @@
 - (void)addAlbum:(BPAlbum *)album
         callback:(BuddyCompletionCallback)callback
 {
-    [album savetoServer:callback];
+    [album savetoServerWithClient:self.client callback:callback];
 }
     
 -(void)getAlbums:(BPSearchCallback)callback

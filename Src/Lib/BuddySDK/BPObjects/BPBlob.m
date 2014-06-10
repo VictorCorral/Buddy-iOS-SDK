@@ -47,11 +47,13 @@ static NSString *blobMimeType = @"application/octet-stream";
     return blobMimeType;
 }
 
-- (void)savetoServerWithData:(NSData *)data callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithData:(NSData *)data client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
 {
     NSDictionary *multipartParameters = @{@"data": BOXNIL(data)};
     
     NSDictionary *parameters = [self buildUpdateDictionary];
+    
+    self.client = client;
     
     [self.client MULTIPART_POST:[[self class] requestPath]
                 parameters:parameters
@@ -95,9 +97,16 @@ static NSString *blobMimeType = @"application/octet-stream";
 
 - (void)getData:(BuddyDataResponse)callback
 {
+    [self getDataWithParameters:nil callback:^(NSData *data, NSError *error) {
+        callback ? callback(data, error) : nil;
+    }];
+}
+
+- (void)getDataWithParameters:(NSDictionary*)parameters callback:(BuddyDataResponse)callback
+{
     NSString *resource = [NSString stringWithFormat:@"%@/%@/%@", [[self class] requestPath], self.id, @"file"];
     
-    [self.client GET_FILE:resource parameters:nil callback:^(id imageByes, NSError *error) {
+    [self.client GET_FILE:resource parameters:parameters callback:^(id imageByes, NSError *error) {
         callback ? callback(imageByes, error) : nil;
     }];
 }

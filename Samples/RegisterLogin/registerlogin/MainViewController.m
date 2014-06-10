@@ -50,59 +50,26 @@
 {
     [super viewDidLoad];
     
-    [[CommonAppDelegate navController] setNavigationBarHidden:YES];
     
+    [self setTitle:@"Buddy User Accounts Sample"];
     UIBarButtonItem *backButton =[[UIBarButtonItem alloc] initWithTitle:@"Logout"  style:UIBarButtonItemStylePlain target:self action:@selector(doLogout)];
     
     
     self.navigationItem.leftBarButtonItem = backButton;
-    
-    self.refreshBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.refreshBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.refreshBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.refreshBut.clipsToBounds = YES;
-
-    self.clearUserBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.clearUserBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.clearUserBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.clearUserBut.clipsToBounds = YES;
-    
-    self.changeNameBirthdayBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.changeNameBirthdayBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.changeNameBirthdayBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.changeNameBirthdayBut.clipsToBounds = YES;
-    
-    self.changeProfilePictureBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.changeProfilePictureBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.changeProfilePictureBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.changeProfilePictureBut.clipsToBounds = YES;
-    
-    self.resetPasswordBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.resetPasswordBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.resetPasswordBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.resetPasswordBut.clipsToBounds = YES;
-    
-    self.searchUserBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.searchUserBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.searchUserBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.searchUserBut.clipsToBounds = YES;
-    
-    self.deleteUserBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.deleteUserBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.deleteUserBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.deleteUserBut.clipsToBounds = YES;
-    
-    self.identitiesBut.layer.cornerRadius = DEFAULT_BUT_CORNER_RAD;
-    self.identitiesBut.layer.borderWidth = DEFAULT_BUT_BORDER_WIDTH;
-    self.identitiesBut.layer.borderColor = [UIColor blackColor].CGColor;
-    self.identitiesBut.clipsToBounds = YES;
-}
+    }
 
 - (void) updateFields
 {
-    [[CommonAppDelegate navController] setNavigationBarHidden:YES];
-    self.mainLabel.text = [NSString stringWithFormat:@"Hi %@ %@",
+    
+    
+    if (Buddy.user.firstName && Buddy.user.lastName) {
+        self.mainLabel.text = [NSString stringWithFormat:@"Hi %@ %@",
                            Buddy.user.firstName, Buddy.user.lastName];
+    }
+    else {
+        self.mainLabel.text = [NSString stringWithFormat:@"Hi %@",
+                               Buddy.user.userName];
+    }
     
 }
 
@@ -192,14 +159,34 @@
     [ [CommonAppDelegate navController] pushViewController:subVC animated:YES];
 }
 
+
+
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 1)
+	{
+		self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.HUD.labelText= @"Deleting...";
+        self.HUD.dimBackground = YES;
+        self.HUD.delegate=self;
+        
+        [[Buddy user] destroy:[self getDeleteCallback]];
+	}
+}
+
 - (IBAction)doDeleteUser:(id)sender
 {
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    self.HUD.labelText= @"Deleting...";
-    self.HUD.dimBackground = YES;
-    self.HUD.delegate=self;
     
-    [[Buddy user] destroy:[self getDeleteCallback]];
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Delete User?"
+                                                   message:@"Are you sure you want to delete your user account?  This cannot be undone!"
+                                                  delegate:self
+                                         cancelButtonTitle:@"No"
+                                         otherButtonTitles:@"Yes",nil];
+    [alert show];
+    
+    
 }
 
 - (IBAction)doIdentities:(id)sender {
@@ -258,10 +245,6 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end

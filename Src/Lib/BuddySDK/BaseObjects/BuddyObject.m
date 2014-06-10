@@ -27,7 +27,6 @@
 
 @implementation BuddyObject
 
-@synthesize client = _client;
 @synthesize location = _location;
 @synthesize created = _created;
 @synthesize lastModified = _lastModified;
@@ -55,6 +54,32 @@
     return self;
 }
 
+
+- (instancetype)initWithId:(NSString*)id
+{
+    return [self initWithId:id andClient:nil];
+}
+
+
+- (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProvider>)client
+{
+    
+    
+    if (!id) {
+        return nil;
+    }
+    
+    self = [super init];
+    
+    if (self) {
+        [self registerProperties];
+        self.id = id;
+        client = client;
+    }
+    
+    return self;
+}
+
 - (instancetype)initBuddyWithClient:(id<BPRestProvider>)client
 {
     self = [super init];
@@ -70,10 +95,9 @@
 {
     if (!response) return nil;
     
-    self = [super init];
+    self = [super initWithClient:client];
     if(self)
     {
-        _client = client;
         [self registerProperties];
         [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:response];
     }
@@ -90,10 +114,6 @@
     return self;
 }
 
-- (id<BPRestProvider>)client
-{
-    return _client ?: (id<BPRestProvider>)[BPClient defaultClient];
-}
 
 - (void)registerProperties
 {
@@ -177,16 +197,18 @@
     }];
 }
 
-- (void)savetoServer:(BuddyCompletionCallback)callback
+- (void)savetoServerWithClient:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
 {
-    [self savetoServerWithSupplementaryParameters:nil callback:callback];
+    [self savetoServerWithSupplementaryParameters:nil client:client callback:callback];
 }
 
-- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
 {
     // Dictionary of property names/values
     NSDictionary *parameters = [self buildUpdateDictionary];
     parameters = [NSDictionary dictionaryByMerging:parameters with:extraParams];
+    
+    self.client = client;
     
     [self.client POST:[[self class] requestPath] parameters:parameters callback:^(id json, NSError *error) {
         [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:json];
@@ -288,4 +310,13 @@ static NSString *metadataRoute = @"metadata";
 
 @synthesize location, created, lastModified, readPermissions, writePermissions, tag, id;
 
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize
+{
+    return [NSString stringWithFormat:@"%lu;0",pageSize];
+}
+
++(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount
+{
+    return [NSString stringWithFormat:@"%lu;%lu",pageSize,skipCount];
+}
 @end

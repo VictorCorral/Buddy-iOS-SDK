@@ -43,19 +43,43 @@ static NSString *pictureMimeType = @"image/png";
     return pictureMimeType;
 }
 
-- (void)savetoServerWithImage:(UIImage *)image callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithImage:(UIImage *)image client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
 {
     NSData *data = UIImagePNGRepresentation(image);
     
-    [self savetoServerWithData:data callback:callback];
+    [self savetoServerWithData:data client:client callback:callback];
 }
 
 - (void)getImage:(BuddyImageResponse)callback
 {
-    [self getData:^(NSData *data, NSError *error) {
-        UIImage *image = [UIImage imageWithData:data];
+    [self getImageWithSize:nil callback:callback];
+}
+
+-(void)getImageWithSize:(BPSize *)size callback:(BuddyImageResponse)callback  {
+    
+   
+    NSDictionary* parameters = nil;
+    if(size){
+        
+        NSString* sizeParam = nil;
+        if (size.h > 0 && size.w > 0) {
+            sizeParam = [[NSString alloc] initWithFormat:@"%u,%u", (unsigned int)size.w ,(unsigned int)size.h] ;
+           
+        }
+        else if (size.h > 0 || size.w > 0){
+            sizeParam =[[NSString alloc] initWithFormat:@"%u", (unsigned int)(size.w > 0 ? size.w : size.h)] ;
+        }
+        parameters = [[NSDictionary alloc] initWithObjectsAndKeys:sizeParam, @"size", nil];
+
+    }
+    
+    
+    [self getDataWithParameters:parameters callback:^(NSData *data, NSError *error) {
+        UIImage* image = [UIImage imageWithData:data];
         callback ? callback(image, error) : nil;
     }];
+    
+    
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "BPBase.h"
+#import "BPBase+Private.h"
 #import "BPEnumMapping.h"
 #import "BPMetadataItem.h"
 #import "JAGPropertyConverter.h"
@@ -14,9 +15,21 @@
 
 @interface BPBase()<BPEnumMapping>
 
+@property (nonatomic, weak) id<BPRestProvider> client;
+@property (nonatomic, weak) id<BPLocationProvider> locationProvider;
+
 @end
 
 @implementation BPBase
+
+- (instancetype)initWithClient:(id<BPRestProvider>)client
+{
+    self = [super init];
+    if (self) {
+        _client = client;
+    }
+    return self;
+}
 
 + (id)convertValue:(NSString *)value forKey:(NSString *)key
 {
