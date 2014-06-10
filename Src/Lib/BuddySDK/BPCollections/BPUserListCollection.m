@@ -23,7 +23,7 @@
 - (void)addUserList:(BPUserList *)userList
            callback:(BuddyCompletionCallback)callback
 {
-    [userList savetoServer:callback];
+    [userList savetoServerWithClient:self.client callback:callback];
 }
 
 - (void)getUserList:(NSString *)userListId callback:(BuddyObjectCallback)callback

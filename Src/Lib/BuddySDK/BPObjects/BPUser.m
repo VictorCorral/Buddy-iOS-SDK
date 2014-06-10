@@ -17,7 +17,7 @@
 
 @implementation BPSearchUsers
 
-@synthesize firstName, lastName, userName, gender, dateOfBirth, profilePictureUrl, profilePictureID, email, locationFuzzing, celebMode;
+@synthesize firstName, lastName, userName, gender, dateOfBirth, profilePictureUrl, profilePictureID, email, locationFuzzing, celebMode,userListId;
 
 @end
 

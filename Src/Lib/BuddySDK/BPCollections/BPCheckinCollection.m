@@ -26,7 +26,7 @@
 -(void)addCheckin:(BPCheckin *)checkin
          callback:(BuddyCompletionCallback)callback
 {
-    [checkin savetoServer:callback];
+    [checkin savetoServerWithClient:self.client callback:callback];
 }
 
 - (void)searchCheckins:(BPSearchCheckins *)searchCheckin callback:(BPSearchCallback)callback;

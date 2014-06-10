@@ -7,6 +7,7 @@
 //
 
 #import "BuddyObject.h"
+#import "BPBase+Private.h"
 #import "BPRestProvider.h"
 
 @interface BuddyObject (Private)
@@ -21,7 +22,7 @@
 + (NSDictionary *)baseEnumMap;
 + (NSDictionary *)enumMap;
 
-- (void)savetoServer:(BuddyCompletionCallback)callback;
-- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams callback:(BuddyCompletionCallback)callback;
+- (void)savetoServerWithClient:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback;
+- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback;
 
 @end

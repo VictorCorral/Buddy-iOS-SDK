@@ -27,7 +27,6 @@
 
 @implementation BuddyObject
 
-@synthesize client = _client;
 @synthesize location = _location;
 @synthesize created = _created;
 @synthesize lastModified = _lastModified;
@@ -96,10 +95,9 @@
 {
     if (!response) return nil;
     
-    self = [super init];
+    self = [super initWithClient:client];
     if(self)
     {
-        _client = client;
         [self registerProperties];
         [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:response];
     }
@@ -116,10 +114,6 @@
     return self;
 }
 
-- (id<BPRestProvider>)client
-{
-    return _client ?: (id<BPRestProvider>)[BPClient defaultClient];
-}
 
 - (void)registerProperties
 {
@@ -203,16 +197,18 @@
     }];
 }
 
-- (void)savetoServer:(BuddyCompletionCallback)callback
+- (void)savetoServerWithClient:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
 {
-    [self savetoServerWithSupplementaryParameters:nil callback:callback];
+    [self savetoServerWithSupplementaryParameters:nil client:client callback:callback];
 }
 
-- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
 {
     // Dictionary of property names/values
     NSDictionary *parameters = [self buildUpdateDictionary];
     parameters = [NSDictionary dictionaryByMerging:parameters with:extraParams];
+    
+    self.client = client;
     
     [self.client POST:[[self class] requestPath] parameters:parameters callback:^(id json, NSError *error) {
         [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:json];

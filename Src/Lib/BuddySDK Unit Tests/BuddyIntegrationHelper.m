@@ -13,12 +13,12 @@
 
 + (void) bootstrapInit
 {
-    [Buddy initClient:APP_ID appKey:APP_KEY];
+    [Buddy initClient:APP_NAME appKey:APP_KEY];
 }
 
 + (void) bootstrapLogin:(void(^)())callback
 {
-    [Buddy initClient:APP_ID appKey:APP_KEY];
+    [Buddy initClient:APP_NAME appKey:APP_KEY];
     
     [Buddy login:TEST_USERNAME password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
         
@@ -57,7 +57,7 @@
         user.userName= [NSString stringWithFormat:@"%@_%d",usernamePrefix,index];
         
         __block BPClient *client=[[BPClient alloc] init];
-        [client setupWithApp:APP_ID appKey:APP_KEY options:nil delegate:nil];
+        [client setupWithApp:APP_NAME appKey:APP_KEY options:nil delegate:nil];
         
         [BuddyIntegrationHelper createRandomUser:user withClient:client callback:^(NSError *error)
         {
