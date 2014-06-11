@@ -22,6 +22,7 @@
 @property (nonatomic, readwrite, assign) BOOL isDirty;
 @property (nonatomic, strong) NSMutableArray *keyPaths;
 @property (nonatomic, assign) BOOL deleted;
+@property (strong, nonatomic) NSMutableArray *dirtyKeys;
 
 @end
 
@@ -64,8 +65,6 @@
 
 - (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProvider>)client
 {
-    
-    
     if (!id) {
         return nil;
     }
@@ -154,33 +153,19 @@
 
 -(NSDictionary *)buildUpdateDictionary
 {
-    NSMutableDictionary *buddyPropertyDictionary = [NSMutableDictionary dictionary];
-    for (NSString *key in self.keyPaths)
-    {
-        id c = [self valueForKeyPath:key];
-        if (!c) continue;
-        
-        if([[c class] isSubclassOfClass:[NSDate class]]){
-            c = [c serializeDateToJson];
-        } else if([[self class] conformsToProtocol:@protocol(BPEnumMapping)]
-                  && [[self class] mapForProperty:key]) {
-            id map = [[self class] mapForProperty:key];
-            c = map[c];
-            if (!c) {
-                continue;
-            }
-        } else if ([c respondsToSelector:@selector(stringValue)]) {
-            c = [c stringValue];
-        }
-        
-        [buddyPropertyDictionary setObject:c forKey:key];
-    }
-    
-    return buddyPropertyDictionary;
+    return [self bp_parametersFromProperties:self.dirtyKeys];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    if (!self.dirtyKeys) {
+        self.dirtyKeys = [NSMutableArray array];
+    }
+    
+    if ([self.dirtyKeys indexOfObject:keyPath] == NSNotFound) {
+        [self.dirtyKeys addObject:keyPath];
+    }
+    
     if(change)
         self.isDirty = YES;
 }
@@ -362,7 +347,7 @@ static NSString *metadataRoute = @"metadata";
 
 - (NSDictionary *)parametersFromDirtyProperties
 {
-    NSDictionary *parameters = [self parametersFromProperties];
+    NSDictionary *parameters = [self bp_parametersFromProperties];
     NSMutableDictionary *dirtyParameters = [NSMutableDictionary dictionary];
     
     for (id key in parameters) {

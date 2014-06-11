@@ -475,10 +475,12 @@
                         // We have a device token. Start monitoring for crashes.
                         [self.crashManager startReporting:self.appSettings.deviceToken];
                         
-                        for (void(^block)() in self.queuedRequests) {
-                            block();
-                        }
                     }
+                    
+                    for (void(^block)() in self.queuedRequests) {
+                        block();
+                    }
+                    
                     [self.queuedRequests removeAllObjects];
                 }]];
             }
