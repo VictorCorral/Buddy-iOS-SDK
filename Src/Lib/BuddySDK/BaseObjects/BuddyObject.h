@@ -43,5 +43,6 @@
 
 +(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize;
 +(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount;
+- (NSDictionary *)parametersFromDirtyProperties;
 
 @end

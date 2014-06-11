@@ -33,7 +33,7 @@
 
 - (void)searchUserLists:(BPSearchUserList *)searchUserList callback:(BPSearchCallback)callback
 {
-    id parameters = [searchUserList parametersFromProperties];
+    id parameters = [searchUserList parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

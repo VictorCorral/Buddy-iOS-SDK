@@ -71,7 +71,7 @@
 
 - (void)setMetadata:(BPMetadataItem *)metadata callback:(BuddyCompletionCallback)callback
 {
-    id parameters = [metadata parametersFromProperties];
+    id parameters = [metadata bp_parametersFromProperties];
     
     [self.client PUT:[self metadataPath:parameters[@"key"]] parameters:parameters callback:^(id json, NSError *error) {
         callback ? callback(error) : nil;
@@ -80,7 +80,7 @@
 
 - (void)setMetadataValues:(BPMetadataKeyValues *)metadata callback:(BuddyCompletionCallback)callback
 {
-    id parameters = [metadata parametersFromProperties];
+    id parameters = [metadata bp_parametersFromProperties];
     
     [self.client PUT:[self metadataPath:nil] parameters:parameters callback:^(id json, NSError *error) {
         callback ? callback(error) : nil;
@@ -90,7 +90,7 @@
 
 - (void)searchMetadata:(BPSearchMetadata *)search callback:(BPSearchCallback)callback
 {
-    id searchParameters = [search parametersFromProperties];
+    id searchParameters = [search bp_parametersFromProperties];
     
     NSString *resource = [self metadataPath:nil];
     

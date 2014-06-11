@@ -11,7 +11,9 @@
 
 @interface NSObject (ToJSON)
 
-- (NSDictionary *)parametersFromProtocol:(Protocol *)protocol;
-- (NSDictionary *)parametersFromProperties;
+- (NSDictionary *)bp_parametersFromProtocol:(Protocol *)protocol;
+- (NSDictionary *)bp_parametersFromProperties;
+- (NSDictionary *)bp_parametersFromProperties:(NSArray *)keys;
+
 
 @end

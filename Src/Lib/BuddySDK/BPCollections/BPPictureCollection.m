@@ -32,7 +32,7 @@
 
 -(void)searchPictures:(BPSearchPictures *)searchPictures callback:(BPSearchCallback)callback
 {
-    id parameters = [searchPictures parametersFromProperties];
+    id parameters = [searchPictures parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }
