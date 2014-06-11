@@ -314,20 +314,35 @@ static NSString *metadataRoute = @"metadata";
 {
     self = [super init];
     if (self) {
-        _dirtyKeys = [NSMutableArray array];
-        
-        unsigned int count;
-        objc_property_t *props = class_copyPropertyList([self class], &count);
-        
-        for (int i = 0; i < count; ++i){
-            NSString *propName = [NSString stringWithUTF8String:property_getName(props[i])];
-            
-            [self addObserver:self forKeyPath:propName options:NSKeyValueObservingOptionNew context:nil];
+        self.dirtyKeys = [NSMutableArray array];
+        NSArray *keysForSearchClass = [self propertiesForClass:[self class]];
+        for (NSString *key in keysForSearchClass) {
+            [self addObserver:self forKeyPath:key options:NSKeyValueObservingOptionNew context:nil];
         }
-        
-        free(props);
     }
     return self;
+}
+
+- (NSArray *)propertiesForClass:(Class)class
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    unsigned int count;
+    objc_property_t *props = class_copyPropertyList(class, &count);
+    
+    for (int i = 0; i < count; ++i){
+        NSString *propName = [NSString stringWithUTF8String:property_getName(props[i])];
+        [array addObject:propName];
+    }
+    
+    if (([class isSubclassOfClass:[BuddyObject class]] && class != [BuddyObject class]) ||
+        ([class isSubclassOfClass:[BPObjectSearch class]] && class != [BPObjectSearch class])) {
+        [array addObjectsFromArray:[self propertiesForClass:[class superclass]]];
+    }
+    
+    free(props);
+    
+    return array;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
