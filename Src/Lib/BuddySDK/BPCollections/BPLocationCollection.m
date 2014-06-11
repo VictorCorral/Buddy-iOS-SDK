@@ -25,7 +25,7 @@
 - (void)addLocation:(BPLocation *)location
            callback:(BuddyCompletionCallback)callback
 {
-    [location savetoServer:callback];
+    [location savetoServerWithClient:self.client callback:callback];
 }
 
 - (void)getLocation:(NSString *)locationId callback:(BuddyObjectCallback)callback
@@ -35,7 +35,7 @@
 
 - (void)searchLocation:(BPSearchLocation *)searchLocations callback:(BPSearchCallback)callback
 {
-    id parameters = [searchLocations parametersFromProperties];
+    id parameters = [searchLocations parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

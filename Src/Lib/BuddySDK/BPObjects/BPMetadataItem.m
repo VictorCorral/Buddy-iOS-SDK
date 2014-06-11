@@ -13,7 +13,7 @@
 
 + (NSDictionary *)mapForProperty:(NSString *)key
 {
-    if ([key isEqualToString:@"permissions"]) {
+    if ([key isEqualToString:@"visibility"]) {
         return @{
                          @(BPPermissionsApp) : @"App",
                          @(BPPermissionsUser) : @"User",
@@ -36,7 +36,7 @@
 
 @implementation BPSearchMetadata
 
-@synthesize key, value, keyPrefix, locationRange, created, modified, permissions;
+@synthesize key, value, keyPrefix, locationRange, created, modified, visibility;
 
 @end
 
@@ -55,7 +55,7 @@
 @synthesize locationRange = _locationRange;
 @synthesize created = _created;
 @synthesize modified = _modified;
-@synthesize permissions = _permissions;
+@synthesize visibility = _visibility;
 
 - (instancetype)initBuddyWithResponse:(id)response
 {
@@ -71,8 +71,8 @@
 
 @end
 
-@implementation BPMetadataCollection
+@implementation BPMetadataKeyValues
 
-@synthesize values, permissions;
+@synthesize values, visibility;
 
 @end

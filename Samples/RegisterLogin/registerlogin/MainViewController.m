@@ -10,6 +10,8 @@
 
 #import "MBProgressHUD.h"
 
+#import <BuddySDK/Buddy.h>
+
 #import "Constants.h"
 #import "AppDelegate.h"
 #import "MainViewController.h"

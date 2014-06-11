@@ -24,7 +24,7 @@
 - (void)addAlbum:(BPAlbum *)album
         callback:(BuddyCompletionCallback)callback
 {
-    [album savetoServer:callback];
+    [album savetoServerWithClient:self.client callback:callback];
 }
     
 -(void)getAlbums:(BPSearchCallback)callback
@@ -35,7 +35,7 @@
 
 -(void)searchAlbums:(BPSearchAlbum *)searchAlbum callback:(BPSearchCallback)callback
 {
-    id parameters = [searchAlbum parametersFromProperties];
+    id parameters = [searchAlbum parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

@@ -22,7 +22,7 @@
 @property (nonatomic,weak) IBOutlet UIButton *goRegisterBut;
 
 -(IBAction) doLogin:(id)sender;
-- (IBAction)doSocialLogin:(id)sender;
+-(IBAction) doSocialLogin:(id)sender;
 -(IBAction) goRegister:(id)sender;
 
 -(void) populateFields;

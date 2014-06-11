@@ -13,48 +13,65 @@
 
 @implementation NSObject (ToJSON)
 
-- (NSMutableDictionary *)parametersFromProperties
+- (NSMutableDictionary *)bp_parametersFromProperties
 {
-    return  [self parametersFromProperties:[self class]];
+    return  [self parametersFromPropertiesForClass:[self class]];
 }
 
-- (NSMutableDictionary *)parametersFromProperties:(Class)class
+- (NSDictionary *)bp_parametersFromProperties:(NSArray *)keys
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
+    for (NSString *name in keys) {
+        id val = [self valueForKey:name];
+        
+        if([[self class] conformsToProtocol:@protocol(BPEnumMapping)]
+           && [[self class] mapForProperty:name]) {
+            id map = [[self class] mapForProperty:name];
+            val = map[val];
+            if (!val) {
+                continue;
+            }
+        }
+        else if ([val isKindOfClass:[NSNumber class]]) {
+            // Don't convert
+        } else if ([val respondsToSelector:@selector(stringValue)]) {
+            val = [val stringValue];
+        } else if([[val class] isSubclassOfClass:[NSDate class]]){
+            val = [val serializeDateToJson];
+        }
+        
+        if (val) {
+            parameters[name] = val;
+        }
+    }
+    
+    return parameters;
+}
+
+- (NSMutableDictionary *)parametersFromPropertiesForClass:(Class)class
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     @autoreleasepool {
         unsigned int numberOfProperties = 0;
         objc_property_t *propertyArray = class_copyPropertyList(class, &numberOfProperties);
+        
+        NSMutableArray *keys = [NSMutableArray array];
+        
         for (NSUInteger i = 0; i < numberOfProperties; i++)
         {
             objc_property_t property = propertyArray[i];
             NSString *name = [[NSString alloc] initWithUTF8String:property_getName(property)];
-            id val = [self valueForKey:name];
             
-            if([[self class] conformsToProtocol:@protocol(BPEnumMapping)]
-                    && [[self class] mapForProperty:name]) {
-                id map = [[self class] mapForProperty:name];
-                val = map[val];
-                if (!val) {
-                    continue;
-                }
-            }
-            else if ([val isKindOfClass:[NSNumber class]]) {
-                // Don't convert
-            } else if ([val respondsToSelector:@selector(stringValue)]) {
-                val = [val stringValue];
-            } else if([[val class] isSubclassOfClass:[NSDate class]]){
-                val = [val serializeDateToJson];
-            }
-            
-            if (val) {
-                parameters[name] = val;
-            }
+            [keys addObject:name];
         }
+        
+        [parameters addEntriesFromDictionary:[self bp_parametersFromProperties:keys]];
         
         if (([class isSubclassOfClass:[BuddyObject class]] && class != [BuddyObject class]) ||
             ([class isSubclassOfClass:[BPObjectSearch class]] && class != [BPObjectSearch class])) {
-            [parameters addEntriesFromDictionary:[self parametersFromProperties:[class superclass]]];
+            [parameters addEntriesFromDictionary:[self parametersFromPropertiesForClass:[class superclass]]];
         }
         
         free(propertyArray);
@@ -62,7 +79,7 @@
     return parameters;
 }
 
-- (NSMutableDictionary *)parametersFromProtocol:(Protocol *)protocol
+- (NSMutableDictionary *)bp_parametersFromProtocol:(Protocol *)protocol
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
@@ -100,7 +117,7 @@
         
         // Recurse derived protocols.
         for (NSInteger i = 0; i < numberOfProtocols; i++) {
-            [parameters addEntriesFromDictionary:[self parametersFromProtocol:protocolArray[i]]];
+            [parameters addEntriesFromDictionary:[self bp_parametersFromProtocol:protocolArray[i]]];
         }
         
         free(propertyArray);

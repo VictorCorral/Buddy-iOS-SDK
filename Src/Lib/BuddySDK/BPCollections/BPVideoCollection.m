@@ -24,12 +24,12 @@
        videoData:(NSData *)videoData
         callback:(BuddyCompletionCallback)callback
 {
-    [video savetoServerWithData:videoData callback:callback];
+    [video savetoServerWithData:videoData client:self.client callback:callback];
 }
 
 - (void)searchVideos:(BPVideoSearch *)searchVideo callback:(BPSearchCallback)callback;
 {
-    id parameters = [searchVideo parametersFromProperties];
+    id parameters = [searchVideo parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

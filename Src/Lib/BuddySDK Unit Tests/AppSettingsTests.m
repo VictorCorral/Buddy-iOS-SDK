@@ -21,7 +21,7 @@ SPEC_BEGIN(AppSettings)
 
 describe(@"App Settings Tests", ^{
     it(@"Should allow saving of app settings", ^{
-        BPAppSettings *appSettings = [[BPAppSettings alloc] initWithBaseUrl:@"test.com"];
+        BPAppSettings *appSettings = [[BPAppSettings alloc] initWithBaseUrl:@"https://api.buddyplatform.com"];
         appSettings.userToken = User_TOKEN_STRING;
         appSettings.deviceToken = DEVICE_TOKEN_STRING;
     });

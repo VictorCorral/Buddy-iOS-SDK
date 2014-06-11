@@ -24,7 +24,7 @@
        data:(NSData *)data
        callback:(BuddyCompletionCallback)callback;
 {
-    [blob savetoServerWithData:data callback:callback];
+    [blob savetoServerWithData:data client:self.client callback:callback];
 }
 
 -(void)getBlobs:(BPSearchCallback)callback
@@ -39,7 +39,7 @@
 
 - (void)searchBlobs:(BPBlobSearch *)searchBlobs callback:(BPSearchCallback)callback
 {
-    id parameters = [searchBlobs parametersFromProperties];
+    id parameters = [searchBlobs parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

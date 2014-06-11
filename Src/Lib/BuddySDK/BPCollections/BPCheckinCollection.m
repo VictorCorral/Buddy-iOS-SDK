@@ -26,12 +26,12 @@
 -(void)addCheckin:(BPCheckin *)checkin
          callback:(BuddyCompletionCallback)callback
 {
-    [checkin savetoServer:callback];
+    [checkin savetoServerWithClient:self.client callback:callback];
 }
 
 - (void)searchCheckins:(BPSearchCheckins *)searchCheckin callback:(BPSearchCallback)callback;
 {
-    id parameters = [searchCheckin parametersFromProperties];
+    id parameters = [searchCheckin parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

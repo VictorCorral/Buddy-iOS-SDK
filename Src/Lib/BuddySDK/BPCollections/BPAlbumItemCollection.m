@@ -45,6 +45,8 @@
     
     NSString *requestPath = [self.requestPrefix stringByAppendingString:[[self type] requestPath]];
     
+    albumItem.client = self.client;
+    
     [self.client POST:requestPath parameters:params callback:^(id json, NSError *error) {
         [[JAGPropertyConverter converter] setPropertiesOf:albumItem fromDictionary:json];
         callback(error);
@@ -53,7 +55,7 @@
 
 - (void)searchAlbumItems:(BPSearchAlbumItems *)searchAlbumItems callback:(BPSearchCallback)callback
 {
-    id parameters = [searchAlbumItems parametersFromProperties];
+    id parameters = [searchAlbumItems parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }
