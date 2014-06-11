@@ -13,7 +13,7 @@
 - (instancetype) init __attribute__((unavailable("Use initWithAppId::")));
 + (instancetype) new __attribute__((unavailable("Use initWithAppId::")));
 
-- (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey;
+- (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey initialURL:(NSString *)initialURL;
 
 @property (nonatomic, strong) NSString *appVersion;
 

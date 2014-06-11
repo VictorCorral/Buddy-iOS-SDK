@@ -67,6 +67,7 @@
         _notifications = [[BPNotificationManager alloc] initWithClient:self];
         _location = [BPLocationManager new];
         _location.delegate = self;
+        [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
 //        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
 //            switch (status) {
 //                case AFNetworkReachabilityStatusNotReachable:
@@ -122,9 +123,7 @@
     NSString *serviceUrl = [[NSBundle mainBundle] infoDictionary][BuddyServiceURL];
 #endif
     
-    serviceUrl = serviceUrl ?: BuddyDefaultURL;
-    
-    _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey];
+    _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl];
     
     _service = [[BPServiceController alloc] initWithAppSettings:_appSettings];
     
@@ -176,17 +175,14 @@
 - (void)setUser:(BPUser *)user
 {
     BPUser *oldUser = _user;
+    
     _user = user;
     self.appSettings.userToken = _user.accessToken;
     self.appSettings.userID = _user.id;
     // TODO - Create an auth-level change delegate method?
     self.appSettings.lastUserID = _user.id;
     
-    [self removeObserver:self forKeyPath:@"user.deleted"];
-
-    if (_user) {
-        [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
-    } else {
+    if (!_user) {
         [self.appSettings clearUser];
     }
     
