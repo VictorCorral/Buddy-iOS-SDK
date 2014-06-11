@@ -124,11 +124,7 @@
     
     serviceUrl = serviceUrl ?: BuddyDefaultURL;
     
-    // Try to restore. If none exist, create a new settings object.
-    _appSettings = [BPAppSettings restoreSettings];
-    if (!_appSettings) {
-        _appSettings = [[BPAppSettings alloc] initWithBaseUrl:serviceUrl];
-    }
+    _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey];
     
     _service = [[BPServiceController alloc] initWithAppSettings:_appSettings];
     
@@ -181,11 +177,17 @@
 {
     BPUser *oldUser = _user;
     _user = user;
+    self.appSettings.userToken = _user.accessToken;
+    self.appSettings.userID = _user.id;
+    // TODO - Create an auth-level change delegate method?
+    self.appSettings.lastUserID = _user.id;
     
+    [self removeObserver:self forKeyPath:@"user.deleted"];
+
     if (_user) {
         [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
     } else {
-        [self removeObserver:self forKeyPath:@"user.deleted"];
+        [self.appSettings clearUser];
     }
     
     [self raiseUserChangedTo:_user from:oldUser];
@@ -373,9 +375,11 @@
     }];
 }
 
--(void) registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback{
+-(void) registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback
+{
+    self.appSettings.devicePushToken = token;
     NSString *resource = @"devices/current";
-        [self PATCH:resource parameters:@{@"pushToken": token} callback:callback];
+    [self PATCH:resource parameters:@{@"pushToken": token} callback:callback];
 }
 
 
@@ -466,7 +470,8 @@
                                                  @"UniqueId": BOXNIL([BuddyDevice identifier]),
                                                  @"Model": BOXNIL([BuddyDevice deviceModel]),
                                                  @"OSVersion": BOXNIL([BuddyDevice osVersion]),
-                                                 @"DeviceToken": BOXNIL([BuddyDevice pushToken])
+                                                 @"DeviceToken": BOXNIL(self.appSettings.devicePushToken),
+                                                 @"AppVersion": BOXNIL(self.appSettings.appVersion)
                                                  };
                 [self.service POST:@"devices" parameters:getTokenParams callback:[self handleResponse:^(id json, NSError *error) {
                     // Grab the potentially different base url.

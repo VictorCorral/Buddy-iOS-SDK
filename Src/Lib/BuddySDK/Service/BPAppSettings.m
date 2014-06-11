@@ -8,21 +8,22 @@
 
 #import "BPAppSettings.h"
 
-@interface BPAppSettings()
-
-@property (nonatomic, strong) NSString *defaultUrl;
-
-@end
-
 @implementation BPAppSettings
 
 @synthesize serviceUrl = _serviceUrl;
 
-- (instancetype)initWithBaseUrl:(NSString *)baseUrl
+- (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey
 {
     self = [super init];
     if (self) {
-        _defaultUrl = baseUrl;
+
+        _appID = appID;
+        _appKey = appKey;
+        
+        if (_appID) {
+            [self restoreSettings];
+        }
+        
         [self addObserver:self forKeyPath:@"appID" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"appKey" options:NSKeyValueObservingOptionNew context:nil];
         [self addObserver:self forKeyPath:@"serviceUrl" options:NSKeyValueObservingOptionNew context:nil];
@@ -41,20 +42,11 @@
 
 #pragma mark - Custom accessors
 
-- (NSString *)serviceUrl
-{
-    return _serviceUrl ?: self.defaultUrl;
-}
-
-- (void)setServiceUrl:(NSString *)serviceUrl
-{
-    _serviceUrl = serviceUrl;
-}
-
 - (NSString *)token
 {
     return self.userToken ?: self.deviceToken ?: nil;
 }
+
 #pragma mark - BPAppSettings
 
 - (void)clear
@@ -62,6 +54,7 @@
     self.serviceUrl = nil;
     self.deviceToken = nil;
     self.deviceTokenExpires = nil;
+    self.lastUserID = nil;
     [self clearUser];
 }
 
@@ -69,6 +62,7 @@
 {
     self.userToken = nil;
     self.userTokenExpires = nil;
+    self.userID = nil;
 }
 
 - (void)saveSettings
@@ -77,19 +71,15 @@
     [[NSUserDefaults standardUserDefaults] setObject:settings forKey:@"BPUserSettings"];
 }
 
-+ (BPAppSettings *)restoreSettings
+- (void)restoreSettings
 {
     NSDictionary *restoredSettings = [[NSUserDefaults standardUserDefaults] objectForKey:@"BPUserSettings"];
     
     if (!restoredSettings) {
-        return nil;
+        return;
     }
     
-    BPAppSettings *settings = [[BPAppSettings alloc] initWithBaseUrl:nil];
-    
-    [[JAGPropertyConverter converter] setPropertiesOf:settings fromDictionary:restoredSettings];
-    
-    return settings;
+    [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:restoredSettings];
 }
 
 @end
