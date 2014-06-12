@@ -104,4 +104,9 @@
     [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:restoredSettings];
 }
 
++ (void)resetSettings
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"BPUserSettings"];
+}
+
 @end

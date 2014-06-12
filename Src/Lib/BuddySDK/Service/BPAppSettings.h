@@ -36,4 +36,6 @@
 - (void)clear;
 - (void)clearUser;
 
++ (void)resetSettings;
+
 @end

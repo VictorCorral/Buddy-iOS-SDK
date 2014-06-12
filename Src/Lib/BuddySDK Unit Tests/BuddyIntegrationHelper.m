@@ -7,6 +7,7 @@
 //
 
 #import "BuddyIntegrationHelper.h"
+#import "BPAppSettings.h"
 #import "Buddy.h"
 
 @implementation BuddyIntegrationHelper
@@ -18,6 +19,8 @@
 
 + (void) bootstrapLogin:(void(^)())callback
 {
+    [BPAppSettings resetSettings];
+    
     [Buddy initClient:APP_ID appKey:APP_KEY];
     
     [Buddy login:TEST_USERNAME password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
