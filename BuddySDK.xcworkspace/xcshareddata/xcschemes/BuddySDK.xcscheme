@@ -31,7 +31,7 @@
                BlueprintIdentifier = "A6291F7B165C01800051F83C"
                BuildableName = "libBuddySDK.a"
                BlueprintName = "BuddySDK"
-               ReferencedContainer = "container:BuddySDK.xcodeproj">
+               ReferencedContainer = "container:Src/Lib/BuddySDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -63,7 +63,7 @@
                BlueprintIdentifier = "C1E0D1E01831C2E8001A7A01"
                BuildableName = "BuddySDK Unit Tests.xctest"
                BlueprintName = "BuddySDK Unit Tests"
-               ReferencedContainer = "container:BuddySDK.xcodeproj">
+               ReferencedContainer = "container:Src/Lib/BuddySDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
