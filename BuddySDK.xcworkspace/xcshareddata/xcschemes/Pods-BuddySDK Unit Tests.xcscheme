@@ -17,7 +17,7 @@
                BlueprintIdentifier = "804AA24CA5D6403AA0E0F9DB"
                BuildableName = "libPods-BuddySDK Unit Tests.a"
                BlueprintName = "Pods-BuddySDK Unit Tests"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               ReferencedContainer = "container:Src/Pods/Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
