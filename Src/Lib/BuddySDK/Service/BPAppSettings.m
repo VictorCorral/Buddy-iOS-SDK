@@ -22,7 +22,6 @@
 {
     self = [super init];
     if (self) {
-
         _appID = appID;
         _appKey = appKey;
         _initialURL = initialURL;
