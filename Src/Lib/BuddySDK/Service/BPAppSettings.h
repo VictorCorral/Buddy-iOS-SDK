@@ -14,6 +14,7 @@
 + (instancetype) new __attribute__((unavailable("Use initWithAppId::")));
 
 - (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey initialURL:(NSString *)initialURL;
+- (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey initialURL:(NSString *)initialURL prefix:(NSString *)prefix;
 
 @property (nonatomic, strong) NSString *appVersion;
 
@@ -37,5 +38,6 @@
 - (void)clearUser;
 
 + (void)resetSettings;
++ (void)resetSettings:(NSString *)prefix;
 
 @end

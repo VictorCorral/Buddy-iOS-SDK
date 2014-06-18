@@ -19,7 +19,7 @@
 
 + (void) bootstrapLogin:(void(^)())callback
 {
-    [BPAppSettings resetSettings];
+    [BPAppSettings resetSettings:nil];
     
     [Buddy initClient:APP_ID appKey:APP_KEY];
     
@@ -60,7 +60,7 @@
         user.userName= [NSString stringWithFormat:@"%@_%d",usernamePrefix,index];
         
         __block BPClient *client=[[BPClient alloc] init];
-        [client setupWithApp:APP_ID appKey:APP_KEY options:nil delegate:nil];
+        [client setupWithApp:APP_ID appKey:APP_KEY options:@{@"BPTestAppPrefix": usernamePrefix} delegate:nil];
         
         [BuddyIntegrationHelper createRandomUser:user withClient:client callback:^(NSError *error)
         {

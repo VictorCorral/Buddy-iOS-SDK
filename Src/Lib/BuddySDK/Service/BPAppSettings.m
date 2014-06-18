@@ -11,6 +11,7 @@
 @interface BPAppSettings()
 
 @property (nonatomic, strong) NSString *initialURL;
+@property (nonatomic, strong) NSString *keyString;
 
 @end
 
@@ -20,14 +21,24 @@
 
 - (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey initialURL:(NSString *)initialURL
 {
+    self = [self initWithAppId:appID andKey:appKey initialURL:initialURL prefix:nil];
+    if (self) {
+        
+    }
+    return self;
+}
+
+- (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey initialURL:(NSString *)initialURL prefix:(NSString *)prefix
+{
     self = [super init];
     if (self) {
         _appID = appID;
         _appKey = appKey;
         _initialURL = initialURL;
-        
+        _keyString = [NSString stringWithFormat:@"%@BPUserSettings", prefix];
+
         if (_appID) {
-            [self restoreSettings];
+            [self restoreSettings:prefix];
         }
         
         [self addObserver:self forKeyPath:@"appID" options:NSKeyValueObservingOptionNew context:nil];
@@ -89,12 +100,13 @@
 - (void)saveSettings
 {
     NSDictionary *settings = [[JAGPropertyConverter converter] convertToDictionary:self];
-    [[NSUserDefaults standardUserDefaults] setObject:settings forKey:@"BPUserSettings"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:settings forKey:self.keyString];
 }
 
-- (void)restoreSettings
+- (void)restoreSettings:(NSString *)prefix
 {
-    NSDictionary *restoredSettings = [[NSUserDefaults standardUserDefaults] objectForKey:@"BPUserSettings"];
+    NSDictionary *restoredSettings = [[NSUserDefaults standardUserDefaults] objectForKey:self.keyString];
     
     if (!restoredSettings) {
         return;
@@ -105,7 +117,13 @@
 
 + (void)resetSettings
 {
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"BPUserSettings"];
+    [self resetSettings:nil];
+}
+
++ (void)resetSettings:(NSString *)prefix
+{
+    NSString *keyString = [NSString stringWithFormat:@"%@BPUserSettings", prefix];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:keyString];
 }
 
 @end

@@ -113,7 +113,6 @@
              appKey:(NSString *)appKey
             options:(NSDictionary *)options
            delegate:(id<BPClientDelegate>) delegate
-
 {
     
 #if DEBUG
@@ -123,7 +122,11 @@
     NSString *serviceUrl = [[NSBundle mainBundle] infoDictionary][BuddyServiceURL];
 #endif
     
-    _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl];
+    if (options[@"BPTestAppPrefix"]) {
+        _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl prefix:options[@"BPTestAppPrefix"]];
+    } else {
+        _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl];
+    }
     
     _service = [[BPServiceController alloc] initWithAppSettings:_appSettings];
     

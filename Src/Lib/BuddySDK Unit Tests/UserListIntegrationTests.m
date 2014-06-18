@@ -270,6 +270,11 @@ describe(@"BuddyUserListsSpec", ^{
                 
                 [BuddyIntegrationHelper createRandomUsers:userArray count:NUM_USERS callback:^(NSError *error) {
                     [error shouldBeNil];
+                    
+                    if(error){
+                        // bail early
+                        return;
+                    }
                     __block int numTimesCallbackCalled = 0;
                     
                     if ([userArray count] != NUM_USERS) {
@@ -342,6 +347,12 @@ describe(@"BuddyUserListsSpec", ^{
                 
                 [BuddyIntegrationHelper createRandomUsers:userArray count:NUM_USERS callback:^(NSError *error) {
                     [error shouldBeNil];
+                    
+                    if(error){
+                        // bail early
+                        return;
+                    }
+                    
                     __block int numTimesCallbackCalled = 0;
                     for(int index=0;index<NUM_USERS;index++)
                     {
