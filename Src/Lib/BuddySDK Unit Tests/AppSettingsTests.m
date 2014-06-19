@@ -20,6 +20,11 @@
 SPEC_BEGIN(AppSettings)
 
 describe(@"App Settings Tests", ^{
+    
+    beforeAll(^{
+        [BPAppSettings resetSettings];
+    });
+    
     it(@"Should allow saving of app settings", ^{
         BPAppSettings *appSettings = [[BPAppSettings alloc] initWithAppId:@"appID" andKey:@"appKey" initialURL:nil];
         appSettings.userToken = User_TOKEN_STRING;

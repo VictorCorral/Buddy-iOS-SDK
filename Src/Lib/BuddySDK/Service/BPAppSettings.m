@@ -108,10 +108,6 @@
 {
     NSDictionary *restoredSettings = [[NSUserDefaults standardUserDefaults] objectForKey:self.keyString];
     
-    if (![restoredSettings[@"serviceUrl"] length] > 0) {
-        return;
-    }
-    
     if (!restoredSettings) {
         return;
     }
