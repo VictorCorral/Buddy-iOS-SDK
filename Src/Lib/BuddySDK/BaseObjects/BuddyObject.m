@@ -73,8 +73,8 @@
     
     if (self) {
         [self registerProperties];
-        self.id = id;
-        client = client;
+        _id = id;
+        self.client = client;
     }
     
     return self;
@@ -85,7 +85,7 @@
     self = [super init];
     if(self)
     {
-        client=client;
+        self.client = client;
         [self registerProperties];
     }
     return self;

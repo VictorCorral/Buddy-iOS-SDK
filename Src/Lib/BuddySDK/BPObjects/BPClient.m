@@ -140,6 +140,14 @@
     if(![options[@"disablePush"] boolValue]){
         [self registerForPushes];
     }
+    
+    if (_appSettings.token) {
+        BPUser *restoredUser = [[BPUser alloc] initWithId:_appSettings.userID andClient:self];
+        restoredUser.accessToken = self.appSettings.userToken;
+        [restoredUser refresh:^(NSError *error) {
+            self.user = restoredUser;
+        }];
+    }
 }
 
 
