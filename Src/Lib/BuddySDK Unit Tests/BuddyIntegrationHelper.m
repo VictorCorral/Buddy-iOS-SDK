@@ -7,6 +7,7 @@
 //
 
 #import "BuddyIntegrationHelper.h"
+#import "BPAppSettings.h"
 #import "Buddy.h"
 
 @implementation BuddyIntegrationHelper
@@ -18,6 +19,8 @@
 
 + (void) bootstrapLogin:(void(^)())callback
 {
+    [BPAppSettings resetSettings:nil];
+    
     [Buddy initClient:APP_ID appKey:APP_KEY];
     
     [Buddy login:TEST_USERNAME password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
@@ -57,8 +60,8 @@
         user.userName= [NSString stringWithFormat:@"%@_%d",usernamePrefix,index];
         user.email = [NSString stringWithFormat:@"iostests%@_%d@buddy.com", [BuddyIntegrationHelper randomString:20], index];
 
-        __block BPClient *client = [[BPClient alloc] init];
-        [client setupWithApp:APP_ID appKey:APP_KEY options:nil delegate:nil];
+        __block BPClient *client=[[BPClient alloc] init];
+        [client setupWithApp:APP_ID appKey:APP_KEY options:@{@"BPTestAppPrefix": usernamePrefix} delegate:nil];
         
         [BuddyIntegrationHelper createRandomUser:user withClient:client callback:^(NSError *error)
         {

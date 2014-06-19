@@ -67,6 +67,7 @@
         _notifications = [[BPNotificationManager alloc] initWithClient:self];
         _location = [BPLocationManager new];
         _location.delegate = self;
+        [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
 //        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
 //            switch (status) {
 //                case AFNetworkReachabilityStatusNotReachable:
@@ -112,7 +113,6 @@
              appKey:(NSString *)appKey
             options:(NSDictionary *)options
            delegate:(id<BPClientDelegate>) delegate
-
 {
     
 #if DEBUG
@@ -121,10 +121,15 @@
 #else
     NSString *serviceUrl = [[NSBundle mainBundle] infoDictionary][BuddyServiceURL];
 #endif
+
+    serviceUrl = serviceUrl ?: @"https://api.buddyplatform.com";
     
-    serviceUrl = serviceUrl ?: BuddyDefaultURL;
+    if (options[@"BPTestAppPrefix"]) {
+        _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl prefix:options[@"BPTestAppPrefix"]];
+    } else {
+        _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl];
+    }
     
-    _appSettings = [[BPAppSettings alloc] initWithBaseUrl:serviceUrl];
     _service = [[BPServiceController alloc] initWithAppSettings:_appSettings];
     
     _appSettings.appKey = appKey;
@@ -134,6 +139,14 @@
     
     if(![options[@"disablePush"] boolValue]){
         [self registerForPushes];
+    }
+    
+    if (_appSettings.token) {
+        BPUser *restoredUser = [[BPUser alloc] initWithId:_appSettings.userID andClient:self];
+        restoredUser.accessToken = self.appSettings.userToken;
+        [restoredUser refresh:^(NSError *error) {
+            self.user = restoredUser;
+        }];
     }
 }
 
@@ -174,14 +187,16 @@
 
 - (void)setUser:(BPUser *)user
 {
-    
     BPUser *oldUser = _user;
-    _user = user;
     
-    if (_user) {
-        [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
-    } else {
-        [self removeObserver:self forKeyPath:@"user.deleted"];
+    _user = user;
+    self.appSettings.userToken = _user.accessToken;
+    self.appSettings.userID = _user.id;
+    // TODO - Create an auth-level change delegate method?
+    self.appSettings.lastUserID = _user.id;
+    
+    if (!_user) {
+        [self.appSettings clearUser];
     }
     
     [self raiseUserChangedTo:_user from:oldUser];
@@ -226,7 +241,6 @@
 
 -(BPBlobCollection *)blobs
 {
-    
     if(!_blobs)
     {
         _blobs = [[BPBlobCollection alloc] initWithClient:self];
@@ -236,7 +250,6 @@
 
 -(BPAlbumCollection *)albums
 {
-    
     if(!_albums)
     {
         _albums = [[BPAlbumCollection alloc] initWithClient:self];
@@ -246,7 +259,6 @@
 
 -(BPLocationCollection *)locations
 {
-    
     if(!_locations)
     {
         _locations = [[BPLocationCollection alloc] initWithClient:self];
@@ -256,7 +268,6 @@
 
 -(BPUserListCollection *)userLists
 {
-    
     if(!_userLists)
     {
         _userLists = [[BPUserListCollection alloc] initWithClient:self];
@@ -272,6 +283,7 @@
         _user = nil;
     }
 }
+
 - (void)createUser:(BPUser *)user
           password:(NSString *)password
           callback:(BuddyCompletionCallback)callback
@@ -372,9 +384,11 @@
     }];
 }
 
--(void) registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback{
+-(void) registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback
+{
+    self.appSettings.devicePushToken = token;
     NSString *resource = @"devices/current";
-        [self PATCH:resource parameters:@{@"pushToken": token} callback:callback];
+    [self PATCH:resource parameters:@{@"pushToken": token} callback:callback];
 }
 
 
@@ -465,7 +479,8 @@
                                                  @"UniqueId": BOXNIL([BuddyDevice identifier]),
                                                  @"Model": BOXNIL([BuddyDevice deviceModel]),
                                                  @"OSVersion": BOXNIL([BuddyDevice osVersion]),
-                                                 @"DeviceToken": BOXNIL([BuddyDevice pushToken])
+                                                 @"DeviceToken": BOXNIL(self.appSettings.devicePushToken),
+                                                 @"AppVersion": BOXNIL(self.appSettings.appVersion)
                                                  };
                 [self.service POST:@"devices" parameters:getTokenParams callback:[self handleResponse:^(id json, NSError *error) {
                     // Grab the potentially different base url.
@@ -474,7 +489,6 @@
                         
                         // We have a device token. Start monitoring for crashes.
                         [self.crashManager startReporting:self.appSettings.deviceToken];
-                        
                     }
                     
                     for (void(^block)() in self.queuedRequests) {

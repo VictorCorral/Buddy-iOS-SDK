@@ -8,6 +8,7 @@
 
 #import "Buddy.h"
 #import <Kiwi/Kiwi.h>
+#import "BPAppSettings+Private.h"
 #import "BuddyIntegrationHelper.h"
 
 #ifdef kKW_DEFAULT_PROBE_TIMEOUT
@@ -26,6 +27,8 @@ describe(@"Buddy", ^{
         __block BOOL fin = NO;
 
         beforeAll(^{
+            
+            [BPAppSettings resetSettings:nil];
             
             [Buddy initClient:APP_ID appKey:APP_KEY];
             
