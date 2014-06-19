@@ -282,7 +282,7 @@ describe(@"BuddyUserListsSpec", ^{
                         return;
                     }
                     
-                    for(int index=0;index<NUM_USERS;index++)
+                    for(int index=0;index<[userArray count];index++)
                     {
                         [tempUserList addUser:[userArray objectAtIndex:index] callback:^(BOOL result, NSError *error) {
                             numTimesCallbackCalled++;
@@ -354,7 +354,7 @@ describe(@"BuddyUserListsSpec", ^{
                     }
                     
                     __block int numTimesCallbackCalled = 0;
-                    for(int index=0;index<NUM_USERS;index++)
+                    for(int index=0;index<[userArray count];index++)
                     {
                         [tempUserList addUser:[userArray objectAtIndex:index] callback:^(BOOL result, NSError *error) {
                             numTimesCallbackCalled++;
