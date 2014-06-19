@@ -115,7 +115,7 @@
            delegate:(id<BPClientDelegate>) delegate
 {
     
-#if DEBUG
+#if TEST
     // Annoying nuance of running a unit test "bundle".
     NSLog(@"DEBUG!!!");
     NSString *serviceUrl = [[NSBundle bundleForClass:[self class]] infoDictionary][BuddyServiceURL];
@@ -125,7 +125,6 @@
 #endif
     NSLog(serviceUrl);
 
-    serviceUrl = @"https://api.buddyplatform.com";
     
     if (options[@"BPTestAppPrefix"]) {
         _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl prefix:options[@"BPTestAppPrefix"]];
