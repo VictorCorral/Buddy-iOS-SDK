@@ -108,6 +108,9 @@
 {
     NSDictionary *restoredSettings = [[NSUserDefaults standardUserDefaults] objectForKey:self.keyString];
     
+    NSLog(@"Restored settings!!");
+    NSLog(@"%@", restoredSettings);
+    
     if (!restoredSettings) {
         return;
     }
