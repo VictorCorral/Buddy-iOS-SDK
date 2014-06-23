@@ -8,6 +8,7 @@
 
 #import "Buddy.h"
 #import "BuddyIntegrationHelper.h"
+#import "BPAppSettings+Private.h"
 #import <Kiwi/Kiwi.h>
 
 #ifdef kKW_DEFAULT_PROBE_TIMEOUT
@@ -28,6 +29,7 @@ describe(@"BPPictureIntegrationSpec", ^{
     context(@"When a user is NOT logged in", ^{
         
         beforeAll(^{
+            [BPAppSettings resetSettings];
             [BuddyIntegrationHelper bootstrapInit];
         });
         

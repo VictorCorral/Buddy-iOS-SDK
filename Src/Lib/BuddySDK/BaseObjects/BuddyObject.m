@@ -15,12 +15,14 @@
 #import "BPCoordinate.h"
 #import "NSDate+JSON.h"
 #import "BPEnumMapping.h"
+#import <objc/runtime.h>
 
 @interface BuddyObject()
 
 @property (nonatomic, readwrite, assign) BOOL isDirty;
 @property (nonatomic, strong) NSMutableArray *keyPaths;
 @property (nonatomic, assign) BOOL deleted;
+@property (strong, nonatomic) NSMutableArray *dirtyKeys;
 
 @end
 
@@ -63,8 +65,6 @@
 
 - (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProvider>)client
 {
-    
-    
     if (!id) {
         return nil;
     }
@@ -73,8 +73,8 @@
     
     if (self) {
         [self registerProperties];
-        self.id = id;
-        client = client;
+        _id = id;
+        self.client = client;
     }
     
     return self;
@@ -85,7 +85,7 @@
     self = [super init];
     if(self)
     {
-        client=client;
+        self.client = client;
         [self registerProperties];
     }
     return self;
@@ -153,33 +153,20 @@
 
 -(NSDictionary *)buildUpdateDictionary
 {
-    NSMutableDictionary *buddyPropertyDictionary = [NSMutableDictionary dictionary];
-    for (NSString *key in self.keyPaths)
-    {
-        id c = [self valueForKeyPath:key];
-        if (!c) continue;
-        
-        if([[c class] isSubclassOfClass:[NSDate class]]){
-            c = [c serializeDateToJson];
-        } else if([[self class] conformsToProtocol:@protocol(BPEnumMapping)]
-                  && [[self class] mapForProperty:key]) {
-            id map = [[self class] mapForProperty:key];
-            c = map[c];
-            if (!c) {
-                continue;
-            }
-        } else if ([c respondsToSelector:@selector(stringValue)]) {
-            c = [c stringValue];
-        }
-        
-        [buddyPropertyDictionary setObject:c forKey:key];
-    }
-    
-    return buddyPropertyDictionary;
+    return [self bp_parametersFromProperties:self.dirtyKeys];
 }
+
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    if (!self.dirtyKeys) {
+        self.dirtyKeys = [NSMutableArray array];
+    }
+    
+    if ([self.dirtyKeys indexOfObject:keyPath] == NSNotFound) {
+        [self.dirtyKeys addObject:keyPath];
+    }
+    
     if(change)
         self.isDirty = YES;
 }
@@ -314,9 +301,64 @@ static NSString *metadataRoute = @"metadata";
 
 @end
 
+@interface BPObjectSearch()
+
+@property (strong, nonatomic) NSMutableArray *dirtyKeys;
+
+@end
+
 @implementation BPObjectSearch
 
 @synthesize location, created, lastModified, readPermissions, writePermissions, tag, id;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.dirtyKeys = [NSMutableArray array];
+        NSArray *keysForSearchClass = [self propertiesForClass:[self class]];
+        for (NSString *key in keysForSearchClass) {
+            [self addObserver:self forKeyPath:key options:NSKeyValueObservingOptionNew context:nil];
+        }
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    NSArray *keysForSearchClass = [self propertiesForClass:[self class]];
+    for(NSString *keypath in keysForSearchClass)
+    {
+        [self removeObserver:self forKeyPath:keypath];
+    }
+}
+
+- (NSArray *)propertiesForClass:(Class)class
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    unsigned int count;
+    objc_property_t *props = class_copyPropertyList(class, &count);
+    
+    for (int i = 0; i < count; ++i){
+        NSString *propName = [NSString stringWithUTF8String:property_getName(props[i])];
+        [array addObject:propName];
+    }
+    
+    if (([class isSubclassOfClass:[BuddyObject class]] && class != [BuddyObject class]) ||
+        ([class isSubclassOfClass:[BPObjectSearch class]] && class != [BPObjectSearch class])) {
+        [array addObjectsFromArray:[self propertiesForClass:[class superclass]]];
+    }
+    
+    free(props);
+    
+    return array;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self.dirtyKeys addObject:keyPath];
+}
 
 +(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize
 {
@@ -326,5 +368,19 @@ static NSString *metadataRoute = @"metadata";
 +(NSString*)pagingTokenFromPageSize:(unsigned long)pageSize withSkip:(unsigned long)skipCount
 {
     return [NSString stringWithFormat:@"%lu;%lu",pageSize,skipCount];
+}
+
+- (NSDictionary *)parametersFromDirtyProperties
+{
+    NSDictionary *parameters = [self bp_parametersFromProperties];
+    NSMutableDictionary *dirtyParameters = [NSMutableDictionary dictionary];
+    
+    for (id key in parameters) {
+        if ([self.dirtyKeys indexOfObject:key] != NSNotFound) {
+            [dirtyParameters setObject:parameters[key] forKey:key];
+        }
+    }
+    
+    return dirtyParameters;
 }
 @end

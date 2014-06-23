@@ -7,6 +7,7 @@
 //
 
 #import "BuddyIntegrationHelper.h"
+#import "BPAppSettings.h"
 #import "Buddy.h"
 
 @implementation BuddyIntegrationHelper
@@ -18,6 +19,8 @@
 
 + (void) bootstrapLogin:(void(^)())callback
 {
+    [BPAppSettings resetSettings:nil];
+    
     [Buddy initClient:APP_ID appKey:APP_KEY];
     
     [Buddy login:TEST_USERNAME password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
@@ -49,15 +52,16 @@
     __block int numTimesCallbackCalled = 0;
     __block NSError *capturedError=nil;
     
-    NSString *usernamePrefix =[BuddyIntegrationHelper randomString:8];
+    NSString *usernamePrefix = [BuddyIntegrationHelper randomString:20];
     
     for(int index=0;index<count;index++)
     {
         BPUser *user = [BPUser new];
         user.userName= [NSString stringWithFormat:@"%@_%d",usernamePrefix,index];
-        
+        user.email = [NSString stringWithFormat:@"iostests%@_%d@buddy.com", [BuddyIntegrationHelper randomString:20], index];
+
         __block BPClient *client=[[BPClient alloc] init];
-        [client setupWithApp:APP_ID appKey:APP_KEY options:nil delegate:nil];
+        [client setupWithApp:APP_ID appKey:APP_KEY options:@{@"BPTestAppPrefix": usernamePrefix} delegate:nil];
         
         [BuddyIntegrationHelper createRandomUser:user withClient:client callback:^(NSError *error)
         {
@@ -113,13 +117,13 @@
     
     if(user.email==nil)
     {
-        user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:10]];
+        user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:20]];
     }
     user.dateOfBirth = [BuddyIntegrationHelper randomDate];
     
     if(user.userName==nil)
     {
-        user.userName = [BuddyIntegrationHelper randomString:8];
+        user.userName = [BuddyIntegrationHelper randomString:20];
     }
     [client createUser:user password:user.userName callback:^(NSError *error) {
         callback(error);

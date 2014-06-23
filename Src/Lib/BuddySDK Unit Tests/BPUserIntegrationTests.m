@@ -143,6 +143,7 @@ describe(@"BPUser", ^{
         
         __block NSString *retrievedUserId;
         it(@"Should allow retrieving a users identity values", ^{
+            
             [[Buddy users] getUserIdForIdentityProvider:@"Facebook" identityProviderId:identityId callback:^(NSString *buddyId, NSError *error) {
                 [[error should] beNil];
                 [[buddyId shouldNot] beNil];

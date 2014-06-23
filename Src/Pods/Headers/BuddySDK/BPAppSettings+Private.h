@@ -1,0 +1,1 @@
+../../../Lib/BuddySDK/Service/BPAppSettings+Private.h

@@ -35,7 +35,7 @@
 
 -(void)searchAlbums:(BPSearchAlbum *)searchAlbum callback:(BPSearchCallback)callback
 {
-    id parameters = [searchAlbum parametersFromProperties];
+    id parameters = [searchAlbum parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

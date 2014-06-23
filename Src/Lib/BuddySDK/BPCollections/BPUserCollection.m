@@ -28,7 +28,7 @@
 
 - (void)searchUsers:(BPSearchUsers *)searchUsers callback:(BPSearchCallback)callback
 {
-    id parameters = [searchUsers parametersFromProperties];
+    id parameters = [searchUsers parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

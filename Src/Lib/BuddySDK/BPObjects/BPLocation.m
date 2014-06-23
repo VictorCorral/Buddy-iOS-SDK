@@ -17,7 +17,7 @@
 
 @interface BPLocation()
 
-@property (nonatomic, assign) double *distance;
+@property (nonatomic, assign) double distance;
 
 @end
 

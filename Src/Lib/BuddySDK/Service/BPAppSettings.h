@@ -10,10 +10,13 @@
 
 @interface BPAppSettings : NSObject
 
-- (instancetype) init __attribute__((unavailable("Use initWithBaseUrl:")));
-+ (instancetype) new __attribute__((unavailable("Use initWithBaseUrl:")));
+- (instancetype) init __attribute__((unavailable("Use initWithAppId::")));
++ (instancetype) new __attribute__((unavailable("Use initWithAppId::")));
 
-- (instancetype)initWithBaseUrl:(NSString *)baseUrl;
+- (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey initialURL:(NSString *)initialURL;
+- (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey initialURL:(NSString *)initialURL prefix:(NSString *)prefix;
+
+@property (nonatomic, strong) NSString *appVersion;
 
 @property (nonatomic, strong) NSString *appID;
 @property (nonatomic, strong) NSString *appKey;
@@ -23,11 +26,18 @@
 @property (nonatomic, strong) NSDate *deviceTokenExpires;
 @property (nonatomic, strong) NSString *userToken;
 @property (nonatomic, strong) NSDate *userTokenExpires;
+@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *lastUserID;
+
+@property (nonatomic, strong) NSString *devicePushToken;
 
 @property (nonatomic, readonly, strong) NSString *token;
 
 
 - (void)clear;
 - (void)clearUser;
+
++ (void)resetSettings;
++ (void)resetSettings:(NSString *)prefix;
 
 @end

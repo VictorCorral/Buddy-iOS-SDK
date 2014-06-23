@@ -73,7 +73,7 @@ describe(@"BPCheckinIntegrationSpec", ^{
                 checkins = buddyObjects;
             }];
             
-            //[[expectFutureValue(theValue([checkins count])) shouldEventually] beGreaterThan:theValue(0)];
+            [[expectFutureValue(theValue([checkins count])) shouldEventually] beGreaterThan:theValue(0)];
         });
 
         it(@"Should allow you to retrieve a specific checkin.", ^{

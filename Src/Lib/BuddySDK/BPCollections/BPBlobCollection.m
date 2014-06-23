@@ -39,7 +39,7 @@
 
 - (void)searchBlobs:(BPBlobSearch *)searchBlobs callback:(BPSearchCallback)callback
 {
-    id parameters = [searchBlobs parametersFromProperties];
+    id parameters = [searchBlobs parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }

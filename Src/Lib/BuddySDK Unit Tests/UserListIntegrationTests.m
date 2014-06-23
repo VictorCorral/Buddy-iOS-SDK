@@ -270,8 +270,19 @@ describe(@"BuddyUserListsSpec", ^{
                 
                 [BuddyIntegrationHelper createRandomUsers:userArray count:NUM_USERS callback:^(NSError *error) {
                     [error shouldBeNil];
+                    
+                    if(error){
+                        // bail early
+                        return;
+                    }
                     __block int numTimesCallbackCalled = 0;
-                    for(int index=0;index<NUM_USERS;index++)
+                    
+                    if ([userArray count] != NUM_USERS) {
+                        fail(@"Not all users were added correctly");
+                        return;
+                    }
+                    
+                    for(int index=0;index<[userArray count];index++)
                     {
                         [tempUserList addUser:[userArray objectAtIndex:index] callback:^(BOOL result, NSError *error) {
                             numTimesCallbackCalled++;
@@ -336,8 +347,14 @@ describe(@"BuddyUserListsSpec", ^{
                 
                 [BuddyIntegrationHelper createRandomUsers:userArray count:NUM_USERS callback:^(NSError *error) {
                     [error shouldBeNil];
+                    
+                    if(error){
+                        // bail early
+                        return;
+                    }
+                    
                     __block int numTimesCallbackCalled = 0;
-                    for(int index=0;index<NUM_USERS;index++)
+                    for(int index=0;index<[userArray count];index++)
                     {
                         [tempUserList addUser:[userArray objectAtIndex:index] callback:^(BOOL result, NSError *error) {
                             numTimesCallbackCalled++;

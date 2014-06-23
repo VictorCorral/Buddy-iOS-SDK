@@ -49,6 +49,8 @@
          */
         NSString *resource = [NSString stringWithFormat:@"/notifications/received/%@", key];
         
+        
+        
         [Buddy.buddyRestProvider POST:resource parameters:nil callback:^(id json, NSError *error) {
         
         }];

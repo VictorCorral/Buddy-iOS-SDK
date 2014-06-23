@@ -35,7 +35,7 @@
 
 - (void)searchLocation:(BPSearchLocation *)searchLocations callback:(BPSearchCallback)callback
 {
-    id parameters = [searchLocations parametersFromProperties];
+    id parameters = [searchLocations parametersFromDirtyProperties];
     
     [self search:parameters callback:callback];
 }
