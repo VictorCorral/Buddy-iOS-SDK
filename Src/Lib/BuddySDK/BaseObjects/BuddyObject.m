@@ -156,6 +156,7 @@
     return [self bp_parametersFromProperties:self.dirtyKeys];
 }
 
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (!self.dirtyKeys) {
@@ -321,6 +322,15 @@ static NSString *metadataRoute = @"metadata";
         }
     }
     return self;
+}
+
+- (void)dealloc
+{
+    NSArray *keysForSearchClass = [self propertiesForClass:[self class]];
+    for(NSString *keypath in keysForSearchClass)
+    {
+        [self removeObserver:self forKeyPath:keypath];
+    }
 }
 
 - (NSArray *)propertiesForClass:(Class)class
