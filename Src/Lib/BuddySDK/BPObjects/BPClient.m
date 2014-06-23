@@ -303,9 +303,7 @@
         self.user = user;
         self.appSettings.userToken = self.user.accessToken;
         
-        [self.user refresh:^(NSError *error){
-            callback ? callback(error) : nil;
-        }];
+        callback ? callback(error) : nil;
     }];
 }
 
