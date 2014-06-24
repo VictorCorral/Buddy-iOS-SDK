@@ -48,7 +48,7 @@
     albumItem.client = self.client;
     
     [self.client POST:requestPath parameters:params callback:^(id json, NSError *error) {
-        [[JAGPropertyConverter converter] setPropertiesOf:albumItem fromDictionary:json];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:albumItem fromDictionary:json];
         callback(error);
     }];
 }

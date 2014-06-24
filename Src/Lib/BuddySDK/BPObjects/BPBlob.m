@@ -62,7 +62,7 @@ static NSString *blobMimeType = @"application/octet-stream";
                   callback:^(id json, NSError *error)
      {
          if (!error) {
-             [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:json];
+             [[JAGPropertyConverter bp_converter] setPropertiesOf:self fromDictionary:json];
          }
          callback ? callback(error) : nil;
      }];

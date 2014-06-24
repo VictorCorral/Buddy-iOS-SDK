@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (JSON)
-- (NSDate *)deserializeJsonDateString;
-- (BOOL) isDate;
+- (NSDate *)bp_deserializeJsonDateString;
+- (BOOL) bp_isDate;
 @end

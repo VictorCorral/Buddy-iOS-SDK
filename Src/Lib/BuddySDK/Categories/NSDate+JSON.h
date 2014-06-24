@@ -10,6 +10,6 @@
 
 @interface NSDate (JSON)
 
-- (NSString *)serializeDateToJson;
+- (NSString *)bp_serializeDateToJson;
 
 @end

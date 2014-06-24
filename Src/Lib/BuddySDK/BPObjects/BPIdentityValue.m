@@ -17,7 +17,7 @@
     self = [super init];
     if(self)
     {
-        [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:response];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self fromDictionary:response];
     }
     return self;
 }

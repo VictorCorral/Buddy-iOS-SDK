@@ -13,6 +13,6 @@
 
 - (NSString *)stringValue
 {
-    return [NSString stringWithFormat:@"%@-%@", [self.start serializeDateToJson], [self.end serializeDateToJson]];
+    return [NSString stringWithFormat:@"%@-%@", [self.start bp_serializeDateToJson], [self.end bp_serializeDateToJson]];
 }
 @end
