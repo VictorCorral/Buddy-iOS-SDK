@@ -1272,7 +1272,7 @@
 				"INSTALL_PATH[sdk=*]" = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
@@ -1285,8 +1285,8 @@
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 				USER_HEADER_SEARCH_PATHS = include;
-				VALID_ARCHS = "armv7 armv7s arm64";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "x86_64 i386";
+				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				WRAPPER_EXTENSION = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1410,8 +1410,10 @@
 				INFOPLIST_FILE = "BuddySDK Unit Tests/BuddySDK Unit Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1443,8 +1445,10 @@
 				INFOPLIST_FILE = "BuddySDK Unit Tests/BuddySDK Unit Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "x86_64 i386";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
