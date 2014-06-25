@@ -10,6 +10,6 @@
 
 @interface JAGPropertyConverter (BPJSONConverter)
 
-+(JAGPropertyConverter *)converter;
++(JAGPropertyConverter *)bp_converter;
 
 @end

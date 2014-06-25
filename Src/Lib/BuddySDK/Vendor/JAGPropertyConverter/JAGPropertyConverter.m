@@ -267,8 +267,8 @@
         return nil;
     }
     else if(   [object isKindOfClass:[NSString class]]
-            && [object isDate]){
-        return [object deserializeJsonDateString];
+            && [object bp_isDate]){
+        return [object bp_deserializeJsonDateString];
     }
     else if ([object isKindOfClass: [NSArray class]]
                || [object isKindOfClass: [NSSet class]]) {

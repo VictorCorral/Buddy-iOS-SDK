@@ -12,7 +12,7 @@
 
 static NSString *NoInternetError = @"NoInternetError";
 
-+ (NSError *)noInternetError:(NSInteger)code message:(NSString *)message
++ (NSError *)bp_noInternetError:(NSInteger)code message:(NSString *)message
 {
     return [NSError errorWithDomain:NoInternetError
                                code:code

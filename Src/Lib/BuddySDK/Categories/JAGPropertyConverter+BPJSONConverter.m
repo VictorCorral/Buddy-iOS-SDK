@@ -11,7 +11,7 @@
 
 @implementation JAGPropertyConverter (BPJSONConverter)
 
-+(JAGPropertyConverter *)converter
++(JAGPropertyConverter *)bp_converter
 {
     static JAGPropertyConverter *c;
     if(!c)

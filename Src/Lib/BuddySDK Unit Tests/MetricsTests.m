@@ -34,7 +34,7 @@ describe(@"Metrics", ^{
         it(@"Should allow recording untimed metrics", ^{
             NSDictionary *myVals = @{@"Foo": @"Bar"};
             
-            [Buddy recordMetric:@"MetricKey" andValue:myVals callback:^(NSError *error) {
+            [Buddy recordMetric:@"MetricKey2" andValue:myVals callback:^(NSError *error) {
                 [[error should] beNil];
                 fin = YES;
             }];
@@ -49,6 +49,38 @@ describe(@"Metrics", ^{
                 [[error should] beNil];
                 [completionHandler finishMetric:^(NSInteger elapsedTimeInMs, NSError *error) {
                     [[theValue(elapsedTimeInMs) should] beGreaterThan:theValue(0)];
+                    [[error should] beNil];
+                    fin = YES;
+                }];
+            }];
+            
+            [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
+        });
+        
+        it(@"Should allow recording timed metrics with timeout and timestamp", ^{
+            NSDictionary *myVals = @{@"FooTimeoutAndTimestamp": @"Bar"};
+            
+            NSDate *metricTime = [BuddyIntegrationHelper randomDate];
+            
+            [Buddy recordMetric:@"MetricKeyTimeout And Timestamp" andValue:myVals timeout:10 timestamp:metricTime callback:^(BPMetricCompletionHandler *completionHandler, NSError *error) {
+                [[error should] beNil];
+                [completionHandler finishMetric:^(NSInteger elapsedTimeInMs, NSError *error) {
+                    [[error should] beNil];
+                    fin = YES;
+                }];
+            }];
+            
+            [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
+        });
+        
+        it(@"Should allow recording timed metrics with just timestamp", ^{
+            NSDictionary *myVals = @{@"FooTimestampOnly": @"Bar"};
+            
+            NSDate *metricTime = [BuddyIntegrationHelper randomDate];
+            
+            [Buddy recordMetric:@"MetricKeyTSOnly & Timestamp" andValue:myVals timeout:0 timestamp:metricTime callback:^(BPMetricCompletionHandler *completionHandler, NSError *error) {
+                [[error should] beNil];
+                [completionHandler finishMetric:^(NSInteger elapsedTimeInMs, NSError *error) {
                     [[error should] beNil];
                     fin = YES;
                 }];

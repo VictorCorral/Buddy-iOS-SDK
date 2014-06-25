@@ -175,6 +175,11 @@
     [[BPClient defaultClient] recordMetric:key andValue:value timeout:seconds callback:callback];
 }
 
++ (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds timestamp:(NSDate*)timestamp callback:(BuddyMetricCallback)callback
+{
+    [[BPClient defaultClient] recordMetric:key andValue:value timeout:seconds timestamp:timestamp callback:callback];
+}
+
 + (void)setMetadata:(BPMetadataItem *)metadata callback:(BuddyCompletionCallback)callback
 {
     [[BPClient defaultClient] setMetadata:metadata callback:callback];

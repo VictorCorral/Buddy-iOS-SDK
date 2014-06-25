@@ -223,7 +223,24 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
  via "signalComplete"
  *
  */
+
 - (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds callback:(BuddyMetricCallback)callback;
+
+/**
+ * Records a timed metric.
+ * @param key       The name of the metric.
+ *
+ * @param value     The value of the metric.
+ *
+ * @param timeout   The time after which the metric automatically expires (in seconds). If this value is set to zero, the parameter is not sent to the server
+ *
+ * @param timestamp The time at which the metric occurred
+ *
+ * @param callback  A callback that returns the ID of the metric which allows the metric to be signaled as finished
+ via "finishMetric."
+ *
+ */
+- (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds timestamp:(NSDate*)timestamp callback:(BuddyMetricCallback)callback;
 
 - (void)registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback;
 

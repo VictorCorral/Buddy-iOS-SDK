@@ -11,7 +11,7 @@
 #define DATE_FORMAT_REGEX @"^\\/Date\\((-?[+-]?\\d+)\\)\\/$"
 
 @implementation NSString (JSON)
-- (NSDate *)deserializeJsonDateString
+- (NSDate *)bp_deserializeJsonDateString
 {
     static NSRegularExpression *dateRegEx = nil;
     static dispatch_once_t onceToken;
@@ -32,7 +32,7 @@
     return [NSDate dateWithTimeIntervalSince1970:seconds];
 }
 
-- (BOOL) isDate
+- (BOOL) bp_isDate
 {
     // NOTE: If you change this code here, make sure to also change deserializeJsonDateString above
     static NSRegularExpression *dateRegEx = nil;

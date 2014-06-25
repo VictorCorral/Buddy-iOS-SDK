@@ -69,7 +69,7 @@
     
     [self.client GET:resource parameters:searchParmeters callback:^(id json, NSError *error) {
         BPPagingTokens *tokens = [BPPagingTokens new];
-        [[JAGPropertyConverter converter] setPropertiesOf:tokens fromDictionary:json];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:tokens fromDictionary:json];
         NSArray *results = [json[@"pageResults"] bp_map:^id(id object) {
             return [[self.type alloc] initBuddyWithResponse:object andClient:self.client];
         }];

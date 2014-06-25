@@ -10,7 +10,7 @@
 
 @implementation NSDate (JSON)
 
-- (NSString *)serializeDateToJson;
+- (NSString *)bp_serializeDateToJson;
 {
     return [NSString stringWithFormat:@"/Date(%lld)/",
      (long long)([self timeIntervalSince1970] * 1000)];
