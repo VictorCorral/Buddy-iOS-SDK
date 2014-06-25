@@ -685,7 +685,7 @@
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
     [parameters setObject:BOXNIL(value) forKey:@"value"];
-    if(seconds!=0)
+    if(seconds>0)
     {
         [parameters setObject:@(seconds) forKey:@"timeoutInSeconds"];
     }

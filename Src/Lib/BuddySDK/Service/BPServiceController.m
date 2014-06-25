@@ -108,9 +108,8 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
 
 - (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
 {
-    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    [self.manager GET:servicePathEncoded
+    [self.manager GET:servicePath
            parameters:parameters
               success:[self handleSuccess:callback]
               failure:[self handleFailure:callback]];
@@ -166,9 +165,7 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
 
 - (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
 {
-    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    [self.manager DELETE:servicePathEncoded
+    [self.manager DELETE:servicePath
               parameters:parameters
                  success:[self handleSuccess:callback]
                  failure:[self handleFailure:callback]];
