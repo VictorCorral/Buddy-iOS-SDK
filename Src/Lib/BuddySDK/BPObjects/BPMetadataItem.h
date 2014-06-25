@@ -52,6 +52,7 @@ typedef void(^BPMetadataCallback)(BPMetadataItem *metadata, NSError *error);
 @property (nonatomic, strong) BPDateRange *lastModified;
 
 - (instancetype)initBuddyWithResponse:(id)response;
+
 @end
 
 @interface BPMetadataKeyValues : BPMetadataBase<BPMetadataCollectionProperties>
