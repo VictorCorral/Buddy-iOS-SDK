@@ -36,14 +36,11 @@
 
 @implementation BPSearchMetadata
 
-@synthesize key, value, keyPrefix, locationRange, created, modified, visibility;
+@synthesize key, value, keyPrefix, created, lastModified, visibility, valuePath, locationRange;
 
 @end
 
 @interface BPMetadataItem()<BPEnumMapping>
-
-@property (nonatomic, strong) BPDateRange *created;
-@property (nonatomic, strong) BPDateRange *modified;
 
 @end
 
@@ -51,10 +48,8 @@
 
 @synthesize key = _key;
 @synthesize value = _value;
-@synthesize keyPrefix = _keyPrefix;
-@synthesize locationRange = _locationRange;
 @synthesize created = _created;
-@synthesize modified = _modified;
+@synthesize lastModified = _lastModified;
 @synthesize visibility = _visibility;
 
 - (instancetype)initBuddyWithResponse:(id)response

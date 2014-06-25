@@ -18,6 +18,9 @@
 
 @interface BPBlobSearch : BPObjectSearch<BPBlobProperties>
 
+/* readwrite for search properties */
+@property (nonatomic, copy) NSString *contentType;
+
 @end
 
 @interface BPBlob : BuddyObject<BPBlobProperties, BPMediaItem>

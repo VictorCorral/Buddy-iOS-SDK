@@ -20,10 +20,6 @@
 
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, strong) id value;
-@property (nonatomic, copy) NSString *keyPrefix;
-@property (nonatomic, readonly, strong) BPCoordinateRange *locationRange;
-@property (nonatomic, readonly, strong) BPDateRange *created;
-@property (nonatomic, readonly, strong) BPDateRange *modified;
 @property (nonatomic, assign) BPPermissions visibility;
 
 @end
@@ -39,11 +35,22 @@
 
 @interface BPSearchMetadata : BPMetadataBase<BPMetadataProperties>
 
+/* readwrite for search properties */
+@property (nonatomic, strong) BPCoordinateRange *locationRange;
+@property (nonatomic, strong) BPDateRange *created;
+@property (nonatomic, strong) BPDateRange *lastModified;
+@property (nonatomic, strong) NSString *valuePath;
+@property (nonatomic, copy) NSString *keyPrefix;
+
 @end
 
 typedef void(^BPMetadataCallback)(BPMetadataItem *metadata, NSError *error);
 
 @interface BPMetadataItem : BPMetadataBase<BPMetadataProperties>
+
+@property (nonatomic, strong) BPDateRange *created;
+@property (nonatomic, strong) BPDateRange *lastModified;
+
 - (instancetype)initBuddyWithResponse:(id)response;
 @end
 
