@@ -21,6 +21,10 @@
 
 @interface BPVideoSearch : BPBlobSearch<BPVideoProperties>
 
+@property (nonatomic, assign) NSInteger bitRate;
+@property (nonatomic, copy) NSString *encoding;
+@property (nonatomic, assign) double lengthInSeconds;
+
 @end
 
 @interface BPVideo : BPBlob<BPVideoProperties>
