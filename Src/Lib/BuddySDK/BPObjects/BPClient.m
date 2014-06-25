@@ -26,7 +26,7 @@
 #import "BPCrashManager.h"
 #import "BPUser+Private.h"
 #import "BuddyObject+Private.h"
-
+#import "NSDate+JSON.h"
 #import <CoreFoundation/CoreFoundation.h>
 #define BuddyServiceURL @"BuddyServiceURL"
 
@@ -43,6 +43,8 @@
 @property (nonatomic, strong) BuddyAppDelegateDecorator *decorator;
 @property (nonatomic, strong) BPCrashManager *crashManager;
 @property (nonatomic, strong) NSMutableArray *queuedRequests;
+
+- (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback;
 
 @end
 
@@ -672,10 +674,32 @@
 
 - (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds callback:(BuddyMetricCallback)callback
 {
-    NSString *resource = [NSString stringWithFormat:@"metrics/events/%@", key];
+    
     NSDictionary *parameters = @{@"value": BOXNIL(value),
                                  @"timeoutInSeconds": @(seconds)};
+    [self recordMetricCore:key parameters:parameters callback:callback];
+}
+
+- (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds timestamp:(NSDate*)timestamp callback:(BuddyMetricCallback)callback
+{
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     
+    [parameters setObject:BOXNIL(value) forKey:@"value"];
+    if(seconds>0)
+    {
+        [parameters setObject:@(seconds) forKey:@"timeoutInSeconds"];
+    }
+    if(timestamp)
+    {
+        [parameters setObject:[timestamp bp_serializeDateToJson ] forKey:@"timestamp"];
+    }
+  
+    [self recordMetricCore:key parameters:parameters callback:callback];
+}
+
+- (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback
+{
+    NSString *resource = [NSString stringWithFormat:@"metrics/events/%@", key];
     [self POST:resource parameters:parameters callback:^(id json, NSError *error) {
         BPMetricCompletionHandler *completionHandler;
         if (!error) {
