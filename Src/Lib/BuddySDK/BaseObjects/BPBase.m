@@ -96,11 +96,11 @@
     
     [self.client GET:resource parameters:searchParameters callback:^(id json, NSError *error) {
         BPPagingTokens *tokens = [BPPagingTokens new];
-        [[JAGPropertyConverter converter] setPropertiesOf:tokens fromDictionary:json];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:tokens fromDictionary:json];
         
         NSArray *results = [json[@"pageResults"] bp_map:^id(id object) {
             id metadata = [[BPMetadataItem alloc] init];
-            [[JAGPropertyConverter converter] setPropertiesOf:metadata fromDictionary:object];
+            [[JAGPropertyConverter bp_converter] setPropertiesOf:metadata fromDictionary:object];
             return metadata;
         }];
         callback ? callback(results, tokens, error) : nil;

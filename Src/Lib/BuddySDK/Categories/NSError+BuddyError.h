@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, BuddyErrorType)
 
 @interface NSError (BuddyError)
 
-+ (NSError *)noInternetError:(NSInteger)code message:(NSString *)message;
++ (NSError *)bp_noInternetError:(NSInteger)code message:(NSString *)message;
 + (NSError *)buildBuddyError:(id)buddyJSON;
 + (NSError *)invalidObjectOperationError;
 

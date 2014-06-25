@@ -544,7 +544,7 @@
                 buddyError = [NSError buildBuddyError:result];
                 break;
             default:
-                buddyError = [NSError noInternetError:error.code message:result];
+                buddyError = [NSError bp_noInternetError:error.code message:result];
                 break;
         }
         if([buddyError needsLogin]) {

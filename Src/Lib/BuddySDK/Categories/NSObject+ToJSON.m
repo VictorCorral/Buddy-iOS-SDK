@@ -38,7 +38,7 @@
         } else if ([val respondsToSelector:@selector(stringValue)]) {
             val = [val stringValue];
         } else if([[val class] isSubclassOfClass:[NSDate class]]){
-            val = [val serializeDateToJson];
+            val = [val bp_serializeDateToJson];
         }
         
         if (val) {
@@ -107,7 +107,7 @@
             } else if ([val respondsToSelector:@selector(stringValue)]) {
                 val = [val stringValue];
             } else if([[val class] isSubclassOfClass:[NSDate class]]){
-                val = [val serializeDateToJson];
+                val = [val bp_serializeDateToJson];
             }
             
             if (val) {

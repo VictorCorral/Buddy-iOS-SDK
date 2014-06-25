@@ -101,7 +101,7 @@
 
 - (void)saveSettings
 {
-    NSDictionary *settings = [[JAGPropertyConverter converter] convertToDictionary:self];
+    NSDictionary *settings = [[JAGPropertyConverter bp_converter] convertToDictionary:self];
     
     [[NSUserDefaults standardUserDefaults] setObject:settings forKey:self.keyString];
 }
@@ -117,7 +117,7 @@
         return;
     }
     
-    [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:restoredSettings];
+    [[JAGPropertyConverter bp_converter] setPropertiesOf:self fromDictionary:restoredSettings];
 }
 
 + (void)resetSettings

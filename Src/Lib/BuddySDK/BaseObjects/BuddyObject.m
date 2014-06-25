@@ -99,7 +99,7 @@
     if(self)
     {
         [self registerProperties];
-        [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:response];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self fromDictionary:response];
     }
     return self;
 }
@@ -206,7 +206,7 @@
     self.client = client;
     
     [self.client POST:[[self class] requestPath] parameters:parameters callback:^(id json, NSError *error) {
-        [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:json];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self fromDictionary:json];
         if (!error) {
             self.isDirty = NO;
         }
@@ -255,7 +255,7 @@
                           self.id];
     
     [self.client GET:resource parameters:nil callback:^(id json, NSError *error) {
-        [[JAGPropertyConverter converter] setPropertiesOf:self fromDictionary:json];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self fromDictionary:json];
         
         if (!error) {
             self.isDirty = NO;
