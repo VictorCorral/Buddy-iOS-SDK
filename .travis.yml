@@ -1,4 +1,3 @@
 os: osx
 language: objective-c
-xcode_workspace: BuddySDK.xcworkspace
-xcode_scheme: Pods-BuddySDK Unit Tests
+script: xctool -workspace BuddySDK.xcworkspace -scheme Pods-BuddySDK Unit Tests -destination "platform=iOS Simulator,OS=7.1,name=iPhone Retina (3.5-inch)" GCC_PREPROCESSOR_DEFINITIONS="CI_APP_ID=@\\"bbbbbc.gcbbbBJhtHLl\\" CI_APP_KEY=@\\"9F44A119-6C7E-4707-BA16-09E236B49532\\""
