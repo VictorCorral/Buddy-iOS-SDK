@@ -1,0 +1,4 @@
+os: osx
+language: objective-c
+xcode_workspace: BuddySDK.xcodeworkspace
+xcode_scheme: Pods-BuddySDK-Unit Tests
