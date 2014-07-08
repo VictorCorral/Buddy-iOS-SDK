@@ -6,26 +6,12 @@
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
-         <BuildActionEntry
+        <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05CD31510EE936A9000FDE88"
-               BuildableName = "libCrashReporter-iphoneos.a"
-               BlueprintName = "CrashReporter-iOS-Device"
-               ReferencedContainer = "container:BuddySDK/Vendor/PLCrashReporter/CrashReporter.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A6291F7B165C01800051F83C"
@@ -34,21 +20,7 @@
                ReferencedContainer = "container:Src/Lib/BuddySDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6291F31165C01640051F83C"
-               BuildableName = "BuddyUnitTestHarness.app"
-               BlueprintName = "BuddyUnitTestHarness"
-               ReferencedContainer = "container:../test/BuddySDKTests.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-      </BuildActionEntries>
+	</BuildActionEntries>  
    </BuildAction>
    <TestAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -73,7 +45,7 @@
             BlueprintIdentifier = "A6291F31165C01640051F83C"
             BuildableName = "BuddyUnitTestHarness.app"
             BlueprintName = "BuddyUnitTestHarness"
-            ReferencedContainer = "container:../test/BuddySDKTests.xcodeproj">
+            ReferencedContainer = "container:./test/BuddySDKTests.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -92,7 +64,7 @@
             BlueprintIdentifier = "A6291F31165C01640051F83C"
             BuildableName = "BuddyUnitTestHarness.app"
             BlueprintName = "BuddyUnitTestHarness"
-            ReferencedContainer = "container:../test/BuddySDKTests.xcodeproj">
+            ReferencedContainer = "container:./test/BuddySDKTests.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
