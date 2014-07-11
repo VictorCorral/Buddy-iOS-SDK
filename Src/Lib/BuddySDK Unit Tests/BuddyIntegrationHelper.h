@@ -64,4 +64,5 @@
  */
 +(void)deleteUsers:(NSArray*)users callback:(BuddyCompletionCallback)callback;
 
++(NSString*) getUUID;
 @end

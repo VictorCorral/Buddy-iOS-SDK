@@ -52,13 +52,13 @@
     __block int numTimesCallbackCalled = 0;
     __block NSError *capturedError=nil;
     
-    NSString *usernamePrefix = [BuddyIntegrationHelper randomString:20];
+    NSString *usernamePrefix = [BuddyIntegrationHelper getUUID];
     
     for(int index=0;index<count;index++)
     {
         BPUser *user = [BPUser new];
         user.userName= [NSString stringWithFormat:@"%@_%d",usernamePrefix,index];
-        user.email = [NSString stringWithFormat:@"iostests%@_%d@buddy.com", [BuddyIntegrationHelper randomString:20], index];
+        user.email = [NSString stringWithFormat:@"iostests%@_%d@buddy.com", [BuddyIntegrationHelper getUUID], index];
 
         __block BPClient *client=[[BPClient alloc] init];
         [client setupWithApp:APP_ID appKey:APP_KEY options:@{@"BPTestAppPrefix": usernamePrefix} delegate:nil];
@@ -117,13 +117,13 @@
     
     if(user.email==nil)
     {
-        user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:20]];
+        user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper getUUID]];
     }
     user.dateOfBirth = [BuddyIntegrationHelper randomDate];
     
     if(user.userName==nil)
     {
-        user.userName = [BuddyIntegrationHelper randomString:20];
+        user.userName = [BuddyIntegrationHelper getUUID];
     }
     [client createUser:user password:user.userName callback:^(NSError *error) {
         callback(error);
@@ -172,6 +172,11 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     }
     
     return randomString;
+}
+
++(NSString*) getUUID
+{
+    return [[NSUUID UUID] UUIDString];
 }
 
 @end
