@@ -23,7 +23,7 @@
 
 @implementation Buddy
 
-+ (id<BPRestProvider>)buddyRestProvider {
++ (id<BPRestProvider,BPRestProviderOld>)buddyRestProvider {
     return [BPClient defaultClient].restService;
 }
 
@@ -210,5 +210,33 @@
 {
     [[BPClient defaultClient] deleteMetadataWithKey:key visibility:(BPPermissions)visibility callback:callback];
 }
+
+#pragma mark - REST
+
++ (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] GET:servicePath parameters:parameters class:clazz callback:callback];
+}
+
++ (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] POST:servicePath parameters:parameters class:clazz callback:callback];
+}
+
++ (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] PATCH:servicePath parameters:parameters class:clazz callback:callback];
+}
+
++ (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] PUT:servicePath parameters:parameters class:clazz callback:callback];
+}
+
++ (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] DELETE:servicePath parameters:parameters class:clazz callback:callback];
+}
+
 
 @end

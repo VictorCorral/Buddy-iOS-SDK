@@ -16,7 +16,7 @@
 
 @interface BPCrashManager()
 
-@property (weak, nonatomic) id<BPRestProvider> restProvider;
+@property (weak, nonatomic) id<BPRestProviderOld> restProvider;
 @property (strong, nonatomic) NSString *appId;
 
 @end
@@ -28,7 +28,7 @@
     NSUncaughtExceptionHandler *_exceptionHandler;
 }
 
-- (instancetype)initWithRestProvider:(id<BPRestProvider>)restProvider
+- (instancetype)initWithRestProvider:(id<BPRestProviderOld>)restProvider
 {
     self = [super init];
     if (self) {

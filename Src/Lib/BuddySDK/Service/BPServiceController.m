@@ -10,6 +10,7 @@
 #import "BPAFNetworking.h"
 #import "BuddyDevice.h"
 #import "NSError+BuddyError.h"
+#import "BuddyFile.h"
 #import "BPClient.h"
 
 typedef void (^AFFailureCallback)(AFHTTPRequestOperation *operation, NSError *error);
@@ -143,6 +144,7 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
                      failure:[self handleFailure:callback]];
 }
 
+
 - (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
 {
     NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -171,6 +173,118 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
                  failure:[self handleFailure:callback]];
 }
 
+
+
+
+
+
+
+#pragma mark NEW REST
+
+- (void)REST_GET_FILE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
+{
+    self.manager.requestSerializer = self.httpRequestSerializer;
+    self.manager.responseSerializer = self.httpResponseSerializer;
+    
+    [self.manager GET:servicePath
+           parameters:parameters
+              success:[self REST_handleSuccess:callback json:NO]
+              failure:[self REST_handleFailure:callback]];
+    
+    self.manager.responseSerializer = self.jsonResponseSerializer;
+    self.manager.requestSerializer = self.jsonRequestSerializer;
+}
+
+- (void)REST_GET:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
+{
+    
+    [self.manager GET:servicePath
+           parameters:parameters
+              success:[self REST_handleSuccess:callback]
+              failure:[self REST_handleFailure:callback]];
+    
+}
+
+- (void)REST_POST:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
+{
+    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [self.manager POST:servicePathEncoded
+            parameters:parameters
+               success:[self REST_handleSuccess:callback]
+               failure:[self REST_handleFailure:callback]];
+}
+
+- (void)REST_MULTIPART_POST:(NSString *)servicePath parameters:(NSDictionary *)parameters data:(NSDictionary *)data mimeType:(NSString *)mimeType callback:(REST_ServiceResponse)callback
+{
+    void (^constructBody)(id <AFMultipartFormData> formData) =^(id<AFMultipartFormData> formData){
+        for(NSString *name in [data allKeys]){
+            [formData appendPartWithFileData:data[name] name:name fileName:name mimeType:mimeType];
+        }
+    };
+    
+    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [self.manager POST:servicePathEncoded
+            parameters:parameters
+constructingBodyWithBlock:constructBody
+               success:[self REST_handleSuccess:callback]
+               failure:[self REST_handleFailure:callback]];
+}
+
+
+- (void)REST_PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
+{
+    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [self.manager PATCH:servicePathEncoded
+             parameters:parameters
+                success:[self REST_handleSuccess:callback]
+                failure:[self REST_handleFailure:callback]];
+}
+
+- (void)REST_PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
+{
+    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [self.manager PUT:servicePathEncoded
+           parameters:parameters
+              success:[self REST_handleSuccess:callback]
+              failure:[self REST_handleFailure:callback]];
+}
+
+- (void)REST_DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
+{
+    [self.manager DELETE:servicePath
+              parameters:parameters
+                 success:[self REST_handleSuccess:callback]
+                 failure:[self REST_handleFailure:callback]];
+}
+
+
+
+- (void)REST_MULTIPART_POST:(NSString *)servicePath parameters:(NSDictionary *)parameters data:(NSDictionary *)data callback:(REST_ServiceResponse)callback
+{
+    
+    void (^constructBody)(id <AFMultipartFormData> formData) =^(id<AFMultipartFormData> formData){
+        for(NSString *name in [data allKeys]){
+            BuddyFile *file = [data objectForKey:name];
+            
+            [formData appendPartWithFileData:file.fileData name:name fileName:name mimeType:file.contentType];
+        }
+    };
+    
+    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [self.manager POST:servicePathEncoded
+            parameters:parameters
+constructingBodyWithBlock:constructBody
+               success:[self REST_handleSuccess:callback]
+               failure:[self REST_handleFailure:callback]];
+}
+
+
+
 - (AFSuccessCallback) handleSuccess:(ServiceResponse)callback
 {
     return [self handleSuccess:callback json:YES];
@@ -192,5 +306,29 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
         callback(statusCode, operation.responseString, error);
     };
 }
+
+
+- (AFSuccessCallback) REST_handleSuccess:(REST_ServiceResponse)callback
+{
+    return [self REST_handleSuccess:callback json:YES];
+}
+
+- (AFSuccessCallback) REST_handleSuccess:(REST_ServiceResponse)callback json:(BOOL)json
+{
+    return ^(AFHTTPRequestOperation *operation, id responseObject){
+        
+        callback([operation response].statusCode, [[operation response] allHeaderFields],responseObject, nil);
+    };
+}
+
+- (AFFailureCallback) REST_handleFailure:(REST_ServiceResponse)callback
+{
+    return ^(AFHTTPRequestOperation *operation, NSError *error){
+        
+        NSInteger statusCode = operation.response ? operation.response.statusCode : 0;
+        callback(statusCode, [[operation response] allHeaderFields], operation.responseString, error);
+    };
+}
+
 
 @end

@@ -13,7 +13,7 @@
 
 @interface BPNotificationManager : NSObject
 
-- (instancetype)initWithClient:(id<BPRestProvider>)client;
+- (instancetype)initWithClient:(id<BPRestProviderOld>)client;
 
 - (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
 

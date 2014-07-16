@@ -12,8 +12,8 @@
 
 @interface BPAlbumItemCollection : BuddyCollection
 
-- (instancetype)initWithClient:(id<BPRestProvider>)client __attribute__((unavailable("Use initWithAlbum:andClient:")));;
-- (instancetype)initWithAlbum:(BPAlbum *)album andClient:(id<BPRestProvider>)client;
+- (instancetype)initWithClient:(id<BPRestProviderOld>)client __attribute__((unavailable("Use initWithAlbum:andClient:")));;
+- (instancetype)initWithAlbum:(BPAlbum *)album andClient:(id<BPRestProviderOld>)client;
 
 - (void)addAlbumItem:(BPAlbumItem *)albumItem
             withItem:(BuddyObject<BPMediaItem> *)itemToAdd

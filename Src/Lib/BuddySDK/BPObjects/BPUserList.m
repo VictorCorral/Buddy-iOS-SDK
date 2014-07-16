@@ -38,7 +38,7 @@
     return self;
 }
 
-- (instancetype)initBuddyWithClient:(id<BPRestProvider>)client {
+- (instancetype)initBuddyWithClient:(id<BPRestProviderOld>)client {
     self = [super initBuddyWithClient:client];
     if(self)
     {
@@ -47,7 +47,7 @@
     return self;
 }
 
-- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProvider>)rest {
+- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProviderOld>)rest {
     self = [super initBuddyWithResponse:response andClient:rest];
     if(self)
     {
@@ -143,7 +143,7 @@ static NSString *userLists = @"users/lists";
     return self;
 }
 
-- (instancetype)initBuddyWithClient:(id<BPRestProvider>)client {
+- (instancetype)initBuddyWithClient:(id<BPRestProviderOld>)client {
     self = [super initBuddyWithClient:client];
     if(self)
     {
@@ -152,7 +152,7 @@ static NSString *userLists = @"users/lists";
     return self;
 }
 
-- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProvider>)rest {
+- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProviderOld>)rest {
     self = [super initBuddyWithResponse:response andClient:rest];
     if(self)
     {

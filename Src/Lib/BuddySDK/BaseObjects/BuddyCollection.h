@@ -17,12 +17,12 @@ typedef void (^BPSearchCallback)(NSArray *buddyObjects, BPPagingTokens *pagingTo
 @interface BuddyCollection : NSObject
 
 @property (nonatomic) Class type;
-@property (nonatomic, readonly, strong) id<BPRestProvider> client;
+@property (nonatomic, readonly, strong) id<BPRestProviderOld> client;
 
 - (instancetype) init __attribute__((unavailable("init not available")));
 + (instancetype) new __attribute__((unavailable("new not available")));
 
-- (instancetype)initWithClient:(id<BPRestProvider>)client;
+- (instancetype)initWithClient:(id<BPRestProviderOld>)client;
 
 - (void)getAll:(BPSearchCallback)callback;
 

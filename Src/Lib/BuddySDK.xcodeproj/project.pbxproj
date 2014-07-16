@@ -27,6 +27,13 @@
 		013B2A51193122CF00607718 /* BPUserList.h in Headers */ = {isa = PBXBuildFile; fileRef = 013B2A4F193122CF00607718 /* BPUserList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		013B2A52193122CF00607718 /* BPUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B2A50193122CF00607718 /* BPUserList.m */; };
 		013B2A55193129E400607718 /* UserListIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 013B2A54193129E400607718 /* UserListIntegrationTests.m */; };
+		018AB0DE1975DB420025677B /* BuddyFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0DC1975DB420025677B /* BuddyFile.h */; };
+		018AB0DF1975DB420025677B /* BuddyFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0DD1975DB420025677B /* BuddyFile.m */; };
+		018AB0E31977176B0025677B /* BPModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E11977176B0025677B /* BPModelBase.h */; };
+		018AB0E41977176B0025677B /* BPModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0E21977176B0025677B /* BPModelBase.m */; };
+		018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E5197718D80025677B /* BPModelCheckin.h */; };
+		018AB0E8197718D80025677B /* BPModelCheckin.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0E6197718D80025677B /* BPModelCheckin.m */; };
+		018AB0EB197719620025677B /* BPRest.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0EA197719620025677B /* BPRest.m */; };
 		2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */; };
 		2F7E079318A2EC08003FC524 /* BuddyAppDelegateDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E079118A2EC08003FC524 /* BuddyAppDelegateDecorator.m */; };
 		3FAAE60BA41844428107236D /* libPods-BuddySDK Unit Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B6B8A0BC8C4474A7F6BC3E /* libPods-BuddySDK Unit Tests.a */; };
@@ -228,6 +235,13 @@
 		013B2A4F193122CF00607718 /* BPUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPUserList.h; sourceTree = "<group>"; };
 		013B2A50193122CF00607718 /* BPUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPUserList.m; sourceTree = "<group>"; };
 		013B2A54193129E400607718 /* UserListIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListIntegrationTests.m; sourceTree = "<group>"; };
+		018AB0DC1975DB420025677B /* BuddyFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyFile.h; sourceTree = "<group>"; };
+		018AB0DD1975DB420025677B /* BuddyFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuddyFile.m; sourceTree = "<group>"; };
+		018AB0E11977176B0025677B /* BPModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelBase.h; path = Models/BPModelBase.h; sourceTree = "<group>"; };
+		018AB0E21977176B0025677B /* BPModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelBase.m; path = Models/BPModelBase.m; sourceTree = "<group>"; };
+		018AB0E5197718D80025677B /* BPModelCheckin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelCheckin.h; path = Models/BPModelCheckin.h; sourceTree = "<group>"; };
+		018AB0E6197718D80025677B /* BPModelCheckin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelCheckin.m; path = Models/BPModelCheckin.m; sourceTree = "<group>"; };
+		018AB0EA197719620025677B /* BPRest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRest.m; sourceTree = "<group>"; };
 		29345A5A1773D2A400EEB8F5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		29345ABD1773DB3B00EEB8F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyAppDelegateDecorator.h; sourceTree = "<group>"; };
@@ -436,6 +450,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		018AB0E0197717560025677B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				018AB0E11977176B0025677B /* BPModelBase.h */,
+				018AB0E21977176B0025677B /* BPModelBase.m */,
+				018AB0E5197718D80025677B /* BPModelCheckin.h */,
+				018AB0E6197718D80025677B /* BPModelCheckin.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		A6291F71165C01800051F83C = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +506,7 @@
 		A6291F81165C01800051F83C /* BuddySDK */ = {
 			isa = PBXGroup;
 			children = (
+				018AB0E0197717560025677B /* Models */,
 				5B0302FA18DFDB2000EA6B08 /* BPRestProvider.h */,
 				5BF07F9B18DE108400CC50E9 /* BPLocationManager.h */,
 				5BF07F9C18DE108400CC50E9 /* BPLocationManager.m */,
@@ -594,6 +620,8 @@
 				C1ADA71C18AB32D900BCCC12 /* BPBase.h */,
 				C1ADA71D18AB32D900BCCC12 /* BPBase.m */,
 				5B6A0C7E1935972D006EBC44 /* BPBase+Private.h */,
+				018AB0DC1975DB420025677B /* BuddyFile.h */,
+				018AB0DD1975DB420025677B /* BuddyFile.m */,
 			);
 			name = BaseObjects;
 			path = ../../Lib/BuddySDK/BaseObjects;
@@ -749,6 +777,7 @@
 				C1FEEB50187E493400B45505 /* BPLocationsIntegrationTests.m */,
 				C1FEEB56187E4B4500B45505 /* BPVideosIntegrationTests.m */,
 				013B2A54193129E400607718 /* UserListIntegrationTests.m */,
+				018AB0EA197719620025677B /* BPRest.m */,
 			);
 			path = "BuddySDK Unit Tests";
 			sourceTree = "<group>";
@@ -808,6 +837,7 @@
 				013B2A51193122CF00607718 /* BPUserList.h in Headers */,
 				BFAEEC331929EA5F004B324A /* BPEnumMapping.h in Headers */,
 				C10E2BB1186951C3007A0136 /* BuddyDevice.h in Headers */,
+				018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */,
 				BFAEEC341929EA9E004B324A /* BPLocationProvider.h in Headers */,
 				C1B959D2183703E8000C8417 /* BuddyCollection.h in Headers */,
 				5BCF3F1718D641440065842D /* BPCrashManager.h in Headers */,
@@ -820,12 +850,14 @@
 				C1B95A2A18370817000C8417 /* BuddySDK-Prefix.pch in Headers */,
 				C10F1B7B1870A6F500D5364C /* NSError+BuddyError.h in Headers */,
 				5B984DA418C6DB9700CE8E2C /* BPDateRange.h in Headers */,
+				018AB0DE1975DB420025677B /* BuddyFile.h in Headers */,
 				C153F87017E15FC1009CDC81 /* Util.h in Headers */,
 				5B32F37918E071C600C07019 /* BPAFURLResponseSerialization.h in Headers */,
 				5B32F37718E071C600C07019 /* BPAFURLRequestSerialization.h in Headers */,
 				C1E0D1D81831BAD3001A7A01 /* JAGPropertyFinder.h in Headers */,
 				5BF07F9218DD2C1D00CC50E9 /* BuddyCollection+Private.h in Headers */,
 				5BCF8299191300DD00A26EA7 /* NSArray+BPSugar.h in Headers */,
+				018AB0E31977176B0025677B /* BPModelBase.h in Headers */,
 				5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */,
 				C11E6C9A184D58670034E1EB /* BuddyObject+Private.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
@@ -1024,6 +1056,7 @@
 				C1AA90DE1837376E0074B7E8 /* NSDictionary+Merge.m in Sources */,
 				C1B237601865569F005C841E /* NSString+JSON.m in Sources */,
 				5BCF3F1818D641440065842D /* BPCrashManager.m in Sources */,
+				018AB0E8197718D80025677B /* BPModelCheckin.m in Sources */,
 				C10E2BA1186950D8007A0136 /* BPCoordinate.m in Sources */,
 				5BF07F8418DD1BD000CC50E9 /* BPBlobCollection.m in Sources */,
 				5B0B23D119131DE3005CB913 /* BPIdentityValue.m in Sources */,
@@ -1038,8 +1071,10 @@
 				013B2A4E193121BE00607718 /* BPUserListCollection.m in Sources */,
 				5B5FE15818E3C90C00518440 /* BPNotificationManager.m in Sources */,
 				5B32F37618E071C600C07019 /* BPAFURLConnectionOperation.m in Sources */,
+				018AB0DF1975DB420025677B /* BuddyFile.m in Sources */,
 				5B19875C18CB67D800FBB502 /* NSDate+BPDateHelper.m in Sources */,
 				5B32F37A18E071C600C07019 /* BPAFURLResponseSerialization.m in Sources */,
+				018AB0E41977176B0025677B /* BPModelBase.m in Sources */,
 				5BB244C319342E82004AD7CD /* BPPagingTokens.m in Sources */,
 				5BCF829A191300DD00A26EA7 /* NSArray+BPSugar.m in Sources */,
 				5B984DA118C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.m in Sources */,
@@ -1093,6 +1128,7 @@
 				5B7EC9FB19453ACF00F33589 /* AppSettingsTests.m in Sources */,
 				C1A58FFD1890A57A00C5A50F /* MetadataTests.m in Sources */,
 				C1FEEB57187E4B4500B45505 /* BPVideosIntegrationTests.m in Sources */,
+				018AB0EB197719620025677B /* BPRest.m in Sources */,
 				C1FEEB4B187E481900B45505 /* BPAlbumsIntegrationTests.m in Sources */,
 				013B2A55193129E400607718 /* UserListIntegrationTests.m in Sources */,
 				C1ADD127184D96B800246313 /* CheckinIntegrationTests.m in Sources */,
@@ -1285,8 +1321,8 @@
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 				USER_HEADER_SEARCH_PATHS = include;
-				"VALID_ARCHS[sdk=iphonesimulator*]" = "x86_64 i386";
 				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "x86_64 i386";
 				WRAPPER_EXTENSION = "$(TARGET_NAME)";
 			};
 			name = Debug;

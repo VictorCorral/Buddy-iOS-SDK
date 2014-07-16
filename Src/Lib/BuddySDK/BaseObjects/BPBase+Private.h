@@ -10,9 +10,9 @@
 
 @interface BPBase(Private)
 
-- (instancetype)initWithClient:(id<BPRestProvider>)client;
+- (instancetype)initWithClient:(id<BPRestProviderOld>)client;
 
-@property (nonatomic, weak) id<BPRestProvider> client;
+@property (nonatomic, weak) id<BPRestProviderOld> client;
 @property (nonatomic, weak) id<BPLocationProvider> locationProvider;
 
 @end

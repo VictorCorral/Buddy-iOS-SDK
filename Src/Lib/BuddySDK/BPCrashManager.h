@@ -12,7 +12,7 @@
 
 @interface BPCrashManager : NSObject
 
-- (instancetype)initWithRestProvider:(id<BPRestProvider>)restProvider;
+- (instancetype)initWithRestProvider:(id<BPRestProviderOld>)restProvider;
 
 - (void)startReporting:(NSString *)appId;
 

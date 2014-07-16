@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 
 @end
 
-@interface BPClient : BPBase
+@interface BPClient : BPBase <BPRestProvider,BPRestProviderOld>
 
 
 /** Callback signature for the BuddyClientPing function. BuddyStringResponse.result field will be "Pong" if the server responds correctly. If there was an exception or error (e.g. unknown server response or invalid data) the response.exception field will be set to an exception instance and the raw response from the server, if any, will be held in the response.dataResult field.
@@ -174,7 +174,7 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
 + (instancetype)defaultClient;
 
 
-@property (nonatomic, readonly, strong) id <BPRestProvider> restService;
+@property (nonatomic, readonly, strong) id <BPRestProvider,BPRestProviderOld> restService;
 /// TODO
 -(void)setupWithApp:(NSString *)appID
                 appKey:(NSString *)appKey
@@ -188,6 +188,30 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
 - (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
 
 - (void)socialLogin:(NSString *)provider providerId:(NSString *)providerId token:(NSString *)token success:(BuddyObjectCallback) callback;
+
+/**
+ * REST Methods
+ */
+
+- (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
+- (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
+- (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
+- (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
+- (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
+
+
+/**
+ * Old REST methods
+ */
+- (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback;
+- (void)GET_FILE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback;
+- (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback;
+- (void)MULTIPART_POST:(NSString *)servicePath parameters:(NSDictionary *)parameters data:(NSDictionary *)data mimeType:(NSString *)mimeType callback:(RESTCallbackOld)callback;
+- (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback;
+- (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback;
+- (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback;
+
+ 
 
 /**
  * Logs out the current user.

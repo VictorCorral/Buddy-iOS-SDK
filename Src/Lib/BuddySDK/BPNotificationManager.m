@@ -11,13 +11,13 @@
 
 @interface BPNotificationManager()
 
-@property (weak, nonatomic) id<BPRestProvider> client;
+@property (weak, nonatomic) id<BPRestProviderOld> client;
 
 @end
 
 @implementation BPNotificationManager
 
-- (instancetype)initWithClient:(id<BPRestProvider>)client{
+- (instancetype)initWithClient:(id<BPRestProviderOld>)client{
     self = [super init];
     if(self){
         _client = client;

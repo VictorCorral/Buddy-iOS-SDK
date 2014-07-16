@@ -19,7 +19,7 @@
 
 
 - (instancetype)initWithId:(NSString*)id;
-- (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProvider>)client;
+- (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProviderOld>)client;
 - (void)registerProperty:(SEL)property;
 
 + (NSString *)requestPath;

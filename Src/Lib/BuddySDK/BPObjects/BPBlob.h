@@ -24,7 +24,7 @@
 
 typedef void(^BuddyDataResponse)(NSData *data, NSError *error);
 
-- (void)savetoServerWithData:(NSData *)data client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback;
+- (void)savetoServerWithData:(NSData *)data client:(id<BPRestProviderOld>)client callback:(BuddyCompletionCallback)callback;
 
 - (void)getData:(BuddyDataResponse)callback;
 - (void)getDataWithParameters:(NSDictionary*)parameters callback:(BuddyDataResponse)callback;

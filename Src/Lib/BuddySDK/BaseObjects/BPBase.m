@@ -15,14 +15,14 @@
 
 @interface BPBase()<BPEnumMapping>
 
-@property (nonatomic, weak) id<BPRestProvider> client;
+@property (nonatomic, weak) id<BPRestProviderOld> client;
 @property (nonatomic, weak) id<BPLocationProvider> locationProvider;
 
 @end
 
 @implementation BPBase
 
-- (instancetype)initWithClient:(id<BPRestProvider>)client
+- (instancetype)initWithClient:(id<BPRestProviderOld>)client
 {
     self = [super init];
     if (self) {

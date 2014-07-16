@@ -47,7 +47,7 @@ static NSString *blobMimeType = @"application/octet-stream";
     return blobMimeType;
 }
 
-- (void)savetoServerWithData:(NSData *)data client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithData:(NSData *)data client:(id<BPRestProviderOld>)client callback:(BuddyCompletionCallback)callback
 {
     NSDictionary *multipartParameters = @{@"data": BOXNIL(data)};
     
@@ -68,7 +68,7 @@ static NSString *blobMimeType = @"application/octet-stream";
      }];
 }
 
-+ (void)createWithData:(NSData *)data parameters:(NSDictionary *)parameters client:(id<BPRestProvider, BPLocationProvider>)client callback:(BuddyObjectCallback)callback
++ (void)createWithData:(NSData *)data parameters:(NSDictionary *)parameters client:(id<BPRestProviderOld, BPLocationProvider>)client callback:(BuddyObjectCallback)callback
 
 {
     NSDictionary *multipartParameters = @{@"data": BOXNIL(data)};
