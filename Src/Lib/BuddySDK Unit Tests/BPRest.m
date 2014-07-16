@@ -39,6 +39,7 @@ describe(@"BPUser", ^{
 
         it(@"Should allow creating a checkin with a dictionary", ^{
             
+            __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with dict", @"description":@"it was a nice place",@"location":BPCoordinateMake(1.2, 3.4)};
             
             [Buddy POST:@"/checkins" parameters:checkin class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
@@ -62,10 +63,14 @@ describe(@"BPUser", ^{
                 NSString *returnedDesc =[checkinResult objectForKey:@"description"];
                 [[returnedDesc should] equal: @"it was a nice place"];
                 
+                fin = YES;
+                
             }];
+            [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
         });
         it(@"Should allow creating a checkin with a model", ^{
             
+            __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
             
             [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
@@ -91,11 +96,14 @@ describe(@"BPUser", ^{
                 
                 [[checkinResult.description should] equal: @"it was an even better place"];
                 
+                fin = YES;
             }];
+            [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
         });
         
         it(@"Should allow updating a checkin with a model", ^{
             
+            __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
             
             [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
@@ -119,36 +127,39 @@ describe(@"BPUser", ^{
                 
                 NSDictionary *checkinPatch = @{@"comment":@"my checkin with model patched"};
                 
-                [Buddy PATCH:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:checkinPatch class:[BPModelCheckin class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+                [Buddy PATCH:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:checkinPatch class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
                     
-                    [[error should] beNonNil];
+                    [[error should] beNil];
                     if(error!=nil)
                     {
                         return;
                     }
                     
-                    BPModelCheckin *checkinResultPatched = (BPModelCheckin*)obj;
-                    [[checkinResult should] beNonNil];
-                    
-                    
-                    [[checkinResultPatched.id should] equal:checkinResult.id];
-                    
-                    [[checkinResultPatched.created should] beNonNil];
-                    
-                    [[checkinResultPatched.comment should] equal:@"my checkin with model patched"];
-                    
-                    [[checkinResultPatched.description should] equal: @"it was an even better place"];
-                    
-                    
+                    [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class: [BPModelCheckin class] callback:^(id getObj, __unsafe_unretained Class clazz, NSError *error)
+                    {
+                        BPModelCheckin *checkinResultPatched = (BPModelCheckin*)getObj;
+                        [[checkinResult should] beNonNil];
+                        
+                        
+                        [[checkinResultPatched.id should] equal:checkinResult.id];
+                        
+                        [[checkinResultPatched.created should] beNonNil];
+                        
+                        [[checkinResultPatched.comment should] equal:@"my checkin with model patched"];
+                        
+                        [[checkinResultPatched.description should] equal: @"it was an even better place"];
+                        
+                        fin = YES;
+                    }];
                 }];
                 
             }];
+            [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
         });
-        
-    });
     
-    it(@"Should allow deleting a checkin", ^{
+        it(@"Should allow deleting a checkin", ^{
         
+        __block BOOL fin = NO;
         NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
         
         [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
@@ -178,13 +189,17 @@ describe(@"BPUser", ^{
                     return;
                 }
                 
+                fin = YES;
+                
             }];
             
         }];
+        [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
     });
     
-    it(@"Should allow uuploading a picture", ^{
+    it(@"Should allow uploading a picture", ^{
         
+        __block BOOL fin = NO;
         NSMutableDictionary *pic = [NSMutableDictionary new];
         
         [pic setObject:@"Pic from iOS" forKey:@"caption"];
@@ -198,15 +213,215 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id json, __unsafe_unretained Class clazz, NSError *error) {
+        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
                 return;
             }
             
+            NSDictionary *result = (NSDictionary*)obj;
+            [[result should] beNonNil];
+            
+            NSString *picId = [result objectForKey:@"id"];
+            [[picId should] beNonNil];
+            
+            NSString *caption = [result objectForKey:@"caption"];
+            [[caption should] equal:@"Pic from iOS"];
+             
+             NSString *contentType = [result objectForKey:@"contentType"];
+             [[contentType should] equal: @"image/png"];
+            
+            fin = YES;
+            
         }];
+        [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
     });
     
+    it(@"Should allow patching a picture", ^{
+        
+        __block BOOL fin = NO;
+        NSMutableDictionary *pic = [NSMutableDictionary new];
+        
+        [pic setObject:@"Pic from iOS" forKey:@"caption"];
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
+        
+        
+        BuddyFile *file = [BuddyFile new];
+        file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
+        file.contentType = @"image/png";
+        
+        [pic setObject:file forKey:@"data"];
+        
+        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+            [[error should] beNil];
+            if(error!=nil)
+            {
+                return;
+            }
+            
+            NSDictionary *result = (NSDictionary*)obj;
+            [[result should] beNonNil];
+            
+            NSString *picId = [result objectForKey:@"id"];
+            [[picId should] beNonNil];
+            
+            NSString *caption = [result objectForKey:@"caption"];
+            [[caption should] equal:@"Pic from iOS"];
+            
+            NSString *contentType = [result objectForKey:@"contentType"];
+            [[contentType should] equal: @"image/png"];
+            
+            NSDictionary *patchParams = @{@"caption" : @"The patched Caption"};
+            
+            [Buddy PATCH:[NSString stringWithFormat:@"/pictures/%@",picId] parameters:patchParams class:[NSDictionary class]
+                callback:^(id secondObj, __unsafe_unretained Class clazz, NSError *error) {
+                    [[error should] beNil];
+                    if(error!=nil)
+                    {
+                        return;
+                    }
+                    
+                    [Buddy GET:[NSString stringWithFormat:@"/pictures/%@",picId] parameters:nil class:[NSDictionary class] callback:^(id patchObj, __unsafe_unretained Class clazz, NSError *error)
+                    {
+                        [[error should] beNil];
+                        if(error!=nil)
+                        {
+                            return;
+                        }
+                        
+                        NSDictionary *patchResult = (NSDictionary*)patchObj;
+                        [[patchResult should] beNonNil];
+                        
+                        NSString *patchCaption = [patchResult objectForKey:@"caption"];
+                        [[patchCaption should] equal:@"The patched Caption"];
+                        
+                        fin = YES;
+                    }];
+                    
+                }];
+        }];
+        [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
+    });
+    
+    it(@"Should allow getting a picture", ^{
+        
+        __block BOOL fin = NO;
+        NSMutableDictionary *pic = [NSMutableDictionary new];
+        
+        [pic setObject:@"Pic from iOS" forKey:@"caption"];
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
+        
+        
+        BuddyFile *file = [BuddyFile new];
+        file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
+        file.contentType = @"image/png";
+        
+        [pic setObject:file forKey:@"data"];
+        
+        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+            [[error should] beNil];
+            if(error!=nil)
+            {
+                return;
+            }
+            
+            NSDictionary *result = (NSDictionary*)obj;
+            [[result should] beNonNil];
+            
+            NSString *picId = [result objectForKey:@"id"];
+            [[picId should] beNonNil];
+            
+            NSString *caption = [result objectForKey:@"caption"];
+            [[caption should] equal:@"Pic from iOS"];
+            
+            NSString *contentType = [result objectForKey:@"contentType"];
+            [[contentType should] equal: @"image/png"];
+            
+            
+            [Buddy GET:[NSString stringWithFormat:@"/pictures/%@",picId] parameters:nil class:[NSDictionary class]
+                callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+                    [[error should] beNil];
+                    if(error!=nil)
+                    {
+                        return;
+                    }
+                    
+                    NSDictionary *getResult = (NSDictionary*)obj;
+                    [[result should] beNonNil];
+                    
+                    NSString *getPicId = [getResult objectForKey:@"id"];
+                    [[getPicId should] equal:picId];
+                    
+                    NSString *getPicCaption = [getResult objectForKey:@"caption"];
+                    [[getPicCaption should] equal:@"Pic from iOS"];
+                    
+                    NSString *getPicContentType = [getResult objectForKey:@"contentType"];
+                    [[getPicContentType should] equal: @"image/png"];
+                    
+                    fin = YES;
+                }];
+        }];
+        [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
+    });
+    
+    it(@"Should allow getting a picture binary data", ^{
+        
+        __block BOOL fin = NO;
+        NSMutableDictionary *pic = [NSMutableDictionary new];
+        
+        [pic setObject:@"Pic from iOS" forKey:@"caption"];
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
+        
+        
+        BuddyFile *file = [BuddyFile new];
+        file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
+        file.contentType = @"image/png";
+        
+        [pic setObject:file forKey:@"data"];
+        
+        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+            [[error should] beNil];
+            if(error!=nil)
+            {
+                return;
+            }
+            
+            NSDictionary *result = (NSDictionary*)obj;
+            [[result should] beNonNil];
+            
+            NSString *picId = [result objectForKey:@"id"];
+            [[picId should] beNonNil];
+            
+            NSString *caption = [result objectForKey:@"caption"];
+            [[caption should] equal:@"Pic from iOS"];
+            
+            NSString *contentType = [result objectForKey:@"contentType"];
+            [[contentType should] equal: @"image/png"];
+            
+            
+            [Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file",picId] parameters:nil class:[BuddyFile class]
+              callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+                  [[error should] beNil];
+                  if(error!=nil)
+                  {
+                      return;
+                  }
+                  
+                  BuddyFile *fileData = (BuddyFile*)obj;
+                  
+                  [[fileData.contentType should] equal:@"image/png"];
+                  [[fileData.fileData should] beNonNil];
+                  
+                  fin = YES;
+              }];
+        }];
+        [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
+    });
+   
+    });
 });
 SPEC_END

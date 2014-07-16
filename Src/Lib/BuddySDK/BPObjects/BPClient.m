@@ -463,7 +463,7 @@
 - (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
 {
     [self checkDeviceToken:^{
-        if([clazz isKindOfClass:[BuddyFile class]])
+        if(clazz ==[BuddyFile class])
         {
             [self.service REST_GET_FILE:servicePath parameters:[self convertDictionaryForUpload:parameters] callback:[self handleResponse:clazz callback:callback]];
         }
@@ -715,17 +715,20 @@
                 file.contentType = @"application/octet-stream";
             }
             callback(file,clazz,buddyError);
+            return;
         }
         
         if(![result isKindOfClass:[NSDictionary class]])
         {
             // If result is not a dictionary then we just pass it back to the caller as we cannot convert that.
             callback(responseObject, clazz, buddyError);
+            return;
         }
         else if(clazz == [NSDictionary class] && ([result isKindOfClass:[NSDictionary class]]) )
         {
             // If caller wants a dictionary, we can shortcut and just give it to them
             callback(responseObject, clazz, buddyError);
+            return;
         }
         else
         {
@@ -733,6 +736,7 @@
             id returnObj = [[clazz alloc] init];
             [[JAGPropertyConverter bp_converter] setPropertiesOf:returnObj fromDictionary:result];
             callback(returnObj, clazz, buddyError);
+            return;
         }
     };
 }
