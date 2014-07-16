@@ -319,7 +319,7 @@
 {
     NSDictionary *parameters = @{@"username": username,
                                  @"password": password};
-    [self POST:@"users/login" parameters:parameters class:[NSDictionary class] callback:^(id json, Class clazz,NSError *error) {
+    [self POST:@"users/login" parameters:parameters class:[NSDictionary class] callback:^(id json,NSError *error) {
         callback ? callback(json, error) : nil;
     }];
 }
@@ -330,7 +330,7 @@
                                  @"identityId": providerId,
                                  @"identityAccessToken": token};
     
-    [self POST:@"users/login/social" parameters:parameters class:[NSDictionary class] callback:^(id json, Class clazz,NSError *error) {
+    [self POST:@"users/login/social" parameters:parameters class:[NSDictionary class] callback:^(id json,NSError *error) {
         callback ? callback(json, error) : nil;
     }];
 }
@@ -379,7 +379,7 @@
 {
     NSString *resource = @"users/me/logout";
     
-    [self POST:resource parameters:nil class:[NSDictionary class] callback:^(id json, Class clazz, NSError *error) {
+    [self POST:resource parameters:nil class:[NSDictionary class] callback:^(id json, NSError *error) {
         if (!error) {
             [self resetOnLogout];
         }
@@ -392,7 +392,7 @@
 {
     self.appSettings.devicePushToken = token;
     NSString *resource = @"devices/current";
-    [self PATCH:resource parameters:@{@"pushToken": token} class:[NSDictionary class] callback:^(id json, Class clazz, NSError *error) {
+    [self PATCH:resource parameters:@{@"pushToken": token} class:[NSDictionary class] callback:^(id json, NSError *error) {
         callback ? callback(error,json) : nil;
     }];
 }
@@ -402,7 +402,7 @@
 
 -(void)ping:(BPPingCallback)callback
 {
-    [self GET:@"ping" parameters:nil class:[NSDictionary class] callback:^(id json, Class clazz, NSError *error) {
+    [self GET:@"ping" parameters:nil class:[NSDictionary class] callback:^(id json, NSError *error) {
         callback ? callback([NSDecimalNumber decimalNumberWithString:@"2.0"]) : nil;
     }];
 }
@@ -714,20 +714,20 @@
             {
                 file.contentType = @"application/octet-stream";
             }
-            callback(file,clazz,buddyError);
+            callback(file,buddyError);
             return;
         }
         
         if(![result isKindOfClass:[NSDictionary class]])
         {
             // If result is not a dictionary then we just pass it back to the caller as we cannot convert that.
-            callback(responseObject, clazz, buddyError);
+            callback(responseObject, buddyError);
             return;
         }
         else if(clazz == [NSDictionary class] && ([result isKindOfClass:[NSDictionary class]]) )
         {
             // If caller wants a dictionary, we can shortcut and just give it to them
-            callback(responseObject, clazz, buddyError);
+            callback(responseObject, buddyError);
             return;
         }
         else
@@ -735,7 +735,7 @@
             // Try to convert to what the caller wants.
             id returnObj = [[clazz alloc] init];
             [[JAGPropertyConverter bp_converter] setPropertiesOf:returnObj fromDictionary:result];
-            callback(returnObj, clazz, buddyError);
+            callback(returnObj, buddyError);
             return;
         }
     };
@@ -876,7 +876,7 @@
     NSString *resource = [NSString stringWithFormat:@"metrics/events/%@", key];
     NSDictionary *parameters = @{@"value": BOXNIL(value)};
     
-    [self POST:resource parameters:parameters class:[NSDictionary class] callback:^(id json, Class clazz, NSError *error) {
+    [self POST:resource parameters:parameters class:[NSDictionary class] callback:^(id json, NSError *error) {
         callback ? callback(error) : nil;
     }];
 }
@@ -909,7 +909,7 @@
 - (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback
 {
     NSString *resource = [NSString stringWithFormat:@"metrics/events/%@", key];
-    [self POST:resource parameters:parameters class:[NSDictionary class] callback:^(id json, Class clazz, NSError *error) {
+    [self POST:resource parameters:parameters class:[NSDictionary class] callback:^(id json, NSError *error) {
         BPMetricCompletionHandler *completionHandler;
         if (!error) {
             completionHandler = [[BPMetricCompletionHandler alloc] initWithMetricId:json[@"id"] andClient:self];

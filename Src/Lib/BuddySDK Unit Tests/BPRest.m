@@ -42,7 +42,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with dict", @"description":@"it was a nice place",@"location":BPCoordinateMake(1.2, 3.4)};
             
-            [Buddy POST:@"/checkins" parameters:checkin class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+            [Buddy POST:@"/checkins" parameters:checkin class:[NSDictionary class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -73,7 +73,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -106,7 +106,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -127,7 +127,7 @@ describe(@"BPUser", ^{
                 
                 NSDictionary *checkinPatch = @{@"comment":@"my checkin with model patched"};
                 
-                [Buddy PATCH:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:checkinPatch class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+                [Buddy PATCH:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:checkinPatch class:[NSDictionary class] callback:^(id obj,  NSError *error) {
                     
                     [[error should] beNil];
                     if(error!=nil)
@@ -135,7 +135,7 @@ describe(@"BPUser", ^{
                         return;
                     }
                     
-                    [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class: [BPModelCheckin class] callback:^(id getObj, __unsafe_unretained Class clazz, NSError *error)
+                    [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class: [BPModelCheckin class] callback:^(id getObj,  NSError *error)
                     {
                         BPModelCheckin *checkinResultPatched = (BPModelCheckin*)getObj;
                         [[checkinResult should] beNonNil];
@@ -162,7 +162,7 @@ describe(@"BPUser", ^{
         __block BOOL fin = NO;
         NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
         
-        [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+        [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
             
             [[error should] beNil];
             if(error!=nil)
@@ -181,7 +181,7 @@ describe(@"BPUser", ^{
             
             [[checkinResult.description should] equal: @"it was an even better place"];
             
-            [Buddy DELETE:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class:[BPModelCheckin class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+            [Buddy DELETE:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class:[BPModelCheckin class] callback:^(id obj,  NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -213,7 +213,7 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
@@ -254,7 +254,7 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
@@ -276,14 +276,14 @@ describe(@"BPUser", ^{
             NSDictionary *patchParams = @{@"caption" : @"The patched Caption"};
             
             [Buddy PATCH:[NSString stringWithFormat:@"/pictures/%@",picId] parameters:patchParams class:[NSDictionary class]
-                callback:^(id secondObj, __unsafe_unretained Class clazz, NSError *error) {
+                callback:^(id secondObj, NSError *error) {
                     [[error should] beNil];
                     if(error!=nil)
                     {
                         return;
                     }
                     
-                    [Buddy GET:[NSString stringWithFormat:@"/pictures/%@",picId] parameters:nil class:[NSDictionary class] callback:^(id patchObj, __unsafe_unretained Class clazz, NSError *error)
+                    [Buddy GET:[NSString stringWithFormat:@"/pictures/%@",picId] parameters:nil class:[NSDictionary class] callback:^(id patchObj,  NSError *error)
                     {
                         [[error should] beNil];
                         if(error!=nil)
@@ -321,7 +321,7 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
@@ -342,7 +342,7 @@ describe(@"BPUser", ^{
             
             
             [Buddy GET:[NSString stringWithFormat:@"/pictures/%@",picId] parameters:nil class:[NSDictionary class]
-                callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+                callback:^(id obj, NSError *error) {
                     [[error should] beNil];
                     if(error!=nil)
                     {
@@ -383,7 +383,7 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
@@ -404,7 +404,7 @@ describe(@"BPUser", ^{
             
             
             [Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file",picId] parameters:nil class:[BuddyFile class]
-              callback:^(id obj, __unsafe_unretained Class clazz, NSError *error) {
+              callback:^(id obj, NSError *error) {
                   [[error should] beNil];
                   if(error!=nil)
                   {

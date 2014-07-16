@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^RESTCallback)(id json, Class clazz, NSError *error);
+typedef void (^RESTCallback)(id obj, NSError *error);
 
 typedef void (^RESTCallbackOld)(id json, NSError *error);
 

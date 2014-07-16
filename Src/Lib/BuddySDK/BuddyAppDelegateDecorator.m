@@ -51,7 +51,7 @@
         
         
         
-        [Buddy POST:resource parameters:nil class:[NSDictionary class] callback:^(id json, Class clazz, NSError *error) {
+        [Buddy POST:resource parameters:nil class:[NSDictionary class] callback:^(id json, NSError *error) {
         
         }];
     }
