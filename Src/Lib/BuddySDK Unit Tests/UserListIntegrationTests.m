@@ -369,7 +369,7 @@ describe(@"BuddyUserListsSpec", ^{
                                 [[Buddy users] searchUsers:searchUsers callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                                     [[error should] beNil];
                                     [[theValue([buddyObjects count]) should] equal:theValue(NUM_USERS)];
-                                    [[theValue([[buddyObjects firstObject] gender]) should] equal:theValue(BPUserGender_Unknown)];
+                                    
                                     fin = YES;
                                 }];
 

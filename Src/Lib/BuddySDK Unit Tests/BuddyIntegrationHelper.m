@@ -23,20 +23,21 @@
     
     [Buddy initClient:APP_ID appKey:APP_KEY];
     
-    [Buddy login:TEST_USERNAME password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
-        
-        BPUser *user = [BPUser new];
-        user.firstName = @"Erik";
-        user.lastName = @"Erik";
-        user.gender = BPUserGender_Unknown;
-        user.email = [NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:10]];
-        user.dateOfBirth = [BuddyIntegrationHelper randomDate];
-        user.userName = TEST_USERNAME;
-        
-        if(loggedInsUser)
+    [Buddy loginUser:TEST_USERNAME password:TEST_PASSWORD callback:^(BPModelUser *loggedInUser, NSError *error)
+    {
+        if(loggedInUser)
+        {
             callback();
-        else {
-            [Buddy createUser:user password:TEST_PASSWORD callback:^(NSError *error) {
+        }
+        else
+        {
+            [Buddy createUser:TEST_USERNAME password:TEST_PASSWORD firstName:@"Erik" lastName: @"ErikLast"
+                        email:[NSString stringWithFormat:@"iostests%@@buddy.com", [BuddyIntegrationHelper randomString:10]]
+                  dateOfBirth:[BuddyIntegrationHelper randomDate]
+                       gender:@"male"
+                          tag:nil
+                     callback:^(NSError *error)
+            {
                 callback();
             }];
         }

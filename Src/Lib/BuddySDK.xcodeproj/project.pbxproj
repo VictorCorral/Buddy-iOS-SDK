@@ -36,6 +36,8 @@
 		018AB0EB197719620025677B /* BPRest.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0EA197719620025677B /* BPRest.m */; };
 		01DB07BC197855350008A35E /* BPModelSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BA197855350008A35E /* BPModelSearch.h */; };
 		01DB07BD197855350008A35E /* BPModelSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BB197855350008A35E /* BPModelSearch.m */; };
+		01DB07C0197878B40008A35E /* BPModelUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BE197878B40008A35E /* BPModelUser.h */; };
+		01DB07C1197878B40008A35E /* BPModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BF197878B40008A35E /* BPModelUser.m */; };
 		2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */; };
 		2F7E079318A2EC08003FC524 /* BuddyAppDelegateDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E079118A2EC08003FC524 /* BuddyAppDelegateDecorator.m */; };
 		3FAAE60BA41844428107236D /* libPods-BuddySDK Unit Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B6B8A0BC8C4474A7F6BC3E /* libPods-BuddySDK Unit Tests.a */; };
@@ -246,6 +248,8 @@
 		018AB0EA197719620025677B /* BPRest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRest.m; sourceTree = "<group>"; };
 		01DB07BA197855350008A35E /* BPModelSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelSearch.h; path = Models/BPModelSearch.h; sourceTree = "<group>"; };
 		01DB07BB197855350008A35E /* BPModelSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelSearch.m; path = Models/BPModelSearch.m; sourceTree = "<group>"; };
+		01DB07BE197878B40008A35E /* BPModelUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelUser.h; path = Models/BPModelUser.h; sourceTree = "<group>"; };
+		01DB07BF197878B40008A35E /* BPModelUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelUser.m; path = Models/BPModelUser.m; sourceTree = "<group>"; };
 		29345A5A1773D2A400EEB8F5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		29345ABD1773DB3B00EEB8F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyAppDelegateDecorator.h; sourceTree = "<group>"; };
@@ -463,6 +467,8 @@
 				018AB0E6197718D80025677B /* BPModelCheckin.m */,
 				01DB07BA197855350008A35E /* BPModelSearch.h */,
 				01DB07BB197855350008A35E /* BPModelSearch.m */,
+				01DB07BE197878B40008A35E /* BPModelUser.h */,
+				01DB07BF197878B40008A35E /* BPModelUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -847,6 +853,7 @@
 				BFAEEC341929EA9E004B324A /* BPLocationProvider.h in Headers */,
 				C1B959D2183703E8000C8417 /* BuddyCollection.h in Headers */,
 				5BCF3F1718D641440065842D /* BPCrashManager.h in Headers */,
+				01DB07C0197878B40008A35E /* BPModelUser.h in Headers */,
 				C10E2BA0186950D8007A0136 /* BPCoordinate.h in Headers */,
 				C154CEED187F750C00EACE4B /* BPLocation.h in Headers */,
 				C10E2B9A186950D8007A0136 /* BPCheckin.h in Headers */,
@@ -1107,6 +1114,7 @@
 				C1B0F54C18937B08000403E0 /* BPAlbumItemContainer.m in Sources */,
 				C154CEEE187F750C00EACE4B /* BPLocation.m in Sources */,
 				5B984DA518C6DB9700CE8E2C /* BPDateRange.m in Sources */,
+				01DB07C1197878B40008A35E /* BPModelUser.m in Sources */,
 				5B0B23D519133E4E005CB913 /* BPSize.m in Sources */,
 				C10E2BB2186951C3007A0136 /* BuddyDevice.m in Sources */,
 				5BF07F8A18DD1BD000CC50E9 /* BPPictureCollection.m in Sources */,

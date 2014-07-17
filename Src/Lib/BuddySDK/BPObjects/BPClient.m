@@ -29,6 +29,8 @@
 #import "NSDate+JSON.h"
 #import "BPAFURLRequestSerialization.h"
 
+#import "BPModelUser.h"
+
 #import "BuddyFile.h"
 
 #import <CoreFoundation/CoreFoundation.h>
@@ -47,6 +49,7 @@
 @property (nonatomic, strong) BuddyAppDelegateDecorator *decorator;
 @property (nonatomic, strong) BPCrashManager *crashManager;
 @property (nonatomic, strong) NSMutableArray *queuedRequests;
+@property (nonatomic, strong) BPModelUser *currentUser;
 
 - (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback;
 
@@ -73,29 +76,8 @@
         _notifications = [[BPNotificationManager alloc] initWithClient:self];
         _location = [BPLocationManager new];
         _location.delegate = self;
-        [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
-//        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//            switch (status) {
-//                case AFNetworkReachabilityStatusNotReachable:
-//                case AFNetworkReachabilityStatusUnknown:
-//                    _reachabilityLevel = BPReachabilityNone;
-//                    break;
-//                case AFNetworkReachabilityStatusReachableViaWWAN:
-//                    _reachabilityLevel = BPReachabilityCarrier;
-//                    break;
-//                case AFNetworkReachabilityStatusReachableViaWiFi:
-//                    _reachabilityLevel = BPReachabilityWiFi;
-//                    break;
-//                default:
-//                    break;
-//            }
-//            
-//#if !(TARGET_IPHONE_SIMULATOR)
-//            [self raiseReachabilityChanged:_reachabilityLevel];
-//#endif
-//        }];
-//        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
         
+        [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -103,7 +85,7 @@
 - (void)resetOnLogout
 {
     _user = nil;
-    
+    _currentUser = nil;
     _users = nil;
     _checkins = nil;
     _pictures = nil;
@@ -313,6 +295,75 @@
     }];
 }
 
+- (void)createUser:(NSString*) userName
+          password:(NSString*) password
+         firstName:(NSString*) firstName
+          lastName:(NSString*) lastName
+             email:(NSString*) email
+       dateOfBirth:(NSDate*) dateOfBirth
+            gender:(NSString*) gender
+               tag:(NSString*) tag
+          callback:(BuddyCompletionCallback)callback;
+{
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    
+    if(userName)
+    {
+        params[@"username"] = userName;
+    }
+    
+    if(password)
+    {
+        params[@"password"] = password;
+    }
+    
+    if(firstName)
+    {
+        params[@"firstname"] = firstName;
+    }
+    
+    if(lastName)
+    {
+        params[@"lastname"] = lastName;
+    }
+    
+    if(email)
+    {
+        params[@"email"]= email;
+    }
+    
+    if(dateOfBirth)
+    {
+        params[@"dateofbirth"]=dateOfBirth;
+    }
+    
+    if(gender)
+    {
+        params[@"gender"]=gender;
+    }
+    
+    if(tag)
+    {
+        params[@"tag"] = tag;
+    }
+    
+    [self POST:@"/users" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        if(error)
+        {
+            callback ? callback(error) : nil;
+            return;
+        }
+        
+        self.user = [BPUser new];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self.user fromDictionary:obj];
+        self.currentUser = [BPModelUser new];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:obj];
+        self.appSettings.userToken = [obj objectForKey:@"accessToken"];
+        callback ? callback(error) : nil;
+    }];
+        
+}
+
 #pragma mark - Login
 
 -(void)loginWorker:(NSString *)username password:(NSString *)password success:(BuddyObjectCallback) callback
@@ -344,33 +395,51 @@
             return;
         }
         
-        BPUser *user = [[BPUser alloc] initBuddyWithResponse:json andClient:self];
-        self.appSettings.userToken = user.accessToken;
+        // Note: Does not set currentUser as this is for the new APIs only so no one else should depend on it.
+        self.user = [[BPUser alloc] initBuddyWithResponse:json andClient:self];
+        self.appSettings.userToken = [json objectForKey:@"accessToken"];
+        callback ? callback(self.user,nil) : nil;
         
-        [user refresh:^(NSError *error) {
-            self.user = user;
-            callback ? callback(user, error) : nil;
-        }];
+    }];
+}
+
+- (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback
+{
+    [self loginWorker:username password:password success:^(id obj, NSError *error) {
+        
+        if(error) {
+            callback ? callback(nil, error) : nil;
+            return;
+        }
+        
+        self.user = [[BPUser alloc] initBuddyWithResponse:obj andClient:self];
+        self.currentUser = [BPModelUser new];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:obj];
+        self.appSettings.userToken = [obj objectForKey:@"accessToken"];
+        
+        callback ? callback(self.currentUser,nil) : nil;
         
     }];
 }
 
 - (void)socialLogin:(NSString *)provider providerId:(NSString *)providerId token:(NSString *)token success:(BuddyObjectCallback) callback;
 {
-    [self socialLoginWorker:provider providerId:providerId token:token success:^(id json, NSError *error) {
+    [self socialLoginWorker:provider providerId:providerId token:token success:^(id obj, NSError *error) {
         
         if (error) {
             callback ? callback(nil, error) : nil;
             return;
         }
         
-        BPUser *user = [[BPUser alloc] initBuddyWithResponse:json andClient:self];
-        self.appSettings.userToken = user.accessToken;
-
-        [user refresh:^(NSError *error){
-            self.user = user;
-            callback ? callback(user, error) : nil;
-        }];
+        BPModelUser *user = [BPModelUser new];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:user fromDictionary:obj];
+        
+        NSDictionary *dict = (NSDictionary*)obj;
+        
+        self.appSettings.userToken = [dict objectForKey:@"accessToken"];
+        
+        callback ? callback(user,nil) : nil;
+        
     }];
 }
 

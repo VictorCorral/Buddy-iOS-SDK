@@ -35,6 +35,12 @@
 #import "BPSize.h"
 #import "BPPagingTokens.h"
 
+// Models
+#import "BPModelUser.h"
+#import "BPModelCheckin.h"
+#import "BPModelSearch.h"
+
+
 /**
  * TODO
  *
@@ -135,6 +141,16 @@
  *
  */
 + (void)createUser:(BPUser *)user password:(NSString *)password callback:(BuddyCompletionCallback)callback;
++ (void)createUser:(NSString*) userName
+          password:(NSString*) password
+         firstName:(NSString*) firstName
+          lastName:(NSString*) lastName
+             email:(NSString*) email
+       dateOfBirth:(NSDate*) dateOfBirth
+            gender:(NSString*) gender
+               tag:(NSString*) tag
+          callback:(BuddyCompletionCallback)callback;
+
 
 /**
  *
@@ -146,6 +162,7 @@
  *
  */
 + (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
++ (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
 
 /**
  *

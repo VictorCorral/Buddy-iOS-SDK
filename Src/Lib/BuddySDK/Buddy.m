@@ -144,11 +144,38 @@
     [[BPClient defaultClient] createUser:user password:password callback:callback];
 }
 
++ (void)createUser:(NSString*) userName
+          password:(NSString*) password
+         firstName:(NSString*) firstName
+          lastName:(NSString*) lastName
+             email:(NSString*) email
+       dateOfBirth:(NSDate*) dateOfBirth
+            gender:(NSString*) gender
+               tag:(NSString*) tag
+          callback:(BuddyCompletionCallback)callback
+{
+    [[BPClient defaultClient]createUser:userName
+                               password:password
+                              firstName:firstName
+                               lastName:lastName
+                                  email:email
+                            dateOfBirth:dateOfBirth
+                                 gender:gender
+                                    tag:tag
+                               callback:callback];
+}
+
 + (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback
 {
     [[BPClient defaultClient] login:username password:password callback:callback  ];
      
 }
+
++ (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback
+{
+    [[BPClient defaultClient] loginUser:username password:password callback:callback];
+}
+
 
 + (void)socialLogin:(NSString *)provider providerId:(NSString *)providerId token:(NSString *)token success:(BuddyObjectCallback) callback;
 {

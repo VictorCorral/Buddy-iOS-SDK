@@ -83,11 +83,6 @@ describe(@"BPUser", ^{
                 }
                 
                 BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
-                if(checkinResult==nil)
-                {
-                    [[checkinResult should] beNonNil];
-                    return;
-                }
                 
                 [[checkinResult.id should] beNonNil];
                 

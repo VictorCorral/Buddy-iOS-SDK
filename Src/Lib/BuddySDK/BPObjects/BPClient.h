@@ -29,6 +29,8 @@
 @class BPNotification;
 @class BPUserListCollection;
 
+@class BPModelUser;
+
 /**
  * Enum specifying the current authentication level.
  */
@@ -166,6 +168,9 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
 /// </summary>
 @property (nonatomic, readonly, strong) BPUser *user;
 
+@property (nonatomic,readonly, strong) BPModelUser *currentUser;
+
+
 @property (nonatomic,weak) id<BPClientDelegate> delegate;
 
 /// <summary>
@@ -185,7 +190,18 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
           password:(NSString *)password
           callback:(BuddyCompletionCallback)callback;
 
+- (void)createUser:(NSString*) userName
+          password:(NSString*) password
+         firstName:(NSString*) firstName
+          lastName:(NSString*) lastName
+             email:(NSString*) email
+       dateOfBirth:(NSDate*) dateOfBirth
+            gender:(NSString*) gender
+               tag:(NSString*) tag
+          callback:(BuddyCompletionCallback)callback;
+
 - (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
+- (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
 
 - (void)socialLogin:(NSString *)provider providerId:(NSString *)providerId token:(NSString *)token success:(BuddyObjectCallback) callback;
 
