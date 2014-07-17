@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *tag;
 @property (nonatomic, copy) NSString *id;
 
-//- (void)registerProperty:(SEL)property;
++(NSArray*) convertArrayOfDict:(NSArray*)dictArr toType:(Class)clazz;
+
 
 @end

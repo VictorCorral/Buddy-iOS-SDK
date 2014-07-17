@@ -34,6 +34,8 @@
 		018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E5197718D80025677B /* BPModelCheckin.h */; };
 		018AB0E8197718D80025677B /* BPModelCheckin.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0E6197718D80025677B /* BPModelCheckin.m */; };
 		018AB0EB197719620025677B /* BPRest.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0EA197719620025677B /* BPRest.m */; };
+		01DB07BC197855350008A35E /* BPModelSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BA197855350008A35E /* BPModelSearch.h */; };
+		01DB07BD197855350008A35E /* BPModelSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BB197855350008A35E /* BPModelSearch.m */; };
 		2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */; };
 		2F7E079318A2EC08003FC524 /* BuddyAppDelegateDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E079118A2EC08003FC524 /* BuddyAppDelegateDecorator.m */; };
 		3FAAE60BA41844428107236D /* libPods-BuddySDK Unit Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B6B8A0BC8C4474A7F6BC3E /* libPods-BuddySDK Unit Tests.a */; };
@@ -242,6 +244,8 @@
 		018AB0E5197718D80025677B /* BPModelCheckin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelCheckin.h; path = Models/BPModelCheckin.h; sourceTree = "<group>"; };
 		018AB0E6197718D80025677B /* BPModelCheckin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelCheckin.m; path = Models/BPModelCheckin.m; sourceTree = "<group>"; };
 		018AB0EA197719620025677B /* BPRest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRest.m; sourceTree = "<group>"; };
+		01DB07BA197855350008A35E /* BPModelSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelSearch.h; path = Models/BPModelSearch.h; sourceTree = "<group>"; };
+		01DB07BB197855350008A35E /* BPModelSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelSearch.m; path = Models/BPModelSearch.m; sourceTree = "<group>"; };
 		29345A5A1773D2A400EEB8F5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		29345ABD1773DB3B00EEB8F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddyAppDelegateDecorator.h; sourceTree = "<group>"; };
@@ -457,6 +461,8 @@
 				018AB0E21977176B0025677B /* BPModelBase.m */,
 				018AB0E5197718D80025677B /* BPModelCheckin.h */,
 				018AB0E6197718D80025677B /* BPModelCheckin.m */,
+				01DB07BA197855350008A35E /* BPModelSearch.h */,
+				01DB07BB197855350008A35E /* BPModelSearch.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -859,6 +865,7 @@
 				5BCF8299191300DD00A26EA7 /* NSArray+BPSugar.h in Headers */,
 				018AB0E31977176B0025677B /* BPModelBase.h in Headers */,
 				5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */,
+				01DB07BC197855350008A35E /* BPModelSearch.h in Headers */,
 				C11E6C9A184D58670034E1EB /* BuddyObject+Private.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
 				C1AA90D818371FF70074B7E8 /* BPServiceController.h in Headers */,
@@ -1056,6 +1063,7 @@
 				C1AA90DE1837376E0074B7E8 /* NSDictionary+Merge.m in Sources */,
 				C1B237601865569F005C841E /* NSString+JSON.m in Sources */,
 				5BCF3F1818D641440065842D /* BPCrashManager.m in Sources */,
+				01DB07BD197855350008A35E /* BPModelSearch.m in Sources */,
 				018AB0E8197718D80025677B /* BPModelCheckin.m in Sources */,
 				C10E2BA1186950D8007A0136 /* BPCoordinate.m in Sources */,
 				5BF07F8418DD1BD000CC50E9 /* BPBlobCollection.m in Sources */,

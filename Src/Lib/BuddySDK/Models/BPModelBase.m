@@ -10,11 +10,14 @@
 
 @implementation BPModelBase
 
-/*
--(void)registerProperty:(SEL)property
++(NSArray*) convertArrayOfDict:(NSArray*)dictArr toType:(Class)clazz
 {
-    NSString *propertyName = NSStringFromSelector(property);
-    [self.keyPaths addObject:propertyName];
-}*/
-
+    NSArray *results = [dictArr bp_map:^id(id object)
+    {
+        id obj = [[clazz alloc] init];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:obj fromDictionary:object];
+        return obj;
+    }];
+    return results;
+}
 @end

@@ -11,6 +11,7 @@
 
 #import "BPModelCheckin.h"
 #import "BuddyFile.h"
+#import "BPModelSearch.h"
 
 #import <Kiwi/Kiwi.h>
 
@@ -196,6 +197,165 @@ describe(@"BPUser", ^{
         }];
         [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
     });
+        
+        it(@"Should allow searching checkins with a dictionary result", ^{
+            
+            __block BOOL fin = NO;
+            NSDictionary *checkin = @{@"comment":@"my checkin to search", @"description":@"it was an even better place again",@"location":BPCoordinateMake(11.2, 33.4)};
+            
+            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+                
+                [[error should] beNil];
+                if(error!=nil)
+                {
+                    return;
+                }
+                
+                BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                [[checkinResult should] beNonNil];
+                
+                [[checkinResult.id should] beNonNil];
+                
+                [[checkinResult.created should] beNonNil];
+                
+                [[checkinResult.comment should] equal:@"my checkin to search"];
+                
+                [[checkinResult.description should] equal: @"it was an even better place again"];
+                
+                [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+                    
+                    [[error should] beNil];
+                    if(error!=nil)
+                    {
+                        return;
+                    }
+                    
+                    BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                    [[checkinResult should] beNonNil];
+                    
+                    [[checkinResult.id should] beNonNil];
+                    
+                    [[checkinResult.created should] beNonNil];
+                    
+                    [[checkinResult.comment should] equal:@"my checkin to search"];
+                    
+                    [[checkinResult.description should] equal: @"it was an even better place again"];
+                    
+                    NSDictionary *searchParams = @{@"comment" : @"my checkin to search"};
+                    
+                    [Buddy GET:@"/checkins" parameters:searchParams class: [NSDictionary class] callback:^(id getObj,  NSError *error)
+                    {
+                        [[error should] beNil];
+                        if(error!=nil)
+                        {
+                            return;
+                        }
+                        
+                        NSDictionary *searchResults = (NSDictionary*)getObj;
+                        
+                        NSString *currentToken = [searchResults objectForKey:@"currentToken"];
+                        [[currentToken should] beNonNil];
+                        
+                        NSArray *pagedResults = [searchResults objectForKey:@"pageResults"];
+                        [[pagedResults should] beNonNil];
+                        
+                        for(NSDictionary* searchedCheckin in pagedResults)
+                        {
+                            NSString *searchedID = [searchedCheckin objectForKey:@"id"];
+                            [[searchedID should] beNonNil];
+                            
+                            NSString *searchedComment = [searchedCheckin objectForKey:@"comment"];
+                            [[searchedComment should] equal:@"my checkin to search"];
+                        }
+
+                         fin = YES;
+                     }];
+                    
+                }];
+                
+            }];
+            [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
+        });
+        
+        
+        it(@"Should allow searching checkins with a model result", ^{
+            
+            __block BOOL fin = NO;
+            NSDictionary *checkin = @{@"comment":@"my checkin to search", @"description":@"it was an even better place again",@"location":BPCoordinateMake(11.2, 33.4)};
+            
+            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+                
+                [[error should] beNil];
+                if(error!=nil)
+                {
+                    return;
+                }
+                
+                BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                [[checkinResult should] beNonNil];
+                
+                [[checkinResult.id should] beNonNil];
+                
+                [[checkinResult.created should] beNonNil];
+                
+                [[checkinResult.comment should] equal:@"my checkin to search"];
+                
+                [[checkinResult.description should] equal: @"it was an even better place again"];
+                
+                [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+                    
+                    [[error should] beNil];
+                    if(error!=nil)
+                    {
+                        return;
+                    }
+                    
+                    BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                    [[checkinResult should] beNonNil];
+                    
+                    [[checkinResult.id should] beNonNil];
+                    
+                    [[checkinResult.created should] beNonNil];
+                    
+                    [[checkinResult.comment should] equal:@"my checkin to search"];
+                    
+                    [[checkinResult.description should] equal: @"it was an even better place again"];
+                    
+                    NSDictionary *searchParams = @{@"comment" : @"my checkin to search"};
+                    
+                    [Buddy GET:@"/checkins" parameters:searchParams class: [BPModelSearch class] callback:^(id getObj,  NSError *error)
+                     {
+                         [[error should] beNil];
+                         if(error!=nil)
+                         {
+                             return;
+                         }
+                         
+                         BPModelSearch *searchResults = (BPModelSearch*)getObj;
+                         
+                         [[searchResults.currentToken should] beNonNil];
+                         [[searchResults.pageResults should] beNonNil];
+                         
+                         NSArray *searchedCheckins = [searchResults convertPageResultsToType:[BPModelCheckin class]];
+                   
+                         [[searchedCheckins should] beNonNil];
+                         
+                         for(BPModelCheckin* searchedCheckin in searchedCheckins)
+                         {
+                             [[searchedCheckin.id should] beNonNil];
+                            
+                             [[searchedCheckin.comment should] equal:@"my checkin to search"];
+                         }
+                         
+                         fin = YES;
+                     }];
+                    
+                }];
+                
+            }];
+            [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
+        });
+        
     
     it(@"Should allow uploading a picture", ^{
         
