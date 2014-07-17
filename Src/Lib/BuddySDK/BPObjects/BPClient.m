@@ -837,6 +837,10 @@
         {
             val = [val stringValue];
         }
+        else if([[val class] isSubclassOfClass:[BPCoordinateRange class]])
+        {
+            val = [val stringValue];
+        }
         
         if (val) {
             parameters[name] = val;
