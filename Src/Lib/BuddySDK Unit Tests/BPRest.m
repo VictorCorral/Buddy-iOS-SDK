@@ -43,7 +43,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with dict", @"description":@"it was a nice place",@"location":BPCoordinateMake(1.2, 3.4)};
             
-            [Buddy POST:@"/checkins" parameters:checkin class:[NSDictionary class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[NSDictionary class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -74,7 +74,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -102,7 +102,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -158,7 +158,7 @@ describe(@"BPUser", ^{
         __block BOOL fin = NO;
         NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
         
-        [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+        [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
             
             [[error should] beNil];
             if(error!=nil)
@@ -198,7 +198,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin to search", @"description":@"it was an even better place again",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -217,7 +217,7 @@ describe(@"BPUser", ^{
                 
                 [[checkinResult.description should] equal: @"it was an even better place again"];
                 
-                [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+                [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
                     
                     [[error should] beNil];
                     if(error!=nil)
@@ -238,7 +238,7 @@ describe(@"BPUser", ^{
                     
                     NSDictionary *searchParams = @{@"comment" : @"my checkin to search"};
                     
-                    [Buddy GET:@"/checkins" parameters:searchParams class: [NSDictionary class] callback:^(id getObj,  NSError *error)
+                    [Buddy GET:@"checkins" parameters:searchParams class: [NSDictionary class] callback:^(id getObj,  NSError *error)
                     {
                         [[error should] beNil];
                         if(error!=nil)
@@ -278,7 +278,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin to search", @"description":@"it was an even better place again",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -297,7 +297,7 @@ describe(@"BPUser", ^{
                 
                 [[checkinResult.description should] equal: @"it was an even better place again"];
                 
-                [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+                [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
                     
                     [[error should] beNil];
                     if(error!=nil)
@@ -318,7 +318,7 @@ describe(@"BPUser", ^{
                     
                     NSDictionary *searchParams = @{@"comment" : @"my checkin to search"};
                     
-                    [Buddy GET:@"/checkins" parameters:searchParams class: [BPModelSearch class] callback:^(id getObj,  NSError *error)
+                    [Buddy GET:@"checkins" parameters:searchParams class: [BPModelSearch class] callback:^(id getObj,  NSError *error)
                      {
                          [[error should] beNil];
                          if(error!=nil)
@@ -368,7 +368,7 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        [Buddy POST:@"pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
@@ -409,7 +409,7 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        [Buddy POST:@"pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
@@ -476,7 +476,7 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        [Buddy POST:@"pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
@@ -496,7 +496,7 @@ describe(@"BPUser", ^{
             [[contentType should] equal: @"image/png"];
             
             
-            [Buddy GET:[NSString stringWithFormat:@"/pictures/%@",picId] parameters:nil class:[NSDictionary class]
+            [Buddy GET:[NSString stringWithFormat:@"pictures/%@",picId] parameters:nil class:[NSDictionary class]
                 callback:^(id obj, NSError *error) {
                     [[error should] beNil];
                     if(error!=nil)
@@ -538,7 +538,7 @@ describe(@"BPUser", ^{
         
         [pic setObject:file forKey:@"data"];
         
-        [Buddy POST:@"/pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        [Buddy POST:@"pictures" parameters:pic class:[NSDictionary class] callback:^(id obj, NSError *error) {
             [[error should] beNil];
             if(error!=nil)
             {
@@ -558,7 +558,7 @@ describe(@"BPUser", ^{
             [[contentType should] equal: @"image/png"];
             
             
-            [Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file",picId] parameters:nil class:[BuddyFile class]
+            [Buddy GET:[NSString stringWithFormat:@"pictures/%@/file",picId] parameters:nil class:[BuddyFile class]
               callback:^(id obj, NSError *error) {
                   [[error should] beNil];
                   if(error!=nil)
