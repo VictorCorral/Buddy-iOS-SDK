@@ -63,7 +63,7 @@
 }
 
 
-- (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProvider>)client
+- (instancetype)initWithId:(NSString*)id andClient:(id<BPRestProviderOld>)client
 {
     if (!id) {
         return nil;
@@ -80,7 +80,7 @@
     return self;
 }
 
-- (instancetype)initBuddyWithClient:(id<BPRestProvider>)client
+- (instancetype)initBuddyWithClient:(id<BPRestProviderOld>)client
 {
     self = [super init];
     if(self)
@@ -91,7 +91,7 @@
     return self;
 }
 
-- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProvider>)client
+- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProviderOld>)client
 {
     if (!response) return nil;
     
@@ -173,7 +173,7 @@
 
 #pragma mark CRUD
 
-+(void)createFromServerWithParameters:(NSDictionary *)parameters client:(id<BPRestProvider>)client callback:(BuddyObjectCallback)callback
++(void)createFromServerWithParameters:(NSDictionary *)parameters client:(id<BPRestProviderOld>)client callback:(BuddyObjectCallback)callback
 {
     [client POST:[[self class] requestPath] parameters:parameters callback:^(id json, NSError *error) {
         
@@ -192,12 +192,12 @@
     }];
 }
 
-- (void)savetoServerWithClient:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithClient:(id<BPRestProviderOld>)client callback:(BuddyCompletionCallback)callback
 {
     [self savetoServerWithSupplementaryParameters:nil client:client callback:callback];
 }
 
-- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback
+- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams client:(id<BPRestProviderOld>)client callback:(BuddyCompletionCallback)callback
 {
     // Dictionary of property names/values
     NSDictionary *parameters = [self buildUpdateDictionary];

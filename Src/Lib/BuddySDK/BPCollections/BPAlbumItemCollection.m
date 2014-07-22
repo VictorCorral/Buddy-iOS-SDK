@@ -18,7 +18,7 @@
 
 @implementation BPAlbumItemCollection
 
-- (instancetype)initWithAlbum:(BPAlbum *)album andClient:(id<BPRestProvider>)client
+- (instancetype)initWithAlbum:(BPAlbum *)album andClient:(id<BPRestProviderOld>)client
 {
     self = [super initWithClient:client];
     if (self) {

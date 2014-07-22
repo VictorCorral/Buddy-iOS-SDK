@@ -106,7 +106,7 @@ static NSString *users = @"users";
                                  @"resetCode": BOXNIL(resetCode),
                                  @"newPassword": BOXNIL(newPassword)};
     
-    [self.client PATCH:resource parameters:parameters callback:^(id json, NSError *error) {
+    [self.client PATCH:resource parameters:parameters callback:^(id json,  NSError *error) {
         callback ? callback(error) : nil;
     }];
 }

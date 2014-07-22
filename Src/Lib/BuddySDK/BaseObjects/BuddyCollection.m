@@ -23,7 +23,7 @@
 
 @synthesize client = _client;
 
-- (instancetype)initWithClient:(id<BPRestProvider>)client {
+- (instancetype)initWithClient:(id<BPRestProviderOld>)client {
     self = [super init];
     if(self)
     {

@@ -12,7 +12,7 @@
 
 @implementation BPUserCollection
 
--(instancetype)initWithClient:(id<BPRestProvider>)client
+-(instancetype)initWithClient:(id<BPRestProviderOld>)client
 {
     self = [super initWithClient:client];
     if(self){
@@ -43,7 +43,8 @@
                           identityProviderId];
     
     [self.client GET:resource parameters:parameters callback:^(id json, NSError *error) {
-        callback ? callback(json, error) : nil;
+        NSDictionary *dict = (NSDictionary*)json;
+        callback ? callback([dict objectForKey:@"id"], error) : nil;
     }];
 }
 

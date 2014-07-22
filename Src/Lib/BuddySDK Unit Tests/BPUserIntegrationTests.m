@@ -123,7 +123,7 @@ describe(@"BPUser", ^{
         });
     
         it(@"Should allow adding identity values.", ^{
-            [[Buddy user] addIdentity:@"Facebook" value:@"sdf" callback:^(NSError *error) {
+            [[Buddy user] addIdentity:@"Facebook" value:[BuddyIntegrationHelper getUUID] callback:^(NSError *error) {
                 [[error should] beNil];
                 fin = YES;
             }];
@@ -172,7 +172,7 @@ describe(@"BPUser", ^{
             [[Buddy users] searchUsers:searchUsers callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
                 [[error should] beNil];
                 [[theValue([buddyObjects count]) should] beGreaterThan:theValue(0)];
-                [[theValue([[buddyObjects firstObject] gender]) should] equal:theValue(BPUserGender_Unknown)];
+                
                 fin = YES;
             }];
             [[expectFutureValue(theValue(fin)) shouldEventually] beYes];

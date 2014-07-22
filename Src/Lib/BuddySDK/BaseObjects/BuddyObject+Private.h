@@ -12,8 +12,8 @@
 
 @interface BuddyObject (Private)
 
-- (instancetype)initBuddyWithClient:(id<BPRestProvider>)client;
-- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProvider>)rest;
+- (instancetype)initBuddyWithClient:(id<BPRestProviderOld>)client;
+- (instancetype)initBuddyWithResponse:(id)response andClient:(id<BPRestProviderOld>)rest;
 - (instancetype)initForCreation;
 
 - (NSDictionary *)buildUpdateDictionary;
@@ -22,7 +22,7 @@
 + (NSDictionary *)baseEnumMap;
 + (NSDictionary *)enumMap;
 
-- (void)savetoServerWithClient:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback;
-- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams client:(id<BPRestProvider>)client callback:(BuddyCompletionCallback)callback;
+- (void)savetoServerWithClient:(id<BPRestProviderOld>)client callback:(BuddyCompletionCallback)callback;
+- (void)savetoServerWithSupplementaryParameters:(NSDictionary *)extraParams client:(id<BPRestProviderOld>)client callback:(BuddyCompletionCallback)callback;
 
 @end

@@ -11,13 +11,13 @@
 @interface BPMetricCompletionHandler()
 
 @property (nonatomic, strong)NSString *metricId;
-@property (nonatomic, strong)id<BPRestProvider> client;
+@property (nonatomic, strong)id<BPRestProviderOld> client;
 
 @end
 
 @implementation BPMetricCompletionHandler
 
-- (instancetype)initWithMetricId:(NSString *)metricId andClient:(id<BPRestProvider>)client {
+- (instancetype)initWithMetricId:(NSString *)metricId andClient:(id<BPRestProviderOld>)client {
     self = [super init];
     if (self) {
         _metricId = metricId;

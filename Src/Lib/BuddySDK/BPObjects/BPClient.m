@@ -27,6 +27,12 @@
 #import "BPUser+Private.h"
 #import "BuddyObject+Private.h"
 #import "NSDate+JSON.h"
+#import "BPAFURLRequestSerialization.h"
+
+#import "BPModelUser.h"
+
+#import "BuddyFile.h"
+
 #import <CoreFoundation/CoreFoundation.h>
 #define BuddyServiceURL @"BuddyServiceURL"
 
@@ -34,7 +40,7 @@
 
 #define HiddenArgumentCount 2
 
-@interface BPClient()<BPRestProvider, BPLocationDelegate, BPLocationProvider>
+@interface BPClient()<BPRestProvider,BPRestProviderOld, BPLocationDelegate, BPLocationProvider>
 
 @property (nonatomic, strong) BPServiceController *service;
 @property (nonatomic, strong) BPAppSettings *appSettings;
@@ -43,6 +49,7 @@
 @property (nonatomic, strong) BuddyAppDelegateDecorator *decorator;
 @property (nonatomic, strong) BPCrashManager *crashManager;
 @property (nonatomic, strong) NSMutableArray *queuedRequests;
+@property (nonatomic, strong) BPModelUser *currentUser;
 
 - (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback;
 
@@ -69,29 +76,8 @@
         _notifications = [[BPNotificationManager alloc] initWithClient:self];
         _location = [BPLocationManager new];
         _location.delegate = self;
-        [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
-//        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//            switch (status) {
-//                case AFNetworkReachabilityStatusNotReachable:
-//                case AFNetworkReachabilityStatusUnknown:
-//                    _reachabilityLevel = BPReachabilityNone;
-//                    break;
-//                case AFNetworkReachabilityStatusReachableViaWWAN:
-//                    _reachabilityLevel = BPReachabilityCarrier;
-//                    break;
-//                case AFNetworkReachabilityStatusReachableViaWiFi:
-//                    _reachabilityLevel = BPReachabilityWiFi;
-//                    break;
-//                default:
-//                    break;
-//            }
-//            
-//#if !(TARGET_IPHONE_SIMULATOR)
-//            [self raiseReachabilityChanged:_reachabilityLevel];
-//#endif
-//        }];
-//        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
         
+        [self addObserver:self forKeyPath:@"user.deleted" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -99,7 +85,7 @@
 - (void)resetOnLogout
 {
     _user = nil;
-    
+    _currentUser = nil;
     _users = nil;
     _checkins = nil;
     _pictures = nil;
@@ -309,13 +295,82 @@
     }];
 }
 
+- (void)createUser:(NSString*) userName
+          password:(NSString*) password
+         firstName:(NSString*) firstName
+          lastName:(NSString*) lastName
+             email:(NSString*) email
+       dateOfBirth:(NSDate*) dateOfBirth
+            gender:(NSString*) gender
+               tag:(NSString*) tag
+          callback:(BuddyCompletionCallback)callback;
+{
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    
+    if(userName)
+    {
+        params[@"username"] = userName;
+    }
+    
+    if(password)
+    {
+        params[@"password"] = password;
+    }
+    
+    if(firstName)
+    {
+        params[@"firstname"] = firstName;
+    }
+    
+    if(lastName)
+    {
+        params[@"lastname"] = lastName;
+    }
+    
+    if(email)
+    {
+        params[@"email"]= email;
+    }
+    
+    if(dateOfBirth)
+    {
+        params[@"dateofbirth"]=dateOfBirth;
+    }
+    
+    if(gender)
+    {
+        params[@"gender"]=gender;
+    }
+    
+    if(tag)
+    {
+        params[@"tag"] = tag;
+    }
+    
+    [self POST:@"/users" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        if(error)
+        {
+            callback ? callback(error) : nil;
+            return;
+        }
+        
+        self.user = [BPUser new];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self.user fromDictionary:obj];
+        self.currentUser = [BPModelUser new];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:obj];
+        self.appSettings.userToken = [obj objectForKey:@"accessToken"];
+        callback ? callback(error) : nil;
+    }];
+        
+}
+
 #pragma mark - Login
 
 -(void)loginWorker:(NSString *)username password:(NSString *)password success:(BuddyObjectCallback) callback
 {
     NSDictionary *parameters = @{@"username": username,
                                  @"password": password};
-    [self POST:@"users/login" parameters:parameters callback:^(id json, NSError *error) {
+    [self POST:@"users/login" parameters:parameters class:[NSDictionary class] callback:^(id json,NSError *error) {
         callback ? callback(json, error) : nil;
     }];
 }
@@ -326,7 +381,7 @@
                                  @"identityId": providerId,
                                  @"identityAccessToken": token};
     
-    [self POST:@"users/login/social" parameters:parameters callback:^(id json, NSError *error) {
+    [self POST:@"users/login/social" parameters:parameters class:[NSDictionary class] callback:^(id json,NSError *error) {
         callback ? callback(json, error) : nil;
     }];
 }
@@ -340,33 +395,51 @@
             return;
         }
         
-        BPUser *user = [[BPUser alloc] initBuddyWithResponse:json andClient:self];
-        self.appSettings.userToken = user.accessToken;
+        // Note: Does not set currentUser as this is for the new APIs only so no one else should depend on it.
+        self.user = [[BPUser alloc] initBuddyWithResponse:json andClient:self];
+        self.appSettings.userToken = [json objectForKey:@"accessToken"];
+        callback ? callback(self.user,nil) : nil;
         
-        [user refresh:^(NSError *error) {
-            self.user = user;
-            callback ? callback(user, error) : nil;
-        }];
+    }];
+}
+
+- (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback
+{
+    [self loginWorker:username password:password success:^(id obj, NSError *error) {
+        
+        if(error) {
+            callback ? callback(nil, error) : nil;
+            return;
+        }
+        
+        self.user = [[BPUser alloc] initBuddyWithResponse:obj andClient:self];
+        self.currentUser = [BPModelUser new];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:obj];
+        self.appSettings.userToken = [obj objectForKey:@"accessToken"];
+        
+        callback ? callback(self.currentUser,nil) : nil;
         
     }];
 }
 
 - (void)socialLogin:(NSString *)provider providerId:(NSString *)providerId token:(NSString *)token success:(BuddyObjectCallback) callback;
 {
-    [self socialLoginWorker:provider providerId:providerId token:token success:^(id json, NSError *error) {
+    [self socialLoginWorker:provider providerId:providerId token:token success:^(id obj, NSError *error) {
         
         if (error) {
             callback ? callback(nil, error) : nil;
             return;
         }
         
-        BPUser *user = [[BPUser alloc] initBuddyWithResponse:json andClient:self];
-        self.appSettings.userToken = user.accessToken;
-
-        [user refresh:^(NSError *error){
-            self.user = user;
-            callback ? callback(user, error) : nil;
-        }];
+        BPModelUser *user = [BPModelUser new];
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:user fromDictionary:obj];
+        
+        NSDictionary *dict = (NSDictionary*)obj;
+        
+        self.appSettings.userToken = [dict objectForKey:@"accessToken"];
+        
+        callback ? callback(user,nil) : nil;
+        
     }];
 }
 
@@ -375,7 +448,7 @@
 {
     NSString *resource = @"users/me/logout";
     
-    [self POST:resource parameters:nil callback:^(id json, NSError *error) {
+    [self POST:resource parameters:nil class:[NSDictionary class] callback:^(id json, NSError *error) {
         if (!error) {
             [self resetOnLogout];
         }
@@ -388,7 +461,9 @@
 {
     self.appSettings.devicePushToken = token;
     NSString *resource = @"devices/current";
-    [self PATCH:resource parameters:@{@"pushToken": token} callback:callback];
+    [self PATCH:resource parameters:@{@"pushToken": token} class:[NSDictionary class] callback:^(id json, NSError *error) {
+        callback ? callback(error,json) : nil;
+    }];
 }
 
 
@@ -396,59 +471,135 @@
 
 -(void)ping:(BPPingCallback)callback
 {
-    [self GET:@"ping" parameters:nil callback:^(id json, NSError *error) {
+    [self GET:@"ping" parameters:nil class:[NSDictionary class] callback:^(id json, NSError *error) {
         callback ? callback([NSDecimalNumber decimalNumberWithString:@"2.0"]) : nil;
     }];
 }
 
+#pragma mark - Old BPRestProvider
+- (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback
+{
+    [self checkDeviceToken:^{
+        [self.service GET:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponseOld:callback]];
+    }];
+}
+
+- (void)GET_FILE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback
+{
+    [self checkDeviceToken:^{
+        [self.service GET_FILE:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponseOld:callback]];
+    }];
+}
+
+- (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback
+{
+    [self checkDeviceToken:^{
+        [self.service POST:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponseOld:callback]];
+    }];
+}
+
+- (void)MULTIPART_POST:(NSString *)servicePath parameters:(NSDictionary *)parameters data:(NSDictionary *)data mimeType:(NSString *)mimeType callback:(RESTCallbackOld)callback
+{
+    [self checkDeviceToken:^{
+        [self.service MULTIPART_POST:servicePath parameters:[self injectLocation:parameters] data:data mimeType:mimeType callback:[self handleResponseOld:callback]];
+    }];
+}
+
+- (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback
+{
+    [self checkDeviceToken:^{
+        [self.service PATCH:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponseOld:callback]];
+    }];
+}
+
+- (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback
+{
+    [self checkDeviceToken:^{
+        [self.service PUT:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponseOld:callback]];
+    }];
+}
+
+- (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallbackOld)callback
+{
+    [self checkDeviceToken:^{
+        [self.service DELETE:servicePath parameters:parameters callback:[self handleResponseOld:callback]];
+    }];
+}
+
+
 #pragma mark - BPRestProvider
 
-- (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallback)callback
+- (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
 {
     [self checkDeviceToken:^{
-        [self.service GET:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponse:callback]];
+        if(clazz ==[BuddyFile class])
+        {
+            [self.service REST_GET_FILE:servicePath parameters:[self convertDictionaryForUpload:parameters] callback:[self handleResponse:clazz callback:callback]];
+        }
+        else
+        {
+            [self.service REST_GET:servicePath parameters:[self convertDictionaryForUpload:parameters] callback:[self handleResponse:clazz callback:callback]];
+        }
     }];
 }
 
-- (void)GET_FILE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallback)callback
+- (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
 {
     [self checkDeviceToken:^{
-        [self.service GET_FILE:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponse:callback]];
+        // We check if any of the parameters are files or not, and separate files from non-files.
+        NSMutableDictionary *nonFiles = [NSMutableDictionary new];
+        NSMutableDictionary *files =[NSMutableDictionary new];
+        
+        for(NSString *name in [parameters allKeys]){
+            id object = [parameters objectForKey:name];
+            if([object isKindOfClass:[BuddyFile class]])
+            {
+                [files setObject:object forKey:name];
+            }
+            else
+            {
+                [nonFiles setObject:object forKey:name];
+            }
+        }
+        
+        if([files count]>0)
+        {
+            // We have some files
+            [self.service REST_MULTIPART_POST:servicePath parameters:[self convertDictionaryForUpload:nonFiles] data:files callback:[self handleResponse:clazz callback:callback]];
+        }
+        else
+        {
+            [self.service REST_POST:servicePath parameters:[self convertDictionaryForUpload:nonFiles] callback:[self handleResponse:clazz callback: callback]];
+        }
+
     }];
 }
 
-- (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallback)callback
+- (void)MULTIPART_POST:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class) clazz data:(NSDictionary *)data mimeType:(NSString *)mimeType callback:(RESTCallback)callback
 {
     [self checkDeviceToken:^{
-        [self.service POST:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponse:callback]];
+        [self.service REST_MULTIPART_POST:servicePath parameters:[self convertDictionaryForUpload:parameters] data:data mimeType:mimeType callback:[self handleResponse:clazz callback:callback]];
     }];
 }
 
-- (void)MULTIPART_POST:(NSString *)servicePath parameters:(NSDictionary *)parameters data:(NSDictionary *)data mimeType:(NSString *)mimeType callback:(RESTCallback)callback
+- (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
 {
     [self checkDeviceToken:^{
-        [self.service MULTIPART_POST:servicePath parameters:[self injectLocation:parameters] data:data mimeType:mimeType callback:[self handleResponse:callback]];
+        [self.service REST_PATCH:servicePath parameters:[self convertDictionaryForUpload:parameters] callback:[self handleResponse:clazz callback:callback]];
     }];
 }
 
-- (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallback)callback
+- (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
 {
     [self checkDeviceToken:^{
-        [self.service PATCH:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponse:callback]];
+        [self.service REST_PUT:servicePath parameters:[self convertDictionaryForUpload:parameters] callback:[self handleResponse:clazz callback:callback]];
     }];
 }
 
-- (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallback)callback
+- (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
 {
     [self checkDeviceToken:^{
-        [self.service PUT:servicePath parameters:[self injectLocation:parameters] callback:[self handleResponse:callback]];
-    }];
-}
-
-- (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(RESTCallback)callback
-{
-    [self checkDeviceToken:^{
-        [self.service DELETE:servicePath parameters:parameters callback:[self handleResponse:callback]];
+        [self.service REST_DELETE:servicePath parameters:[self convertDictionaryForUpload:parameters] callback:[self handleResponse:clazz callback:callback]];
     }];
 }
 
@@ -482,7 +633,7 @@
                                                  @"DeviceToken": BOXNIL(self.appSettings.devicePushToken),
                                                  @"AppVersion": BOXNIL(self.appSettings.appVersion)
                                                  };
-                [self.service POST:@"devices" parameters:getTokenParams callback:[self handleResponse:^(id json, NSError *error) {
+                [self.service POST:@"devices" parameters:getTokenParams callback:[self handleResponseOld:^(id json, NSError *error) {
                     // Grab the potentially different base url.
                     if (json[@"accessToken"] && ![json[@"accessToken"] isEqualToString:self.appSettings.token]) {
                         self.appSettings.deviceToken = json[@"accessToken"];
@@ -502,9 +653,8 @@
     }
 }
 
-#pragma mark - Response Handlers
-
-- (ServiceResponse) handleResponse:(RESTCallback)callback
+#pragma mark - Old Response Handler
+- (ServiceResponse) handleResponseOld:(RESTCallbackOld)callback
 {
     return ^(NSInteger responseCode, id response, NSError *error) {
         NSLog (@"Framework: handleResponse");
@@ -561,6 +711,102 @@
         }
         
         callback(responseObject, buddyError);
+    };
+}
+
+
+#pragma mark - Response Handlers
+
+- (REST_ServiceResponse) handleResponse:(Class) clazz callback:(RESTCallback)callback
+{
+    return ^(NSInteger responseCode, NSDictionary *responseHeaders, id response, NSError *error) {
+        NSLog (@"Framework: handleResponse");
+        
+        NSError *buddyError;
+        
+        id result = response;
+        
+        // Is it a JSON response (as opposed to raw bytes)?
+        if(result && [result isKindOfClass:[NSDictionary class]]) {
+            
+            // Grab the result
+            result = response[@"result"] ?: result;
+            
+            if ([result isKindOfClass:[NSDictionary class]]) {
+                
+                // Grab the access token
+                if (result[@"serviceRoot"]) {
+                    self.appSettings.serviceUrl = result[@"serviceRoot"];
+                }
+            }
+        }
+        
+        result = result ?: [NSDictionary new];
+        id responseObject = nil;
+        
+        switch (responseCode) {
+            case 200:
+            case 201:
+                responseObject = result;
+                break;
+            case 400:
+            case 401:
+            case 402:
+            case 403:
+            case 404:
+            case 405:
+            case 500:
+                buddyError = [NSError buildBuddyError:result];
+                break;
+            default:
+                buddyError = [NSError bp_noInternetError:error.code message:result];
+                break;
+        }
+        if([buddyError needsLogin]) {
+            [self.appSettings clearUser];
+            [self raiseNeedsLoginError];
+        }
+        if([buddyError credentialsInvalid]) {
+            [self.appSettings clear];
+        }
+        if (buddyError) {
+            [self raiseAPIError:buddyError];
+        }
+        
+        if(clazz == [BuddyFile class])
+        {
+            // NOTE: Should we check if responseObject is not a dict here ?
+            BuddyFile *file = [BuddyFile new];
+            file.fileData =response;
+            file.contentType = [responseHeaders objectForKey:@"Content-Type"];
+            if(file.contentType==nil)
+            {
+                file.contentType = @"application/octet-stream";
+            }
+            callback(file,buddyError);
+            return;
+        }
+        
+        if(![result isKindOfClass:[NSDictionary class]])
+        {
+            // If result is not a dictionary then we just pass it back to the caller as we cannot convert that.
+            callback(responseObject, buddyError);
+            return;
+        }
+        else if(clazz == [NSDictionary class] && ([result isKindOfClass:[NSDictionary class]]) )
+        {
+            // If caller wants a dictionary, we can shortcut and just give it to them
+            callback(responseObject, buddyError);
+            return;
+        }
+        else
+        {
+            // Try to convert to what the caller wants.
+            id returnObj = [[clazz alloc] init];
+            [[JAGPropertyConverter bp_converter] setPropertiesOf:returnObj fromDictionary:result];
+            callback(returnObj, buddyError);
+            return;
+        }
     };
 }
 
@@ -643,6 +889,42 @@
     return self.location.currentLocation;
 }
 
+- (NSDictionary*) convertDictionaryForUpload:(NSDictionary*)dictionary
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    // Convert any params that dont serialize cleanly
+    for (NSString *name in [dictionary allKeys])
+    {
+        id val = [dictionary objectForKey:name];
+        
+        if([[val class] isSubclassOfClass:[NSDate class]])
+        {
+            val = [val bp_serializeDateToJson];
+        }
+        else if([[val class] isSubclassOfClass:[BPCoordinate class]])
+        {
+            val = [val stringValue];
+        }
+        else if([[val class] isSubclassOfClass:[BPCoordinateRange class]])
+        {
+            val = [val stringValue];
+        }
+        
+        if (val) {
+            parameters[name] = val;
+        }
+    }
+
+    // Inject location if needed
+    if (!parameters[@"location"] && self.locationEnabled)
+    {
+        [parameters setObject:BOXNIL([self.location.currentLocation stringValue]) forKey:@"location"];
+    }
+    
+    return parameters;
+}
+
 - (NSDictionary *)injectLocation:(NSDictionary *)parameters
 {
     // Inject location only if it wasn't manually provided (and it's enabled, of course)
@@ -667,7 +949,7 @@
     NSString *resource = [NSString stringWithFormat:@"metrics/events/%@", key];
     NSDictionary *parameters = @{@"value": BOXNIL(value)};
     
-    [self POST:resource parameters:parameters callback:^(id json, NSError *error) {
+    [self POST:resource parameters:parameters class:[NSDictionary class] callback:^(id json, NSError *error) {
         callback ? callback(error) : nil;
     }];
 }
@@ -700,7 +982,7 @@
 - (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback
 {
     NSString *resource = [NSString stringWithFormat:@"metrics/events/%@", key];
-    [self POST:resource parameters:parameters callback:^(id json, NSError *error) {
+    [self POST:resource parameters:parameters class:[NSDictionary class] callback:^(id json, NSError *error) {
         BPMetricCompletionHandler *completionHandler;
         if (!error) {
             completionHandler = [[BPMetricCompletionHandler alloc] initWithMetricId:json[@"id"] andClient:self];
@@ -711,14 +993,14 @@
 
 #pragma mark - REST workaround
 
-- (id<BPRestProvider>)restService
+- (id<BPRestProvider,BPRestProviderOld>)restService
 {
     return self;
 }
 
 #pragma mark - Metadata
 
-- (id<BPRestProvider>)client
+- (id<BPRestProvider,BPRestProviderOld>)client
 {
     return self;
 }

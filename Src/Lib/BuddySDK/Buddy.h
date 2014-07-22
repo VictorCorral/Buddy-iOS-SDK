@@ -35,6 +35,12 @@
 #import "BPSize.h"
 #import "BPPagingTokens.h"
 
+// Models
+#import "BPModelUser.h"
+#import "BPModelCheckin.h"
+#import "BPModelSearch.h"
+
+
 /**
  * TODO
  *
@@ -90,12 +96,6 @@
 + (BPLocationCollection *)locations;
 
 /**
- * Public REST provider for passthrough access.
- */
-+ (id<BPRestProvider>)buddyRestProvider;
-
-
-/**
  * Used to check if location information is automatically being sent to the server or not.
  *
  * If set to YES then location information will automatically be sent to the server.
@@ -141,6 +141,16 @@
  *
  */
 + (void)createUser:(BPUser *)user password:(NSString *)password callback:(BuddyCompletionCallback)callback;
++ (void)createUser:(NSString*) userName
+          password:(NSString*) password
+         firstName:(NSString*) firstName
+          lastName:(NSString*) lastName
+             email:(NSString*) email
+       dateOfBirth:(NSDate*) dateOfBirth
+            gender:(NSString*) gender
+               tag:(NSString*) tag
+          callback:(BuddyCompletionCallback)callback;
+
 
 /**
  *
@@ -152,6 +162,7 @@
  *
  */
 + (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
++ (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
 
 /**
  *
@@ -292,5 +303,14 @@
  *
  */
 + (void)deleteMetadataWithKey:(NSString *)key visibility:(BPPermissions)visibility callback:(BuddyCompletionCallback)callback;
+
+/**
+ * REST calls
+ */
++ (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
++ (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
++ (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
++ (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
++ (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
 
 @end

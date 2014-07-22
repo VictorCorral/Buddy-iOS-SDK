@@ -23,7 +23,7 @@
 
 @implementation Buddy
 
-+ (id<BPRestProvider>)buddyRestProvider {
++ (id<BPRestProvider,BPRestProviderOld>)buddyRestProvider {
     return [BPClient defaultClient].restService;
 }
 
@@ -144,11 +144,38 @@
     [[BPClient defaultClient] createUser:user password:password callback:callback];
 }
 
++ (void)createUser:(NSString*) userName
+          password:(NSString*) password
+         firstName:(NSString*) firstName
+          lastName:(NSString*) lastName
+             email:(NSString*) email
+       dateOfBirth:(NSDate*) dateOfBirth
+            gender:(NSString*) gender
+               tag:(NSString*) tag
+          callback:(BuddyCompletionCallback)callback
+{
+    [[BPClient defaultClient]createUser:userName
+                               password:password
+                              firstName:firstName
+                               lastName:lastName
+                                  email:email
+                            dateOfBirth:dateOfBirth
+                                 gender:gender
+                                    tag:tag
+                               callback:callback];
+}
+
 + (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback
 {
     [[BPClient defaultClient] login:username password:password callback:callback  ];
      
 }
+
++ (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback
+{
+    [[BPClient defaultClient] loginUser:username password:password callback:callback];
+}
+
 
 + (void)socialLogin:(NSString *)provider providerId:(NSString *)providerId token:(NSString *)token success:(BuddyObjectCallback) callback;
 {
@@ -210,5 +237,33 @@
 {
     [[BPClient defaultClient] deleteMetadataWithKey:key visibility:(BPPermissions)visibility callback:callback];
 }
+
+#pragma mark - REST
+
++ (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] GET:servicePath parameters:parameters class:clazz callback:callback];
+}
+
++ (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] POST:servicePath parameters:parameters class:clazz callback:callback];
+}
+
++ (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] PATCH:servicePath parameters:parameters class:clazz callback:callback];
+}
+
++ (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] PUT:servicePath parameters:parameters class:clazz callback:callback];
+}
+
++ (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
+{
+    [[BPClient defaultClient] DELETE:servicePath parameters:parameters class:clazz callback:callback];
+}
+
 
 @end

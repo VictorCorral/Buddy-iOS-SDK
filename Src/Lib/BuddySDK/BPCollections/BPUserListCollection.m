@@ -12,7 +12,7 @@
 
 @implementation BPUserListCollection
 
-- (instancetype)initWithClient:(id<BPRestProvider>)client{
+- (instancetype)initWithClient:(id<BPRestProviderOld>)client{
     self = [super initWithClient:client];
     if(self){
         self.type = [BPUserList class];
