@@ -52,11 +52,4 @@ typedef NS_ENUM(NSInteger, BPUserGender)
 
 - (void)requestPasswordResetWithSubject:(NSString *)subject body:(NSString *)body callback:(BuddyObjectCallback)callback;
 - (void)resetPassword:(NSString *)resetCode newPassword:(NSString *)newPassword callback:(BuddyCompletionCallback)callback;
-- (void)addIdentity:(NSString *)identityProvider value:(NSString *)value callback:(BuddyCompletionCallback)callback;
-- (void)removeIdentity:(NSString *)identityProvider value:(NSString *)value callback:(BuddyCompletionCallback)callback;
-- (void)getIdentities:(NSString *)identityProvider callback:(BuddyCollectionCallback)callback;
-- (void)setUserProfilePicture:(UIImage *)picture caption:(NSString *)comment callback:(BuddyCompletionCallback)callback;
-- (void)getUserProfilePictureWithSize:(BPSize *)size callback:(BuddyObjectCallback)callback;
-- (void)deleteUserProfilePicture:(BuddyCompletionCallback)callback;
-
 @end

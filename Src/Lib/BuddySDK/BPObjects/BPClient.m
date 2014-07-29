@@ -50,6 +50,7 @@
 @property (nonatomic, strong) BPCrashManager *crashManager;
 @property (nonatomic, strong) NSMutableArray *queuedRequests;
 @property (nonatomic, strong) BPModelUser *currentUser;
+@property (nonatomic, strong) BPUser *user;
 
 - (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback;
 
@@ -57,15 +58,6 @@
 
 @implementation BPClient
 
-@synthesize user=_user;
-@synthesize checkins=_checkins;
-@synthesize pictures =_pictures;
-@synthesize videos = _videos;
-@synthesize blobs = _blobs;
-@synthesize albums = _albums;
-@synthesize locations = _locations;
-@synthesize users = _users;
-@synthesize userLists = _userLists;
 #pragma mark - Init
 
 - (instancetype)init
@@ -84,16 +76,6 @@
 
 - (void)resetOnLogout
 {
-    _user = nil;
-    _currentUser = nil;
-    _users = nil;
-    _checkins = nil;
-    _pictures = nil;
-    _blobs = nil;
-    _albums = nil;
-    _locations = nil;
-    _userLists=nil;
-    
     [self.appSettings clearUser];
 }
 
@@ -132,9 +114,6 @@
     if (_appSettings.token) {
         BPUser *restoredUser = [[BPUser alloc] initWithId:_appSettings.userID andClient:self];
         restoredUser.accessToken = self.appSettings.userToken;
-        [restoredUser refresh:^(NSError *error) {
-            self.user = restoredUser;
-        }];
     }
 }
 
@@ -151,124 +130,14 @@
 
 # pragma mark -
 # pragma mark Singleton
-+(instancetype)defaultClient
-{
-    static BPClient *sharedClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedClient = [[self alloc] init];
-    });
-    return sharedClient;
-}
 
 #pragma mark - Collections
 
 
-- (BPUser *) user
-{
-    if(!_user)
-    {
-        [self raiseNeedsLoginError];
-    }
-    return _user;
-}
-
-- (void)setUser:(BPUser *)user
-{
-    BPUser *oldUser = _user;
-    
-    _user = user;
-    self.appSettings.userToken = _user.accessToken;
-    self.appSettings.userID = _user.id;
-    // TODO - Create an auth-level change delegate method?
-    self.appSettings.lastUserID = _user.id;
-    
-    if (!_user) {
-        [self.appSettings clearUser];
-    }
-    
-    [self raiseUserChangedTo:_user from:oldUser];
-}
-
--(BPUserCollection *)users
-{
-    if(!_users)
-    {
-        _users = [[BPUserCollection alloc] initWithClient:self];;
-    }
-    return _users;
-}
-
--(BPCheckinCollection *)checkins
-{
-    if(!_checkins)
-    {
-        _checkins = [[BPCheckinCollection alloc] initWithClient:self];;
-    }
-    return _checkins;
-}
-
--(BPPictureCollection *)pictures
-{
-    if(!_pictures)
-    {
-        _pictures = [[BPPictureCollection alloc] initWithClient:self];
-    }
-    return _pictures;
-}
-
--(BPVideoCollection *)videos
-{
-    if(!_videos)
-    {
-        _videos = [[BPVideoCollection alloc] initWithClient:self];
-    }
-    return _videos;
-}
-
-
--(BPBlobCollection *)blobs
-{
-    if(!_blobs)
-    {
-        _blobs = [[BPBlobCollection alloc] initWithClient:self];
-    }
-    return _blobs;
-}
-
--(BPAlbumCollection *)albums
-{
-    if(!_albums)
-    {
-        _albums = [[BPAlbumCollection alloc] initWithClient:self];
-    }
-    return _albums;
-}
-
--(BPLocationCollection *)locations
-{
-    if(!_locations)
-    {
-        _locations = [[BPLocationCollection alloc] initWithClient:self];
-    }
-    return _locations;
-}
-
--(BPUserListCollection *)userLists
-{
-    if(!_userLists)
-    {
-        _userLists = [[BPUserListCollection alloc] initWithClient:self];
-    }
-    return _userLists;
-}
-
-#pragma mark - User
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([object isKindOfClass:[BPUser class]] && [keyPath isEqualToString:@"user.deleted"]) {
-        _user = nil;
+        self.currentUser = nil;
     }
 }
 
@@ -288,8 +157,7 @@
             return;
         }
         
-        self.user = user;
-        self.appSettings.userToken = self.user.accessToken;
+        self.appSettings.userToken = user.accessToken;
         
         callback ? callback(error) : nil;
     }];
@@ -354,8 +222,6 @@
             return;
         }
         
-        self.user = [BPUser new];
-        [[JAGPropertyConverter bp_converter] setPropertiesOf:self.user fromDictionary:obj];
         self.currentUser = [BPModelUser new];
         [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:obj];
         self.appSettings.userToken = [obj objectForKey:@"accessToken"];
@@ -395,10 +261,11 @@
             return;
         }
         
-        // Note: Does not set currentUser as this is for the new APIs only so no one else should depend on it.
-        self.user = [[BPUser alloc] initBuddyWithResponse:json andClient:self];
+        self.currentUser = [BPModelUser new];
+        
+        [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:json];
         self.appSettings.userToken = [json objectForKey:@"accessToken"];
-        callback ? callback(self.user,nil) : nil;
+        callback ? callback(self.currentUser,nil) : nil;
         
     }];
 }
@@ -412,7 +279,6 @@
             return;
         }
         
-        self.user = [[BPUser alloc] initBuddyWithResponse:obj andClient:self];
         self.currentUser = [BPModelUser new];
         [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:obj];
         self.appSettings.userToken = [obj objectForKey:@"accessToken"];

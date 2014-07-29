@@ -25,12 +25,16 @@ typedef void (^BuddyDeviceCallback)(id response);
 
 @interface BuddyDevice : BuddyObject
 
+@property (nonatomic, readonly, strong) BPClient* client;
+
 + (NSString *)identifier;
 
 + (NSString *)osVersion;
 
 + (NSString *)deviceModel;
 
-+ (void)pushToken:(NSString*)pushToken;
+- (void)pushToken:(NSString*)pushToken;
+
+- (void)initialize:(BPClient*)client;
 
 @end
