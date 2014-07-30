@@ -31,6 +31,7 @@ Stuff; \
 _Pragma("clang diagnostic pop") \
 } while (0)
 
+#define BP_NAMESPACE "BP"
 #ifndef BP
     #ifdef BP_NAMESPACE
         #define JRNS_CONCAT_TOKENS(a,b) a##_##b
