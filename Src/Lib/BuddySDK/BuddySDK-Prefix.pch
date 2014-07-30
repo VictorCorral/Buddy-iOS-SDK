@@ -7,7 +7,6 @@
    #import <MobileCoreServices/MobileCoreServices.h>
    #import <SystemConfiguration/SystemConfiguration.h>
    #import <UIKit/UIKit.h>
-   #import "BPPermissions.h"
    #import "Util.h"
    #import "NSString+JSON.h"
    #import "NSArray+BPSugar.h"

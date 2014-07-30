@@ -21,26 +21,4 @@
     return results;
 }
 
-+ (id)convertValue:(NSString *)value forKey:(NSString *)key
-{
-    return nil;
-}
-
-+ (NSDictionary *)mapForProperty:(NSString *)key
-{
-    return [self enumMap][key];
-}
-
-+ (NSDictionary *)enumMap
-{
-    return @{NSStringFromSelector(@selector(readPermissions)) : @{
-                     @(BPPermissionsApp) : @"App",
-                     @(BPPermissionsUser) : @"User",
-                     },
-             NSStringFromSelector(@selector(writePermissions)) : @{
-                     @(BPPermissionsApp) : @"App",
-                     @(BPPermissionsUser) : @"User",
-                     }};
-}
-
 @end
