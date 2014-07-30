@@ -89,6 +89,22 @@ To initialize the SDK:
     [Buddy initClient:@"myAppId" appKey: @"myAppKey"]
     
     
+If you want to operatate two clients at once you can use:
+
+    #import "BuddySDK/Buddy.h"
+    // ...
+    // Create the SDK client
+            BPClient* firstClient = [Buddy initClient:@"myAppId" appKey:@"myAppKey" autoRecordDeviceInfo:TRUE autoRecordLocation:TRUE instanceName:@"firstName"];
+            BPClient* secondClient = [Buddy initClient:@"myAppId" appKey:@"myAppKey" autoRecordDeviceInfo:TRUE autoRecordLocation:TRUE instanceName: @"secondName"];
+    [firstClient GET:@"/videos" parameters:@{@"caption": @"caption search string"} callback:^(id json, NSError *error) {
+                //Do stuff here
+            }];
+    [secondClient loginUser:@""username password:@"password" callback:^(id newBuddyObject, NSError *error) {
+                //Do stuff
+            }];
+This allows you to have two users logged in at the same time, or manage multiple of any other thing the SDK tracks ( device information, location, etc.). The Buddy object will always be referencing the last client that was created.
+
+
 There are some helper functions for creating users, logging in users, and logging out users:  
 
     // login a user

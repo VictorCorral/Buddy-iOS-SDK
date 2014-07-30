@@ -15,6 +15,7 @@
  */
 
 #import "BuddyDevice.h"
+#import "Buddy.h"
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>
 
@@ -24,9 +25,21 @@
 
 @implementation BuddyDevice
 
-+(void)pushToken:(NSString*)pushToken
+BPClient* internalClient;
+
+-(BPClient*)client
 {
-    [[BPClient defaultClient] registerPushToken:pushToken callback:^(id device, NSError *error){
+    return internalClient;
+}
+
+-(void)initialize:(BPClient*)client
+{
+    internalClient = client;
+}
+
+-(void)pushToken:(NSString*)pushToken
+{
+    [internalClient registerPushToken:pushToken callback:^(id device, NSError *error){
         if(error==nil)
         {
             NSLog(@"token registered");

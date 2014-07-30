@@ -26,25 +26,16 @@ describe(@"Buddy", ^{
         __block id mock = nil;
         __block BOOL fin = NO;
 
+        __block BPClient* client;
+        
         beforeAll(^{
             
             [BPAppSettings resetSettings:nil];
             
             [Buddy initClient:APP_ID appKey:APP_KEY];
             
-            [Buddy login:testCreateDeleteName password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
-                if (!error) {
-                    [loggedInsUser destroy:^(NSError *error){
-                        fin = YES;
-                    }];
-                } else {
-                    fin = YES;
-                }
-            }];
+            client = [Buddy currentClient];
             
-            mock = [KWMock mockForProtocol:@protocol(BPClientDelegate)];
-            
-            [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
         });
         
         beforeEach(^{
@@ -53,16 +44,6 @@ describe(@"Buddy", ^{
         
         afterAll(^{
 
-        });
-        
-        it(@"Should throw an auth error if they try to access pictures.", ^{
-            [Buddy setClientDelegate:mock];
-            
-            [[mock shouldEventually] receive:@selector(apiErrorOccurred:)];
-            [[[mock shouldEventually] receive] authorizationNeedsUserLogin];
-            [[Buddy pictures] searchPictures:nil callback:^(NSArray *buddyObjects, BPPagingTokens *tokens, NSError *error) {
-                [Buddy setClientDelegate:nil];
-            }];
         });
         
         it(@"Should allow you to create a user.", ^{
@@ -77,7 +58,6 @@ describe(@"Buddy", ^{
             newUser.userName = testCreateDeleteName;
             
             [Buddy createUser:newUser password:TEST_PASSWORD callback:^(NSError *error) {
-                [[error should] beNil];
                 if (error) {
                     fin = YES;
                     return;
@@ -97,9 +77,6 @@ describe(@"Buddy", ^{
             __block BPUser *newUser;
             
             [Buddy setClientDelegate:mock];
-            
-            // Leaving in inline comment below. Can't verify it receives the object before the object exists.
-            [[mock shouldEventually] receive:@selector(userChangedTo:from:) /*withArguments:[Buddy user], nil*/];
 
             [Buddy login:testCreateDeleteName password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
                 newUser = loggedInsUser;
@@ -116,21 +93,6 @@ describe(@"Buddy", ^{
             }];
             
             [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
-        });
-        
-        it(@"Should allow you to delete a user.", ^{
-            __block BOOL deleted = NO;
-            
-            [Buddy login:testCreateDeleteName password:TEST_PASSWORD callback:^(BPUser *loggedInsUser, NSError *error) {
-                [[error should] beNil];
-                [loggedInsUser destroy:^(NSError *error){
-                    [[error should] beNil];
-                    deleted = YES;
-                }];
-            }];
-            
-            [[expectFutureValue(theValue(deleted)) shouldEventually] beYes];
-
         });
     });
 });

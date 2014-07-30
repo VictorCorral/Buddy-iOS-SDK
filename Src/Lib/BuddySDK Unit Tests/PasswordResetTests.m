@@ -21,10 +21,14 @@ describe(@"Password Reset", ^{
     context(@"When an app has a valid device token", ^{
         __block BOOL fin = NO;
         
+        __block BPClient* client;
+        
         beforeAll(^{
             [BuddyIntegrationHelper bootstrapLogin:^{
                 fin = YES;
             }];
+            client = [Buddy currentClient];
+            
             [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
         });
         
@@ -40,7 +44,7 @@ describe(@"Password Reset", ^{
          */
         pending_(@"Should provide a method to request a password reset.", ^{
             
-            [[Buddy user] requestPasswordResetWithSubject:@"Your new password"
+            [[client user] requestPasswordResetWithSubject:@"Your new password"
                                                      body:@"Here is your reset code: @ResetCode"
                                                  callback:^(id newBuddyObject, NSError *error)
              {
@@ -55,7 +59,7 @@ describe(@"Password Reset", ^{
             
             NSString *newPassword = @"vnnrl";
             
-            [[Buddy user] resetPassword:@"vnnrl" newPassword:newPassword callback:^(NSError *error) {
+            [[client user] resetPassword:@"vnnrl" newPassword:newPassword callback:^(NSError *error) {
                 [[error should] beNil];
                 [Buddy login:TEST_USERNAME password:newPassword callback:^(id newBuddyObject, NSError *error) {
                     [[error should] beNil];

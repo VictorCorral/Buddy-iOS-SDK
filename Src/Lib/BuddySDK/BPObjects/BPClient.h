@@ -96,56 +96,6 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
 /// </summary>
 @property (readonly, nonatomic, strong) BuddyDevice *device;
 
-/// <summary>
-/// Gets an object that can be used to retrieve high score rankings or search for game boards in this application.
-/// </summary>
-@property (readonly, nonatomic, strong) BPGameBoards *gameBoards;
-
-
-/// <summary>
-/// Gets an object that can be used to manipulate application-level metadata. Metadata is used to store custom values on the platform.
-/// </summary>
-@property (readonly, nonatomic, strong) BPAppMetadata *metadata;
-
-/// <summary>
-/// Gets an object that can be used to search users.
-/// </summary>
-@property (readonly, nonatomic, strong) BPUserCollection *users;
-
-/// <summary>
-/// Gets an object that can be used to retrieve sounds.
-/// </summary>
-@property (readonly, nonatomic, strong) BPCheckinCollection *checkins;
-
-/// <summary>
-/// TODO
-/// </summary>
-@property (readonly, nonatomic, strong) BPPictureCollection *pictures;
-
-/// <summary>
-/// TODO
-/// </summary>
-@property (readonly, nonatomic, strong) BPVideoCollection *videos;
-
-/// <summary>
-/// TODO
-/// </summary>
-@property (readonly, nonatomic, strong) BPBlobCollection *blobs;
-
-/// <summary>
-/// TODO
-/// </summary>
-@property (readonly, nonatomic, strong) BPAlbumCollection *albums;
-
-/// <summary>
-/// TODO
-/// </summary>
-@property (readonly, nonatomic, strong) BPLocationCollection *locations;
-
-/// <summary>
-/// A collection of User Lists. Each User List consists either of Users or further UserLists
-/// </summary>
-@property (readonly, nonatomic, strong) BPUserListCollection *userLists;
 
 /// <summary>
 /// TODO
@@ -162,21 +112,14 @@ typedef void (^BPPingCallback)(NSDecimalNumber *ping);
  */
 @property (nonatomic, readonly, assign) BPReachabilityLevel reachabilityLevel;
 
+@property (nonatomic,readonly, strong) BPModelUser *currentUser;
 
 /// <summary>
 /// Current BuddyAuthenticatedUser as of the last login
 /// </summary>
 @property (nonatomic, readonly, strong) BPUser *user;
 
-@property (nonatomic,readonly, strong) BPModelUser *currentUser;
-
-
 @property (nonatomic,weak) id<BPClientDelegate> delegate;
-
-/// <summary>
-/// Singleton instance of the client.
-/// </summary>
-+ (instancetype)defaultClient;
 
 
 @property (nonatomic, readonly, strong) id <BPRestProvider,BPRestProviderOld> restService;
