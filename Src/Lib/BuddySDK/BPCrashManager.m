@@ -16,7 +16,7 @@
 
 @interface BPCrashManager()
 
-@property (weak, nonatomic) id<BPRestProviderOld> restProvider;
+@property (weak, nonatomic) id<BPRestProvider> restProvider;
 @property (strong, nonatomic) NSString *appId;
 
 @end
@@ -28,7 +28,7 @@
     NSUncaughtExceptionHandler *_exceptionHandler;
 }
 
-- (instancetype)initWithRestProvider:(id<BPRestProviderOld>)restProvider
+- (instancetype)initWithRestProvider:(id<BPRestProvider>)restProvider
 {
     self = [super init];
     if (self) {
@@ -371,7 +371,7 @@
                                  @"methodName": exceptionMethodName,
                                  @"stackTrace": crashedThreadString};
     
-    [self.restProvider POST:@"devices/current/crashreports" parameters:parameters callback:^(id json, NSError *error) {
+    [self.restProvider POST:@"devices/current/crashreports"  parameters:parameters class:[NSDictionary class] callback:^(id json, NSError *error) {
         if (!error) {
             onSuccess();
         }

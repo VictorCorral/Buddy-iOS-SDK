@@ -8,7 +8,6 @@
 
 #import "Buddy.h"
 #import "BuddyIntegrationHelper.h"
-#import "BPIdentityValue.h"
 #import <Kiwi/Kiwi.h>
 
 #ifdef kKW_DEFAULT_PROBE_TIMEOUT
@@ -21,7 +20,7 @@ SPEC_BEGIN(BPUserIntegrationSpec)
 describe(@"BPUser", ^{
     context(@"When a user is logged in", ^{
         
-        __block BPClient* client = nil;
+        __block id<BuddyClientProtocol> client = nil;
         __block BOOL fin = NO;
         beforeAll(^{
             [BuddyIntegrationHelper bootstrapLogin:^{
@@ -36,7 +35,7 @@ describe(@"BPUser", ^{
         });
         
         it(@"Should allow the user to logout", ^{
-            [Buddy logout:^(NSError *error) {
+            [Buddy logoutUser:^(NSError *error) {
                 [[error should] beNil];
                 fin = YES;
             }];

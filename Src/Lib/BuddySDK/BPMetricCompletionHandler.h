@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^BuddyTimedMetricResult)(NSInteger elapsedTimeInMs, NSError *error);
-
+#import "BuddyCallbacks.h"
+#import "BPRestProvider.h"
 
 @interface BPMetricCompletionHandler : NSObject
 
-- (instancetype)initWithMetricId:(NSString *)metricId andClient:(id<BPRestProviderOld>)restProvider;
+- (instancetype)initWithMetricId:(NSString *)metricId andClient:(id<BPRestProvider>)restProvider;
 
 - (void)signalComplete:(BuddyTimedMetricResult)callback __attribute__ ((deprecated));
 
@@ -22,4 +22,4 @@ typedef void (^BuddyTimedMetricResult)(NSInteger elapsedTimeInMs, NSError *error
 
 @end
 
-typedef void (^BuddyMetricCallback)(BPMetricCompletionHandler *metricCompletionHandler, NSError *error);
+

@@ -26,7 +26,6 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
-    [Buddy setLocationEnabled:YES];
     // Ensure FB libraries are loaded before ViewControllers get there (from docs).
     [FBLoginView class];
     

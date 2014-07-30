@@ -15,11 +15,8 @@
  */
 
 #import "Buddy.h"
-#import "BuddyObject+Private.h"
-
-/// <summary>
-/// TODO
-/// </summary>
+#import "Buddy+Private.h"
+#import "BPClient.h"
 
 @implementation Buddy
 
@@ -27,31 +24,22 @@ static NSMutableDictionary *clients;
 
 static BPClient* currentClient;
 
-+(BPClient*)currentClient{
++(id<BuddyClientProtocol>)currentClient{
     return currentClient;
 }
 
-+ (BPUser *)user
++(BPClient*) currentClientObject
 {
-    return [currentClient user];
+    return currentClient;
+}
+
++ (BPModelUser *)user
+{
+    return [[self currentClient] currentUser];
 }
 
 +(void)initialize{
     clients = [[NSMutableDictionary alloc] init];
-}
-
-+ (id<BPRestProvider,BPRestProviderOld>)buddyRestProvider {
-    return currentClient.restService;
-}
-
-+ (BOOL) locationEnabled
-{
-    return [currentClient locationEnabled];
-}
-
-+ (void) setLocationEnabled:(BOOL)val
-{
-    [currentClient setLocationEnabled:val];
 }
 
 + (void)setClientDelegate:(id<BPClientDelegate>)delegate
@@ -59,22 +47,20 @@ static BPClient* currentClient;
     currentClient.delegate = delegate;
 }
 
-+ (BPClient*)initClient:(NSString *)appID
++ (id<BuddyClientProtocol>)initClient:(NSString *)appID
             appKey:(NSString *)appKey
 {
     return [self initClient:appID appKey:appKey autoRecordDeviceInfo:NO
-          autoRecordLocation:NO instanceName:nil];
+               instanceName:nil];
 }
 
 
-+ (BPClient*)initClient:(NSString *)appID
++ (id<BuddyClientProtocol>)initClient:(NSString *)appID
                   appKey:(NSString *)appKey
     autoRecordDeviceInfo:(BOOL)autoRecordDeviceInfo
-      autoRecordLocation:(BOOL)autoRecordLocation
             instanceName:(NSString *)instanceName
 {
-    NSMutableDictionary *defaultOptions = [@{@"autoRecordLocation": @(autoRecordLocation),
-                                            @"autoRecordDeviceInfo": @(autoRecordDeviceInfo)} mutableCopy];
+    NSMutableDictionary *defaultOptions = [@{@"autoRecordDeviceInfo": @(autoRecordDeviceInfo)} mutableCopy];
     
     if(instanceName != nil)
     {
@@ -85,11 +71,12 @@ static BPClient* currentClient;
                  withOptions:defaultOptions];
 }
 
-+ (BPClient*) initClient:(NSString *)appID
++ (id<BuddyClientProtocol>) initClient:(NSString *)appID
             appKey:(NSString *)appKey
             withOptions:(NSDictionary *)options
 {
     NSString *clientKey = [NSString stringWithFormat:@"%@%@", appID, options[@"instanceName"]];
+    
     
     if ([clients objectForKey:clientKey]) {
         currentClient = [clients objectForKey:clientKey];
@@ -108,13 +95,6 @@ static BPClient* currentClient;
 #pragma mark User
 
 
-+ (void)createUser:(BPUser *)user
-          password:(NSString *)password
-          callback:(BuddyCompletionCallback)callback
-{
-    [currentClient createUser:user password:password callback:callback];
-}
-
 + (void)createUser:(NSString*) userName
           password:(NSString*) password
          firstName:(NSString*) firstName
@@ -123,7 +103,7 @@ static BPClient* currentClient;
        dateOfBirth:(NSDate*) dateOfBirth
             gender:(NSString*) gender
                tag:(NSString*) tag
-          callback:(BuddyCompletionCallback)callback
+          callback:(BuddyObjectCallback)callback
 {
     [currentClient createUser:userName
                                password:password
@@ -136,11 +116,6 @@ static BPClient* currentClient;
                                callback:callback];
 }
 
-+ (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback
-{
-    [currentClient login:username password:password callback:callback  ];
-     
-}
 
 + (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback
 {
@@ -153,9 +128,9 @@ static BPClient* currentClient;
     [currentClient socialLogin:provider providerId:providerId token:token success:callback];
 }
 
-+ (void)logout:(BuddyCompletionCallback)callback
++ (void)logoutUser:(BuddyCompletionCallback)callback
 {
-    [currentClient logout:callback];
+    [currentClient logoutUser:callback];
 }
 
 + (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;

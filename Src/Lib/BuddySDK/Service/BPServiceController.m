@@ -19,9 +19,6 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
 
 @interface BPServiceController()
 
-- (AFFailureCallback) handleFailure:(ServiceResponse)callback;
-- (AFSuccessCallback) handleSuccess:(ServiceResponse)callback;
-
 @property (nonatomic, strong) BPAppSettings *appSettings;
 
 @property (nonatomic, strong) AFJSONRequestSerializer *jsonRequestSerializer;
@@ -91,95 +88,7 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
 }
 
 
-#pragma mark - BPRestProvider
-
-- (void)GET_FILE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
-{
-    self.manager.requestSerializer = self.httpRequestSerializer;
-    self.manager.responseSerializer = self.httpResponseSerializer;
-    
-    [self.manager GET:servicePath
-           parameters:parameters
-              success:[self handleSuccess:callback json:NO]
-              failure:[self handleFailure:callback]];
-    
-    self.manager.responseSerializer = self.jsonResponseSerializer;
-    self.manager.requestSerializer = self.jsonRequestSerializer;
-}
-
-- (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
-{
-    
-    [self.manager GET:servicePath
-           parameters:parameters
-              success:[self handleSuccess:callback]
-              failure:[self handleFailure:callback]];
-
-}
-
-- (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
-{
-    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    [self.manager POST:servicePathEncoded
-            parameters:parameters
-               success:[self handleSuccess:callback]
-               failure:[self handleFailure:callback]];
-}
-
-- (void)MULTIPART_POST:(NSString *)servicePath parameters:(NSDictionary *)parameters data:(NSDictionary *)data mimeType:(NSString *)mimeType callback:(ServiceResponse)callback
-{
-    void (^constructBody)(id <AFMultipartFormData> formData) =^(id<AFMultipartFormData> formData){
-        for(NSString *name in [data allKeys]){
-            [formData appendPartWithFileData:data[name] name:name fileName:name mimeType:mimeType];
-        }
-    };
-    
-    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    [self.manager POST:servicePathEncoded
-                  parameters:parameters
-   constructingBodyWithBlock:constructBody
-                     success:[self handleSuccess:callback]
-                     failure:[self handleFailure:callback]];
-}
-
-
-- (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
-{
-    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    [self.manager PATCH:servicePathEncoded
-             parameters:parameters
-                success:[self handleSuccess:callback]
-                failure:[self handleFailure:callback]];
-}
-
-- (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
-{
-    NSString *servicePathEncoded =[servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    [self.manager PUT:servicePathEncoded
-           parameters:parameters
-              success:[self handleSuccess:callback]
-              failure:[self handleFailure:callback]];
-}
-
-- (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(ServiceResponse)callback
-{
-    [self.manager DELETE:servicePath
-              parameters:parameters
-                 success:[self handleSuccess:callback]
-                 failure:[self handleFailure:callback]];
-}
-
-
-
-
-
-
-
-#pragma mark NEW REST
+#pragma mark REST Provider
 
 - (void)REST_GET_FILE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
 {
@@ -282,31 +191,6 @@ constructingBodyWithBlock:constructBody
                success:[self REST_handleSuccess:callback]
                failure:[self REST_handleFailure:callback]];
 }
-
-
-
-- (AFSuccessCallback) handleSuccess:(ServiceResponse)callback
-{
-    return [self handleSuccess:callback json:YES];
-}
-
-- (AFSuccessCallback) handleSuccess:(ServiceResponse)callback json:(BOOL)json
-{
-    return ^(AFHTTPRequestOperation *operation, id responseObject){
-        
-        callback([operation response].statusCode, responseObject, nil);
-    };
-}
-
-- (AFFailureCallback) handleFailure:(ServiceResponse)callback
-{
-    return ^(AFHTTPRequestOperation *operation, NSError *error){
-
-        NSInteger statusCode = operation.response ? operation.response.statusCode : 0;
-        callback(statusCode, operation.responseString, error);
-    };
-}
-
 
 - (AFSuccessCallback) REST_handleSuccess:(REST_ServiceResponse)callback
 {

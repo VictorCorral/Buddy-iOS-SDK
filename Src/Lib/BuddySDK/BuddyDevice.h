@@ -16,14 +16,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BuddyObject.h"
-#import "BPClient.h"
+@class BPClient;
 
-// BuddyDevice callback definitions
-
-typedef void (^BuddyDeviceCallback)(id response);
-
-@interface BuddyDevice : BuddyObject
+@interface BuddyDevice : NSObject
 
 @property (nonatomic, readonly, strong) BPClient* client;
 

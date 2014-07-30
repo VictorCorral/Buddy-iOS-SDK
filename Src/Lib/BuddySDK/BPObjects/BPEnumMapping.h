@@ -10,6 +10,8 @@
 
 @protocol BPEnumMapping <NSObject>
 
++ (NSDictionary *)enumMap;
+
 + (NSDictionary *)mapForProperty:(NSString *)key;
 + (id)convertValue:(NSString *)value forKey:(NSString *)key;
 

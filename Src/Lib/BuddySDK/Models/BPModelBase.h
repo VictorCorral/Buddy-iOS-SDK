@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BPModelBase : NSObject
+#import "BPPermissions.h"
+#import "BPEnumMapping.h"
+
+@class BPCoordinate;
+
+@interface BPModelBase : NSObject <BPEnumMapping>
 
 @property (nonatomic, strong) BPCoordinate *location;
 @property (nonatomic, strong) NSDate *created;

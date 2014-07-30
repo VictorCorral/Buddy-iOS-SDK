@@ -6,14 +6,14 @@
 //
 //
 
+#import "BuddyCallbacks.h"
 #import "BPRestProvider.h"
-#import "BPBase.h"
 
 @class BPNotification;
 
 @interface BPNotificationManager : NSObject
 
-- (instancetype)initWithClient:(id<BPRestProviderOld>)client;
+- (instancetype)initWithClient:(id<BPRestProvider>)client;
 
 - (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
 
