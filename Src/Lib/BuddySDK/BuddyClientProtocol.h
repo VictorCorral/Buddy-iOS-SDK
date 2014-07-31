@@ -10,7 +10,6 @@
 #define BuddySDK_BuddyClientProtocol_h
 
 #import "BuddyCallbacks.h"
-#import "BPRestProvider.h"
 
 @class BPCoordinate;
 @class BPNotification;

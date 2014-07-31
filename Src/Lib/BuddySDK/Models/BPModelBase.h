@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BPEnumMapping.h"
-
 @class BPCoordinate;
 
 @interface BPModelBase : NSObject

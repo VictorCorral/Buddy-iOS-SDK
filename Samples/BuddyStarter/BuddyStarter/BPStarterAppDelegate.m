@@ -15,6 +15,7 @@
 @interface BPStarterAppDelegate ()
 
     @property (atomic) UIViewController* loginViewController;
+
 @end
 
 @implementation BPStarterAppDelegate
@@ -28,7 +29,7 @@ BOOL loginPresented;
     // Initialize the Buddy SDK
     // This initialization does NOT cause a network call, but will be processed
     // upon the first call to a Buddy API.
-    [Buddy initClient:\@"Your AppID" appKey:\@"\Your App Key"];
+    [Buddy initClient:@"bbbbbc.GKdbbcpzlwhn" appKey:@"bbbbbc.GKdbbcpzlwhn"];
     
     
     self.window = [[UIWindow alloc] initWithFrame:
