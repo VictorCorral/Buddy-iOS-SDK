@@ -26,7 +26,7 @@
 		01274B35198A9A6B00DB31BA /* BuddyCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B2D1989791700DB31BA /* BuddyCallbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4A198AA96D00DB31BA /* BPCoordinate.h */; };
 		01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4B198AA96D00DB31BA /* BPCoordinate.m */; };
-		01274B50198AAC5500DB31BA /* BPModelPicture.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4E198AAC5500DB31BA /* BPModelPicture.h */; };
+		01274B50198AAC5500DB31BA /* BPModelPicture.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4E198AAC5500DB31BA /* BPModelPicture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01274B51198AAC5500DB31BA /* BPModelPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4F198AAC5500DB31BA /* BPModelPicture.m */; };
 		018AB0DE1975DB420025677B /* BuddyFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0DC1975DB420025677B /* BuddyFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		018AB0DF1975DB420025677B /* BuddyFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0DD1975DB420025677B /* BuddyFile.m */; };
@@ -577,6 +577,7 @@
 				01DB07C0197878B40008A35E /* BPModelUser.h in Headers */,
 				018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */,
 				01274B32198A9A1D00DB31BA /* BuddyClientProtocol.h in Headers */,
+				01274B50198AAC5500DB31BA /* BPModelPicture.h in Headers */,
 				018AB0DE1975DB420025677B /* BuddyFile.h in Headers */,
 				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
 				01274B35198A9A6B00DB31BA /* BuddyCallbacks.h in Headers */,
@@ -608,7 +609,6 @@
 				C1AA90D818371FF70074B7E8 /* BPServiceController.h in Headers */,
 				C1E0D1D11831BAD3001A7A01 /* JAGProperty.h in Headers */,
 				C1E0D1D41831BAD3001A7A01 /* JAGPropertyConverter-Prefix.pch in Headers */,
-				01274B50198AAC5500DB31BA /* BPModelPicture.h in Headers */,
 				2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */,
 				C1B2375F1865569F005C841E /* NSString+JSON.h in Headers */,
 				C1E0D1D51831BAD3001A7A01 /* JAGPropertyConverter.h in Headers */,

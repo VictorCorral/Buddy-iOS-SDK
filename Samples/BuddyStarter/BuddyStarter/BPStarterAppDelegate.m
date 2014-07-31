@@ -29,7 +29,7 @@ BOOL loginPresented;
     // Initialize the Buddy SDK
     // This initialization does NOT cause a network call, but will be processed
     // upon the first call to a Buddy API.
-    [Buddy initClient:@"bbbbbc.GKdbbcpzlwhn" appKey:@"bbbbbc.GKdbbcpzlwhn"];
+    [Buddy initClient:\@"Your App ID" appKey:\@"Your App Key"];
     
     
     self.window = [[UIWindow alloc] initWithFrame:

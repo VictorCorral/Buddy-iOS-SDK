@@ -29,7 +29,7 @@
             self.message.text = [[NSString alloc] initWithFormat:@"Hello, %@.", user.userName];
         }
         else {
-            self.message.text = @"An error occurred";
+            self.message.text = @"";
         }
        
     }];
