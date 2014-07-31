@@ -60,7 +60,7 @@
     return self;
 }
 
-- (BPModelUser *)user
+- (BPModelUser *)currentUser
 {
     if(!_currentUser)
     {

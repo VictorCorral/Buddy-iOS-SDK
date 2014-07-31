@@ -113,7 +113,7 @@
 
 -(void)doLogout
 {
-    [Buddy logout:^(NSError *error)
+    [Buddy logoutUser:^(NSError *error)
      {
          NSLog(@"Logout Callback Called");
      }];

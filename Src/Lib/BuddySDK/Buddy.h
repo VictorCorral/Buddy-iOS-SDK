@@ -22,6 +22,8 @@
 #import "BPModelUser.h"
 #import "BPModelCheckin.h"
 #import "BPModelSearch.h"
+#import "BPModelPicture.h"
+#import "BuddyFile.h"
 
 @interface Buddy : NSObject
 
