@@ -8,6 +8,7 @@
 
 #import "JAGPropertyConverter+BPJSONConverter.h"
 #import "BPSize.h"
+#import "BPCoordinate.h"
 
 @implementation JAGPropertyConverter (BPJSONConverter)
 

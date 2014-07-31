@@ -15,6 +15,8 @@
  */
 
 #import "BuddyDevice.h"
+#import "BPClient.h"
+
 #import "Buddy.h"
 #import <UIKit/UIKit.h>
 #include <sys/sysctl.h>

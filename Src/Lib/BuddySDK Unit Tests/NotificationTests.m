@@ -21,7 +21,7 @@ describe(@"Notifications", ^{
     context(@"When an app has a valid device token", ^{
         __block BOOL fin = NO;
 
-        __block BPClient* client;
+        __block id<BuddyClientProtocol> client;
         
         beforeAll(^{
             [BuddyIntegrationHelper bootstrapLogin:^{

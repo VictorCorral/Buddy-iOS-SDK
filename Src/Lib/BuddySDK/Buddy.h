@@ -8,74 +8,30 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BuddyObject.h"
 #import "BuddyDevice.h"
-#import "BPAlbumItem.h"
-#import "BPClient.h"
-#import "BPCheckin.h"
-#import "BPCheckinCollection.h"
-#import "BPAlbumCollection.h"
-#import "BPPicture.h"
-#import "BPUser.h"
-#import "BPPictureCollection.h"
-#import "BPVideoCollection.h"
-#import "BPBlobCollection.h"
-#import "BPUserCollection.h"
 #import "BPCoordinate.h"
 #import "BPDateRange.h"
-#import "BPBlob.h"
-#import "BPAlbum.h"
-#import "BPLocationCollection.h"
-#import "BPLocation.h"
+
+#import "BuddyClientProtocol.h"
+
 #import "BPMetricCompletionHandler.h"
-#import "BPMetadataItem.h"
-#import "BPUserListCollection.h"
 #import "BPNotification.h"
-#import "BPIdentityValue.h"
 #import "BPSize.h"
-#import "BPPagingTokens.h"
 
 // Models
 #import "BPModelUser.h"
 #import "BPModelCheckin.h"
 #import "BPModelSearch.h"
 
-
-/**
- * TODO
- *
- * @since v2.0
- */
 @interface Buddy : NSObject
 
  /* The currently logged in user. Will be nil if no login session has occurred.
  */
-+ (BPUser *)user;
++ (BPModelUser *)user;
 
-/**
- * Used to check if location information is automatically being sent to the server or not.
- *
- * If set to YES then location information will automatically be sent to the server.
- * If set to NO then location information will not be sent.
- *
- * Default: NO
- *
- */
-+ (BOOL) locationEnabled;
++ (id<BuddyClientProtocol>) currentClient;
 
-+ (BPClient*) currentClient;
-
-/**
- * Determines whether location information will be automatically sent to the server or not.
- *
- * @param enabled     If set to YES then location information will automatically be sent to the server.
- *                    If set to NO then location information will not be sent.
- *
- *                    Default: NO
- */
-+ (void) setLocationEnabled:(BOOL)enabled;
-
-+ (void)setClientDelegate:(id<BPClientDelegate>)delegate;
++ (void) setClientDelegate:(id<BPClientDelegate>)delegate;
 
 /**
  *
@@ -86,20 +42,15 @@
  * @param appKey Your application key.
  *
  */
-+ (BPClient*)initClient:(NSString *)appID
++ (id<BuddyClientProtocol>)initClient:(NSString *)appID
             appKey:(NSString *)appKey;
-
 
 /**
  *
  * Create a new Buddy User.
  *
- * @param user     A BPUser object populated with the users information.
- *
- * @param password The new user's password.
  *
  */
-+ (void)createUser:(BPUser *)user password:(NSString *)password callback:(BuddyCompletionCallback)callback;
 + (void)createUser:(NSString*) userName
           password:(NSString*) password
          firstName:(NSString*) firstName
@@ -108,8 +59,7 @@
        dateOfBirth:(NSDate*) dateOfBirth
             gender:(NSString*) gender
                tag:(NSString*) tag
-          callback:(BuddyCompletionCallback)callback;
-
+          callback:(BuddyObjectCallback)callback;
 
 /**
  *
@@ -120,7 +70,6 @@
  * @param password  The user's password.
  *
  */
-+ (void)login:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
 + (void)loginUser:(NSString *)username password:(NSString *)password callback:(BuddyObjectCallback)callback;
 
 /**
@@ -135,7 +84,7 @@
  * Logout the current user.
  *
  */
-+ (void)logout:(BuddyCompletionCallback)callback;
++ (void)logoutUser:(BuddyCompletionCallback)callback;
 
 /* 
  * Send a push Notification to one or more users, or user lists.

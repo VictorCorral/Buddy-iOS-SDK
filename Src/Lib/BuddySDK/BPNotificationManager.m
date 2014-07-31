@@ -8,16 +8,17 @@
 
 #import "BPNotificationManager.h"
 #import "BPNotification.h"
+#import "BPRestProvider.h"
 
 @interface BPNotificationManager()
 
-@property (weak, nonatomic) id<BPRestProviderOld> client;
+@property (weak, nonatomic) id<BPRestProvider> client;
 
 @end
 
 @implementation BPNotificationManager
 
-- (instancetype)initWithClient:(id<BPRestProviderOld>)client{
+- (instancetype)initWithClient:(id<BPRestProvider>)client{
     self = [super init];
     if(self){
         _client = client;
@@ -29,7 +30,7 @@
 {
     NSString *resource = [NSString stringWithFormat:@"/notifications/received/%@", key];
     
-    [self.client POST:resource parameters:nil callback:^(id json, NSError *error) {
+    [self.client POST:resource parameters:nil class:[NSDictionary class] callback:^(id json, NSError *error) {
        // Anything?
     }];
 }
@@ -68,7 +69,7 @@
                                  @"recipients": BOXNIL(notification.recipients)
                                  };
     
-    [self.client POST:url parameters:parameters callback:^(id json, NSError *error) {
+    [self.client POST:url parameters:parameters class:[NSDictionary class] callback:^(id json, NSError *error) {
         callback(error);
     }];
 }

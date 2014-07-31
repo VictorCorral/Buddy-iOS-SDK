@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BPEnumMapping.h"
+
+@class BPCoordinate;
+
 @interface BPModelBase : NSObject
 
 @property (nonatomic, strong) BPCoordinate *location;
 @property (nonatomic, strong) NSDate *created;
 @property (nonatomic, strong) NSDate *lastModified;
-@property (nonatomic, assign) BPPermissions readPermissions;
-@property (nonatomic, assign) BPPermissions writePermissions;
+@property (nonatomic, strong) NSString *readPermissions;
+@property (nonatomic, assign) NSString *writePermissions;
 @property (nonatomic, copy) NSString *tag;
 @property (nonatomic, copy) NSString *id;
 
