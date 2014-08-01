@@ -28,6 +28,8 @@
 		01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4B198AA96D00DB31BA /* BPCoordinate.m */; };
 		01274B50198AAC5500DB31BA /* BPModelPicture.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4E198AAC5500DB31BA /* BPModelPicture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01274B51198AAC5500DB31BA /* BPModelPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4F198AAC5500DB31BA /* BPModelPicture.m */; };
+		016FAB3B198C19B20021D3A8 /* BPModelUserList.h in Headers */ = {isa = PBXBuildFile; fileRef = 016FAB39198C19B20021D3A8 /* BPModelUserList.h */; };
+		016FAB3C198C19B20021D3A8 /* BPModelUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 016FAB3A198C19B20021D3A8 /* BPModelUserList.m */; };
 		018AB0DE1975DB420025677B /* BuddyFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0DC1975DB420025677B /* BuddyFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		018AB0DF1975DB420025677B /* BuddyFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0DD1975DB420025677B /* BuddyFile.m */; };
 		018AB0E31977176B0025677B /* BPModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E11977176B0025677B /* BPModelBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -170,6 +172,8 @@
 		01274B4B198AA96D00DB31BA /* BPCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCoordinate.m; path = Models/BPCoordinate.m; sourceTree = "<group>"; };
 		01274B4E198AAC5500DB31BA /* BPModelPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelPicture.h; path = Models/BPModelPicture.h; sourceTree = "<group>"; };
 		01274B4F198AAC5500DB31BA /* BPModelPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelPicture.m; path = Models/BPModelPicture.m; sourceTree = "<group>"; };
+		016FAB39198C19B20021D3A8 /* BPModelUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelUserList.h; path = Models/BPModelUserList.h; sourceTree = "<group>"; };
+		016FAB3A198C19B20021D3A8 /* BPModelUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelUserList.m; path = Models/BPModelUserList.m; sourceTree = "<group>"; };
 		018AB0DC1975DB420025677B /* BuddyFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddyFile.h; path = BaseObjects/BuddyFile.h; sourceTree = "<group>"; };
 		018AB0DD1975DB420025677B /* BuddyFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddyFile.m; path = BaseObjects/BuddyFile.m; sourceTree = "<group>"; };
 		018AB0E11977176B0025677B /* BPModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelBase.h; path = Models/BPModelBase.h; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 				01DB07BF197878B40008A35E /* BPModelUser.m */,
 				01274B4E198AAC5500DB31BA /* BPModelPicture.h */,
 				01274B4F198AAC5500DB31BA /* BPModelPicture.m */,
+				016FAB39198C19B20021D3A8 /* BPModelUserList.h */,
+				016FAB3A198C19B20021D3A8 /* BPModelUserList.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -575,6 +581,7 @@
 				5B19875B18CB67D800FBB502 /* NSDate+BPDateHelper.h in Headers */,
 				018AB0E31977176B0025677B /* BPModelBase.h in Headers */,
 				01DB07C0197878B40008A35E /* BPModelUser.h in Headers */,
+				016FAB3B198C19B20021D3A8 /* BPModelUserList.h in Headers */,
 				018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */,
 				01274B32198A9A1D00DB31BA /* BuddyClientProtocol.h in Headers */,
 				01274B50198AAC5500DB31BA /* BPModelPicture.h in Headers */,
@@ -819,6 +826,7 @@
 				C154CEFB187FAE8600EACE4B /* NSDate+JSON.m in Sources */,
 				C1E0D1D61831BAD3001A7A01 /* JAGPropertyConverter.m in Sources */,
 				5B32F36D18E071C600C07019 /* BPAFHTTPRequestOperationManager.m in Sources */,
+				016FAB3C198C19B20021D3A8 /* BPModelUserList.m in Sources */,
 				5B984DA518C6DB9700CE8E2C /* BPDateRange.m in Sources */,
 				01DB07C1197878B40008A35E /* BPModelUser.m in Sources */,
 				5B0B23D519133E4E005CB913 /* BPSize.m in Sources */,
