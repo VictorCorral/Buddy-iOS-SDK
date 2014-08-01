@@ -94,8 +94,8 @@ If you want to operatate two clients at once you can use:
     #import "BuddySDK/Buddy.h"
     // ...
     // Create the SDK client
-            BPClient* firstClient = [Buddy initClient:@"myAppId" appKey:@"myAppKey" autoRecordDeviceInfo:TRUE autoRecordLocation:TRUE instanceName:@"firstName"];
-            BPClient* secondClient = [Buddy initClient:@"myAppId" appKey:@"myAppKey" autoRecordDeviceInfo:TRUE autoRecordLocation:TRUE instanceName: @"secondName"];
+            BPClient* firstClient = [Buddy init:@"myAppId" appKey:@"myAppKey" autoRecordDeviceInfo:TRUE autoRecordLocation:TRUE instanceName:@"firstName"];
+            BPClient* secondClient = [Buddy init:@"myAppId" appKey:@"myAppKey" autoRecordDeviceInfo:TRUE autoRecordLocation:TRUE instanceName: @"secondName"];
     [firstClient GET:@"/videos" parameters:@{@"caption": @"caption search string"} callback:^(id json, NSError *error) {
                 //Do stuff here
             }];
