@@ -104,7 +104,7 @@
     }
     
     [Buddy PUT: [NSString stringWithFormat:@"users/lists/%@/items/%@",self.channel.id,[Buddy user].id]
-     parameters:nil class:[NSDictionary class] callback:^(id obj, NSError *error) {
+     parameters:nil class:[NSNumber class] callback:^(id obj, NSError *error) {
     
         if(error!=nil)
         {
