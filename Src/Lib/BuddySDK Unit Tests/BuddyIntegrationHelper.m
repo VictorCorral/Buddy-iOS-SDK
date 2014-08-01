@@ -14,14 +14,14 @@
 
 + (void) bootstrapInit
 {
-    [Buddy initClient:APP_ID appKey:APP_KEY];
+    [Buddy init:APP_ID appKey:APP_KEY];
 }
 
 + (void) bootstrapLogin:(void(^)())callback
 {
     [BPAppSettings resetSettings:nil];
     
-    [Buddy initClient:APP_ID appKey:APP_KEY];
+    [Buddy init:APP_ID appKey:APP_KEY];
     
     [Buddy loginUser:TEST_USERNAME password:TEST_PASSWORD callback:^(BPModelUser *loggedInUser, NSError *error)
     {

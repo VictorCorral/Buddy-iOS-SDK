@@ -22,22 +22,27 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		01274B2C1989704000DB31BA /* BPEnumMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B2B1989704000DB31BA /* BPEnumMapping.h */; };
-		018AB0DE1975DB420025677B /* BuddyFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0DC1975DB420025677B /* BuddyFile.h */; };
+		01274B32198A9A1D00DB31BA /* BuddyClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B2E1989798000DB31BA /* BuddyClientProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01274B35198A9A6B00DB31BA /* BuddyCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B2D1989791700DB31BA /* BuddyCallbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4A198AA96D00DB31BA /* BPCoordinate.h */; };
+		01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4B198AA96D00DB31BA /* BPCoordinate.m */; };
+		01274B50198AAC5500DB31BA /* BPModelPicture.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4E198AAC5500DB31BA /* BPModelPicture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01274B51198AAC5500DB31BA /* BPModelPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4F198AAC5500DB31BA /* BPModelPicture.m */; };
+		018AB0DE1975DB420025677B /* BuddyFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0DC1975DB420025677B /* BuddyFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		018AB0DF1975DB420025677B /* BuddyFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0DD1975DB420025677B /* BuddyFile.m */; };
-		018AB0E31977176B0025677B /* BPModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E11977176B0025677B /* BPModelBase.h */; };
+		018AB0E31977176B0025677B /* BPModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E11977176B0025677B /* BPModelBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		018AB0E41977176B0025677B /* BPModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0E21977176B0025677B /* BPModelBase.m */; };
-		018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E5197718D80025677B /* BPModelCheckin.h */; };
+		018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E5197718D80025677B /* BPModelCheckin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		018AB0E8197718D80025677B /* BPModelCheckin.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0E6197718D80025677B /* BPModelCheckin.m */; };
 		018AB0EB197719620025677B /* BPRest.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0EA197719620025677B /* BPRest.m */; };
-		01DB07BC197855350008A35E /* BPModelSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BA197855350008A35E /* BPModelSearch.h */; };
+		01DB07BC197855350008A35E /* BPModelSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BA197855350008A35E /* BPModelSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01DB07BD197855350008A35E /* BPModelSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BB197855350008A35E /* BPModelSearch.m */; };
-		01DB07C0197878B40008A35E /* BPModelUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BE197878B40008A35E /* BPModelUser.h */; };
+		01DB07C0197878B40008A35E /* BPModelUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BE197878B40008A35E /* BPModelUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01DB07C1197878B40008A35E /* BPModelUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BF197878B40008A35E /* BPModelUser.m */; };
 		2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */; };
 		2F7E079318A2EC08003FC524 /* BuddyAppDelegateDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E079118A2EC08003FC524 /* BuddyAppDelegateDecorator.m */; };
 		3FAAE60BA41844428107236D /* libPods-BuddySDK Unit Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B6B8A0BC8C4474A7F6BC3E /* libPods-BuddySDK Unit Tests.a */; };
-		5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0302FA18DFDB2000EA6B08 /* BPRestProvider.h */; };
+		5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0302FA18DFDB2000EA6B08 /* BPRestProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B0B23D419133E4E005CB913 /* BPSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B0B23D219133E4E005CB913 /* BPSize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B0B23D519133E4E005CB913 /* BPSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B23D319133E4E005CB913 /* BPSize.m */; };
 		5B19875B18CB67D800FBB502 /* NSDate+BPDateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B19875918CB67D800FBB502 /* NSDate+BPDateHelper.h */; };
@@ -82,8 +87,6 @@
 		C1010D35187A4CC3009EB04E /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D30187A4CC3009EB04E /* 4.jpg */; };
 		C10E2B9D186950D8007A0136 /* BPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = C10E2B88186950D8007A0136 /* BPClient.h */; };
 		C10E2B9E186950D8007A0136 /* BPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C10E2B89186950D8007A0136 /* BPClient.m */; };
-		C10E2BA0186950D8007A0136 /* BPCoordinate.h in Headers */ = {isa = PBXBuildFile; fileRef = C10E2B8A186950D8007A0136 /* BPCoordinate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C10E2BA1186950D8007A0136 /* BPCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = C10E2B8B186950D8007A0136 /* BPCoordinate.m */; };
 		C10E2BB1186951C3007A0136 /* BuddyDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = C10E2BAF186951C3007A0136 /* BuddyDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C10E2BB2186951C3007A0136 /* BuddyDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C10E2BB0186951C3007A0136 /* BuddyDevice.m */; };
 		C10E2BB6186951FA007A0136 /* Buddy.h in Headers */ = {isa = PBXBuildFile; fileRef = C10E2BB4186951FA007A0136 /* Buddy.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -160,10 +163,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01274B2B1989704000DB31BA /* BPEnumMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPEnumMapping.h; path = BPObjects/BPEnumMapping.h; sourceTree = "<group>"; };
 		01274B2D1989791700DB31BA /* BuddyCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuddyCallbacks.h; sourceTree = "<group>"; };
 		01274B2E1989798000DB31BA /* BuddyClientProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuddyClientProtocol.h; sourceTree = "<group>"; };
 		01274B2F1989930F00DB31BA /* Buddy+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Buddy+Private.h"; sourceTree = "<group>"; };
+		01274B4A198AA96D00DB31BA /* BPCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCoordinate.h; path = Models/BPCoordinate.h; sourceTree = "<group>"; };
+		01274B4B198AA96D00DB31BA /* BPCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCoordinate.m; path = Models/BPCoordinate.m; sourceTree = "<group>"; };
+		01274B4E198AAC5500DB31BA /* BPModelPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelPicture.h; path = Models/BPModelPicture.h; sourceTree = "<group>"; };
+		01274B4F198AAC5500DB31BA /* BPModelPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelPicture.m; path = Models/BPModelPicture.m; sourceTree = "<group>"; };
 		018AB0DC1975DB420025677B /* BuddyFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddyFile.h; path = BaseObjects/BuddyFile.h; sourceTree = "<group>"; };
 		018AB0DD1975DB420025677B /* BuddyFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddyFile.m; path = BaseObjects/BuddyFile.m; sourceTree = "<group>"; };
 		018AB0E11977176B0025677B /* BPModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelBase.h; path = Models/BPModelBase.h; sourceTree = "<group>"; };
@@ -228,8 +234,6 @@
 		C1010D30187A4CC3009EB04E /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		C10E2B88186950D8007A0136 /* BPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = BPClient.h; path = BPObjects/BPClient.h; sourceTree = "<group>"; };
 		C10E2B89186950D8007A0136 /* BPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = BPClient.m; path = BPObjects/BPClient.m; sourceTree = "<group>"; };
-		C10E2B8A186950D8007A0136 /* BPCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCoordinate.h; path = BPObjects/BPCoordinate.h; sourceTree = "<group>"; };
-		C10E2B8B186950D8007A0136 /* BPCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCoordinate.m; path = BPObjects/BPCoordinate.m; sourceTree = "<group>"; };
 		C10E2BAF186951C3007A0136 /* BuddyDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = BuddyDevice.h; path = ../../Lib/BuddySDK/BuddyDevice.h; sourceTree = "<group>"; };
 		C10E2BB0186951C3007A0136 /* BuddyDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddyDevice.m; path = ../../Lib/BuddySDK/BuddyDevice.m; sourceTree = "<group>"; };
 		C10E2BB4186951FA007A0136 /* Buddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Buddy.h; path = ../../Lib/BuddySDK/Buddy.h; sourceTree = "<group>"; };
@@ -314,7 +318,8 @@
 		018AB0E0197717560025677B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				01274B2B1989704000DB31BA /* BPEnumMapping.h */,
+				01274B4A198AA96D00DB31BA /* BPCoordinate.h */,
+				01274B4B198AA96D00DB31BA /* BPCoordinate.m */,
 				018AB0DC1975DB420025677B /* BuddyFile.h */,
 				018AB0DD1975DB420025677B /* BuddyFile.m */,
 				018AB0E11977176B0025677B /* BPModelBase.h */,
@@ -325,6 +330,8 @@
 				01DB07BB197855350008A35E /* BPModelSearch.m */,
 				01DB07BE197878B40008A35E /* BPModelUser.h */,
 				01DB07BF197878B40008A35E /* BPModelUser.m */,
+				01274B4E198AAC5500DB31BA /* BPModelPicture.h */,
+				01274B4F198AAC5500DB31BA /* BPModelPicture.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -387,8 +394,6 @@
 				C10E2B89186950D8007A0136 /* BPClient.m */,
 				5B0B23D219133E4E005CB913 /* BPSize.h */,
 				5B0B23D319133E4E005CB913 /* BPSize.m */,
-				C10E2B8A186950D8007A0136 /* BPCoordinate.h */,
-				C10E2B8B186950D8007A0136 /* BPCoordinate.m */,
 				5B984DA218C6DB9700CE8E2C /* BPDateRange.h */,
 				5B984DA318C6DB9700CE8E2C /* BPDateRange.m */,
 				C10E2BAF186951C3007A0136 /* BuddyDevice.h */,
@@ -568,37 +573,39 @@
 				C1427672189AAC3700D5DD85 /* BPAppSettings.h in Headers */,
 				C10E2BB6186951FA007A0136 /* Buddy.h in Headers */,
 				5B19875B18CB67D800FBB502 /* NSDate+BPDateHelper.h in Headers */,
+				018AB0E31977176B0025677B /* BPModelBase.h in Headers */,
+				01DB07C0197878B40008A35E /* BPModelUser.h in Headers */,
+				018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */,
+				01274B32198A9A1D00DB31BA /* BuddyClientProtocol.h in Headers */,
+				01274B50198AAC5500DB31BA /* BPModelPicture.h in Headers */,
+				018AB0DE1975DB420025677B /* BuddyFile.h in Headers */,
+				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
+				01274B35198A9A6B00DB31BA /* BuddyCallbacks.h in Headers */,
 				5B984DA018C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h in Headers */,
+				01DB07BC197855350008A35E /* BPModelSearch.h in Headers */,
 				C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */,
 				5B32F36C18E071C600C07019 /* BPAFHTTPRequestOperationManager.h in Headers */,
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
 				5B32F37118E071C600C07019 /* BPAFNetworkReachabilityManager.h in Headers */,
-				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
 				C10E2B9D186950D8007A0136 /* BPClient.h in Headers */,
 				5B5FE15B18E3CD1C00518440 /* BPNotification.h in Headers */,
 				5B0B23D419133E4E005CB913 /* BPSize.h in Headers */,
 				C154CEFA187FAE8600EACE4B /* NSDate+JSON.h in Headers */,
 				5B32F37518E071C600C07019 /* BPAFURLConnectionOperation.h in Headers */,
 				C10E2BB1186951C3007A0136 /* BuddyDevice.h in Headers */,
-				018AB0E7197718D80025677B /* BPModelCheckin.h in Headers */,
 				5BCF3F1718D641440065842D /* BPCrashManager.h in Headers */,
-				01DB07C0197878B40008A35E /* BPModelUser.h in Headers */,
-				C10E2BA0186950D8007A0136 /* BPCoordinate.h in Headers */,
 				5B32F36A18E071C600C07019 /* BPAFHTTPRequestOperation.h in Headers */,
 				C1B95A2A18370817000C8417 /* BuddySDK-Prefix.pch in Headers */,
 				C10F1B7B1870A6F500D5364C /* NSError+BuddyError.h in Headers */,
 				5B984DA418C6DB9700CE8E2C /* BPDateRange.h in Headers */,
-				018AB0DE1975DB420025677B /* BuddyFile.h in Headers */,
 				C153F87017E15FC1009CDC81 /* Util.h in Headers */,
 				5B32F37918E071C600C07019 /* BPAFURLResponseSerialization.h in Headers */,
 				5B32F37718E071C600C07019 /* BPAFURLRequestSerialization.h in Headers */,
 				C1E0D1D81831BAD3001A7A01 /* JAGPropertyFinder.h in Headers */,
 				5BCF8299191300DD00A26EA7 /* NSArray+BPSugar.h in Headers */,
-				018AB0E31977176B0025677B /* BPModelBase.h in Headers */,
 				5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */,
-				01DB07BC197855350008A35E /* BPModelSearch.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
-				01274B2C1989704000DB31BA /* BPEnumMapping.h in Headers */,
+				01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */,
 				C1AA90D818371FF70074B7E8 /* BPServiceController.h in Headers */,
 				C1E0D1D11831BAD3001A7A01 /* JAGProperty.h in Headers */,
 				C1E0D1D41831BAD3001A7A01 /* JAGPropertyConverter-Prefix.pch in Headers */,
@@ -790,13 +797,14 @@
 				C1B237601865569F005C841E /* NSString+JSON.m in Sources */,
 				5BCF3F1818D641440065842D /* BPCrashManager.m in Sources */,
 				01DB07BD197855350008A35E /* BPModelSearch.m in Sources */,
+				01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */,
 				018AB0E8197718D80025677B /* BPModelCheckin.m in Sources */,
-				C10E2BA1186950D8007A0136 /* BPCoordinate.m in Sources */,
 				5B5FE15C18E3CD1C00518440 /* BPNotification.m in Sources */,
 				C10F1B7C1870A6F500D5364C /* NSError+BuddyError.m in Sources */,
 				C1E0D1D91831BAD3001A7A01 /* JAGPropertyFinder.m in Sources */,
 				C1AA90D918371FF70074B7E8 /* BPServiceController.m in Sources */,
 				5B5FE15818E3C90C00518440 /* BPNotificationManager.m in Sources */,
+				01274B51198AAC5500DB31BA /* BPModelPicture.m in Sources */,
 				5B32F37618E071C600C07019 /* BPAFURLConnectionOperation.m in Sources */,
 				018AB0DF1975DB420025677B /* BuddyFile.m in Sources */,
 				5B19875C18CB67D800FBB502 /* NSDate+BPDateHelper.m in Sources */,

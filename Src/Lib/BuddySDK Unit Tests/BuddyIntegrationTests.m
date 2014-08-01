@@ -32,7 +32,7 @@ describe(@"Buddy", ^{
             
             [BPAppSettings resetSettings:nil];
             
-            [Buddy initClient:APP_ID appKey:APP_KEY];
+            [Buddy init:APP_ID appKey:APP_KEY];
             
             client = [Buddy currentClient];
             

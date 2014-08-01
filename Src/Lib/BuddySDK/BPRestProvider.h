@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef void (^RESTCallback)(id obj, NSError *error);
+#import "BuddyCallbacks.h"
 
 @protocol BPRestProvider <NSObject>
 

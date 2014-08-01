@@ -47,15 +47,15 @@ static BPClient* currentClient;
     currentClient.delegate = delegate;
 }
 
-+ (id<BuddyClientProtocol>)initClient:(NSString *)appID
++ (id<BuddyClientProtocol>)init:(NSString *)appID
             appKey:(NSString *)appKey
 {
-    return [self initClient:appID appKey:appKey autoRecordDeviceInfo:NO
+    return [self init:appID appKey:appKey autoRecordDeviceInfo:NO
                instanceName:nil];
 }
 
 
-+ (id<BuddyClientProtocol>)initClient:(NSString *)appID
++ (id<BuddyClientProtocol>)init:(NSString *)appID
                   appKey:(NSString *)appKey
     autoRecordDeviceInfo:(BOOL)autoRecordDeviceInfo
             instanceName:(NSString *)instanceName
@@ -66,12 +66,12 @@ static BPClient* currentClient;
     {
         [defaultOptions setObject:instanceName forKey:@"instanceName"];
     }
-    return [self initClient:appID
+    return [self init:appID
                       appKey:appKey
                  withOptions:defaultOptions];
 }
 
-+ (id<BuddyClientProtocol>) initClient:(NSString *)appID
++ (id<BuddyClientProtocol>) init:(NSString *)appID
             appKey:(NSString *)appKey
             withOptions:(NSDictionary *)options
 {

@@ -60,6 +60,15 @@
     return self;
 }
 
+- (BPModelUser *)currentUser
+{
+    if(!_currentUser)
+    {
+        [self raiseNeedsLoginError];
+    }
+    return _currentUser;
+}
+
 - (void)resetOnLogout
 {
     [self.appSettings clearUser];
