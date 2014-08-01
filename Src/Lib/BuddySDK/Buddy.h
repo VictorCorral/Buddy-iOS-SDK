@@ -44,8 +44,12 @@
  * @param appKey Your application key.
  *
  */
-+ (id<BuddyClientProtocol>)initClient:(NSString *)appID
++ (id<BuddyClientProtocol>)init:(NSString *)appID
             appKey:(NSString *)appKey;
+
++ (id<BuddyClientProtocol>) init:(NSString *)appID
+                          appKey:(NSString *)appKey
+                     withOptions:(NSDictionary *)options;
 
 /**
  *

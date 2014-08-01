@@ -29,8 +29,7 @@ BOOL loginPresented;
     // Initialize the Buddy SDK
     // This initialization does NOT cause a network call, but will be processed
     // upon the first call to a Buddy API.
-    [Buddy initClient:\@"Your App ID" appKey:\@"Your App Key"];
-    
+    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
     
     self.window = [[UIWindow alloc] initWithFrame:
                    [[UIScreen mainScreen] bounds]];
@@ -38,7 +37,6 @@ BOOL loginPresented;
     self.window.rootViewController = [[BPStarterViewController alloc]
                                       initWithNibName:@"BPStarterViewController" bundle:nil];
     [self.window makeKeyAndVisible];
-    
     
     return YES;
 }
@@ -50,7 +48,6 @@ BOOL loginPresented;
 // when a method requiring user-level authenication fails due to insufficient
 // permissions.  In this selector, you should display your login UI.
 //
-
 -(void)authorizationNeedsUserLogin
 {
     
@@ -68,8 +65,6 @@ BOOL loginPresented;
         
     }];
 }
-
-
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
