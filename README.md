@@ -86,7 +86,7 @@ To initialize the SDK:
     #import "BuddySDK/Buddy.h"
     // ...
     // Create the SDK client
-    [Buddy initClient:@"myAppId" appKey: @"myAppKey"]
+    [Buddy init:@"myAppId" appKey: @"myAppKey"]
     
     
 If you want to operatate two clients at once you can use:
