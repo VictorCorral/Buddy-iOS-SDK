@@ -16,5 +16,6 @@
 @property (nonatomic,strong) NSString *email;
 @property (nonatomic,strong) NSDate *dateOfBirth;
 @property (nonatomic,strong) NSString *gender;
+@property (nonatomic,strong) NSString *profilePictureID;
 
 @end

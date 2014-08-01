@@ -38,6 +38,11 @@ static BPClient* currentClient;
     return [[self currentClient] currentUser];
 }
 
++ (void) setUser:(BPModelUser *)user
+{
+    [[self currentClientObject] setCurrentUser:user];
+}
+
 +(void)initialize{
     clients = [[NSMutableDictionary alloc] init];
 }

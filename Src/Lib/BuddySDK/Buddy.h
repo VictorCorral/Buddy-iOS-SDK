@@ -29,7 +29,11 @@
 
  /* The currently logged in user. Will be nil if no login session has occurred.
  */
-+ (BPModelUser *)user;
+
+//@property (nonatomic,strong) BPModelUser *user;
+
++ (BPModelUser*)user;
++ (void) setUser:(BPModelUser*)user;
 
 + (id<BuddyClientProtocol>) currentClient;
 
