@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 
 @property (nonatomic, readonly, assign) BPReachabilityLevel reachabilityLevel;
 
-@property (nonatomic,readonly, strong) BPModelUser *currentUser;
+@property (nonatomic, strong) BPModelUser *currentUser;
 
 @property (nonatomic,weak) id<BPClientDelegate> delegate;
 

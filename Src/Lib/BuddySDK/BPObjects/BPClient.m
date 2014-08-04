@@ -36,8 +36,6 @@
 @property (nonatomic, strong) BuddyAppDelegateDecorator *decorator;
 @property (nonatomic, strong) BPCrashManager *crashManager;
 @property (nonatomic, strong) NSMutableArray *queuedRequests;
-@property (nonatomic, strong) BPModelUser *currentUser;
-
 
 - (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback;
 
@@ -46,6 +44,9 @@
 @end
 
 @implementation BPClient
+
+
+@synthesize currentUser = _currentUser;
 
 #pragma mark - Init
 
@@ -69,6 +70,11 @@
     return _currentUser;
 }
 
+-(void) setCurrentUser:(BPModelUser *)currentUser
+{
+    _currentUser = currentUser;
+}
+
 - (void)resetOnLogout
 {
     [self.appSettings clearUser];
@@ -82,7 +88,6 @@
 {
     
 #if DEBUG
-    // Annoying nuance of running a unit test "bundle".
     NSString *serviceUrl = [[NSBundle bundleForClass:[self class]] infoDictionary][BuddyServiceURL];
 #else
     NSString *serviceUrl = [[NSBundle mainBundle] infoDictionary][BuddyServiceURL];
@@ -560,7 +565,10 @@
         {
             val = [val stringValue];
         }
-        
+        else if([[val class] isSubclassOfClass:[BPSize class]])
+        {
+            val = [val stringValue];
+        }
         if (val) {
             parameters[name] = val;
         }
