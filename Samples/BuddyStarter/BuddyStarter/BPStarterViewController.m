@@ -23,8 +23,8 @@
 
 -(void)refreshUser {
     
-    [Buddy GET:@"users/me" parameters:nil class:[BPModelUser class] callback:^(id u, NSError *error) {
-        BPModelUser *user = u;
+    [Buddy GET:@"users/me" parameters:nil class:[BPUser class] callback:^(id u, NSError *error) {
+        BPUser *user = u;
         if (user && user.userName) {
             self.message.text = [[NSString alloc] initWithFormat:@"Hello, %@.", user.userName];
         }
@@ -39,7 +39,7 @@
     
     self.message.text = @"Loading...";
     
-    BPModelUser *user = [Buddy user];
+    BPUser *user = [Buddy user];
     
     // load the current user's information
     //

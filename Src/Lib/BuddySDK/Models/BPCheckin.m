@@ -6,8 +6,8 @@
 //
 //
 
-#import "BPModelCheckin.h"
+#import "BPCheckin.h"
 
-@implementation BPModelCheckin
+@implementation BPCheckin
 
 @end

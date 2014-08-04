@@ -17,9 +17,9 @@
 #import "NSDate+JSON.h"
 #import "BPAFURLRequestSerialization.h"
 
-#import "BPModelUser.h"
+#import "BPUser.h"
 
-#import "BuddyFile.h"
+#import "BPFile.h"
 
 #import <CoreFoundation/CoreFoundation.h>
 #define BuddyServiceURL @"BuddyServiceURL"
@@ -61,7 +61,7 @@
     return self;
 }
 
-- (BPModelUser *)currentUser
+- (BPUser *)currentUser
 {
     if(!_currentUser)
     {
@@ -70,7 +70,7 @@
     return _currentUser;
 }
 
--(void) setCurrentUser:(BPModelUser *)currentUser
+-(void) setCurrentUser:(BPUser *)currentUser
 {
     _currentUser = currentUser;
 }
@@ -182,7 +182,7 @@
             return;
         }
         
-        self.currentUser = [BPModelUser new];
+        self.currentUser = [BPUser new];
         [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:obj];
         self.appSettings.userToken = [obj objectForKey:@"accessToken"];
         callback ? callback(self.currentUser,nil) : nil;
@@ -220,7 +220,7 @@
             return;
         }
         
-        self.currentUser = [BPModelUser new];
+        self.currentUser = [BPUser new];
         [[JAGPropertyConverter bp_converter] setPropertiesOf:self.currentUser fromDictionary:obj];
         self.appSettings.userToken = [obj objectForKey:@"accessToken"];
         
@@ -238,7 +238,7 @@
             return;
         }
         
-        BPModelUser *user = [BPModelUser new];
+        BPUser *user = [BPUser new];
         [[JAGPropertyConverter bp_converter] setPropertiesOf:user fromDictionary:obj];
         
         NSDictionary *dict = (NSDictionary*)obj;
@@ -278,7 +278,7 @@
 - (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback
 {
     [self checkDeviceToken:^{
-        if(clazz ==[BuddyFile class])
+        if(clazz ==[BPFile class])
         {
             [self.service REST_GET_FILE:servicePath parameters:[self convertDictionaryForUpload:parameters] callback:[self handleResponse:clazz callback:callback]];
         }
@@ -298,7 +298,7 @@
         
         for(NSString *name in [parameters allKeys]){
             id object = [parameters objectForKey:name];
-            if([object isKindOfClass:[BuddyFile class]])
+            if([object isKindOfClass:[BPFile class]])
             {
                 [files setObject:object forKey:name];
             }
@@ -453,10 +453,10 @@
             [self raiseAPIError:buddyError];
         }
         
-        if(clazz == [BuddyFile class])
+        if(clazz == [BPFile class])
         {
             // NOTE: Should we check if responseObject is not a dict here ?
-            BuddyFile *file = [BuddyFile new];
+            BPFile *file = [BPFile new];
             file.fileData =response;
             file.contentType = [responseHeaders objectForKey:@"Content-Type"];
             if(file.contentType==nil)
@@ -490,7 +490,7 @@
     };
 }
 
-- (void)raiseUserChangedTo:(BPModelUser *)user from:(BPModelUser *)from
+- (void)raiseUserChangedTo:(BPUser *)user from:(BPUser *)from
 {
     [self tryRaiseDelegate:@selector(userChangedTo:from:) withArguments:BOXNIL(user), BOXNIL(from), nil];
 }

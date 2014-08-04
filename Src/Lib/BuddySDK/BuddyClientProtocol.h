@@ -13,7 +13,7 @@
 
 @class BPCoordinate;
 @class BPNotification;
-@class BPModelUser;
+@class BPUser;
 
 
 /**
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 @protocol BPClientDelegate <NSObject>
 
 @optional
-- (void)userChangedTo:(BPModelUser *)newUser from:(BPModelUser *)oldUser;
+- (void)userChangedTo:(BPUser *)newUser from:(BPUser *)oldUser;
 
 - (void)connectivityChanged:(BPReachabilityLevel)level;
 
@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 
 @property (nonatomic, readonly, assign) BPReachabilityLevel reachabilityLevel;
 
-@property (nonatomic, strong) BPModelUser *currentUser;
+@property (nonatomic, strong) BPUser *currentUser;
 
 @property (nonatomic,weak) id<BPClientDelegate> delegate;
 

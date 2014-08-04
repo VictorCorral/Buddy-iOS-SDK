@@ -10,7 +10,7 @@
 
 @class BPSize;
 
-@interface BPModelPicture : BPModelBase
+@interface BPPicture : BPModelBase
 
 @property (nonatomic,strong) NSString *caption;
 @property (nonatomic, copy) NSString *watermark;

@@ -10,7 +10,7 @@
 #import "BPAFNetworking.h"
 #import "BuddyDevice.h"
 #import "NSError+BuddyError.h"
-#import "BuddyFile.h"
+#import "BPFile.h"
 #import "BPClient.h"
 
 typedef void (^AFFailureCallback)(AFHTTPRequestOperation *operation, NSError *error);
@@ -177,7 +177,7 @@ constructingBodyWithBlock:constructBody
     
     void (^constructBody)(id <AFMultipartFormData> formData) =^(id<AFMultipartFormData> formData){
         for(NSString *name in [data allKeys]){
-            BuddyFile *file = [data objectForKey:name];
+            BPFile *file = [data objectForKey:name];
             
             [formData appendPartWithFileData:file.fileData name:name fileName:name mimeType:file.contentType];
         }
