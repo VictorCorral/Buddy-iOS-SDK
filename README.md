@@ -124,8 +124,6 @@ The Buddy iOS SDK handles user creation, login, and logout.
     [Buddy logoutUser:^(NSError *error) {
         // Perform some action on logout
     }];
-
-You now have a user authentication token to call the REST APIs with.
 	
 ### REST Interface
 	  
