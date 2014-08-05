@@ -44,7 +44,9 @@
     [self.window makeKeyAndVisible];
     
     [Buddy init: APP_ID appKey: APP_KEY];
-    
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge
+         | UIRemoteNotificationTypeNewsstandContentAvailability | UIRemoteNotificationTypeNone
+     | UIRemoteNotificationTypeSound ];
     
     _channels =[[ChannelList alloc] init];
     _receivedMessages = [ReceivedMessageTable new];
@@ -56,6 +58,7 @@
 }
 -(void) application:(UIApplication*) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"%@", deviceToken);
+    [[Buddy currentClient] registerPushTokenWithData:deviceToken callback:nil];
 }
 
 -(void) application:(UIApplication*) application didReceiveRemoteNotification:(NSDictionary *)userInfo

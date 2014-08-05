@@ -60,20 +60,6 @@
     }
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString* rawDeviceTokenHex = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-
-    BuddyDevice *device = [BuddyDevice alloc];
-    
-    [device initialize: [Buddy currentClientObject]];
-    
-    [device pushToken:[rawDeviceTokenHex stringByReplacingOccurrencesOfString:@" " withString:@""]];
-    
-    if(![self.wrapped respondsToSelector:@selector(application:didRegisterForRemoteNotificationsWithDeviceToken:)]){
-        return;
-    }
-    return [self.wrapped application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-}
 
 
 @end
