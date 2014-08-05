@@ -16,7 +16,7 @@
 @class BuddyDevice;
 @class BPNotification;
 
-@class BPModelUser;
+@class BPUser;
 
 
 /**
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
  */
 @property (nonatomic, readonly, assign) BPReachabilityLevel reachabilityLevel;
 
-@property (nonatomic, strong) BPModelUser *currentUser;
+@property (nonatomic, strong) BPUser *currentUser;
 
 @property (nonatomic,weak) id<BPClientDelegate> delegate;
 

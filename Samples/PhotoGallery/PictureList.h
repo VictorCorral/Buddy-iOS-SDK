@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class BPModelPicture;
+@class BPPicture;
 
 /* We could consider a higher-level class that automates fetching an Image for a picture if it does not exist and uses callbacks. For now, keeping it basic
  */
@@ -22,12 +22,12 @@
 -(NSInteger)count;
 
 -(void)putPictures:(NSMutableArray *)pictures;
--(BPModelPicture*)getPictureByID:(NSString*)pictureID;
--(BPModelPicture*)pictureAtIndex:(NSInteger)index;
--(void) addPicture:(BPModelPicture*)picture;
+-(BPPicture*)getPictureByID:(NSString*)pictureID;
+-(BPPicture*)pictureAtIndex:(NSInteger)index;
+-(void) addPicture:(BPPicture*)picture;
 
 // Uses picture.id to remove
--(void) removePicture:(BPModelPicture*)picture andImage:(BOOL) andImage;
+-(void) removePicture:(BPPicture*)picture andImage:(BOOL) andImage;
 
 -(void) removePictureByID:(NSString*)pictureID andImage:(BOOL) andImage;
 

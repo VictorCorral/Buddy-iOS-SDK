@@ -9,9 +9,9 @@
 #import "Buddy.h"
 #import "BuddyIntegrationHelper.h"
 
-#import "BPModelCheckin.h"
-#import "BuddyFile.h"
-#import "BPModelSearch.h"
+#import "BPCheckin.h"
+#import "BPFile.h"
+#import "BPSearch.h"
 
 #import <Kiwi/Kiwi.h>
 
@@ -74,7 +74,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -82,7 +82,7 @@ describe(@"BPUser", ^{
                     return;
                 }
                 
-                BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                BPCheckin *checkinResult = (BPCheckin*)obj;
                 
                 [[checkinResult.id should] beNonNil];
                 
@@ -102,7 +102,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -110,7 +110,7 @@ describe(@"BPUser", ^{
                     return;
                 }
                 
-                BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                BPCheckin *checkinResult = (BPCheckin*)obj;
                 [[checkinResult should] beNonNil];
                 
                 [[checkinResult.id should] beNonNil];
@@ -131,9 +131,9 @@ describe(@"BPUser", ^{
                         return;
                     }
                     
-                    [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class: [BPModelCheckin class] callback:^(id getObj,  NSError *error)
+                    [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class: [BPCheckin class] callback:^(id getObj,  NSError *error)
                     {
-                        BPModelCheckin *checkinResultPatched = (BPModelCheckin*)getObj;
+                        BPCheckin *checkinResultPatched = (BPCheckin*)getObj;
                         [[checkinResult should] beNonNil];
                         
                         
@@ -158,7 +158,7 @@ describe(@"BPUser", ^{
         __block BOOL fin = NO;
         NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":BPCoordinateMake(11.2, 33.4)};
         
-        [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+        [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
             
             [[error should] beNil];
             if(error!=nil)
@@ -166,7 +166,7 @@ describe(@"BPUser", ^{
                 return;
             }
             
-            BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+            BPCheckin *checkinResult = (BPCheckin*)obj;
             [[checkinResult should] beNonNil];
             
             [[checkinResult.id should] beNonNil];
@@ -177,7 +177,7 @@ describe(@"BPUser", ^{
             
             [[checkinResult.description should] equal: @"it was an even better place"];
             
-            [Buddy DELETE:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class:[BPModelCheckin class] callback:^(id obj,  NSError *error) {
+            [Buddy DELETE:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class:[BPCheckin class] callback:^(id obj,  NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -198,7 +198,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin to search", @"description":@"it was an even better place again",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -206,7 +206,7 @@ describe(@"BPUser", ^{
                     return;
                 }
                 
-                BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                BPCheckin *checkinResult = (BPCheckin*)obj;
                 [[checkinResult should] beNonNil];
                 
                 [[checkinResult.id should] beNonNil];
@@ -217,7 +217,7 @@ describe(@"BPUser", ^{
                 
                 [[checkinResult.description should] equal: @"it was an even better place again"];
                 
-                [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+                [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
                     
                     [[error should] beNil];
                     if(error!=nil)
@@ -225,7 +225,7 @@ describe(@"BPUser", ^{
                         return;
                     }
                     
-                    BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                    BPCheckin *checkinResult = (BPCheckin*)obj;
                     [[checkinResult should] beNonNil];
                     
                     [[checkinResult.id should] beNonNil];
@@ -278,7 +278,7 @@ describe(@"BPUser", ^{
             __block BOOL fin = NO;
             NSDictionary *checkin = @{@"comment":@"my checkin to search", @"description":@"it was an even better place again",@"location":BPCoordinateMake(11.2, 33.4)};
             
-            [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+            [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
                 
                 [[error should] beNil];
                 if(error!=nil)
@@ -286,7 +286,7 @@ describe(@"BPUser", ^{
                     return;
                 }
                 
-                BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                BPCheckin *checkinResult = (BPCheckin*)obj;
                 [[checkinResult should] beNonNil];
                 
                 [[checkinResult.id should] beNonNil];
@@ -297,7 +297,7 @@ describe(@"BPUser", ^{
                 
                 [[checkinResult.description should] equal: @"it was an even better place again"];
                 
-                [Buddy POST:@"checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+                [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
                     
                     [[error should] beNil];
                     if(error!=nil)
@@ -305,7 +305,7 @@ describe(@"BPUser", ^{
                         return;
                     }
                     
-                    BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
+                    BPCheckin *checkinResult = (BPCheckin*)obj;
                     [[checkinResult should] beNonNil];
                     
                     [[checkinResult.id should] beNonNil];
@@ -318,7 +318,7 @@ describe(@"BPUser", ^{
                     
                     NSDictionary *searchParams = @{@"comment" : @"my checkin to search"};
                     
-                    [Buddy GET:@"checkins" parameters:searchParams class: [BPModelSearch class] callback:^(id getObj,  NSError *error)
+                    [Buddy GET:@"checkins" parameters:searchParams class: [BPSearch class] callback:^(id getObj,  NSError *error)
                      {
                          [[error should] beNil];
                          if(error!=nil)
@@ -326,16 +326,16 @@ describe(@"BPUser", ^{
                              return;
                          }
                          
-                         BPModelSearch *searchResults = (BPModelSearch*)getObj;
+                         BPSearch *searchResults = (BPSearch*)getObj;
                          
                          [[searchResults.currentToken should] beNonNil];
                          [[searchResults.pageResults should] beNonNil];
                          
-                         NSArray *searchedCheckins = [searchResults convertPageResultsToType:[BPModelCheckin class]];
+                         NSArray *searchedCheckins = [searchResults convertPageResultsToType:[BPCheckin class]];
                    
                          [[searchedCheckins should] beNonNil];
                          
-                         for(BPModelCheckin* searchedCheckin in searchedCheckins)
+                         for(BPCheckin* searchedCheckin in searchedCheckins)
                          {
                              [[searchedCheckin.id should] beNonNil];
                             
@@ -362,7 +362,7 @@ describe(@"BPUser", ^{
         NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
         
         
-        BuddyFile *file = [BuddyFile new];
+        BPFile *file = [BPFile new];
         file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
         file.contentType = @"image/png";
         
@@ -403,7 +403,7 @@ describe(@"BPUser", ^{
         NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
         
         
-        BuddyFile *file = [BuddyFile new];
+        BPFile *file = [BPFile new];
         file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
         file.contentType = @"image/png";
         
@@ -470,7 +470,7 @@ describe(@"BPUser", ^{
         NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
         
         
-        BuddyFile *file = [BuddyFile new];
+        BPFile *file = [BPFile new];
         file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
         file.contentType = @"image/png";
         
@@ -532,7 +532,7 @@ describe(@"BPUser", ^{
         NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
         
         
-        BuddyFile *file = [BuddyFile new];
+        BPFile *file = [BPFile new];
         file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
         file.contentType = @"image/png";
         
@@ -558,7 +558,7 @@ describe(@"BPUser", ^{
             [[contentType should] equal: @"image/png"];
             
             
-            [Buddy GET:[NSString stringWithFormat:@"pictures/%@/file",picId] parameters:nil class:[BuddyFile class]
+            [Buddy GET:[NSString stringWithFormat:@"pictures/%@/file",picId] parameters:nil class:[BPFile class]
               callback:^(id obj, NSError *error) {
                   [[error should] beNil];
                   if(error!=nil)
@@ -566,7 +566,7 @@ describe(@"BPUser", ^{
                       return;
                   }
                   
-                  BuddyFile *fileData = (BuddyFile*)obj;
+                  BPFile *fileData = (BPFile*)obj;
                   
                   [[fileData.contentType should] equal:@"image/png"];
                   [[fileData.fileData should] beNonNil];

@@ -6,8 +6,8 @@
 //
 //
 
-#import "BPModelUser.h"
+#import "BPUser.h"
 
-@implementation BPModelUser
+@implementation BPUser
 
 @end

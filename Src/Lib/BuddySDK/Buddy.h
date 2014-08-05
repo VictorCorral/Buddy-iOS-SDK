@@ -19,13 +19,13 @@
 #import "BPSize.h"
 
 // Models
-#import "BPModelUser.h"
-#import "BPModelCheckin.h"
-#import "BPModelSearch.h"
-#import "BPModelPicture.h"
-#import "BPModelUserList.h"
+#import "BPUser.h"
+#import "BPCheckin.h"
+#import "BPSearch.h"
+#import "BPPicture.h"
+#import "BPUserList.h"
 
-#import "BuddyFile.h"
+#import "BPFile.h"
 
 @interface Buddy : NSObject
 
@@ -34,8 +34,8 @@
 
 //@property (nonatomic,strong) BPModelUser *user;
 
-+ (BPModelUser*)user;
-+ (void) setUser:(BPModelUser*)user;
++ (BPUser*)user;
++ (void) setUser:(BPUser*)user;
 
 + (id<BuddyClientProtocol>) currentClient;
 

@@ -15,7 +15,7 @@
 
 @interface ChannelViewController ()
 
-@property (nonatomic,strong) BPModelUserList *channel;
+@property (nonatomic,strong) BPUserList *channel;
 @end
 
 @implementation ChannelViewController
@@ -29,7 +29,7 @@
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil channel:(BPModelUserList*)channel
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil channel:(BPUserList*)channel
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {

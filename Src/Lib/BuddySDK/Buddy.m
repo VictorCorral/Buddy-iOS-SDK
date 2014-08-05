@@ -33,12 +33,12 @@ static BPClient* currentClient;
     return currentClient;
 }
 
-+ (BPModelUser *)user
++ (BPUser *)user
 {
     return [[self currentClient] currentUser];
 }
 
-+ (void) setUser:(BPModelUser *)user
++ (void) setUser:(BPUser *)user
 {
     [[self currentClientObject] setCurrentUser:user];
 }

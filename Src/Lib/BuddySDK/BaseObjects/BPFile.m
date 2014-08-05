@@ -6,8 +6,8 @@
 //
 //
 
-#import "BuddyFile.h"
+#import "BPFile.h"
 
-@implementation BuddyFile
+@implementation BPFile
 
 @end
