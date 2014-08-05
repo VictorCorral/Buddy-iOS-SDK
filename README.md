@@ -67,13 +67,12 @@ To create a new project using the Buddy SDK:
 
 Visit the [Buddy Dashboard](https://buddyplatform.com) to obtain your application ID and key.
 
-To initialize the SDK:
+### Initialize the SDK
 
     #import "BuddySDK/Buddy.h"
     // ...
     // Create the SDK client
     [Buddy init:@"myAppId" appKey: @"myAppKey"]
-    
     
 If you want to utilize multiple clients at once you can use:
 
@@ -92,18 +91,41 @@ If you want to utilize multiple clients at once you can use:
     }];
 This allows you to have two users logged in at the same time, or manage multiple of any other thing the SDK tracks ( device information, location, etc.). The Buddy object will always be referencing the last client that was created.
 
+### User Flow
 
-There are some helper functions for creating users, logging in users, and logging out users:  
+The Buddy iOS SDK handles user creation, login, and logout.
 
-    // login a user
+#### Create A User
+
+    // Create a user
+    BuddyObjectCallback loginCallback = [self getLoginCallback];
+    
+    [Buddy createUser:self.signupUsername.text
+             password:self.signupPassword.text
+            firstName:self.signupFirstName.text
+             lastName:self.signupLastName.text
+                email:self.signupEmail.text
+          dateOfBirth:nil gender:@"male" tag:nil callback:loginCallback];
+
+#### User Login
+
+    // Login a user
     [Buddy loginUser:@"username" password:@"password" callback:^(BPUser *loggedInUser, NSError *error)
     {
-    	if(!error)
-    	{
-    		// Greet the user
-    	}
+      if(!error)
+      {
+        // Greet the user
+      }
     }];
-    
+
+#### User Logout
+
+    // Logout a user
+    [Buddy logoutUser:^(NSError *error) {
+        // Perform some action on logout
+    }];
+
+You now have a user authentication token to call the REST APIs with.
 	
 ### REST Interface
 	  
