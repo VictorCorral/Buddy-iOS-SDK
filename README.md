@@ -1,7 +1,7 @@
 # Buddy iOS SDK
 These release notes are for the Buddy Platform iOS SDK.
 
-Please refer to [buddyplatform.com/docs](http://buddyplatform.com/docs) for more details on the iOS SDK.
+Please refer to [buddyplatform.com/docs](https://buddyplatform.com/docs) for more details on the iOS SDK.
 
 ## Introduction
 
@@ -16,15 +16,15 @@ This SDK is a thin wrapper over the Buddy REST API that takes care of the hard p
 * Parsing responses
 * Loading and saving credentials
 
-The remainder of the Buddy API is easily accessible via standard REST API calls.
+The remainder of the Buddy API is accessible via standard REST API calls.
 
 ## Getting Started
 
-To get started with the Buddy Platform SDK, please reference the "Getting Started" series of documents at [buddyplatform.com/docs](http://buddyplatform.com/docs). You will need an App ID and Key before you can use the SDK, and these documents will walk you through obtaining those, and installing the SDK.
+To get started with the Buddy Platform SDK, please reference the _Getting Started_ series of documents at [buddyplatform.com/docs](https://buddyplatform.com/docs). You will need an App ID and Key before you can use the SDK. The _Getting Started_ documents will walk you through obtaining everything you need and show you where to find the SDK for your platform.
 
-App IDs and Keys can be obtained at the Buddy Developer Dashboard at [buddyplatform.com](http://buddyplatform.com).
+Application IDs and Keys are obtained at the Buddy Developer Dashboard at [buddyplatform.com](https://buddyplatform.com/login).
 
-Full documentation for Buddy's services are available at [buddyplatform.com/docs](http://buddyplatform.com/docs).
+Full documentation for Buddy's services are available at [buddyplatform.com/docs](https://buddyplatform.com/docs).
 
 ## Installing the SDK
 
@@ -54,7 +54,7 @@ To create a new project using the Buddy SDK:
 
 #### Install from Binaries
 
-* Download the [Buddy iOS SDK](http://buddyplatform.com/docs/SDK%20Downloads)
+* Download the [Buddy iOS SDK](https://buddyplatform.com/docs/SDK%20Downloads)
 * Unzip the package to a local directory
 * Drag BuddySDK.framework into the Frameworks section of your project in Xcode
 * Ensure the following Frameworks are linked to your project
@@ -65,7 +65,7 @@ To create a new project using the Buddy SDK:
 
 ## Using the iOS SDK
 
-After you have created an application at the Buddy Dashboard, note your App ID and App Key.
+Visit the [Buddy Dashboard](https://buddyplatform.com) to obtain your application ID and key.
 
 To initialize the SDK:
 
@@ -111,7 +111,7 @@ Each SDK provides wrappers that make REST calls to Buddy. Responses can be handl
 
 #### POST
 
-In this example we'll create a checkin. Take a look at the [create checkin REST documentation](http://buddyplatform.com/docs/Create%20Checkin/HTTP) then:
+In this example we'll create a checkin. Take a look at the [create checkin REST documentation](https://buddyplatform.com/docs/Create%20Checkin/HTTP) then:
 	 
  	 // Create a checkin
  	 NSDictionary *checkin = @{@"comment":@"my first checkin", @"description":@"This is where I was doing that thing.",@"location":BPCoordinateMake(11.2, 33.4)};
@@ -145,7 +145,7 @@ We now GET the checkin we just created!
 
 #### PUT/PATCH/DELETE
 
-Each remaining REST verb is available for use through the Buddy SDK. All verbs function in a similar fashion; more detailed documentation can be found on our [Buddy Platform documentation](http://buddyplatform.com/docs).
+Each remaining REST verb is available through the Buddy SDK using the same pattern as the POST example.
 
 #### Creating Response Objects
 
@@ -188,9 +188,11 @@ The corresponding Objective-C object for the _unique_ fields under `result`:
 
 Buddy offers support for binary files. The iOS SDK works with files through our REST interface similarly to other API calls. The key class is `BPFile`, which is a wrapper around NSData along with a MIME content type.
 
-**Note:** Responses for files deviate from the standard Buddy response templates. See the [Buddy Platform documentation](http://buddyplatform.com/docs) for more information.
+**Note:** Responses for files deviate from the standard Buddy response templates. See the [Buddy Platform documentation](https://buddyplatform.com/docs) for more information.
 
-To upload a picture POST to `"/pictures"`:
+#### Upload A File
+
+Here we demonstrate uploading a picture. For all binary files (e.g. blobs and videos), the pattern is the same, but with a different path and different parameters. To upload a picture POST to `"/pictures"`:
 
 	NSMutableDictionary *params = [NSMutableDictionary new];
         
@@ -214,8 +216,10 @@ To upload a picture POST to `"/pictures"`:
         
         // Picture was uploaded successfully
     }];
-    
-To download a picture send a GET request with BPFile as the operation type:
+
+#### Download A File
+
+Our download example uses pictures. To download a file send a GET request with BPFile as the operation type:
 
 	[Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file",picId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error)
 	{
