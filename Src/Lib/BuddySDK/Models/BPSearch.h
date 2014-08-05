@@ -8,7 +8,7 @@
 
 #import "BPModelBase.h"
 
-@interface BPModelSearch : NSObject
+@interface BPSearch : NSObject
 
 @property (nonatomic,strong) NSString *currentToken;
 @property (nonatomic,strong) NSString *previousToken;

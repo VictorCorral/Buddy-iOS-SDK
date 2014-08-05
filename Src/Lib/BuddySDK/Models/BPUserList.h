@@ -8,7 +8,7 @@
 
 #import "BPModelBase.h"
 
-@interface BPModelUserList : BPModelBase
+@interface BPUserList : BPModelBase
 
 @property (nonatomic,strong) NSString *name;
 

@@ -8,7 +8,7 @@
 
 #import "BPModelBase.h"
 
-@interface BPModelCheckin : BPModelBase
+@interface BPCheckin : BPModelBase
 
 @property (nonatomic, copy) NSString *comment;
 @property (nonatomic, copy) NSString *description;

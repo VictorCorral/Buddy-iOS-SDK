@@ -53,14 +53,14 @@
     self.pictureList = pictures;
 }
 
--(BPModelPicture*)getPictureByID:(NSString*)pictureID
+-(BPPicture*)getPictureByID:(NSString*)pictureID
 {
     if(pictureID==nil)
     {
         return nil;
     }
     
-    for(BPModelPicture *picture in self.pictureList)
+    for(BPPicture *picture in self.pictureList)
     {
         if([pictureID compare:picture.id]==0 )
         {
@@ -70,7 +70,7 @@
     return nil;
 }
 
--(void) addPicture:(BPModelPicture*)picture
+-(void) addPicture:(BPPicture*)picture
 {
     if(self.pictureList==nil)
     {
@@ -85,7 +85,7 @@
     [self.pictureList addObject:picture];
 }
 
--(BPModelPicture*)pictureAtIndex:(NSInteger)index
+-(BPPicture*)pictureAtIndex:(NSInteger)index
 {
     if(index< [self count])
     {
@@ -102,7 +102,7 @@
     }
     
     NSInteger index=0;
-    for(BPModelPicture *picture in self.pictureList)
+    for(BPPicture *picture in self.pictureList)
     {
         if([pictureID isEqualToString:picture.id])
         {
@@ -113,7 +113,7 @@
     return NSNotFound;
 }
 
--(void) removePicture:(BPModelPicture*)picture andImage:(BOOL) andImage
+-(void) removePicture:(BPPicture*)picture andImage:(BOOL) andImage
 {
     NSInteger pictureIndex = [self findIndexOfPictureByID:picture.id];
     if(pictureIndex!=NSNotFound)

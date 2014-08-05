@@ -6,10 +6,10 @@
 //
 //
 
-#import "BPModelSearch.h"
+#import "BPSearch.h"
 #import "BPModelBase.h"
 
-@implementation BPModelSearch
+@implementation BPSearch
 
 -(NSArray*) convertPageResultsToType:(Class)clazz
 {

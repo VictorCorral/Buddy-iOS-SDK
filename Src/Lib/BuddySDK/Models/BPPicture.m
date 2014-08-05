@@ -6,8 +6,8 @@
 //
 //
 
-#import "BPModelPicture.h"
+#import "BPPicture.h"
 
-@implementation BPModelPicture
+@implementation BPPicture
 
 @end

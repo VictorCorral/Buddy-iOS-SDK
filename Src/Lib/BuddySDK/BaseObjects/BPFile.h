@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BuddyFile : NSObject
+@interface BPFile : NSObject
 
 @property (nonatomic,strong) NSString *contentType;
 @property (nonatomic,strong) NSData *fileData;

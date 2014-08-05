@@ -44,7 +44,7 @@
     {
         BPNotification *notify = [[BPNotification alloc] init];
     
-        BPModelUserList *list = [[CommonAppDelegate channels] getChannel:listId];
+        BPUserList *list = [[CommonAppDelegate channels] getChannel:listId];
         if(list==nil)
         {
             continue;
@@ -118,7 +118,7 @@
     
     for(NSString *listId in self.listsToSendTo)
     {
-        BPModelUserList *list = [[CommonAppDelegate channels] getChannel:listId];
+        BPUserList *list = [[CommonAppDelegate channels] getChannel:listId];
         if(list==nil)
         {
             continue;
