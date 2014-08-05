@@ -5,7 +5,7 @@ Please refer to [buddyplatform.com/docs](http://buddyplatform.com/docs) for more
 
 ## Introduction
 
-We realized most app developers end up writing the same code over and over again: user management, photo management, geolocation, check-ins, metadata, and other basic features. Buddy enables developers to build cloud-connected apps without having to write, test, manage or scale server-side code and infrastructure.
+We realized most app developers end up writing the same code over and over again: user management, photo management, geolocation, checkins, metadata, and other basic features. Buddy enables developers to build cloud-connected apps without having to write, test, manage or scale server-side code and infrastructure.
 
 Buddy's easy-to-use, scenario-focused APIs let you spend more time building your app and less time worrying about backend infrastructure.
 
@@ -80,21 +80,23 @@ If you want to utilize multiple clients at once you can use:
     #import "BuddySDK/Buddy.h"
     // ...
     // Create the SDK client
-            BPClient* firstClient = [Buddy init:@"myAppId" appKey:@"myAppKey" autoRecordDeviceInfo:TRUE autoRecordLocation:TRUE instanceName:@"firstName"];
-            BPClient* secondClient = [Buddy init:@"myAppId" appKey:@"myAppKey" autoRecordDeviceInfo:TRUE autoRecordLocation:TRUE instanceName: @"secondName"];
+    NSDictionary *options1 = @{@"instanceName": @"firstInstance"};
+    NSDictionary *options2 = @{@"instanceName": @"secondInstance"};
+    BPClient* firstClient = [Buddy init:@"myAppId" appKey:@"myAppKey" withOptions:options1];
+    BPClient* secondClient = [Buddy init:@"myAppId" appKey:@"myAppKey" withOptions:options2];
     [firstClient GET:@"/videos" parameters:@{@"caption": @"caption search string"} callback:^(id json, NSError *error) {
-                //Do stuff here
-            }];
+        //Do stuff here
+    }];
     [secondClient loginUser:@""username password:@"password" callback:^(id newBuddyObject, NSError *error) {
-                //Do stuff
-            }];
+        //Do stuff
+    }];
 This allows you to have two users logged in at the same time, or manage multiple of any other thing the SDK tracks ( device information, location, etc.). The Buddy object will always be referencing the last client that was created.
 
 
 There are some helper functions for creating users, logging in users, and logging out users:  
 
     // login a user
-    [Buddy loginUser:@"username" password:@"password" callback:^(BPModelUser *loggedInUser, NSError *error)
+    [Buddy loginUser:@"username" password:@"password" callback:^(BPUser *loggedInUser, NSError *error)
     {
     	if(!error)
     	{
@@ -105,7 +107,7 @@ There are some helper functions for creating users, logging in users, and loggin
 	
 ### REST Interface
 	  
-Each SDK provides general wrappers that make REST calls to Buddy. For all calls you can either create a wrapper class such as those found in `Models` or you can pass a type of `[NSDictionary class]` to be returned as the result.
+Each SDK provides wrappers that make REST calls to Buddy. Responses can be handled in two ways: you can create your own wrapper classes, similar to those found in `Models`, or you can use a basic `[NSDictionary class]`.
 
 #### POST
 
@@ -114,17 +116,13 @@ In this example we'll create a checkin. Take a look at the [create checkin REST 
  	 // Create a checkin
  	 NSDictionary *checkin = @{@"comment":@"my first checkin", @"description":@"This is where I was doing that thing.",@"location":BPCoordinateMake(11.2, 33.4)};
             
-     [Buddy POST:@"/checkins" parameters:checkin class:[BPModelCheckin class] callback:^(id obj, NSError *error) {
+     [Buddy POST:@"/checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
                 
         [[error should] beNil];
         if(error!=nil)
         {
-        	// Display an error
+        	// Handle the error
         }
-                
-        BPModelCheckin *checkinResult = (BPModelCheckin*)obj;
-        
-        // Do something with the Checkin
         
 	}];
 
@@ -132,8 +130,17 @@ In this example we'll create a checkin. Take a look at the [create checkin REST 
 
 We now GET the checkin we just created!
 
-    [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",myCheckinId] parameters:nil class: [BPModelCheckin class] callback:^(id getObj,  NSError *error)
+    [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",myCheckinId] parameters:nil class: [BPCheckin class] callback:^(id getObj,  NSError *error)
 	{
+		[[error should] beNil];
+        if(error!=nil)
+        {
+        	// Display an error
+        }
+                
+        BPCheckin *checkinResult = (BPCheckin*)obj;
+        
+        // Do something with the Checkin
 	}];
 
 #### PUT/PATCH/DELETE
@@ -169,7 +176,7 @@ For example, if the response to **POST /checkins** looks like:
 
 The corresponding Objective-C object for the _unique_ fields under `result`:
 
-	@interface BPModelCheckin : BPModelBase
+	@interface BPCheckin : BPModelBase
 
 	@property (nonatomic, copy) NSString *comment;
 
@@ -179,7 +186,7 @@ The corresponding Objective-C object for the _unique_ fields under `result`:
 	 
 ### Working With Files
 
-Buddy offers support for both pictures and blobs. The iOS SDK works with files through our REST interface similarly to other API calls. The key class is `BuddyFile`, which is a wrapper around NSData along with a MIME content type.
+Buddy offers support for binary files. The iOS SDK works with files through our REST interface similarly to other API calls. The key class is `BPFile`, which is a wrapper around NSData along with a MIME content type.
 
 **Note:** Responses for files deviate from the standard Buddy response templates. See the [Buddy Platform documentation](http://buddyplatform.com/docs) for more information.
 
@@ -191,7 +198,7 @@ To upload a picture POST to `"/pictures"`:
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
             
-    BuddyFile *file = [BuddyFile new];
+    BPFile *file = [BPFile new];
     file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
     file.contentType = @"image/png";
         
@@ -208,9 +215,9 @@ To upload a picture POST to `"/pictures"`:
         // Picture was uploaded successfully
     }];
     
-To download a picture send a GET request with BuddyFile as the operation type:
+To download a picture send a GET request with BPFile as the operation type:
 
-	[Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file",picId] parameters:nil class:[BuddyFile class] callback:^(id obj, NSError *error)
+	[Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file",picId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error)
 	{
     	[[error should] beNil];
         if(error!=nil)
@@ -218,7 +225,7 @@ To download a picture send a GET request with BuddyFile as the operation type:
         	return;
         }
                   
-        BuddyFile *fileData = (BuddyFile*)obj;
+        BPFile *fileData = (BPFile*)obj;
     }];
 
 ## Contributing Back: Pull Requests
