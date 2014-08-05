@@ -24,7 +24,7 @@
 /* Begin PBXBuildFile section */
 		01274B32198A9A1D00DB31BA /* BuddyClientProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B2E1989798000DB31BA /* BuddyClientProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01274B35198A9A6B00DB31BA /* BuddyCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B2D1989791700DB31BA /* BuddyCallbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4A198AA96D00DB31BA /* BPCoordinate.h */; };
+		01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4A198AA96D00DB31BA /* BPCoordinate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4B198AA96D00DB31BA /* BPCoordinate.m */; };
 		01274B50198AAC5500DB31BA /* BPPicture.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4E198AAC5500DB31BA /* BPPicture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01274B51198AAC5500DB31BA /* BPPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4F198AAC5500DB31BA /* BPPicture.m */; };
@@ -582,6 +582,7 @@
 				018AB0E31977176B0025677B /* BPModelBase.h in Headers */,
 				01DB07C0197878B40008A35E /* BPUser.h in Headers */,
 				018AB0E7197718D80025677B /* BPCheckin.h in Headers */,
+				01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */,
 				01274B32198A9A1D00DB31BA /* BuddyClientProtocol.h in Headers */,
 				01274B50198AAC5500DB31BA /* BPPicture.h in Headers */,
 				018AB0DE1975DB420025677B /* BPFile.h in Headers */,
@@ -612,7 +613,6 @@
 				5BCF8299191300DD00A26EA7 /* NSArray+BPSugar.h in Headers */,
 				5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
-				01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */,
 				C1AA90D818371FF70074B7E8 /* BPServiceController.h in Headers */,
 				C1E0D1D11831BAD3001A7A01 /* JAGProperty.h in Headers */,
 				C1E0D1D41831BAD3001A7A01 /* JAGPropertyConverter-Prefix.pch in Headers */,
