@@ -16,6 +16,7 @@
 #import "BPCrashManager.h"
 #import "NSDate+JSON.h"
 #import "BPAFURLRequestSerialization.h"
+#import "CryptoTools.h"
 
 #import "BPUser.h"
 
@@ -32,6 +33,7 @@
 
 @property (nonatomic, strong) BPServiceController *service;
 @property (nonatomic, strong) BPAppSettings *appSettings;
+@property (nonatomic, strong) NSString *sharedSecret;
 @property (nonatomic, strong) BPNotificationManager *notifications;
 @property (nonatomic, strong) BuddyAppDelegateDecorator *decorator;
 @property (nonatomic, strong) BPCrashManager *crashManager;
@@ -40,6 +42,7 @@
 - (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback;
 
 - (REST_ServiceResponse) handleResponse:(Class) clazz callback:(RESTCallback)callback;
+-(NSString*) generateServerSig;
 
 @end
 
@@ -101,7 +104,9 @@
         _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl];
     }
     
-    _service = [[BPServiceController alloc] initWithAppSettings:_appSettings];
+    _sharedSecret = options[@"sharedSecret"];
+    
+    _service = [[BPServiceController alloc] initWithAppSettings:_appSettings andSecret:_sharedSecret];
     
     _appSettings.appKey = appKey;
     _appSettings.appID = appID;
@@ -342,6 +347,16 @@
     }];
 }
 
+-(NSString*) generateServerSig
+{
+    NSString *stringToSign = [NSString stringWithFormat:@"%@\n",self.appSettings.appKey];
+    if(!stringToSign)
+    {
+        return nil;
+    }
+    return [CryptoTools hmac256ForKey:self.sharedSecret andData:stringToSign];
+}
+
 // Data struct to keep track of requests waiting on device token.
 - (void)checkDeviceToken:(void(^)())method
 {
@@ -375,6 +390,19 @@
                 
                 
                 [self.service REST_POST:@"devices" parameters:getTokenParams callback:[self handleResponse:[NSDictionary class] callback:^(id json, NSError *error) {
+                    
+                    if(self.sharedSecret) {
+                        if(!json[@"serverSignature"]) {
+                            self.appSettings.deviceToken = nil;
+                            return ;
+                        }
+                        NSString *serverSig = [self generateServerSig];
+                        if(! [serverSig isEqualToString:json[@"serverSignature"]])
+                        {
+                            self.appSettings.deviceToken = nil;
+                            return ;
+                        }
+                    }
                     // Grab the potentially different base url.
                     if (json[@"accessToken"] && ![json[@"accessToken"] isEqualToString:self.appSettings.token]) {
                         self.appSettings.deviceToken = json[@"accessToken"];
