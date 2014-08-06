@@ -99,18 +99,21 @@ The Buddy iOS SDK handles user creation, login, and logout.
 
     // Create a user
     BuddyObjectCallback loginCallback = [self getLoginCallback];
-    
+    // Only Username and Password are required
     [Buddy createUser:self.signupUsername.text
              password:self.signupPassword.text
             firstName:self.signupFirstName.text
              lastName:self.signupLastName.text
                 email:self.signupEmail.text
-          dateOfBirth:nil gender:@"male" tag:nil callback:loginCallback];
+          dateOfBirth:nil 
+               gender:nil 
+                  tag:nil 
+             callback:loginCallback];
 
 #### User Login
 
     // Login a user
-    [Buddy loginUser:@"username" password:@"password" callback:^(BPUser *loggedInUser, NSError *error)
+    [Buddy loginUser:@"username" password:@"password" callback:^(id newBuddyObject, NSError *error)
     {
       if(!error)
       {
@@ -127,41 +130,35 @@ The Buddy iOS SDK handles user creation, login, and logout.
 	
 ### REST Interface
 	  
-Each SDK provides wrappers that make REST calls to Buddy. Responses can be handled in two ways: you can create your own wrapper classes, similar to those found in `Models`, or you can use a basic `[NSDictionary class]`.
+Each SDK provides wrappers that make REST calls to Buddy. Responses can be handled in two ways: you can create your own wrapper classes, similar to those found in the `Models` folder, or you can use a basic `[NSDictionary class]`.
 
 #### POST
 
 In this example we'll create a checkin. Take a look at the [create checkin REST documentation](https://buddyplatform.com/docs/Create%20Checkin/HTTP) then:
 	 
- 	 // Create a checkin
- 	 NSDictionary *checkin = @{@"comment":@"my first checkin", @"description":@"This is where I was doing that thing.",@"location":BPCoordinateMake(11.2, 33.4)};
+ 	  // Create a checkin
+ 	  NSDictionary *checkin = @{@"location":BPCoordinateMake(11.2, 33.4), @"comment":@"my first checkin", @"description":@"This is where I was doing that thing."};
             
-     [Buddy POST:@"/checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
-                
-        [[error should] beNil];
-        if(error!=nil)
-        {
-        	// Handle the error
-        }
+    [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
+
+      if(!error)
+      {
+      	NSLog(@"Checkin posted!");
+      }
         
-	}];
+    }];
 
 #### GET
 
-We now GET the checkin we just created!
+We now can call GET to search for the checkin we just created!
 
-    [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",myCheckinId] parameters:nil class: [BPCheckin class] callback:^(id getObj,  NSError *error)
-	{
-		[[error should] beNil];
-        if(error!=nil)
-        {
-        	// Display an error
-        }
-                
-        BPCheckin *checkinResult = (BPCheckin*)obj;
-        
-        // Do something with the Checkin
-	}];
+    [Buddy GET:@"checkins" parameters:@{@"locationRange": BPCoordinateRangeMake(11.2, 33.4, 2500)} class:[NSDictionary class] callback:^(id getObj,  NSError *error) {
+          if(!error) {
+            NSLog(@"%@", obj);
+          } else {
+              NSLog(@"Searching checkins went wrong");
+          }
+  	}];
 
 #### PUT/PATCH/DELETE
 
@@ -196,9 +193,9 @@ For example, if the response to **POST /checkins** looks like:
 
 The corresponding Objective-C object for the _unique_ fields under `result`:
 
-	@interface BPCheckin : BPModelBase
+    @interface BPCheckin : BPModelBase
 
-	@property (nonatomic, copy) NSString *comment;
+    @property (nonatomic, copy) NSString *comment;
 
     @end
     
@@ -214,7 +211,7 @@ Buddy offers support for binary files. The iOS SDK works with files through our 
 
 Here we demonstrate uploading a picture. For all binary files (e.g. blobs and videos), the pattern is the same, but with a different path and different parameters. To upload a picture POST to `"/pictures"`:
 
-	NSMutableDictionary *params = [NSMutableDictionary new];
+    NSMutableDictionary *params = [NSMutableDictionary new];
         
     [params setObject:@"Pic from iOS" forKey:@"caption"];
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -226,12 +223,10 @@ Here we demonstrate uploading a picture. For all binary files (e.g. blobs and vi
         
     [params setObject:file forKey:@"data"];
         
-    [Buddy POST:@"/pictures" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error)
-    {
-    	[[error should] beNil];
-        if(error!=nil)
-	    {
-            return;
+    [Buddy POST:@"pictures" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        if(error!=nil) {
+          // Bail out, something went wrong
+          return;
         }
         
         // Picture was uploaded successfully
@@ -241,11 +236,9 @@ Here we demonstrate uploading a picture. For all binary files (e.g. blobs and vi
 
 Our download example uses pictures. To download a file send a GET request with BPFile as the operation type:
 
-	[Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file",picId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error)
-	{
-    	[[error should] beNil];
-        if(error!=nil)
-        {
+    [Buddy GET:[NSString stringWithFormat:@"pictures/%@/file",picId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error) {
+        if(error!=nil) {
+          // Bail out, something went wrong
         	return;
         }
                   
