@@ -137,28 +137,35 @@ Each SDK provides wrappers that make REST calls to Buddy. Responses can be handl
 In this example we'll create a checkin. Take a look at the [create checkin REST documentation](https://buddyplatform.com/docs/Create%20Checkin/HTTP) then:
 	 
  	  // Create a checkin
- 	  NSDictionary *checkin = @{@"location":BPCoordinateMake(11.2, 33.4), @"comment":@"my first checkin", @"description":@"This is where I was doing that thing."};
-            
-    [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
-
-      if(!error)
-      {
-      	NSLog(@"Checkin posted!");
-      }
-        
+ 	  BPCoordinate *coord = BPCoordinateMake(47.1, -121.292);
+    
+    NSDictionary *params = @{@"location": coord,
+                             @"comment": @"A comment about this awesome place!"};
+    
+    [Buddy POST:@"checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        if(!error) {
+            NSLog(@"Checkin post went as planned");
+        } else {
+            NSLog(@"%@", error);
+        }
     }];
 
 #### GET
 
 We now can call GET to search for the checkin we just created!
 
-    [Buddy GET:@"checkins" parameters:@{@"locationRange": BPCoordinateRangeMake(11.2, 33.4, 2500)} class:[NSDictionary class] callback:^(id getObj,  NSError *error) {
-          if(!error) {
-            NSLog(@"%@", obj);
-          } else {
-              NSLog(@"Searching checkins went wrong");
-          }
-  	}];
+    BPCoordinateRange *range = BPCoordinateRangeMake(47.1, -121.292, 2500);
+    
+    NSDictionary *params = @{@"locationRange": range};
+    
+    [Buddy GET:@"checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        if(!error) {
+            NSLog(@"%@", obj); // Log or do something with the response
+        } else {
+            NSLog(@"GET checkins was unsuccessful.");
+            NSLog(@"%@", error);
+        }
+    }];
 
 #### PUT/PATCH/DELETE
 
@@ -209,40 +216,44 @@ Buddy offers support for binary files. The iOS SDK works with files through our 
 
 #### Upload A File
 
-Here we demonstrate uploading a picture. For all binary files (e.g. blobs and videos), the pattern is the same, but with a different path and different parameters. To upload a picture POST to `"/pictures"`:
+Here we demonstrate uploading a picture. All binary files use the same pattern with a different path and different parameters. To upload a picture POST to `"pictures"`:
 
-    NSMutableDictionary *params = [NSMutableDictionary new];
-        
-    [params setObject:@"Pic from iOS" forKey:@"caption"];
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *imagePath = [bundle pathForResource:@"test" ofType:@"png"];
-            
-    BPFile *file = [BPFile new];
-    file.fileData = [[NSFileManager defaultManager] contentsAtPath:imagePath];
-    file.contentType = @"image/png";
-        
-    [params setObject:file forKey:@"data"];
-        
-    [Buddy POST:@"pictures" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
-        if(error!=nil) {
-          // Bail out, something went wrong
-          return;
+    BPFile *file = [[BPFile alloc] init];
+    file.contentType = @"image/jpg";
+    file.fileData = UIImageJPEGRepresentation(koi, .75);
+    
+    NSDictionary *parameters = @{@"data": file,
+                                 @"caption": @"Koi are awesome fish."};
+    
+    [Buddy POST:@"pictures" parameters:parameters class:[NSDictionary class] callback:^(id obj, NSError *error) {
+        if (!error) {
+            NSLog(@"Image uploaded successfully");
+        } else {
+            NSLog(@"Image upload went wrong");
+            NSLog(@"%@", error);
         }
-        
-        // Picture was uploaded successfully
     }];
 
 #### Download A File
 
-Our download example uses pictures. To download a file send a GET request with BPFile as the operation type:
+To download a file send a GET request with BPFile as the operation type. This sample downloads the picture we uploaded in the "Upload File" example:
 
-    [Buddy GET:[NSString stringWithFormat:@"pictures/%@/file",picId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error) {
-        if(error!=nil) {
-          // Bail out, something went wrong
-        	return;
+    // Don't forget to store the picture ID in pictureId!
+
+    [Buddy GET:[NSString stringWithFormat:@"pictures/%@/file", pictureId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error) {
+        
+        if(!error)
+        {
+            BPFile *file = (BPFile*)obj;
+            
+            UIImage* image = [UIImage imageWithData:file.fileData];
+            // Do something with the image!
+            
+            NSLog(@"Image download successful");
+        } else {
+            NSLog(@"Something went wrong");
         }
-                  
-        BPFile *fileData = (BPFile*)obj;
+        
     }];
 
 ## Contributing Back: Pull Requests
