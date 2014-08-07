@@ -37,6 +37,10 @@
 		018AB0E7197718D80025677B /* BPCheckin.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E5197718D80025677B /* BPCheckin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		018AB0E8197718D80025677B /* BPCheckin.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0E6197718D80025677B /* BPCheckin.m */; };
 		018AB0EB197719620025677B /* BPRest.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0EA197719620025677B /* BPRest.m */; };
+		01BC51CB1992B15900E04478 /* CryptoTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 01BC51C91992B15900E04478 /* CryptoTools.h */; };
+		01BC51CC1992B15900E04478 /* CryptoTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC51CA1992B15900E04478 /* CryptoTools.m */; };
+		01BC51CF1992B37D00E04478 /* NSData+BPConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 01BC51CD1992B37D00E04478 /* NSData+BPConversion.h */; };
+		01BC51D01992B37D00E04478 /* NSData+BPConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC51CE1992B37D00E04478 /* NSData+BPConversion.m */; };
 		01DB07BC197855350008A35E /* BPSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BA197855350008A35E /* BPSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01DB07BD197855350008A35E /* BPSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BB197855350008A35E /* BPSearch.m */; };
 		01DB07C0197878B40008A35E /* BPUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BE197878B40008A35E /* BPUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -181,6 +185,10 @@
 		018AB0E5197718D80025677B /* BPCheckin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPCheckin.h; path = Models/BPCheckin.h; sourceTree = "<group>"; };
 		018AB0E6197718D80025677B /* BPCheckin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCheckin.m; path = Models/BPCheckin.m; sourceTree = "<group>"; };
 		018AB0EA197719620025677B /* BPRest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRest.m; sourceTree = "<group>"; };
+		01BC51C91992B15900E04478 /* CryptoTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoTools.h; sourceTree = "<group>"; };
+		01BC51CA1992B15900E04478 /* CryptoTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptoTools.m; sourceTree = "<group>"; };
+		01BC51CD1992B37D00E04478 /* NSData+BPConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+BPConversion.h"; sourceTree = "<group>"; };
+		01BC51CE1992B37D00E04478 /* NSData+BPConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+BPConversion.m"; sourceTree = "<group>"; };
 		01DB07BA197855350008A35E /* BPSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPSearch.h; path = Models/BPSearch.h; sourceTree = "<group>"; };
 		01DB07BB197855350008A35E /* BPSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPSearch.m; path = Models/BPSearch.m; sourceTree = "<group>"; };
 		01DB07BE197878B40008A35E /* BPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPUser.h; path = Models/BPUser.h; sourceTree = "<group>"; };
@@ -416,6 +424,8 @@
 				5B5FE15618E3C90C00518440 /* BPNotificationManager.m */,
 				5B5FE15918E3CD1C00518440 /* BPNotification.h */,
 				5B5FE15A18E3CD1C00518440 /* BPNotification.m */,
+				01BC51C91992B15900E04478 /* CryptoTools.h */,
+				01BC51CA1992B15900E04478 /* CryptoTools.m */,
 			);
 			path = BuddySDK;
 			sourceTree = "<group>";
@@ -443,6 +453,8 @@
 				5B19875A18CB67D800FBB502 /* NSDate+BPDateHelper.m */,
 				5BCF8297191300DD00A26EA7 /* NSArray+BPSugar.h */,
 				5BCF8298191300DD00A26EA7 /* NSArray+BPSugar.m */,
+				01BC51CD1992B37D00E04478 /* NSData+BPConversion.h */,
+				01BC51CE1992B37D00E04478 /* NSData+BPConversion.m */,
 			);
 			name = Categories;
 			path = ../../Lib/BuddySDK/Categories;
@@ -605,6 +617,7 @@
 				5B32F36A18E071C600C07019 /* BPAFHTTPRequestOperation.h in Headers */,
 				C1B95A2A18370817000C8417 /* BuddySDK-Prefix.pch in Headers */,
 				C10F1B7B1870A6F500D5364C /* NSError+BuddyError.h in Headers */,
+				01BC51CB1992B15900E04478 /* CryptoTools.h in Headers */,
 				5B984DA418C6DB9700CE8E2C /* BPDateRange.h in Headers */,
 				C153F87017E15FC1009CDC81 /* Util.h in Headers */,
 				5B32F37918E071C600C07019 /* BPAFURLResponseSerialization.h in Headers */,
@@ -614,6 +627,7 @@
 				5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
 				C1AA90D818371FF70074B7E8 /* BPServiceController.h in Headers */,
+				01BC51CF1992B37D00E04478 /* NSData+BPConversion.h in Headers */,
 				C1E0D1D11831BAD3001A7A01 /* JAGProperty.h in Headers */,
 				C1E0D1D41831BAD3001A7A01 /* JAGPropertyConverter-Prefix.pch in Headers */,
 				2F7E079218A2EC08003FC524 /* BuddyAppDelegateDecorator.h in Headers */,
@@ -807,6 +821,7 @@
 				01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */,
 				018AB0E8197718D80025677B /* BPCheckin.m in Sources */,
 				5B5FE15C18E3CD1C00518440 /* BPNotification.m in Sources */,
+				01BC51D01992B37D00E04478 /* NSData+BPConversion.m in Sources */,
 				C10F1B7C1870A6F500D5364C /* NSError+BuddyError.m in Sources */,
 				C1E0D1D91831BAD3001A7A01 /* JAGPropertyFinder.m in Sources */,
 				C1AA90D918371FF70074B7E8 /* BPServiceController.m in Sources */,
@@ -819,6 +834,7 @@
 				018AB0E41977176B0025677B /* BPModelBase.m in Sources */,
 				5BCF829A191300DD00A26EA7 /* NSArray+BPSugar.m in Sources */,
 				5B984DA118C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.m in Sources */,
+				01BC51CC1992B15900E04478 /* CryptoTools.m in Sources */,
 				C10E2B9E186950D8007A0136 /* BPClient.m in Sources */,
 				C1E0D1D21831BAD3001A7A01 /* JAGProperty.m in Sources */,
 				5B32F37818E071C600C07019 /* BPAFURLRequestSerialization.m in Sources */,
