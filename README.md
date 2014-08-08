@@ -142,7 +142,7 @@ In this example we'll create a checkin. Take a look at the [create checkin REST 
     NSDictionary *params = @{@"location": coord,
                              @"comment": @"A comment about this awesome place!"};
     
-    [Buddy POST:@"checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
+    [Buddy POST:@"/checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
         if(!error) {
             NSLog(@"Checkin post went as planned");
         } else {
@@ -158,7 +158,7 @@ We now can call GET to search for the checkin we just created!
     
     NSDictionary *params = @{@"locationRange": range};
     
-    [Buddy GET:@"checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
+    [Buddy GET:@"/checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
         if(!error) {
             NSLog(@"%@", obj); // Log or do something with the response
         } else {
@@ -225,7 +225,7 @@ Here we demonstrate uploading a picture. All binary files use the same pattern w
     NSDictionary *parameters = @{@"data": file,
                                  @"caption": @"Koi are awesome fish."};
     
-    [Buddy POST:@"pictures" parameters:parameters class:[NSDictionary class] callback:^(id obj, NSError *error) {
+    [Buddy POST:@"/pictures" parameters:parameters class:[NSDictionary class] callback:^(id obj, NSError *error) {
         if (!error) {
             NSLog(@"Image uploaded successfully");
         } else {
@@ -240,7 +240,7 @@ To download a file send a GET request with BPFile as the operation type. This sa
 
     // Don't forget to store the picture ID in pictureId!
 
-    [Buddy GET:[NSString stringWithFormat:@"pictures/%@/file", pictureId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error) {
+    [Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file", pictureId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error) {
         
         if(!error)
         {
