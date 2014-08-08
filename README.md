@@ -86,7 +86,7 @@ If you want to utilize multiple clients at once you can use:
     [firstClient GET:@"/videos" parameters:@{@"caption": @"caption search string"} callback:^(id json, NSError *error) {
         //Do stuff here
     }];
-    [secondClient loginUser:@""username password:@"password" callback:^(id newBuddyObject, NSError *error) {
+    [secondClient loginUser:@"username" password:@"password" callback:^(id newBuddyObject, NSError *error) {
         //Do stuff
     }];
 This allows you to have two users logged in at the same time, or manage multiple of any other thing the SDK tracks ( device information, location, etc.). The Buddy object will always be referencing the last client that was created.
@@ -216,7 +216,7 @@ Buddy offers support for binary files. The iOS SDK works with files through our 
 
 #### Upload A File
 
-Here we demonstrate uploading a picture. All binary files use the same pattern with a different path and different parameters. To upload a picture POST to `"pictures"`:
+Here we demonstrate uploading a picture. All binary files use the same pattern with a different path and different parameters. To upload a picture POST to `"/pictures"`:
 
     BPFile *file = [[BPFile alloc] init];
     file.contentType = @"image/jpg";
