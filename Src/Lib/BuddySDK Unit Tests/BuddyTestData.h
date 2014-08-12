@@ -5,8 +5,8 @@
 #define APP_ID CI_APP_ID
 #define APP_KEY CI_APP_KEY
 #else
-#define APP_ID @"bbbbbc.DrhbvdMmqhfh"
-#define APP_KEY @"30704BF5-4BA5-4C7F-919F-BA1753689CE7"
+#define APP_ID @"YOUR_APP_ID"
+#define APP_KEY @"YOUR_APP_KEY"
 #endif
 
 #define TEST_USERNAME @"testuser"
