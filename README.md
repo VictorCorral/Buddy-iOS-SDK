@@ -54,9 +54,10 @@ To create a new project using the Buddy SDK:
 
 #### Install from Binaries
 
-* Download the [Buddy iOS SDK](https://buddyplatform.com/docs/SDK%20Downloads)
-* Unzip the package to a local directory
-* Drag BuddySDK.framework into the Frameworks section of your project in Xcode
+* Clone this repository
+    git clone https://github.com/BuddyPlatform/Buddy-iOS-SDK.git
+* Build the project (for specific build instructions see our [documentation](https://buddyplatform.com/docs/iOS%20SDK))
+* Include the BuddySDK.framework into the Frameworks section of your project in Xcode
 * Ensure the following Frameworks are linked to your project
     * CoreLocation
     * MobileCoreServices
