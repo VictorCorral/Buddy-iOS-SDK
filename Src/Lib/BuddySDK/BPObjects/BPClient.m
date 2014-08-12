@@ -113,20 +113,8 @@
     
     _crashManager = [[BPCrashManager alloc] initWithRestProvider:self];
     
-    if(![options[@"disablePush"] boolValue]){
-        [self registerForPushes];
-    }
 }
 
-
--(void) registerForPushes {
-    UIApplication* app = [UIApplication sharedApplication];
-    //wrap the app delegate in a buddy decorator
-    self.decorator = [BuddyAppDelegateDecorator  appDelegateDecoratorWithAppDelegate:app.delegate client:self andSettings:_appSettings];
-    app.delegate = self.decorator;
-    [app registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeNewsstandContentAvailability | UIRemoteNotificationTypeNone | UIRemoteNotificationTypeSound];
-    
-}
 
 - (void)createUser:(NSString*) userName
           password:(NSString*) password
@@ -267,6 +255,11 @@
         
         callback ? callback(error) : nil;
     }];
+}
+
+-(void) registerPushTokenWithData:(NSData *)token callback:(BuddyObjectCallback)callback{
+    NSString* rawDeviceTokenHex = [[token description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    [self registerPushToken:[rawDeviceTokenHex stringByReplacingOccurrencesOfString:@" " withString:@""] callback:callback];
 }
 
 -(void) registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback
