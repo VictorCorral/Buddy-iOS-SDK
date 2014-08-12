@@ -20,6 +20,7 @@
 
 @implementation AppDelegate
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -44,6 +45,7 @@
     [self.window makeKeyAndVisible];
     
     [Buddy init: APP_ID appKey: APP_KEY];
+    [[Buddy currentClient] notifyPushRecieved:launchOptions];
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge
          | UIRemoteNotificationTypeNewsstandContentAvailability | UIRemoteNotificationTypeNone
      | UIRemoteNotificationTypeSound ];

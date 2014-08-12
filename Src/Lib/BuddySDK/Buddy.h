@@ -15,7 +15,6 @@
 #import "BuddyClientProtocol.h"
 
 #import "BPMetricCompletionHandler.h"
-#import "BPNotification.h"
 #import "BPSize.h"
 
 // Models

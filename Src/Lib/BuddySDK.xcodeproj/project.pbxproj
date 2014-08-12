@@ -67,10 +67,6 @@
 		5B32F37918E071C600C07019 /* BPAFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B32F36618E071C600C07019 /* BPAFURLResponseSerialization.h */; };
 		5B32F37A18E071C600C07019 /* BPAFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F36718E071C600C07019 /* BPAFURLResponseSerialization.m */; };
 		5B56973718D6B29B00917ED8 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCF3F4A18D692200065842D /* CrashReporter.framework */; };
-		5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B5FE15518E3C90C00518440 /* BPNotificationManager.h */; };
-		5B5FE15818E3C90C00518440 /* BPNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5FE15618E3C90C00518440 /* BPNotificationManager.m */; };
-		5B5FE15B18E3CD1C00518440 /* BPNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B5FE15918E3CD1C00518440 /* BPNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5B5FE15C18E3CD1C00518440 /* BPNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5FE15A18E3CD1C00518440 /* BPNotification.m */; };
 		5B6E84CE18F2138E005E7FEE /* NotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E84CD18F2138E005E7FEE /* NotificationTests.m */; };
 		5B7EC9FB19453ACF00F33589 /* AppSettingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EC9FA19453ACF00F33589 /* AppSettingsTests.m */; };
 		5B91C50E18D0CE3900CB7119 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C50D18D0CE3900CB7119 /* small.mp4 */; };
@@ -216,10 +212,6 @@
 		5B32F36518E071C600C07019 /* BPAFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAFURLRequestSerialization.m; sourceTree = "<group>"; };
 		5B32F36618E071C600C07019 /* BPAFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAFURLResponseSerialization.h; sourceTree = "<group>"; };
 		5B32F36718E071C600C07019 /* BPAFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAFURLResponseSerialization.m; sourceTree = "<group>"; };
-		5B5FE15518E3C90C00518440 /* BPNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPNotificationManager.h; sourceTree = "<group>"; };
-		5B5FE15618E3C90C00518440 /* BPNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPNotificationManager.m; sourceTree = "<group>"; };
-		5B5FE15918E3CD1C00518440 /* BPNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPNotification.h; sourceTree = "<group>"; };
-		5B5FE15A18E3CD1C00518440 /* BPNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPNotification.m; sourceTree = "<group>"; };
 		5B6E84CD18F2138E005E7FEE /* NotificationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTests.m; sourceTree = "<group>"; };
 		5B7EC9FA19453ACF00F33589 /* AppSettingsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettingsTests.m; sourceTree = "<group>"; };
 		5B91C50D18D0CE3900CB7119 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
@@ -420,10 +412,6 @@
 				C1427676189ECA2300D5DD85 /* BPMetricCompletionHandler.m */,
 				2F7E079018A2EC08003FC524 /* BuddyAppDelegateDecorator.h */,
 				2F7E079118A2EC08003FC524 /* BuddyAppDelegateDecorator.m */,
-				5B5FE15518E3C90C00518440 /* BPNotificationManager.h */,
-				5B5FE15618E3C90C00518440 /* BPNotificationManager.m */,
-				5B5FE15918E3CD1C00518440 /* BPNotification.h */,
-				5B5FE15A18E3CD1C00518440 /* BPNotification.m */,
 				01BC51C91992B15900E04478 /* CryptoTools.h */,
 				01BC51CA1992B15900E04478 /* CryptoTools.m */,
 			);
@@ -608,7 +596,6 @@
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
 				5B32F37118E071C600C07019 /* BPAFNetworkReachabilityManager.h in Headers */,
 				C10E2B9D186950D8007A0136 /* BPClient.h in Headers */,
-				5B5FE15B18E3CD1C00518440 /* BPNotification.h in Headers */,
 				5B0B23D419133E4E005CB913 /* BPSize.h in Headers */,
 				C154CEFA187FAE8600EACE4B /* NSDate+JSON.h in Headers */,
 				5B32F37518E071C600C07019 /* BPAFURLConnectionOperation.h in Headers */,
@@ -624,7 +611,6 @@
 				5B32F37718E071C600C07019 /* BPAFURLRequestSerialization.h in Headers */,
 				C1E0D1D81831BAD3001A7A01 /* JAGPropertyFinder.h in Headers */,
 				5BCF8299191300DD00A26EA7 /* NSArray+BPSugar.h in Headers */,
-				5B5FE15718E3C90C00518440 /* BPNotificationManager.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
 				C1AA90D818371FF70074B7E8 /* BPServiceController.h in Headers */,
 				01BC51CF1992B37D00E04478 /* NSData+BPConversion.h in Headers */,
@@ -820,12 +806,10 @@
 				01DB07BD197855350008A35E /* BPSearch.m in Sources */,
 				01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */,
 				018AB0E8197718D80025677B /* BPCheckin.m in Sources */,
-				5B5FE15C18E3CD1C00518440 /* BPNotification.m in Sources */,
 				01BC51D01992B37D00E04478 /* NSData+BPConversion.m in Sources */,
 				C10F1B7C1870A6F500D5364C /* NSError+BuddyError.m in Sources */,
 				C1E0D1D91831BAD3001A7A01 /* JAGPropertyFinder.m in Sources */,
 				C1AA90D918371FF70074B7E8 /* BPServiceController.m in Sources */,
-				5B5FE15818E3C90C00518440 /* BPNotificationManager.m in Sources */,
 				01274B51198AAC5500DB31BA /* BPPicture.m in Sources */,
 				5B32F37618E071C600C07019 /* BPAFURLConnectionOperation.m in Sources */,
 				018AB0DF1975DB420025677B /* BPFile.m in Sources */,

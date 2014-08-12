@@ -9,7 +9,6 @@
 #import "BPClient.h"
 #import "BPServiceController.h"
 #import "BPRestProvider.h"
-#import "BPNotificationManager.h"
 #import "BuddyDevice.h"
 #import "BPAppSettings.h"
 #import "BuddyAppDelegateDecorator.h"
@@ -34,7 +33,6 @@
 @property (nonatomic, strong) BPServiceController *service;
 @property (nonatomic, strong) BPAppSettings *appSettings;
 @property (nonatomic, strong) NSString *sharedSecret;
-@property (nonatomic, strong) BPNotificationManager *notifications;
 @property (nonatomic, strong) BuddyAppDelegateDecorator *decorator;
 @property (nonatomic, strong) BPCrashManager *crashManager;
 @property (nonatomic, strong) NSMutableArray *queuedRequests;
@@ -58,7 +56,6 @@
     self = [super init];
     if(self)
     {
-        _notifications = [[BPNotificationManager alloc] initWithClient:self];
         _lastLocation = nil;
     }
     return self;
@@ -269,6 +266,14 @@
     [self PATCH:resource parameters:@{@"pushToken": token} class:[NSDictionary class] callback:^(id json, NSError *error) {
         callback ? callback(error,json) : nil;
     }];
+}
+
+-(void) notifyPushRecieved:(NSDictionary *)data {
+    UILocalNotification * notification = [data objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(notification){
+        NSString *bId = [notification valueForKey:@"_bId"];
+        [self POST:[NSString stringWithFormat:@"/noftifications/recieved/%@", bId] parameters:nil class:nil callback:nil];
+    }
 }
 
 #pragma mark - BPRestProvider
@@ -607,10 +612,7 @@
 
 #pragma mark - Notifications
 
-- (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback
-{
-    [self.notifications sendPushNotification:notification callback:callback];
-}
+
 
 #pragma mark - Metrics
 

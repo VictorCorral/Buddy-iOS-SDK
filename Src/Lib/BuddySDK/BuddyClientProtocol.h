@@ -76,7 +76,6 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 - (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
 - (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
 
-- (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
 
 - (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds callback:(BuddyMetricCallback)callback;
 - (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value callback:(BuddyCompletionCallback)callback;
@@ -84,6 +83,7 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 
 - (void)registerPushTokenWithData:(NSData *)token callback:(BuddyObjectCallback) callback;
 - (void)registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback;
+- (void)notifyPushRecieved:(NSDictionary *)data;
 @end
 
 #endif
