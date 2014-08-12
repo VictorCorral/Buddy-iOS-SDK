@@ -150,8 +150,8 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
  */
 - (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value timeout:(NSInteger)seconds timestamp:(NSDate*)timestamp callback:(BuddyMetricCallback)callback;
 
+- (void)registerPushTokenWithData:(NSData *)token callback:(BuddyObjectCallback) callback;
 - (void)registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback;
 
-- (void)registerForPushes;
 
 @end
