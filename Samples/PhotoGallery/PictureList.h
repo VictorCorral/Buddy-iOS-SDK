@@ -10,7 +10,6 @@
 
 @class BPPicture;
 
-
 /* We could consider a higher-level class that automates fetching an Image for a picture if it does not exist and uses callbacks. For now, keeping it basic
  */
 

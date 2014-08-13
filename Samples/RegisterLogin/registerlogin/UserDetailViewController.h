@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BuddySDK/BPUser.h>
 #import "MBProgressHUD.h"
+
+@class BPUser;
 
 @interface UserDetailViewController : UIViewController<MBProgressHUDDelegate>
 

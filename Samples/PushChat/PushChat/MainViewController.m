@@ -179,7 +179,7 @@
 
 - (void)doLogout
 {
-    [Buddy logout:^(NSError *error)
+    [Buddy logoutUser:^(NSError *error)
      {
          NSLog(@"Logout Callback Called");
      }];
@@ -226,10 +226,9 @@
 
 -(void)doDownload
 {
-    BPSearchUserList *props = [BPSearchUserList new];
-    props.readPermissions = BPPermissionsApp;
-    
-    [Buddy.userLists searchUserLists:props callback:^(NSArray *buddyObjects, BPPagingTokens *pagingToken, NSError *error)
+    NSDictionary *parameters = @{@"readPermissions": @"App"};
+
+    [Buddy GET:@"users/lists" parameters:parameters class:[BPSearch class] callback:^(id obj,NSError *error)
     {
         if(error!=nil)
         {
@@ -246,11 +245,13 @@
         
         [self.table clear];
         
-        for(id obj in buddyObjects)
+        BPSearch *searchResult = (BPSearch*)obj;
+        
+        NSArray *searchItems = [searchResult convertPageResultsToType:[BPUserList class]];
+        
+        for(BPUserList* userList in searchItems)
         {
-            BPUserList *userList = (BPUserList*)obj;
-            
-            [[CommonAppDelegate channels]  addChannel:obj];
+            [[CommonAppDelegate channels]  addChannel:userList];
             ViewChannelListItem *newItem = [[ViewChannelListItem alloc]init];
             newItem.listID =userList.id;
             newItem.isChecked=NO;

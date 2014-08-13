@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class BPUserList;
+
 @interface ChannelViewController : UIViewController
 
 @property (nonatomic,weak) IBOutlet UILabel *channelName;

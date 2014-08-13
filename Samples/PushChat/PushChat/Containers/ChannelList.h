@@ -10,6 +10,7 @@
 
 @class BPUserList;
 
+
 @interface ChannelList : NSObject
 
 @property (nonatomic,strong) NSMutableDictionary *channels;

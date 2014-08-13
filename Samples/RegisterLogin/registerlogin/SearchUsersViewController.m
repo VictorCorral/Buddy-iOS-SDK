@@ -10,8 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import <BuddySDK/Buddy.h>
-#import <BuddySDK/BPUserCollection.h>
-#import <BuddySDK/BPUser.h>
 
 #import "SearchUsersViewController.h"
 #import "UserDetailViewController.h"
@@ -24,7 +22,7 @@
 
 -(void) loadAllUsers;
 - (void) putAllUsers:(NSMutableArray *)users;
--(BPSearchCallback) getAllUsersCallback;
+-(RESTCallback) getAllUsersCallback;
 
 @end
 
@@ -65,14 +63,14 @@
 
 -(void) loadAllUsers
 {
-    [[Buddy users] getAll:[self getAllUsersCallback]];
+    [Buddy GET:@"users" parameters:nil class:[BPSearch class] callback:[self getAllUsersCallback]];
 }
 
--(BPSearchCallback) getAllUsersCallback
+-(RESTCallback) getAllUsersCallback
 {
     SearchUsersViewController * __weak weakSelf = self;
     
-    return ^(NSArray *buddyObjects, BPPagingTokens *tokens,NSError *error)
+    return ^(id obj,NSError *error)
     {
         [weakSelf.HUD hide:TRUE afterDelay:0.1];
         weakSelf.HUD = nil;
@@ -83,8 +81,11 @@
             return;
         }
         
+        BPSearch *searchResult = (BPSearch*)obj;
+        
+        NSArray *searchUsers = [searchResult convertPageResultsToType:[BPUser class]];
         NSLog(@"getAllUsersCallback - success Called");
-        [self putAllUsers:[buddyObjects mutableCopy]];
+        [self putAllUsers:[searchUsers mutableCopy]];
         [self.tableView reloadData];
         
     };

@@ -10,6 +10,8 @@
 
 #import "MBProgressHUD.h"
 
+@class BPPicture;
+
 @interface EditPictureViewController : UIViewController <MBProgressHUDDelegate>
 
 @property (nonatomic,weak) IBOutlet UIImageView *mainImage;

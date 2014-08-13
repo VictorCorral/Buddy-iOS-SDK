@@ -21,11 +21,16 @@ describe(@"Notifications", ^{
     context(@"When an app has a valid device token", ^{
         __block BOOL fin = NO;
 
+        __block id<BuddyClientProtocol> client;
+        
         beforeAll(^{
             [BuddyIntegrationHelper bootstrapLogin:^{
+                
+                client = [Buddy currentClient];
+                
                 fin = YES;
             }];
-
+            
             [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
         });
         
@@ -38,60 +43,19 @@ describe(@"Notifications", ^{
         
         it(@"Should allow sending a notification", ^{
             
-            BPNotification *note = [BPNotification new];
-            note.recipients = @[[Buddy user].id];
-            note.message = @"Message";
-            note.payload = @"Payload";
-            note.osCustomData = @"{}";
-            note.notificationType = BPNotificationType_Raw;
+            NSString* idString = [client currentUser].id;
+            NSDictionary *note = @{@"recipients": @[idString],
+                                   @"message": @"Message",
+                                   @"payload": @"Payload",
+                                   @"osCustomData":@"{}",
+                                   @"type":@"raw"};
             
-            [Buddy sendPushNotification:note callback:^(NSError *error) {
-                [[error should] beNil];
+            [Buddy POST:@"/notifications" parameters:note class:[NSDictionary class] callback:^(id object, NSError *error){
+                [error shouldBeNil];
                 fin = YES;
             }];
-            
             [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
         });
-        
-        it(@"Should allow sending a notification to a user list", ^{
-            
-            __block BOOL fin = NO;
-            __block BPUserList *tempUserList;
-            tempUserList = [BPUserList new];
-            __weak BPUserList *tempUserList2 =tempUserList;
-            NSString *userListName =[NSString stringWithFormat:@"userList_%@",[BuddyIntegrationHelper randomString:10] ] ;
-            tempUserList.name =userListName;
-            
-            [[Buddy userLists] addUserList:tempUserList callback:^(NSError *error) {
-                
-                [error shouldBeNil];
-                [[tempUserList.id shouldNot] beNil];
-                [[tempUserList.name should] equal: userListName];
-                
-                [tempUserList addUser:Buddy.user callback:^(BOOL result, NSError *error) {
-                    [[error should] beNil];
-                    [[theValue(result) shouldNot] equal: NO];
-                    
-                    BPNotification *note = [BPNotification new];
-                    note.recipients = @[tempUserList2.id];
-                    note.message = @"Message";
-                    note.payload = @"Payload";
-                    note.osCustomData = @"{}";
-                    note.notificationType = BPNotificationType_Raw;
-                    
-                    [Buddy sendPushNotification:note callback:^(NSError *error) {
-                        [[error should] beNil];
-                        fin = YES;
-                    }];
-                }];
-                
-            }];
-            
-            
-            
-            [[expectFutureValue(theValue(fin)) shouldEventually] beTrue];
-        });
-        
     });
 });
 

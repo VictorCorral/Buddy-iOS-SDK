@@ -20,6 +20,7 @@
 
 @implementation AppDelegate
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -43,8 +44,11 @@
     
     [self.window makeKeyAndVisible];
     
-    [Buddy initClient: APP_ID appKey: APP_KEY];
-    
+    [Buddy init: APP_ID appKey: APP_KEY];
+    [[Buddy currentClient] notifyPushRecieved:launchOptions];
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge
+         | UIRemoteNotificationTypeNewsstandContentAvailability | UIRemoteNotificationTypeNone
+     | UIRemoteNotificationTypeSound ];
     
     _channels =[[ChannelList alloc] init];
     _receivedMessages = [ReceivedMessageTable new];
@@ -56,6 +60,7 @@
 }
 -(void) application:(UIApplication*) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"%@", deviceToken);
+    [[Buddy currentClient] registerPushTokenWithData:deviceToken callback:nil];
 }
 
 -(void) application:(UIApplication*) application didReceiveRemoteNotification:(NSDictionary *)userInfo

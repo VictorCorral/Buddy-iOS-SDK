@@ -10,8 +10,8 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <BuddySDK/Buddy.h>
 
-#define APP_NAME @"bbbbbc.xkdbbdKlvKgj"
-#define APP_KEY @"EFE64026-B01A-4475-A75F-9F86B040094F"
+#define APP_NAME \@"Your App ID"
+#define APP_KEY \@"Your App Key"
 
 @implementation BPAppDelegate
 
@@ -22,11 +22,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Buddy initClient:APP_NAME appKey:APP_KEY];
+    [Buddy init:APP_NAME appKey:APP_KEY];
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
-    [Buddy setLocationEnabled:YES];
     // Ensure FB libraries are loaded before ViewControllers get there (from docs).
     [FBLoginView class];
     

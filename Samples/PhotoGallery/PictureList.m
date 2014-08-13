@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 Buddy Platform. All rights reserved.
 //
 
-#import <BuddySDK/BuddyObject.h>
-#import <BuddySDK/BPPicture.h>
+#import <BuddySDK/Buddy.h>
 
 #import "PictureList.h"
 #import "ImageCache.h"
@@ -149,6 +148,7 @@
 {
     return [self.cache count];
 }
+
 -(UIImage*)getImageByPictureID:(NSString*)pictureID
 {
     return [self.cache getImageByPictureID:pictureID];
