@@ -138,10 +138,6 @@ static BPClient* currentClient;
     [currentClient logoutUser:callback];
 }
 
-+ (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
-{
-    [currentClient sendPushNotification:notification callback:callback];
-}
 
 + (void)recordMetric:(NSString *)key andValue:(NSDictionary *)value callback:(BuddyCompletionCallback)callback
 {

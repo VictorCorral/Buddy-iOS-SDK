@@ -97,18 +97,6 @@
  */
 + (void)logoutUser:(BuddyCompletionCallback)callback;
 
-/* 
- * Send a push Notification to one or more users, or user lists.
- *
- * @param notification  a BPNotification object with the notification information populated.
- * 
- * @callback            a callback that is called once the server has accepted the request.
- *                      NOTE: The server sends push notifications asynchronously so the callback
- *                            may be called before all notifications have been sent out.
- *
- */
-+ (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
-
 /** 
  * Records a metric.
  *
