@@ -106,9 +106,6 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
 - (void)PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
 - (void)DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
  
-
-- (void)sendPushNotification:(BPNotification *)notification callback:(BuddyCompletionCallback)callback;
-
 /** Records a metric.
  *
  * Signals completion via the BuddyCompletion callback.
