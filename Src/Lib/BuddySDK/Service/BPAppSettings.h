@@ -33,7 +33,6 @@
 
 @property (nonatomic, readonly, strong) NSString *token;
 
-
 - (void)clear;
 - (void)clearUser;
 

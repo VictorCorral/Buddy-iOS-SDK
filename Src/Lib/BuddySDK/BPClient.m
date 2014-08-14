@@ -15,14 +15,12 @@
 #import "NSDate+JSON.h"
 #import "BPAFURLRequestSerialization.h"
 #import "CryptoTools.h"
-
 #import "BPUser.h"
-
 #import "BPFile.h"
 
 #import <CoreFoundation/CoreFoundation.h>
-#define BuddyServiceURL @"BuddyServiceURL"
 
+#define BuddyServiceURL @"BuddyServiceURL"
 #define BuddyDefaultURL @"https://api.buddyplatform.com"
 
 #define HiddenArgumentCount 2
@@ -36,14 +34,12 @@
 @property (nonatomic, strong) NSMutableArray *queuedRequests;
 
 - (void)recordMetricCore:(NSString*)key parameters:(NSDictionary*)parameters callback:(BuddyMetricCallback)callback;
-
 - (REST_ServiceResponse) handleResponse:(Class) clazz callback:(RESTCallback)callback;
 -(NSString*) generateServerSig;
 
 @end
 
 @implementation BPClient
-
 
 @synthesize currentUser = _currentUser;
 
@@ -109,7 +105,6 @@
     _crashManager = [[BPCrashManager alloc] initWithRestProvider:self];
     
 }
-
 
 - (void)createUser:(NSString*) userName
           password:(NSString*) password
@@ -237,7 +232,6 @@
         
     }];
 }
-
 
 - (void)logoutUser:(BuddyCompletionCallback)callback
 {
@@ -567,7 +561,6 @@
    );
 }
 
-
 - (NSDictionary*) convertDictionaryForUpload:(NSDictionary*)dictionary
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -609,7 +602,6 @@
 
 
 #pragma mark - Notifications
-
 
 
 #pragma mark - Metrics
@@ -677,9 +669,7 @@
             [invoke setArgument:(void*)[args objectAtIndex:currentArgIndex] atIndex:currentArgIndex];
         }
         [invoke invoke];
-        
     }
-    
 }
 
 @end

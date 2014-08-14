@@ -14,10 +14,7 @@
 #import "BuddyClientProtocol.h"
 
 @class BuddyDevice;
-@class BPNotification;
-
 @class BPUser;
-
 
 /**
  * Enum specifying the current authentication level.
@@ -31,9 +28,7 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
     BPAuthenticationLevelUser
 };
 
-
 @interface BPClient : NSObject <BPRestProvider,BuddyClientProtocol>
-
 
 /// <summary>
 /// Gets the application name for this client.
@@ -70,8 +65,6 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
 
 @property (nonatomic,weak) id<BPClientDelegate> delegate;
 
-
-/// TODO
 -(void)setupWithApp:(NSString *)appID
                 appKey:(NSString *)appKey
                 options:(NSDictionary *)options
@@ -99,7 +92,6 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
 /**
  * REST Methods
  */
-
 - (void)GET:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
 - (void)POST:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;
 - (void)PATCH:(NSString *)servicePath parameters:(NSDictionary *)parameters class:(Class)clazz callback:(RESTCallback)callback;

@@ -12,7 +12,6 @@
 #import "BuddyCallbacks.h"
 
 @class BPCoordinate;
-@class BPNotification;
 @class BPUser;
 
 
@@ -31,12 +30,10 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 @protocol BPClientDelegate <NSObject>
 
 @optional
+
 - (void)userChangedTo:(BPUser *)newUser from:(BPUser *)oldUser;
-
 - (void)connectivityChanged:(BPReachabilityLevel)level;
-
 - (void)apiErrorOccurred:(NSError *)error;
-
 - (void)authorizationNeedsUserLogin;
 
 @end
@@ -53,7 +50,6 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 @property (nonatomic, strong) BPUser *currentUser;
 
 @property (nonatomic,weak) id<BPClientDelegate> delegate;
-
 
 - (void)createUser:(NSString*) userName
           password:(NSString*) password
