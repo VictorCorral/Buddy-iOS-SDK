@@ -38,8 +38,11 @@ We recommend using Cocoapods to install the BuddySDK because it's fast and easy 
 To create a new project using the Buddy SDK:
 
 1) Create a new Xcode project 
+
 2) In a Terminal window, type: `cd <project-dir>`
+
 3) Create a Podfile `touch Podfile`
+
 4) Open the file with your favorite editor and add:
 
       platform :ios, '6.0'
@@ -53,10 +56,15 @@ To create a new project using the Buddy SDK:
 #### Install from Binaries
 
 1) Clone this repository
+
     git clone https://github.com/BuddyPlatform/Buddy-iOS-SDK.git
+
 2) Build the project (for specific build instructions see our [documentation](https://buddyplatform.com/docs/iOS%20SDK))
+
 3) Include the BuddySDK.framework into the Frameworks section of your project in Xcode
+
 4) Ensure the following Frameworks are linked to your project
+
     * CoreLocation
     * MobileCoreServices
     * SystemConfiguration
@@ -175,7 +183,9 @@ Each remaining REST verb is available through the Buddy SDK using the same patte
 Creating strongly typed response objects is simple.  If the REST operation that you intend to call returns a response that's not available in `Models`, you can easily create one by creating an Objective-C object with fields that match the JSON response fields for the operation.
 
 1) Go to the Buddy Console and try your operation
+
 2) When the operation completes, note the fields and their types in the response
+
 3) Create an Objective-C class that derives from `ModelBase` with the appropriate properties.
 
 For example, if the response to **POST /checkins** looks like:
@@ -262,8 +272,11 @@ We'd love to have your help making the Buddy SDK as good as it can be!
 To submit a change to the Buddy SDK please do the following:
 
 1) Create your own fork of the Buddy SDK
+
 2) Make the change to your fork
+
 3) Before creating your pull request, please sync your repository to the current state of the parent repository: `git pull origin master`
+
 4) Commit your changes, then [submit a pull request](https://help.github.com/articles/using-pull-requests) for just that commit
 
 ## License
