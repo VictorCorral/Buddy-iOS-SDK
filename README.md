@@ -176,7 +176,7 @@ Creating strongly typed response objects is simple.  If the REST operation that 
 
 1) Go to the Buddy Console and try your operation
 2) When the operation completes, note the fields and their types in the response
-3) Create a Java class that derives from `ModelBase` with the appropriate properties.
+3) Create an Objective-C class that derives from `ModelBase` with the appropriate properties.
 
 For example, if the response to **POST /checkins** looks like:
 
@@ -197,7 +197,7 @@ For example, if the response to **POST /checkins** looks like:
      "success": true
     }
 
-The corresponding Objective-C object for the _unique_ fields under `result`:
+The corresponding Objective-C class for the _unique_ fields under `result` is:
 
     @interface BPCheckin : BPModelBase
 
