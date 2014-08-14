@@ -37,26 +37,26 @@ We recommend using Cocoapods to install the BuddySDK because it's fast and easy 
 
 To create a new project using the Buddy SDK:
 
-* Create a new Xcode project 
-* In a Terminal window, type: `cd <project-dir>`
-* Create a Podfile `touch Podfile`
-* Open the file with your favorite editor and add:
+1) Create a new Xcode project 
+2) In a Terminal window, type: `cd <project-dir>`
+3) Create a Podfile `touch Podfile`
+4) Open the file with your favorite editor and add:
 
       platform :ios, '6.0'
       pod 'BuddySDK'
 
-* Save the file, then type: `pod install`
+5) Save the file, then type: `pod install`
 
 
 ### Install Locally
 
 #### Install from Binaries
 
-* Clone this repository
+1) Clone this repository
     git clone https://github.com/BuddyPlatform/Buddy-iOS-SDK.git
-* Build the project (for specific build instructions see our [documentation](https://buddyplatform.com/docs/iOS%20SDK))
-* Include the BuddySDK.framework into the Frameworks section of your project in Xcode
-* Ensure the following Frameworks are linked to your project
+2) Build the project (for specific build instructions see our [documentation](https://buddyplatform.com/docs/iOS%20SDK))
+3) Include the BuddySDK.framework into the Frameworks section of your project in Xcode
+4) Ensure the following Frameworks are linked to your project
     * CoreLocation
     * MobileCoreServices
     * SystemConfiguration
@@ -100,14 +100,14 @@ The Buddy iOS SDK handles user creation, login, and logout.
     BuddyObjectCallback loginCallback = [self getLoginCallback];
     // Only Username and Password are required
     [Buddy createUser:self.signupUsername.text
-             password:self.signupPassword.text
-            firstName:self.signupFirstName.text
-             lastName:self.signupLastName.text
-                email:self.signupEmail.text
-          dateOfBirth:nil 
-               gender:nil 
-                  tag:nil 
-             callback:loginCallback];
+           password:self.signupPassword.text
+           firstName:self.signupFirstName.text
+           lastName:self.signupLastName.text
+           email:self.signupEmail.text
+           dateOfBirth:nil 
+           gender:nil 
+           tag:nil 
+           callback:loginCallback];
 
 #### User Login
 
@@ -174,9 +174,9 @@ Each remaining REST verb is available through the Buddy SDK using the same patte
 
 Creating strongly typed response objects is simple.  If the REST operation that you intend to call returns a response that's not available in `Models`, you can easily create one by creating an Objective-C object with fields that match the JSON response fields for the operation.
 
-1.  Go to the Buddy Console and try your operation
-2.  When the operation completes, note the fields and their types in the response
-3.  Create a Java class that derives from `ModelBase` with the appropriate properties.
+1) Go to the Buddy Console and try your operation
+2) When the operation completes, note the fields and their types in the response
+3) Create a Java class that derives from `ModelBase` with the appropriate properties.
 
 For example, if the response to **POST /checkins** looks like:
 
@@ -261,10 +261,10 @@ We'd love to have your help making the Buddy SDK as good as it can be!
 
 To submit a change to the Buddy SDK please do the following:
 
-1. Create your own fork of the Buddy SDK
-2. Make the change to your fork
-3. Before creating your pull request, please sync your repository to the current state of the parent repository: `git pull origin master`
-4. Commit your changes, then [submit a pull request](https://help.github.com/articles/using-pull-requests) for just that commit
+1) Create your own fork of the Buddy SDK
+2) Make the change to your fork
+3) Before creating your pull request, please sync your repository to the current state of the parent repository: `git pull origin master`
+4) Commit your changes, then [submit a pull request](https://help.github.com/articles/using-pull-requests) for just that commit
 
 ## License
 
