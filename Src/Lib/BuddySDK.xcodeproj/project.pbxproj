@@ -43,8 +43,8 @@
 		01BC51CC1992B15900E04478 /* CryptoTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC51CA1992B15900E04478 /* CryptoTools.m */; };
 		01BC51CF1992B37D00E04478 /* NSData+BPConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 01BC51CD1992B37D00E04478 /* NSData+BPConversion.h */; };
 		01BC51D01992B37D00E04478 /* NSData+BPConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC51CE1992B37D00E04478 /* NSData+BPConversion.m */; };
-		01DB07BC197855350008A35E /* BPSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BA197855350008A35E /* BPSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		01DB07BD197855350008A35E /* BPSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BB197855350008A35E /* BPSearch.m */; };
+		01DB07BC197855350008A35E /* BPPageResults.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BA197855350008A35E /* BPPageResults.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01DB07BD197855350008A35E /* BPPageResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BB197855350008A35E /* BPPageResults.m */; };
 		01DB07C0197878B40008A35E /* BPUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BE197878B40008A35E /* BPUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01DB07C1197878B40008A35E /* BPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BF197878B40008A35E /* BPUser.m */; };
 		3FAAE60BA41844428107236D /* libPods-BuddySDK Unit Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62B6B8A0BC8C4474A7F6BC3E /* libPods-BuddySDK Unit Tests.a */; };
@@ -185,8 +185,8 @@
 		01BC51CA1992B15900E04478 /* CryptoTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptoTools.m; sourceTree = "<group>"; };
 		01BC51CD1992B37D00E04478 /* NSData+BPConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+BPConversion.h"; sourceTree = "<group>"; };
 		01BC51CE1992B37D00E04478 /* NSData+BPConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+BPConversion.m"; sourceTree = "<group>"; };
-		01DB07BA197855350008A35E /* BPSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPSearch.h; path = Models/BPSearch.h; sourceTree = "<group>"; };
-		01DB07BB197855350008A35E /* BPSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPSearch.m; path = Models/BPSearch.m; sourceTree = "<group>"; };
+		01DB07BA197855350008A35E /* BPPageResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPPageResults.h; path = Models/BPPageResults.h; sourceTree = "<group>"; };
+		01DB07BB197855350008A35E /* BPPageResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPPageResults.m; path = Models/BPPageResults.m; sourceTree = "<group>"; };
 		01DB07BE197878B40008A35E /* BPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPUser.h; path = Models/BPUser.h; sourceTree = "<group>"; };
 		01DB07BF197878B40008A35E /* BPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPUser.m; path = Models/BPUser.m; sourceTree = "<group>"; };
 		29345A5A1773D2A400EEB8F5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -326,8 +326,8 @@
 				018AB0E21977176B0025677B /* BPModelBase.m */,
 				018AB0E5197718D80025677B /* BPCheckin.h */,
 				018AB0E6197718D80025677B /* BPCheckin.m */,
-				01DB07BA197855350008A35E /* BPSearch.h */,
-				01DB07BB197855350008A35E /* BPSearch.m */,
+				01DB07BA197855350008A35E /* BPPageResults.h */,
+				01DB07BB197855350008A35E /* BPPageResults.m */,
 				01DB07BE197878B40008A35E /* BPUser.h */,
 				01DB07BF197878B40008A35E /* BPUser.m */,
 				01274B4E198AAC5500DB31BA /* BPPicture.h */,
@@ -584,7 +584,7 @@
 				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
 				01274B35198A9A6B00DB31BA /* BuddyCallbacks.h in Headers */,
 				5B984DA018C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h in Headers */,
-				01DB07BC197855350008A35E /* BPSearch.h in Headers */,
+				01DB07BC197855350008A35E /* BPPageResults.h in Headers */,
 				C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */,
 				5B32F36C18E071C600C07019 /* BPAFHTTPRequestOperationManager.h in Headers */,
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
@@ -796,7 +796,7 @@
 			files = (
 				C1B237601865569F005C841E /* NSString+JSON.m in Sources */,
 				5BCF3F1818D641440065842D /* BPCrashManager.m in Sources */,
-				01DB07BD197855350008A35E /* BPSearch.m in Sources */,
+				01DB07BD197855350008A35E /* BPPageResults.m in Sources */,
 				01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */,
 				018AB0E8197718D80025677B /* BPCheckin.m in Sources */,
 				01BC51D01992B37D00E04478 /* NSData+BPConversion.m in Sources */,

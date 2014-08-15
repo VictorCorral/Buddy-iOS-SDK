@@ -11,7 +11,7 @@
 
 #import "BPCheckin.h"
 #import "BPFile.h"
-#import "BPSearch.h"
+#import "BPPageResults.h"
 
 #import <Kiwi/Kiwi.h>
 
