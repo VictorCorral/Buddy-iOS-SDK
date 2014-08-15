@@ -17,7 +17,6 @@
 typedef void (^AFFailureCallback)(AFHTTPRequestOperation *operation, NSError *error);
 typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id responseObject);
 
-
 @interface BPServiceController()
 
 @property (nonatomic, strong) BPAppSettings *appSettings;
@@ -38,7 +37,6 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
 -(NSString*) generateSigForRequest:(NSString*)verb path:(NSString*)path;
 
 -(void) setAuthHeader:(NSMutableURLRequest*)request verb:(NSString*)verb path:(NSString*)path;
-
 
 @end
 
@@ -105,8 +103,6 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
     return [CryptoTools hmac256ForKey:self.sharedSecret andData:stringToSign];
 }
 
-
-
 #pragma mark - Token Management
 - (void)setupManagerWithNewSettings
 {
@@ -140,9 +136,8 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
             [request setValue:authString forHTTPHeaderField:@"Authorization"];
         }
     }
-    
-    
 }
+
 #pragma mark REST Provider
 
 -(void) makeRequest:(NSString*)verb servicePath:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
@@ -153,7 +148,6 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
     {
         servicePathEncoded = [servicePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
-    
     
     NSMutableURLRequest *request = [self.jsonRequestSerializer requestWithMethod:verb URLString:[[NSURL URLWithString:servicePathEncoded relativeToURL:self.manager.baseURL] absoluteString] parameters:parameters error:nil];
     
@@ -172,7 +166,6 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
 -(void) makeFileRequest:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback
 {
     NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:@"GET" URLString:[[NSURL URLWithString:servicePath relativeToURL:self.manager.baseURL] absoluteString] parameters:parameters error:nil];
-    
     
     [self setAuthHeader:request verb:@"GET" path:servicePath];
     
@@ -272,6 +265,5 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
         callback(statusCode, [[operation response] allHeaderFields], operation.responseString, error);
     };
 }
-
 
 @end
