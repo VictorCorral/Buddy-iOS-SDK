@@ -39,27 +39,34 @@ To create a new project using the Buddy SDK:
 
 1) Create a new Xcode project 
 
-2) In a Terminal window, type: `cd <project-dir>`
+2) In a Terminal window
 
-3) Create a Podfile `touch Podfile`
+    cd <project-dir>
+
+3) Create a Podfile 
+
+    touch Podfile
 
 4) Open the file with your favorite editor and add:
 
-      platform :ios, '6.0'
-      pod 'BuddySDK'
+    platform :ios, '6.0'
+    pod 'BuddySDK'
 
-5) Save the file, then type: `pod install`
+5) Save the Podfile
 
+6) In your terminal run
+
+    pod install
 
 ### Install Locally
 
-#### Install from Binaries
+#### Install from GitHub
 
 1) Clone this repository
 
     git clone https://github.com/BuddyPlatform/Buddy-iOS-SDK.git
 
-2) Build the project (for specific build instructions see our [documentation](https://buddyplatform.com/docs/iOS%20SDK))
+2) Build the project (for specific build instructions see our [iOS documentation](https://buddyplatform.com/docs/iOS%20SDK))
 
 3) Include the BuddySDK.framework into the Frameworks section of your project in Xcode
 
