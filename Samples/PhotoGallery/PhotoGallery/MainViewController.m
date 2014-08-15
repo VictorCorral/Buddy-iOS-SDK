@@ -91,7 +91,7 @@
         self.apiError=FALSE;
         NSLog(@"getLoadUserPhotosCallback - success Called");
         
-        BPSearch *searchResults = (BPSearch*)obj;
+        BPPageResults *searchResults = (BPPageResults*)obj;
         
         NSArray *searchObjects = [searchResults convertPageResultsToType:[BPPicture class]];
         
@@ -126,7 +126,7 @@
 
 -(void) loadUserPhotos
 {
-    [Buddy GET:@"pictures" parameters:nil class:[BPSearch class] callback:[self getLoadUserPhotosCallback]];
+    [Buddy GET:@"pictures" parameters:nil class:[BPPageResults class] callback:[self getLoadUserPhotosCallback]];
 }
 
 -(IBAction)doAddPhoto:(id)sender

@@ -1,5 +1,5 @@
 //
-//  BPModelCheckin.m
+//  BPCheckin.m
 //  BuddySDK
 //
 //  Created by Nick Ambrose on 7/16/14.

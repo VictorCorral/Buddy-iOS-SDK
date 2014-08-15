@@ -1,5 +1,5 @@
 //
-//  BPModelUserList.h
+//  BPUserList.h
 //  BuddySDK
 //
 //  Created by Nick Ambrose on 8/1/14.

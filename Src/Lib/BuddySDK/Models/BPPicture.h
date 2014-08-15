@@ -1,5 +1,5 @@
 //
-//  BPModelPicture.h
+//  BPPicture.h
 //  BuddySDK
 //
 //  Created by Nick Ambrose on 7/31/14.
