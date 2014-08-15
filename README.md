@@ -184,45 +184,6 @@ We now can call GET to search for the checkin we just created!
 #### PUT/PATCH/DELETE
 
 Each remaining REST verb is available through the Buddy SDK using the same pattern as the POST example.
-
-#### Creating Response Objects
-
-Creating strongly typed response objects is simple.  If the REST operation that you intend to call returns a response that's not available in `Models`, you can easily create one by creating an Objective-C object with fields that match the JSON response fields for the operation.
-
-1) Go to the Buddy Console and try your operation
-
-2) When the operation completes, note the fields and their types in the response
-
-3) Create an Objective-C class that derives from `ModelBase` with the appropriate properties.
-
-For example, if the response to **POST /checkins** looks like:
-
-     {
-       "status": 201,
-       "result": {
-         "comment": "h1",
-         "userID": "bv.HrcbbDkMPgfn",
-         "id": "cb.gBgbvKFkdhnp",
-         "location": {
-           "lat": 46.2,
-            "lng": -120.1
-          },
-         "created": "2014-07-09T07:07:21.463Z",
-         "lastModified": "2014-07-09T07:07:21.463Z"
-     },
-     "request_id": "53bcea29b32fad0c405372b6",
-     "success": true
-    }
-
-The corresponding Objective-C class for the _unique_ fields under `result` is:
-
-    @interface BPCheckin : BPModelBase
-
-    @property (nonatomic, copy) NSString *comment;
-
-    @end
-    
-**Note:** We do not need to specify the default common properties `id`, `userID`, `location`, `created`, or `lastModified`.
 	 
 ### Working With Files
 
