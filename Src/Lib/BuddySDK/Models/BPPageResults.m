@@ -1,15 +1,15 @@
 //
-//  BPModelSearch.m
+//  BPPageResults.m
 //  BuddySDK
 //
 //  Created by Nick Ambrose on 7/17/14.
 //
 //
 
-#import "BPSearch.h"
+#import "BPPageResults.h"
 #import "BPModelBase.h"
 
-@implementation BPSearch
+@implementation BPPageResults
 
 -(NSArray*) convertPageResultsToType:(Class)clazz
 {

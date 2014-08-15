@@ -63,7 +63,7 @@
 
 -(void) loadAllUsers
 {
-    [Buddy GET:@"users" parameters:nil class:[BPSearch class] callback:[self getAllUsersCallback]];
+    [Buddy GET:@"users" parameters:nil class:[BPPageResults class] callback:[self getAllUsersCallback]];
 }
 
 -(RESTCallback) getAllUsersCallback
@@ -81,7 +81,7 @@
             return;
         }
         
-        BPSearch *searchResult = (BPSearch*)obj;
+        BPPageResults *searchResult = (BPPageResults*)obj;
         
         NSArray *searchUsers = [searchResult convertPageResultsToType:[BPUser class]];
         NSLog(@"getAllUsersCallback - success Called");

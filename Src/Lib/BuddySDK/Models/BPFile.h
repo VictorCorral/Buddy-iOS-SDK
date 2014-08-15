@@ -1,5 +1,5 @@
 //
-//  BuddyFile.h
+//  BPFile.h
 //  BuddySDK
 //
 //  Created by Nick Ambrose on 7/15/14.

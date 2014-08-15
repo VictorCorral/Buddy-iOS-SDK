@@ -1,5 +1,5 @@
 //
-//  BPModelSearch.h
+//  BPPageResults.h
 //  BuddySDK
 //
 //  Created by Nick Ambrose on 7/17/14.
@@ -8,7 +8,9 @@
 
 #import "BPModelBase.h"
 
-@interface BPSearch : NSObject
+#define BPSearch BPPageResults
+
+@interface BPPageResults : NSObject
 
 @property (nonatomic,strong) NSString *currentToken;
 @property (nonatomic,strong) NSString *previousToken;

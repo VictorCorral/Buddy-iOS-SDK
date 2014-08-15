@@ -228,7 +228,7 @@
 {
     NSDictionary *parameters = @{@"readPermissions": @"App"};
 
-    [Buddy GET:@"users/lists" parameters:parameters class:[BPSearch class] callback:^(id obj,NSError *error)
+    [Buddy GET:@"users/lists" parameters:parameters class:[BPPageResults class] callback:^(id obj,NSError *error)
     {
         if(error!=nil)
         {
@@ -245,7 +245,7 @@
         
         [self.table clear];
         
-        BPSearch *searchResult = (BPSearch*)obj;
+        BPPageResults *searchResult = (BPPageResults*)obj;
         
         NSArray *searchItems = [searchResult convertPageResultsToType:[BPUserList class]];
         

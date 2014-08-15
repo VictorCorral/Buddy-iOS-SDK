@@ -20,7 +20,7 @@
 // Models
 #import "BPUser.h"
 #import "BPCheckin.h"
-#import "BPSearch.h"
+#import "BPPageResults.h"
 #import "BPPicture.h"
 #import "BPUserList.h"
 
