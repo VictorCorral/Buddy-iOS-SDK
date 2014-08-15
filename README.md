@@ -98,10 +98,10 @@ If you want to utilize multiple clients at once you can use:
     BPClient* firstClient = [Buddy init:@"myAppId" appKey:@"myAppKey" withOptions:options1];
     BPClient* secondClient = [Buddy init:@"myAppId" appKey:@"myAppKey" withOptions:options2];
     [firstClient GET:@"/videos" parameters:@{@"caption": @"caption search string"} callback:^(id json, NSError *error) {
-        //Do stuff here
+      // Display the video
     }];
     [secondClient loginUser:@"username" password:@"password" callback:^(id newBuddyObject, NSError *error) {
-        //Do stuff
+      // Direct user 2 to the video user 1 uploaded
     }];
 This allows you to have two users logged in at the same time, or manage multiple of any other thing the SDK tracks ( device information, location, etc.). The Buddy object will always be referencing the last client that was created.
 
@@ -139,7 +139,7 @@ The Buddy iOS SDK handles user creation, login, and logout.
 
     // Logout a user
     [Buddy logoutUser:^(NSError *error) {
-        // Perform some action on logout
+      // Perform some action on logout
     }];
 	
 ### REST Interface
@@ -158,9 +158,9 @@ In this example we'll create a checkin. Take a look at the [create checkin REST 
     
     [Buddy POST:@"/checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
         if(!error) {
-            NSLog(@"Checkin post went as planned");
+          NSLog(@"Checkin post went as planned");
         } else {
-            NSLog(@"%@", error);
+          NSLog(@"%@", error);
         }
     }];
 
@@ -178,8 +178,8 @@ We now can call GET to search for the checkin we just created!
           NSArray *checkins = [searchResults convertPageResultsToType:[BPCheckin class] ];
           NSLog(@"%@", checkins); // Log or do something with the response
         } else {
-            NSLog(@"GET checkins was unsuccessful.");
-            NSLog(@"%@", error);
+          NSLog(@"GET checkins was unsuccessful.");
+          NSLog(@"%@", error);
         }
     }];
 
@@ -206,10 +206,10 @@ Here we demonstrate uploading a picture. All binary files use the same pattern w
     
     [Buddy POST:@"/pictures" parameters:parameters class:[NSDictionary class] callback:^(id obj, NSError *error) {
         if (!error) {
-            NSLog(@"Image uploaded successfully");
+          NSLog(@"Image uploaded successfully");
         } else {
-            NSLog(@"Image upload went wrong");
-            NSLog(@"%@", error);
+          NSLog(@"Image upload went wrong");
+          NSLog(@"%@", error);
         }
     }];
 
@@ -223,14 +223,14 @@ To download a file send a GET request with BPFile as the operation type. This sa
         
         if(!error)
         {
-            BPFile *file = (BPFile*)obj;
+          BPFile *file = (BPFile*)obj;
             
-            UIImage* image = [UIImage imageWithData:file.fileData];
-            // Do something with the image!
+          UIImage* image = [UIImage imageWithData:file.fileData];
+          // Do something with the image!
             
-            NSLog(@"Image download successful");
+          NSLog(@"Image download successful");
         } else {
-            NSLog(@"Something went wrong");
+          NSLog(@"Something went wrong");
         }
         
     }];
