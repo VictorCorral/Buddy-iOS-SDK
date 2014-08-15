@@ -172,9 +172,11 @@ We now can call GET to search for the checkin we just created!
     
     NSDictionary *params = @{@"locationRange": range};
     
-    [Buddy GET:@"/checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
+    [Buddy GET:@"/checkins" parameters:params class:[BPPageResults class] callback:^(id obj, NSError *error) {
         if(!error) {
-            NSLog(@"%@", obj); // Log or do something with the response
+          BPPageResults *searchResults = (BPPageResults*)obj
+          NSArray *checkins = [searchResults convertPageResultsToType:[BPCheckin class] ];
+          NSLog(@"%@", checkins); // Log or do something with the response
         } else {
             NSLog(@"GET checkins was unsuccessful.");
             NSLog(@"%@", error);
