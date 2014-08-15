@@ -28,11 +28,9 @@
 
 @interface Buddy : NSObject
 
- /* The currently logged in user. Will be nil if no login session has occurred.
+/* The currently logged in user. Will be nil if no login has occurred.
+ *
  */
-
-//@property (nonatomic,strong) BPModelUser *user;
-
 + (BPUser*)user;
 + (void) setUser:(BPUser*)user;
 
