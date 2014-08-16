@@ -199,7 +199,7 @@
         {
             
             UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle: @"Already On"
+            [[UIAlertView alloc] initWithTitle: @"Not On List"
                                        message: @"You were not on that list"
                                       delegate: weakSelf
                              cancelButtonTitle: @"OK"
@@ -210,7 +210,7 @@
         }
         
         UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle: @"Joined"
+        [[UIAlertView alloc] initWithTitle: @"Left List"
                                    message: @"You left the list"
                                   delegate: weakSelf
                          cancelButtonTitle: @"OK"
