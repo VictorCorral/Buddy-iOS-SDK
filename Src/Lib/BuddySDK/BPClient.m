@@ -19,6 +19,7 @@
 #import "BPFile.h"
 
 #import <CoreFoundation/CoreFoundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 #define BuddyServiceURL @"BuddyServiceURL"
 #define BuddyDefaultURL @"https://api.buddyplatform.com"
@@ -585,6 +586,11 @@
         else if([[val class] isSubclassOfClass:[BPSize class]])
         {
             val = [val stringValue];
+        }
+        else if([[val class] isSubclassOfClass:[CLLocation class]])
+        {
+            CLLocation *loc = (CLLocation*)val;
+            val = [NSString stringWithFormat:@"%.4f,%.4f",loc.coordinate.latitude, loc.coordinate.longitude ];
         }
         if (val) {
             parameters[name] = val;

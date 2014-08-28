@@ -6,6 +6,8 @@
 //
 //
 
+#import <CoreLocation/CoreLocation.h>
+
 #import "Buddy.h"
 #import "BuddyIntegrationHelper.h"
 
@@ -97,6 +99,43 @@ describe(@"BPUser", ^{
             [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
         });
         
+        it(@"Should allow creating a checkin with CLLocation", ^{
+            
+            __block BOOL fin = NO;
+            CLLocationDegrees lat = 22.4;
+            CLLocationDegrees lng = 44.6;
+            
+            CLLocation *loc = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+            
+            NSDictionary *checkin = @{@"comment":@"my checkin with model", @"description":@"it was an even better place",@"location":loc};
+            
+            [Buddy POST:@"checkins" parameters:checkin class:[BPCheckin class] callback:^(id obj, NSError *error) {
+                
+                [[error should] beNil];
+                if(error!=nil)
+                {
+                    return;
+                }
+                
+                BPCheckin *checkinResult = (BPCheckin*)obj;
+                [[checkinResult should] beNonNil];
+                
+                [[checkinResult.id should] beNonNil];
+                
+                [[checkinResult.created should] beNonNil];
+                
+                [[checkinResult.comment should] equal:@"my checkin with model"];
+                
+                [[checkinResult.description should] equal: @"it was an even better place"];
+                
+                [[theValue(checkinResult.location.lat) should] equal: 22.4 withDelta:FLT_EPSILON];
+                [[theValue(checkinResult.location.lng) should] equal: 44.6 withDelta:FLT_EPSILON];
+                fin = YES;
+                
+            }];
+            [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
+        });
+    
         it(@"Should allow updating a checkin with a model", ^{
             
             __block BOOL fin = NO;
@@ -132,27 +171,27 @@ describe(@"BPUser", ^{
                     }
                     
                     [Buddy GET:[NSString stringWithFormat:@"/checkins/%@",checkinResult.id] parameters:nil class: [BPCheckin class] callback:^(id getObj,  NSError *error)
-                    {
-                        BPCheckin *checkinResultPatched = (BPCheckin*)getObj;
-                        [[checkinResult should] beNonNil];
-                        
-                        
-                        [[checkinResultPatched.id should] equal:checkinResult.id];
-                        
-                        [[checkinResultPatched.created should] beNonNil];
-                        
-                        [[checkinResultPatched.comment should] equal:@"my checkin with model patched"];
-                        
-                        [[checkinResultPatched.description should] equal: @"it was an even better place"];
-                        
-                        fin = YES;
-                    }];
+                     {
+                         BPCheckin *checkinResultPatched = (BPCheckin*)getObj;
+                         [[checkinResult should] beNonNil];
+                         
+                         
+                         [[checkinResultPatched.id should] equal:checkinResult.id];
+                         
+                         [[checkinResultPatched.created should] beNonNil];
+                         
+                         [[checkinResultPatched.comment should] equal:@"my checkin with model patched"];
+                         
+                         [[checkinResultPatched.description should] equal: @"it was an even better place"];
+                         
+                         fin = YES;
+                     }];
                 }];
                 
             }];
             [[expectFutureValue(theValue(fin)) shouldEventually] beYes];
         });
-    
+        
         it(@"Should allow deleting a checkin", ^{
         
         __block BOOL fin = NO;
