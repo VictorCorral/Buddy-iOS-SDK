@@ -44,6 +44,7 @@
     
     [self.window makeKeyAndVisible];
     
+    
     [Buddy init: APP_ID appKey: APP_KEY];
     [[Buddy currentClient] notifyPushRecieved:launchOptions];
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge
@@ -65,8 +66,13 @@
 
 -(void) application:(UIApplication*) application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    [Buddy handleNotificationActivated:application withDictionary:userInfo];
     ReceivedMessage *message = [[CommonAppDelegate receivedMessages] addMessageFromDict:userInfo];
     [[iToast makeText:[NSString stringWithFormat:@"%@:%@",message.channel, message.message]] show];    
+}
+
+-(void) application:(UIApplication*) application didReceiveLocalNotification:(UILocalNotification *)notification{
+    [Buddy handleNotificationActivated:application withNotification:notification];
 }
 
 /* UserName */
