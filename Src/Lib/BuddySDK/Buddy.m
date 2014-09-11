@@ -138,7 +138,7 @@ static BPClient* currentClient;
     [currentClient logoutUser:callback];
 }
 
-+ (void)handleNotificationActivated:(UIApplication *)application withDictionary:(NSDictionary *)userInfo {
++ (void)recordNotificationReceived:(UIApplication *)application withDictionary:(NSDictionary *)userInfo{
     if(UIApplicationStateActive != application.applicationState
        && [userInfo valueForKey:@"_bId"] != nil){
         NSString* path = [NSString stringWithFormat:@"/notifications/received/%@",
@@ -149,7 +149,7 @@ static BPClient* currentClient;
     }
 }
 
-+(void) handleNotificationActivated:(UIApplication *)application withNotification:(UILocalNotification *)notification {
++(void) recordNotificationReceived:(UIApplication *)application withNotification:(UILocalNotification *)notification {
     if(UIApplicationStateActive != application.applicationState
        && [notification.userInfo valueForKey:@"_bId"]){
         NSString* path = [NSString stringWithFormat:@"/notifications/received/%@",

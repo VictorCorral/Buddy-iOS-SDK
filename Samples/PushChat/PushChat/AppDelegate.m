@@ -66,13 +66,13 @@
 
 -(void) application:(UIApplication*) application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    [Buddy handleNotificationActivated:application withDictionary:userInfo];
+    [Buddy recordNotificationReceived:application withDictionary:userInfo];
     ReceivedMessage *message = [[CommonAppDelegate receivedMessages] addMessageFromDict:userInfo];
     [[iToast makeText:[NSString stringWithFormat:@"%@:%@",message.channel, message.message]] show];    
 }
 
 -(void) application:(UIApplication*) application didReceiveLocalNotification:(UILocalNotification *)notification{
-    [Buddy handleNotificationActivated:application withNotification:notification];
+    [Buddy recordNotificationReceived:application withNotification:notification];
 }
 
 /* UserName */

@@ -96,8 +96,8 @@
 + (void)logoutUser:(BuddyCompletionCallback)callback;
 
 
-+ (void)handleNotificationActivated:(UIApplication*) application withDictionary:(NSDictionary*)userInfo;
-+ (void)handleNotificationActivated:(UIApplication *)application withNotification:(UILocalNotification *)notification;
++ (void)recordNotificationReceived:(UIApplication*) application withDictionary:(NSDictionary*)userInfo;
++ (void)recordNotificationReceived:(UIApplication*)application withNotification:(UILocalNotification *)notification;
 
 
 
