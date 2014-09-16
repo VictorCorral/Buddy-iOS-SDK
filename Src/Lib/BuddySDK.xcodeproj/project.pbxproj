@@ -22,7 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		012311AA199D407B003081CA /* BPFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 012311A8199D407B003081CA /* BPFile.h */; };
+		012311AA199D407B003081CA /* BPFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 012311A8199D407B003081CA /* BPFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012311AB199D407B003081CA /* BPFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 012311A9199D407B003081CA /* BPFile.m */; };
 		012311AE199D48F9003081CA /* BPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 012311AC199D48F9003081CA /* BPClient.h */; };
 		012311AF199D48F9003081CA /* BPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 012311AD199D48F9003081CA /* BPClient.m */; };
@@ -32,31 +32,31 @@
 		01274B4D198AA96D00DB31BA /* BPCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4B198AA96D00DB31BA /* BPCoordinate.m */; };
 		01274B50198AAC5500DB31BA /* BPPicture.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4E198AAC5500DB31BA /* BPPicture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01274B51198AAC5500DB31BA /* BPPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4F198AAC5500DB31BA /* BPPicture.m */; };
-		012E59D219AD492C0034B926 /* BPBinaryModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D019AD492C0034B926 /* BPBinaryModelBase.h */; };
+		012E59D219AD492C0034B926 /* BPBinaryModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D019AD492C0034B926 /* BPBinaryModelBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E59D319AD492C0034B926 /* BPBinaryModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D119AD492C0034B926 /* BPBinaryModelBase.m */; };
-		012E59D619AD4B550034B926 /* BPAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D419AD4B550034B926 /* BPAlbum.h */; };
+		012E59D619AD4B550034B926 /* BPAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D419AD4B550034B926 /* BPAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E59D719AD4B550034B926 /* BPAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D519AD4B550034B926 /* BPAlbum.m */; };
-		012E59DA19AD4C330034B926 /* BPAlbumItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D819AD4C330034B926 /* BPAlbumItem.h */; };
+		012E59DA19AD4C330034B926 /* BPAlbumItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D819AD4C330034B926 /* BPAlbumItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E59DB19AD4C330034B926 /* BPAlbumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D919AD4C330034B926 /* BPAlbumItem.m */; };
-		012E59F619AD4F120034B926 /* BPNotificationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59F419AD4F120034B926 /* BPNotificationResult.h */; };
+		012E59F619AD4F120034B926 /* BPNotificationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59F419AD4F120034B926 /* BPNotificationResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E59F719AD4F120034B926 /* BPNotificationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59F519AD4F120034B926 /* BPNotificationResult.m */; };
-		012E5A0419AD4FA40034B926 /* BPBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59F819AD4FA40034B926 /* BPBlob.h */; };
+		012E5A0419AD4FA40034B926 /* BPBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59F819AD4FA40034B926 /* BPBlob.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A0519AD4FA40034B926 /* BPBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59F919AD4FA40034B926 /* BPBlob.m */; };
-		012E5A0619AD4FA40034B926 /* BPCheckin.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FA19AD4FA40034B926 /* BPCheckin.h */; };
+		012E5A0619AD4FA40034B926 /* BPCheckin.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FA19AD4FA40034B926 /* BPCheckin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A0719AD4FA40034B926 /* BPCheckin.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FB19AD4FA40034B926 /* BPCheckin.m */; };
-		012E5A0819AD4FA40034B926 /* BPIdentity.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FC19AD4FA40034B926 /* BPIdentity.h */; };
+		012E5A0819AD4FA40034B926 /* BPIdentity.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FC19AD4FA40034B926 /* BPIdentity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A0919AD4FA40034B926 /* BPIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FD19AD4FA40034B926 /* BPIdentity.m */; };
-		012E5A0A19AD4FA40034B926 /* BPLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FE19AD4FA40034B926 /* BPLocation.h */; };
+		012E5A0A19AD4FA40034B926 /* BPLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FE19AD4FA40034B926 /* BPLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A0B19AD4FA40034B926 /* BPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FF19AD4FA40034B926 /* BPLocation.m */; };
-		012E5A0C19AD4FA40034B926 /* BPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A0019AD4FA40034B926 /* BPMessage.h */; };
+		012E5A0C19AD4FA40034B926 /* BPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A0019AD4FA40034B926 /* BPMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A0D19AD4FA40034B926 /* BPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A0119AD4FA40034B926 /* BPMessage.m */; };
-		012E5A0E19AD4FA40034B926 /* BPMetadataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A0219AD4FA40034B926 /* BPMetadataItem.h */; };
+		012E5A0E19AD4FA40034B926 /* BPMetadataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A0219AD4FA40034B926 /* BPMetadataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A0F19AD4FA40034B926 /* BPMetadataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A0319AD4FA40034B926 /* BPMetadataItem.m */; };
-		012E5A1219AD519F0034B926 /* BPUserListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A1019AD519F0034B926 /* BPUserListItem.h */; };
+		012E5A1219AD519F0034B926 /* BPUserListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A1019AD519F0034B926 /* BPUserListItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A1319AD519F0034B926 /* BPUserListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A1119AD519F0034B926 /* BPUserListItem.m */; };
-		012E5A1619AD51F10034B926 /* BPVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A1419AD51F10034B926 /* BPVideo.h */; };
+		012E5A1619AD51F10034B926 /* BPVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A1419AD51F10034B926 /* BPVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A1719AD51F10034B926 /* BPVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A1519AD51F10034B926 /* BPVideo.m */; };
-		012E5A1A19AD53E60034B926 /* BPSocialAuthenticatedUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A1819AD53E60034B926 /* BPSocialAuthenticatedUser.h */; };
+		012E5A1A19AD53E60034B926 /* BPSocialAuthenticatedUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A1819AD53E60034B926 /* BPSocialAuthenticatedUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A1B19AD53E60034B926 /* BPSocialAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A1919AD53E60034B926 /* BPSocialAuthenticatedUser.m */; };
 		016FAB3B198C19B20021D3A8 /* BPUserList.h in Headers */ = {isa = PBXBuildFile; fileRef = 016FAB39198C19B20021D3A8 /* BPUserList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		016FAB3C198C19B20021D3A8 /* BPUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 016FAB3A198C19B20021D3A8 /* BPUserList.m */; };
@@ -642,31 +642,38 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				012E5A0C19AD4FA40034B926 /* BPMessage.h in Headers */,
 				C1427672189AAC3700D5DD85 /* BPAppSettings.h in Headers */,
-				012E5A1A19AD53E60034B926 /* BPSocialAuthenticatedUser.h in Headers */,
 				C10E2BB6186951FA007A0136 /* Buddy.h in Headers */,
 				5B19875B18CB67D800FBB502 /* NSDate+BPDateHelper.h in Headers */,
 				018AB0E31977176B0025677B /* BPModelBase.h in Headers */,
-				012311AA199D407B003081CA /* BPFile.h in Headers */,
 				01DB07C0197878B40008A35E /* BPUser.h in Headers */,
-				012E59D619AD4B550034B926 /* BPAlbum.h in Headers */,
 				01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */,
 				01274B32198A9A1D00DB31BA /* BuddyClientProtocol.h in Headers */,
 				01274B50198AAC5500DB31BA /* BPPicture.h in Headers */,
+				012E59D619AD4B550034B926 /* BPAlbum.h in Headers */,
+				012E5A0C19AD4FA40034B926 /* BPMessage.h in Headers */,
+				012311AA199D407B003081CA /* BPFile.h in Headers */,
 				016FAB3B198C19B20021D3A8 /* BPUserList.h in Headers */,
-				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
 				012E5A0E19AD4FA40034B926 /* BPMetadataItem.h in Headers */,
+				012E59DA19AD4C330034B926 /* BPAlbumItem.h in Headers */,
+				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
+				012E5A1619AD51F10034B926 /* BPVideo.h in Headers */,
+				012E5A0619AD4FA40034B926 /* BPCheckin.h in Headers */,
 				01274B35198A9A6B00DB31BA /* BuddyCallbacks.h in Headers */,
+				012E5A0A19AD4FA40034B926 /* BPLocation.h in Headers */,
+				012E5A1219AD519F0034B926 /* BPUserListItem.h in Headers */,
+				012E59D219AD492C0034B926 /* BPBinaryModelBase.h in Headers */,
+				012E5A0419AD4FA40034B926 /* BPBlob.h in Headers */,
+				012E59F619AD4F120034B926 /* BPNotificationResult.h in Headers */,
+				012E5A1A19AD53E60034B926 /* BPSocialAuthenticatedUser.h in Headers */,
+				012E5A0819AD4FA40034B926 /* BPIdentity.h in Headers */,
 				5B984DA018C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h in Headers */,
 				01DB07BC197855350008A35E /* BPPageResults.h in Headers */,
-				012E5A1619AD51F10034B926 /* BPVideo.h in Headers */,
 				C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */,
 				5B32F36C18E071C600C07019 /* BPAFHTTPRequestOperationManager.h in Headers */,
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
 				5B32F37118E071C600C07019 /* BPAFNetworkReachabilityManager.h in Headers */,
 				5B0B23D419133E4E005CB913 /* BPSize.h in Headers */,
-				012E59DA19AD4C330034B926 /* BPAlbumItem.h in Headers */,
 				C154CEFA187FAE8600EACE4B /* NSDate+JSON.h in Headers */,
 				5B32F37518E071C600C07019 /* BPAFURLConnectionOperation.h in Headers */,
 				C10E2BB1186951C3007A0136 /* BuddyDevice.h in Headers */,
@@ -679,24 +686,17 @@
 				C153F87017E15FC1009CDC81 /* Util.h in Headers */,
 				5B32F37918E071C600C07019 /* BPAFURLResponseSerialization.h in Headers */,
 				012311AE199D48F9003081CA /* BPClient.h in Headers */,
-				012E5A0819AD4FA40034B926 /* BPIdentity.h in Headers */,
 				5B32F37718E071C600C07019 /* BPAFURLRequestSerialization.h in Headers */,
 				C1E0D1D81831BAD3001A7A01 /* JAGPropertyFinder.h in Headers */,
 				5BCF8299191300DD00A26EA7 /* NSArray+BPSugar.h in Headers */,
-				012E5A1219AD519F0034B926 /* BPUserListItem.h in Headers */,
 				C1B0F518189373EB000403E0 /* BPUIImageView+AFNetworking.h in Headers */,
-				012E59D219AD492C0034B926 /* BPBinaryModelBase.h in Headers */,
 				C1AA90D818371FF70074B7E8 /* BPServiceController.h in Headers */,
 				01BC51CF1992B37D00E04478 /* NSData+BPConversion.h in Headers */,
 				C1E0D1D11831BAD3001A7A01 /* JAGProperty.h in Headers */,
 				C1E0D1D41831BAD3001A7A01 /* JAGPropertyConverter-Prefix.pch in Headers */,
-				012E5A0A19AD4FA40034B926 /* BPLocation.h in Headers */,
-				012E5A0619AD4FA40034B926 /* BPCheckin.h in Headers */,
 				C1B2375F1865569F005C841E /* NSString+JSON.h in Headers */,
 				C1E0D1D51831BAD3001A7A01 /* JAGPropertyConverter.h in Headers */,
 				5BCF9D7C192947A6000D173B /* BPAFSecurityPolicy.h in Headers */,
-				012E59F619AD4F120034B926 /* BPNotificationResult.h in Headers */,
-				012E5A0419AD4FA40034B926 /* BPBlob.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,7 +984,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 3.0.3;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -1034,7 +1034,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 3.0.3;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
@@ -1069,7 +1069,7 @@
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 3.0.3;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/BuddySDK.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1135,7 +1135,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 3.0.3;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/BuddySDK.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1194,7 +1194,7 @@
 		C19ECC3517DEA28D008A9130 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 3.0.3;
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1206,7 +1206,7 @@
 		C19ECC3617DEA28D008A9130 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 3.0.2;
+				CURRENT_PROJECT_VERSION = 3.0.3;
 				GCC_PREPROCESSOR_DEFINITIONS = "NOLOG=1";
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -19,6 +19,7 @@
 #import "BPFile.h"
 
 #import <CoreFoundation/CoreFoundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 #define BuddyServiceURL @"BuddyServiceURL"
 #define BuddyDefaultURL @"https://api.buddyplatform.com"
@@ -87,7 +88,7 @@
     NSString *serviceUrl = [[NSBundle mainBundle] infoDictionary][BuddyServiceURL];
 #endif
 
-    serviceUrl = serviceUrl ?: @"https://api.buddyplatform.com";
+    serviceUrl = serviceUrl ? : BuddyDefaultURL;
     
     if (options[@"BPTestAppPrefix"]) {
         _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl prefix:options[@"BPTestAppPrefix"]];
@@ -101,6 +102,9 @@
     
     _appSettings.appKey = appKey;
     _appSettings.appID = appID;
+    
+    _appSettings.deviceTag = options[@"deviceTag"];
+    _appSettings.deviceUniqueId = options[@"deviceUniqueId"];
     
     _crashManager = [[BPCrashManager alloc] initWithRestProvider:self];
     
@@ -371,11 +375,12 @@
                                                  @"appId": BOXNIL(self.appSettings.appID),
                                                  @"appKey": BOXNIL(self.appSettings.appKey),
                                                  @"Platform": @"iOS",
-                                                 @"UniqueId": BOXNIL([BuddyDevice identifier]),
+                                                 @"UniqueId": BOXNIL(self.appSettings.deviceUniqueId ?: [BuddyDevice identifier]),
                                                  @"Model": BOXNIL([BuddyDevice deviceModel]),
                                                  @"OSVersion": BOXNIL([BuddyDevice osVersion]),
                                                  @"DeviceToken": BOXNIL(self.appSettings.devicePushToken),
-                                                 @"AppVersion": BOXNIL(self.appSettings.appVersion)
+                                                 @"AppVersion": BOXNIL(self.appSettings.appVersion),
+                                                 @"Tag": BOXNIL(self.appSettings.deviceTag)
                                                  };
                 
                 
@@ -585,6 +590,11 @@
         else if([[val class] isSubclassOfClass:[BPSize class]])
         {
             val = [val stringValue];
+        }
+        else if([[val class] isSubclassOfClass:[CLLocation class]])
+        {
+            CLLocation *loc = (CLLocation*)val;
+            val = [NSString stringWithFormat:@"%.4f,%.4f",loc.coordinate.latitude, loc.coordinate.longitude ];
         }
         if (val) {
             parameters[name] = val;

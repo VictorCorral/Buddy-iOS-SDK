@@ -44,7 +44,9 @@
     
     [self.window makeKeyAndVisible];
     
-    [Buddy init: APP_ID appKey: APP_KEY];
+    // Go to http://buddyplatform.com to get an app ID and app key.
+    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
+
     [[Buddy currentClient] notifyPushRecieved:launchOptions];
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge
          | UIRemoteNotificationTypeNewsstandContentAvailability | UIRemoteNotificationTypeNone
@@ -65,8 +67,13 @@
 
 -(void) application:(UIApplication*) application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    [Buddy recordNotificationReceived:application withDictionary:userInfo];
     ReceivedMessage *message = [[CommonAppDelegate receivedMessages] addMessageFromDict:userInfo];
     [[iToast makeText:[NSString stringWithFormat:@"%@:%@",message.channel, message.message]] show];    
+}
+
+-(void) application:(UIApplication*) application didReceiveLocalNotification:(UILocalNotification *)notification{
+    [Buddy recordNotificationReceived:application withNotification:notification];
 }
 
 /* UserName */

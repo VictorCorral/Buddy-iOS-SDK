@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import "BuddyDevice.h"
 #import "BPCoordinate.h"
@@ -94,6 +95,12 @@
  *
  */
 + (void)logoutUser:(BuddyCompletionCallback)callback;
+
+
++ (void)recordNotificationReceived:(UIApplication *)application withDictionary:(NSDictionary *)userInfo;
++ (void)recordNotificationReceived:(UIApplication *)application withNotification:(UILocalNotification *)notification;
+
+
 
 /** 
  * Records a metric.
