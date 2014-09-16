@@ -88,7 +88,7 @@
     NSString *serviceUrl = [[NSBundle mainBundle] infoDictionary][BuddyServiceURL];
 #endif
 
-    serviceUrl = serviceUrl ?: @"http://staging.buddyplatform.com:10080";
+    serviceUrl = serviceUrl ? : BuddyDefaultURL;
     
     if (options[@"BPTestAppPrefix"]) {
         _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl prefix:options[@"BPTestAppPrefix"]];
