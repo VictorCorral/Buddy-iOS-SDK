@@ -44,8 +44,9 @@
     
     [self.window makeKeyAndVisible];
     
-    
-    [Buddy init: APP_ID appKey: APP_KEY];
+    // Go to http://buddyplatform.com to get an app ID and app key.
+    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
+
     [[Buddy currentClient] notifyPushRecieved:launchOptions];
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge
          | UIRemoteNotificationTypeNewsstandContentAvailability | UIRemoteNotificationTypeNone
