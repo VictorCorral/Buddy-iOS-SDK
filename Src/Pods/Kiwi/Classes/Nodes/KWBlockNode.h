@@ -19,10 +19,6 @@
 
 @property (nonatomic, strong, readonly) KWCallSite *callSite;
 
-#pragma mark - Getting Descriptions
-
-@property (nonatomic, copy) NSString *description;
-
 #pragma mark - Getting Blocks
 
 @property (nonatomic, copy, readonly) void (^block)(void);
