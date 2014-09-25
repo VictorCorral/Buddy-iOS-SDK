@@ -30,6 +30,10 @@
 
 @property (nonatomic, weak, readonly) KWCallSite *callSite;
 
+#pragma mark - Getting Descriptions
+
+@property (nonatomic, copy) NSString *description;
+
 #pragma mark - Managing Nodes
 
 @property (nonatomic, strong) KWBeforeAllNode *beforeAllNode;

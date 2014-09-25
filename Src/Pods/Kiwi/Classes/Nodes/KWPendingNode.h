@@ -24,4 +24,8 @@
 
 @property (nonatomic, readonly) KWCallSite *callSite;
 
+#pragma mark - Getting Descriptions
+
+@property (nonatomic, copy) NSString *description;
+
 @end
