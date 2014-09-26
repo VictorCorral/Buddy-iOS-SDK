@@ -10,4 +10,6 @@
 
 @implementation BPLocation
 
+@synthesize description;
+
 @end

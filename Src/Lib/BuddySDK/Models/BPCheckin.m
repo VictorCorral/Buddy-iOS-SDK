@@ -10,4 +10,6 @@
 
 @implementation BPCheckin
 
+@synthesize description;
+
 @end
