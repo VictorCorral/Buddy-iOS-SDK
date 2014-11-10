@@ -88,7 +88,7 @@
     NSString *serviceUrl = [[NSBundle mainBundle] infoDictionary][BuddyServiceURL];
 #endif
 
-    serviceUrl = serviceUrl ?: @"http://staging.buddyplatform.com:10080";
+    serviceUrl = serviceUrl ? : BuddyDefaultURL;
     
     if (options[@"BPTestAppPrefix"]) {
         _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl prefix:options[@"BPTestAppPrefix"]];
@@ -102,6 +102,9 @@
     
     _appSettings.appKey = appKey;
     _appSettings.appID = appID;
+    
+    _appSettings.deviceTag = options[@"deviceTag"];
+    _appSettings.deviceUniqueId = options[@"deviceUniqueId"];
     
     _crashManager = [[BPCrashManager alloc] initWithRestProvider:self];
     
@@ -372,11 +375,12 @@
                                                  @"appId": BOXNIL(self.appSettings.appID),
                                                  @"appKey": BOXNIL(self.appSettings.appKey),
                                                  @"Platform": @"iOS",
-                                                 @"UniqueId": BOXNIL([BuddyDevice identifier]),
+                                                 @"UniqueId": BOXNIL(self.appSettings.deviceUniqueId ?: [BuddyDevice identifier]),
                                                  @"Model": BOXNIL([BuddyDevice deviceModel]),
                                                  @"OSVersion": BOXNIL([BuddyDevice osVersion]),
                                                  @"DeviceToken": BOXNIL(self.appSettings.devicePushToken),
-                                                 @"AppVersion": BOXNIL(self.appSettings.appVersion)
+                                                 @"AppVersion": BOXNIL(self.appSettings.appVersion),
+                                                 @"Tag": BOXNIL(self.appSettings.deviceTag)
                                                  };
                 
                 
