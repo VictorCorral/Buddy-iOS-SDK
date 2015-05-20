@@ -45,16 +45,28 @@
     [self.window makeKeyAndVisible];
     
     // Go to http://buddyplatform.com to get an app ID and app key.
-    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
+    [Buddy init:\"Your App Id" appKey:\"Your App Key"];
 
     [[Buddy currentClient] notifyPushRecieved:launchOptions];
-    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge
-         | UIRemoteNotificationTypeNewsstandContentAvailability | UIRemoteNotificationTypeNone
-     | UIRemoteNotificationTypeSound ];
+    if([application respondsToSelector:@selector(registerForRemoteNotifications)]){
+        [application registerUserNotificationSettings:
+         [UIUserNotificationSettings settingsForTypes:
+          (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeNone | UIUserNotificationTypeSound)categories:nil]];
+    } else {
+        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert
+             | UIRemoteNotificationTypeBadge
+             | UIRemoteNotificationTypeNewsstandContentAvailability
+             | UIRemoteNotificationTypeNone
+             | UIRemoteNotificationTypeSound ];
+    }
     
     _channels =[[ChannelList alloc] init];
     _receivedMessages = [ReceivedMessageTable new];
     return YES;
+}
+
+-(void) application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
+    [application registerForRemoteNotifications];
 }
 
 -(void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error  {
@@ -62,7 +74,13 @@
 }
 -(void) application:(UIApplication*) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"%@", deviceToken);
-    [[Buddy currentClient] registerPushTokenWithData:deviceToken callback:nil];
+    [[Buddy currentClient] registerPushTokenWithData:deviceToken callback:^(id newBuddyObject, NSError *error) {
+        if(error){
+            NSLog(@"Error sending pushToken %@", error);
+        } else {
+            NSLog(@"Patch call succeeded %@", newBuddyObject);
+        }
+    }];
 }
 
 -(void) application:(UIApplication*) application didReceiveRemoteNotification:(NSDictionary *)userInfo
