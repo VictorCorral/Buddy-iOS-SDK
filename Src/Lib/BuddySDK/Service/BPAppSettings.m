@@ -7,6 +7,7 @@
 //
 
 #import "BPAppSettings.h"
+#import "JAGPropertyConverter+BPJSONConverter.h"
 
 @interface BPAppSettings()
 

@@ -5,7 +5,7 @@
 //  Created by Erik Kerber on 12/29/13.
 //
 //
-
+#import "Macro.h"
 #import "NSError+BuddyError.h"
 
 @implementation NSError (BuddyError)

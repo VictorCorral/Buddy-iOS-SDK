@@ -17,6 +17,8 @@
 #import "CryptoTools.h"
 #import "BPUser.h"
 #import "BPFile.h"
+#import "JAGPropertyConverter+BPJSONConverter.h"
+#import "NSError+BuddyError.h"
 
 #import <CoreFoundation/CoreFoundation.h>
 #import <CoreLocation/CoreLocation.h>

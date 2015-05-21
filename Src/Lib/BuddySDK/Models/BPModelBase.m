@@ -6,6 +6,8 @@
 //
 //
 
+#import "NSArray+BPSugar.h"
+#import "JAGPropertyConverter+BPJSONConverter.h"
 #import "BPModelBase.h"
 
 @implementation BPModelBase
