@@ -71,6 +71,7 @@
 		01DB07BD197855350008A35E /* BPPageResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BB197855350008A35E /* BPPageResults.m */; };
 		01DB07C0197878B40008A35E /* BPUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BE197878B40008A35E /* BPUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01DB07C1197878B40008A35E /* BPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BF197878B40008A35E /* BPUser.m */; };
+		2F69F7B71B0FBB6300165250 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9A5AAB1B0E244300A72990 /* Macro.h */; };
 		2F9A59F11B0D4C6D00A72990 /* BuddySDK Universal Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9A59F01B0D4C6D00A72990 /* BuddySDK Universal Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F9A59F71B0D4C6D00A72990 /* BuddySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9A59EC1B0D4C6C00A72990 /* BuddySDK.framework */; };
 		2F9A59FE1B0D4C6D00A72990 /* BuddySDK_Universal_FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A59FD1B0D4C6D00A72990 /* BuddySDK_Universal_FrameworkTests.m */; };
@@ -932,6 +933,7 @@
 				5B984DA018C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h in Headers */,
 				01DB07BC197855350008A35E /* BPPageResults.h in Headers */,
 				C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */,
+				2F69F7B71B0FBB6300165250 /* Macro.h in Headers */,
 				5B32F36C18E071C600C07019 /* BPAFHTTPRequestOperationManager.h in Headers */,
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
 				5B32F37118E071C600C07019 /* BPAFNetworkReachabilityManager.h in Headers */,
@@ -973,6 +975,7 @@
 				2F9A59E81B0D4C6C00A72990 /* Frameworks */,
 				2F9A59E91B0D4C6C00A72990 /* Headers */,
 				2F9A59EA1B0D4C6C00A72990 /* Resources */,
+				2F5DDDD01B0EA66E0083363B /* Relocate Info.plist */,
 			);
 			buildRules = (
 			);
@@ -1133,6 +1136,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		2F5DDDD01B0EA66E0083363B /* Relocate Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Relocate Info.plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\n#if [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\n#then\n#SF_SDK_PLATFORM=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\n\n#if [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\n#then\n#SF_SDK_VERSION=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\n\ncp \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Info.plist\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Info.plist\"";
 		};
 		AEA5CD38B3E146AA88CA070C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1372,7 +1389,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1396,6 +1413,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = BuddySDK;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1412,7 +1430,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
