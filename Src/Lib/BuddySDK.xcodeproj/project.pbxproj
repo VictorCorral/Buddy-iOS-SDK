@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		2F69F7B81B12DCFB00165250 /* BuddySDK-Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2F69F7BB1B12DCFB00165250 /* Build configuration list for PBXAggregateTarget "BuddySDK-Universal" */;
+			buildPhases = (
+				2F69F7BC1B12E11A00165250 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "BuddySDK-Universal";
+			productName = "BuddySDK-Universal";
+		};
 		C19ECC3317DEA28D008A9130 /* Framework */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = C19ECC3417DEA28D008A9130 /* Build configuration list for PBXAggregateTarget "Framework" */;
@@ -274,13 +285,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2F9A59EB1B0D4C6C00A72990;
 			remoteInfo = "BuddySDK Universal Framework";
-		};
-		2F9A5A3D1B0E0C0300A72990 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A6291F73165C01800051F83C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6291F7B165C01800051F83C;
-			remoteInfo = BuddySDK;
 		};
 		C18875A6186FFE7F00320A00 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -980,7 +984,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2F9A5A3E1B0E0C0300A72990 /* PBXTargetDependency */,
 			);
 			name = "BuddySDK Universal Framework";
 			productName = "BuddySDK Universal Framework";
@@ -1054,6 +1057,9 @@
 				LastTestingUpgradeCheck = 0630;
 				LastUpgradeCheck = 0630;
 				TargetAttributes = {
+					2F69F7B81B12DCFB00165250 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 					2F9A59EB1B0D4C6C00A72990 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -1082,6 +1088,7 @@
 				C1E0D1E01831C2E8001A7A01 /* BuddySDK Unit Tests */,
 				2F9A59EB1B0D4C6C00A72990 /* BuddySDK Universal Framework */,
 				2F9A59F51B0D4C6D00A72990 /* BuddySDK Universal FrameworkTests */,
+				2F69F7B81B12DCFB00165250 /* BuddySDK-Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -1139,7 +1146,7 @@
 		};
 		2F5DDDD01B0EA66E0083363B /* Relocate Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -1147,9 +1154,22 @@
 			name = "Relocate Info.plist";
 			outputPaths = (
 			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\n#if [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\n#then\n#SF_SDK_PLATFORM=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\n\n#if [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\n#then\n#SF_SDK_VERSION=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/BuddySDK\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current\"\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Headers\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Headers\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Resources\"\nln -s \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Headers\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Headers\"\n\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Info.plist\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Resources/Info.plist\"";
+		};
+		2F69F7BC1B12E11A00165250 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\n#if [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\n#then\n#SF_SDK_PLATFORM=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\n\n#if [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\n#then\n#SF_SDK_VERSION=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\n\ncp \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Info.plist\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Info.plist\"";
+			shellScript = "######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=false\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME} Universal Framework.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME} Universal Framework.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n# For Swift framework, Swiftmodule needs to be copied in the universal framework\nif [ -d \"${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\n    cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* \\\n      ${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/ | echo\nfi\n                                                                            \n                                                                      \nif [ -d \"${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\n                                                                          cp -f ${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* \"${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" | echo\n                                                                      fi\n                                                                      \n                                                                      ######################\n                                                                      # On Release, copy the result to release directory\n                                                                      ######################\n                                                                      OUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n                                                                      \n                                                                      rm -rf \"$OUTPUT_DIR\"\n                                                                      mkdir -p \"$OUTPUT_DIR\"\n                                                                      \n                                                                      cp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n                                                                      \n                                                                      if [ ${REVEAL_ARCHIVE_IN_FINDER} = true ]; then\n                                                                      open \"${OUTPUT_DIR}/\"\n                                                                      fi";
 		};
 		AEA5CD38B3E146AA88CA070C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1352,11 +1372,6 @@
 			target = 2F9A59EB1B0D4C6C00A72990 /* BuddySDK Universal Framework */;
 			targetProxy = 2F9A59F81B0D4C6D00A72990 /* PBXContainerItemProxy */;
 		};
-		2F9A5A3E1B0E0C0300A72990 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6291F7B165C01800051F83C /* BuddySDK */;
-			targetProxy = 2F9A5A3D1B0E0C0300A72990 /* PBXContainerItemProxy */;
-		};
 		C18875A7186FFE7F00320A00 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A6291F7B165C01800051F83C /* BuddySDK */;
@@ -1381,6 +1396,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2F69F7B91B12DCFB00165250 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2F69F7BA1B12DCFB00165250 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		2F9A59FF1B0D4C6D00A72990 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1839,6 +1868,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2F69F7BB1B12DCFB00165250 /* Build configuration list for PBXAggregateTarget "BuddySDK-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F69F7B91B12DCFB00165250 /* Debug */,
+				2F69F7BA1B12DCFB00165250 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2F9A5A031B0D4C6D00A72990 /* Build configuration list for PBXNativeTarget "BuddySDK Universal Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
