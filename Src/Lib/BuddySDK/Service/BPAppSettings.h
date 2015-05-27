@@ -41,6 +41,5 @@
 - (void)clearUser;
 
 + (void)resetSettings;
-+ (void)resetSettings:(NSString *)prefix;
 
 @end

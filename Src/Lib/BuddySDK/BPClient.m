@@ -92,8 +92,8 @@
 
     serviceUrl = serviceUrl ? : BuddyDefaultURL;
     
-    if (options[@"BPTestAppPrefix"]) {
-        _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl prefix:options[@"BPTestAppPrefix"]];
+    if (options[@"instanceName"]) {
+        _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl prefix:options[@"instanceName"]];
     } else {
         _appSettings = [[BPAppSettings alloc] initWithAppId:appID andKey:appKey initialURL:serviceUrl];
     }
