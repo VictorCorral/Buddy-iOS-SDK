@@ -16,7 +16,7 @@
 {
     [Buddy init:APP_ID appKey:APP_KEY];
 
-    [BPAppSettings resetSettings:nil];
+    [BPAppSettings resetSettings];
 }
 
 + (void) bootstrapLogin:(void(^)())callback

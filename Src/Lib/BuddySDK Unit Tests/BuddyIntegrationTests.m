@@ -30,7 +30,7 @@ describe(@"Buddy", ^{
         
         beforeAll(^{
             
-            [BPAppSettings resetSettings:nil];
+            [BPAppSettings resetSettings];
             
             [Buddy init:APP_ID appKey:APP_KEY];
             
