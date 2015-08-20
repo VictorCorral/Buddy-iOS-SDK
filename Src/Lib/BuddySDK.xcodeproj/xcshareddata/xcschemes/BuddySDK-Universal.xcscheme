@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6291F7B165C01800051F83C"
-               BuildableName = "libBuddySDK.a"
-               BlueprintName = "BuddySDK"
+               BlueprintIdentifier = "2F69F7B81B12DCFB00165250"
+               BuildableName = "BuddySDK-Universal"
+               BlueprintName = "BuddySDK-Universal"
                ReferencedContainer = "container:BuddySDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1E0D1E01831C2E8001A7A01"
-               BuildableName = "BuddySDK Unit Tests.xctest"
-               BlueprintName = "BuddySDK Unit Tests"
-               ReferencedContainer = "container:BuddySDK.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A6291F7B165C01800051F83C"
-            BuildableName = "libBuddySDK.a"
-            BlueprintName = "BuddySDK"
-            ReferencedContainer = "container:BuddySDK.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -61,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A6291F7B165C01800051F83C"
-            BuildableName = "libBuddySDK.a"
-            BlueprintName = "BuddySDK"
+            BlueprintIdentifier = "2F69F7B81B12DCFB00165250"
+            BuildableName = "BuddySDK-Universal"
+            BlueprintName = "BuddySDK-Universal"
             ReferencedContainer = "container:BuddySDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -79,15 +60,15 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A6291F7B165C01800051F83C"
-            BuildableName = "libBuddySDK.a"
-            BlueprintName = "BuddySDK"
+            BlueprintIdentifier = "2F69F7B81B12DCFB00165250"
+            BuildableName = "BuddySDK-Universal"
+            BlueprintName = "BuddySDK-Universal"
             ReferencedContainer = "container:BuddySDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Release">
+      buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

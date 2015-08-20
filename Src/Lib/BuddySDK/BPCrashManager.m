@@ -9,6 +9,7 @@
 #import "BPCrashManager.h"
 #import <CrashReporter/CrashReporter.h>
 #include <sys/sysctl.h>
+#import "Macro.h"
 
 #ifndef CPU_TYPE_ARM64
 #define CPU_TYPE_ARM64 (CPU_TYPE_ARM | CPU_ARCH_ABI64)

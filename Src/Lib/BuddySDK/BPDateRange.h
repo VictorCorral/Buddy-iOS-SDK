@@ -5,6 +5,7 @@
 //  Created by Erik.Kerber on 3/4/14.
 //
 //
+#import <UIKit/UIKit.h>
 
 @interface BPDateRange : NSObject
 
