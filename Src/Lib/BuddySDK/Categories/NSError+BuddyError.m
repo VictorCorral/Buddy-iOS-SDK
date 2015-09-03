@@ -12,6 +12,28 @@
 
 static NSString *NoInternetError = @"NoInternetError";
 
++ (NSError *)bp_buildError:(NSInteger)httpResponseCode result:(id)result;
+{
+    NSError *buddyError;
+    
+    switch (httpResponseCode) {
+        case 400:
+        case 401:
+        case 402:
+        case 403:
+        case 404:
+        case 405:
+        case 500:
+            buddyError = [NSError buildBuddyError:result];
+            break;
+        default:
+            buddyError = [NSError bp_noInternetError:httpResponseCode message:result];
+            break;
+    }
+    
+    return buddyError;
+}
+
 + (NSError *)bp_noInternetError:(NSInteger)code message:(NSString *)message
 {
     return [NSError errorWithDomain:NoInternetError
@@ -50,6 +72,12 @@ static NSString *NoInternetError = @"NoInternetError";
     return  self.code == BPErrorAuthAppCredentialsInvalid ||
             self.code == BPErrorAuthAccessTokenInvalid;
 }
+
+- (BOOL)noInternet
+{
+    return [self.domain isEqualToString:NoInternetError];
+}
+
 
 + (NSError *)invalidObjectOperationError
 {

@@ -30,6 +30,7 @@ BOOL loginPresented;
     // This initialization does NOT cause a network call, but will be processed
     // upon the first call to a Buddy API.
 
+    #pragma message ("Go to http://buddyplatform.com to get an app ID and app key.")
     // Go to http://buddyplatform.com to get an app ID and app key.
     [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
     
@@ -41,6 +42,30 @@ BOOL loginPresented;
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)connectivityChanged:(NSNumber *)level
+{
+    BPConnectivityLevel connectivityLevel = [level intValue];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Connectivity Alert"
+                                                    message: [self getConnectivityMessage:connectivityLevel]
+                                                   delegate: self
+                                          cancelButtonTitle: @"OK"
+                                          otherButtonTitles: nil];
+    [alert show];
+}
+
+- (NSString *)getConnectivityMessage:(BPConnectivityLevel)level
+{
+    switch (level) {
+        case BPConnectivityNone:
+            return @"No connectivity...";
+            
+        case BPConnectivityCarrier:
+        case BPConnectivityWiFi:
+            return @"Connected!";
+    }
 }
 
 //

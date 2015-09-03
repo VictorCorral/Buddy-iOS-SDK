@@ -266,4 +266,20 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
     };
 }
 
+-(BPConnectivityLevel) getConnectivityLevel
+{
+    switch (_manager.reachabilityManager.networkReachabilityStatus)
+    {
+        case AFNetworkReachabilityStatusNotReachable:
+            return BPConnectivityNone;
+            
+        case AFNetworkReachabilityStatusReachableViaWWAN:
+        case AFNetworkReachabilityStatusUnknown:
+        default:
+            return BPConnectivityCarrier;
+            
+        case AFNetworkReachabilityStatusReachableViaWiFi:
+            return BPConnectivityWiFi;
+    }
+}
 @end

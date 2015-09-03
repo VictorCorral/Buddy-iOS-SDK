@@ -1,6 +1,6 @@
 
 
-#pragma message ("Insert your own AppID and Key")
+#pragma message ("Go to http://buddyplatform.com to get an app ID and app key.")
 #ifdef CI_APP_ID
 #define APP_ID CI_APP_ID
 #define APP_KEY CI_APP_KEY

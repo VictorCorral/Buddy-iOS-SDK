@@ -15,16 +15,22 @@
 @class BPUser;
 
 
-/**
- * Enum specifying the current authentication level.
- */
-typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
+typedef NS_ENUM(NSInteger, BPConnectivityLevel) {
     /** No network reachability */
-    BPReachabilityNone     = 0,
-    /** Reachable via carrier */
-    BPReachabilityCarrier = 1,
-    /** Reachability not known */
-    BPReachabilityWiFi = 2,
+    BPConnectivityNone     = 0,
+    /** Reachable via carrier or not known */
+    BPConnectivityCarrier = 1,
+    /** Reachability via WiFi */
+    BPConnectivityWiFi = 2,
+};
+
+typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
+    /** No authentication */
+    BPAuthenticationLevelNone,
+    /** App/Device level authentication */
+    BPAuthenticationLevelDevice,
+    /** User level authentication */
+    BPAuthenticationLevelUser
 };
 
 @protocol BPClientDelegate <NSObject>
@@ -32,7 +38,7 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 @optional
 
 - (void)userChangedTo:(BPUser *)newUser from:(BPUser *)oldUser;
-- (void)connectivityChanged:(BPReachabilityLevel)level;
+- (void)connectivityChanged:(NSNumber *)level;
 - (void)apiErrorOccurred:(NSError *)error;
 - (void)authorizationNeedsUserLogin;
 
@@ -45,7 +51,7 @@ typedef NS_ENUM(NSInteger, BPReachabilityLevel) {
 
 @property (nonatomic, strong) BPCoordinate *lastLocation;
 
-@property (nonatomic, readonly, assign) BPReachabilityLevel reachabilityLevel;
+@property (nonatomic, readonly, assign) BPConnectivityLevel connectivityLevel;
 
 @property (nonatomic, strong) BPUser *currentUser;
 

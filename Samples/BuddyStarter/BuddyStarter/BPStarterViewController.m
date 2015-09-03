@@ -45,24 +45,24 @@
     self.message.text = @"Loading...";
     
     BPUser *user = [Buddy user];
+
     [self greetUser:user];
-    // load the current user's information
-    //
-    [self refreshUser];
+
+    if (user != nil) {
+        [self refreshUser];
+    }
 }
 
 
 
 - (IBAction)logoutWasClicked:(id)sender {
-    __weak BPStarterViewController *weakSelf = self;
-
     self.message.text = @"";
 
     [Buddy logoutUser:^(NSError *error) {
         
-        // calling check user will cause the login dialog to pop
-        // when user auth fails.
-        [weakSelf refreshUser];
+        // Accessing the user will cause the login dialog to pop
+        // since there is no current user.
+        [Buddy user];
     }];
 }
 @end
