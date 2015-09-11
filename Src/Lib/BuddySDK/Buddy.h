@@ -26,6 +26,18 @@
 #import "BPPageResults.h"
 #import "BPPicture.h"
 #import "BPUserList.h"
+#import "BPUserListItem.h"
+#import "BPAlbum.h"
+#import "BPAlbumItem.h"
+#import "BPBlob.h"
+#import "BPIdentity.h"
+#import "BPLocation.h"
+#import "BPMessage.h"
+#import "BPMetadataItem.h"
+#import "BPNotificationResult.h"
+#import "BPSocialAuthenticatedUser.h"
+#import "BPLocation.h"
+#import "BPVideo.h"
 
 #import "BPFile.h"
 
