@@ -43,7 +43,7 @@
     [self.client DELETE:resource parameters:nil class:[NSDictionary class] callback:^(id json, NSError *error) {
         NSInteger time = -1;
         id timeString = json[@"elaspedTimeInMs"];
-        if (time) {
+        if (timeString) {
             time = [timeString integerValue];
         }
         callback ? callback(time, error) : nil;

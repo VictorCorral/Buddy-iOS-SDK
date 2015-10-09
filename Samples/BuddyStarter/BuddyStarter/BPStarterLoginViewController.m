@@ -91,16 +91,19 @@
 
     return ^(id newBuddyObject, NSError *error)
     {
-        if(error!=nil)
+        if (error != nil)
         {
-            UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle: @"Login Error"
-                                       message: [error localizedDescription]
-                                      delegate: self
-                             cancelButtonTitle: @"OK"
-                             otherButtonTitles: nil];
-            [alert show];
-            return;
+            if (![error.domain isEqualToString:@"NoInternetError"])
+            {
+                UIAlertView *alert =
+                [[UIAlertView alloc] initWithTitle: @"Login Error"
+                                           message: [error localizedDescription]
+                                          delegate: self
+                                 cancelButtonTitle: @"OK"
+                                 otherButtonTitles: nil];
+                [alert show];
+                return;
+            }
         }
         
         self.loginPassword.text = @"";

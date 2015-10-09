@@ -45,6 +45,7 @@
 @implementation BPClient
 
 @synthesize currentUser = _currentUser;
+@synthesize connectivityLevel = _connectivityLevel;
 
 #pragma mark - Init
 
@@ -109,6 +110,8 @@
     _appSettings.deviceUniqueId = options[@"deviceUniqueId"];
     
     _crashManager = [[BPCrashManager alloc] initWithRestProvider:self];
+    
+    _connectivityLevel = [_service getConnectivityLevel];
     
     // Check for OS update, and report.
     [self updateOSVersion];
@@ -475,18 +478,12 @@
             case 201:
                 responseObject = result;
                 break;
-            case 400:
-            case 401:
-            case 402:
-            case 403:
-            case 404:
-            case 405:
-            case 500:
-                buddyError = [NSError buildBuddyError:result];
-                break;
             default:
-                buddyError = [NSError bp_noInternetError:error.code message:result];
+                buddyError = [NSError bp_buildError:responseCode result:result];
                 break;
+        }
+        if([buddyError noInternet]) {
+            [self setConnectivityLevel:BPConnectivityNone];
         }
         if([buddyError needsLogin]) {
             [self.appSettings clearUser];
@@ -536,12 +533,61 @@
     };
 }
 
+
+- (void)setConnectivityLevel:(BPConnectivityLevel)level
+{
+    if (_connectivityLevel == level) {
+        return;
+    }
+    
+    [self raiseConnectivityChanged:level];
+    
+    if (level == BPConnectivityNone) {
+        [self checkConnectivity:1];
+    }
+    
+    _connectivityLevel = level;
+}
+
+
+- (void)checkConnectivity:(int)retryCount
+{
+    const int retryCapInMilliseconds = 30*1000;
+    const int retryBaseInMilliseconds = 500;
+    
+    // http://www.awsarchitectureblog.com/2015/03/backoff.html
+    int intervalToWait = arc4random_uniform(MIN(retryCapInMilliseconds, retryBaseInMilliseconds *
+                                                (int) pow(2, MIN(retryCount, 32))));
+    
+    dispatch_time_t delay = dispatch_time(0, (int64_t) (intervalToWait * NSEC_PER_MSEC));
+    
+    NSLog(@"Retry: Delaying retry for %d milliseconds...", intervalToWait);
+    dispatch_after(delay, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+        
+        NSLog(@"Retry: Ping");
+        [self GET:@"/service/ping" parameters:[NSDictionary new] class: [NSString class]
+                    callback:^(id obj, NSError *error) {
+                        
+                        if (error == nil)
+                        {
+                            NSLog(@"Retry: Pong successful!");
+                            [self setConnectivityLevel:[_service getConnectivityLevel]];
+                        }
+                        else
+                        {
+                            NSLog(@"Retry: Pong retry...");
+                            [self checkConnectivity:retryCount + 1];
+                        }
+                    }];
+    });
+}
+
 - (void)raiseUserChangedTo:(BPUser *)user from:(BPUser *)from
 {
     [self tryRaiseDelegate:@selector(userChangedTo:from:) withArguments:BOXNIL(user), BOXNIL(from), nil];
 }
 
-- (void)raiseReachabilityChanged:(BPReachabilityLevel)level
+- (void)raiseConnectivityChanged:(BPConnectivityLevel)level
 {
     [self tryRaiseDelegate:@selector(connectivityChanged:) withArguments:@(level), nil];
 }
@@ -565,17 +611,18 @@
     {
         [argList addObject:arg];
     }
-    
     va_end(args);
     
     id<UIApplicationDelegate> app = [[UIApplication sharedApplication] delegate];
     id target = nil;
+    if (!self.delegate) {// If no delegate, see if we've implemented delegate methods on the AppDelegate.
+        target = app;
+    } else { // Try the delegate
+        target = self.delegate;
+    }
+    
     SuppressPerformSelectorLeakWarning(
-       if (!self.delegate) {// If no delegate, see if we've implemented delegate methods on the AppDelegate.
-           target = app;
-       } else { // Try the delegate
-           target = self.delegate;
-       }
+                                       
        if ([target respondsToSelector:selector]) {
            
            if ([argList count] >= 2) {

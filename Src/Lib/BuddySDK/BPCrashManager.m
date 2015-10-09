@@ -339,7 +339,7 @@
             }
         }
     } else {
-        // Crap. There was something lower level, like overreleasing an object. Try to build the crash info from the thread list.
+        // There was something lower level, like overreleasing an object. Try to build the crash info from the thread list.
         
         PLCrashReportThreadInfo *crashed_thread = nil;
         for (PLCrashReportThreadInfo *thread in crashReport.threads) {
