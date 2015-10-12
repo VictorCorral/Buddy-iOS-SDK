@@ -11,10 +11,9 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 2F69F7BB1B12DCFB00165250 /* Build configuration list for PBXAggregateTarget "BuddySDK-Universal" */;
 			buildPhases = (
-				2F69F7BC1B12E11A00165250 /* ShellScript */,
+				2F69F7BC1B12E11A00165250 /* Run Script */,
 			);
 			dependencies = (
-				BFBBE23C1B98CCBF00BB88AB /* PBXTargetDependency */,
 			);
 			name = "BuddySDK-Universal";
 			productName = "BuddySDK-Universal";
@@ -83,7 +82,6 @@
 		01DB07C0197878B40008A35E /* BPUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BE197878B40008A35E /* BPUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01DB07C1197878B40008A35E /* BPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BF197878B40008A35E /* BPUser.m */; };
 		2F69F7B71B0FBB6300165250 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9A5AAB1B0E244300A72990 /* Macro.h */; };
-		2F9A59F11B0D4C6D00A72990 /* BuddySDK Universal Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9A59F01B0D4C6D00A72990 /* BuddySDK Universal Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F9A59F71B0D4C6D00A72990 /* BuddySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9A59EC1B0D4C6C00A72990 /* BuddySDK.framework */; };
 		2F9A59FE1B0D4C6D00A72990 /* BuddySDK_Universal_FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A59FD1B0D4C6D00A72990 /* BuddySDK_Universal_FrameworkTests.m */; };
 		2F9A5A411B0E1C1700A72990 /* BPUIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B0F50A189373EB000403E0 /* BPUIImageView+AFNetworking.m */; };
@@ -230,6 +228,10 @@
 		BF0615161B8F6B130036AF12 /* BPUserIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0615101B8F6B130036AF12 /* BPUserIntegrationTests.m */; };
 		BF0615171B8F6B130036AF12 /* MetricsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0615111B8F6B130036AF12 /* MetricsTests.m */; };
 		BF0615181B8F6B130036AF12 /* NotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0615121B8F6B130036AF12 /* NotificationTests.m */; };
+		BF25291E1BA0C86E00469EF9 /* BuddySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BF25291D1BA0C86E00469EF9 /* BuddySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF25291F1BA0FD6E00469EF9 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9A5AAB1B0E244300A72990 /* Macro.h */; };
+		BF2529201BA101AD00469EF9 /* Buddy+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B2F1989930F00DB31BA /* Buddy+Private.h */; };
+		BF2529211BA101B700469EF9 /* BPAppSettings+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1DF8491949506C00B2FD52 /* BPAppSettings+Private.h */; };
 		BFA315F51B8BD33C0032058D /* RetryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA315F41B8BD33C0032058D /* RetryTests.m */; };
 		C1010D31187A4CC3009EB04E /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D2C187A4CC3009EB04E /* 0.jpg */; };
 		C1010D32187A4CC3009EB04E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D2D187A4CC3009EB04E /* 1.jpg */; };
@@ -287,13 +289,6 @@
 			remoteGlobalIDString = 2F9A59EB1B0D4C6C00A72990;
 			remoteInfo = "BuddySDK Universal Framework";
 		};
-		BFBBE23B1B98CCBF00BB88AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A6291F73165C01800051F83C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2F9A59EB1B0D4C6C00A72990;
-			remoteInfo = "BuddySDK Universal Framework";
-		};
 		C18875A6186FFE7F00320A00 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A6291F73165C01800051F83C /* Project object */;
@@ -309,18 +304,6 @@
 			remoteInfo = BuddySDK;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D45A7BB3166235BE000E5257 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = include;
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		012311A8199D407B003081CA /* BPFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPFile.h; path = Models/BPFile.h; sourceTree = "<group>"; };
@@ -376,7 +359,6 @@
 		29345ABD1773DB3B00EEB8F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2F9A59EC1B0D4C6C00A72990 /* BuddySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuddySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F9A59EF1B0D4C6D00A72990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2F9A59F01B0D4C6D00A72990 /* BuddySDK Universal Framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BuddySDK Universal Framework.h"; sourceTree = "<group>"; };
 		2F9A59F61B0D4C6D00A72990 /* BuddySDK Universal FrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuddySDK Universal FrameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F9A59FC1B0D4C6D00A72990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F9A59FD1B0D4C6D00A72990 /* BuddySDK_Universal_FrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuddySDK_Universal_FrameworkTests.m; sourceTree = "<group>"; };
@@ -424,6 +406,7 @@
 		BF0615101B8F6B130036AF12 /* BPUserIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPUserIntegrationTests.m; sourceTree = "<group>"; };
 		BF0615111B8F6B130036AF12 /* MetricsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsTests.m; sourceTree = "<group>"; };
 		BF0615121B8F6B130036AF12 /* NotificationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTests.m; sourceTree = "<group>"; };
+		BF25291D1BA0C86E00469EF9 /* BuddySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddySDK.h; sourceTree = "<group>"; };
 		BFA315F41B8BD33C0032058D /* RetryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetryTests.m; sourceTree = "<group>"; };
 		C1010D2C187A4CC3009EB04E /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
 		C1010D2D187A4CC3009EB04E /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -576,7 +559,7 @@
 		2F9A59ED1B0D4C6D00A72990 /* BuddySDK Universal Framework */ = {
 			isa = PBXGroup;
 			children = (
-				2F9A59F01B0D4C6D00A72990 /* BuddySDK Universal Framework.h */,
+				BF25291D1BA0C86E00469EF9 /* BuddySDK.h */,
 				2F9A59EE1B0D4C6D00A72990 /* Supporting Files */,
 			);
 			path = "BuddySDK Universal Framework";
@@ -854,7 +837,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F9A59F11B0D4C6D00A72990 /* BuddySDK Universal Framework.h in Headers */,
+				BF25291E1BA0C86E00469EF9 /* BuddySDK.h in Headers */,
+				BF25291F1BA0FD6E00469EF9 /* Macro.h in Headers */,
 				2F9A5AAA1B0E21B700A72990 /* CryptoTools.h in Headers */,
 				2F9A5AA91B0E21AB00A72990 /* BPMetricCompletionHandler.h in Headers */,
 				2F9A5AA81B0E219E00A72990 /* Util.h in Headers */,
@@ -945,6 +929,8 @@
 				5B984DA018C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h in Headers */,
 				01DB07BC197855350008A35E /* BPPageResults.h in Headers */,
 				C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */,
+				BF2529211BA101B700469EF9 /* BPAppSettings+Private.h in Headers */,
+				BF2529201BA101AD00469EF9 /* Buddy+Private.h in Headers */,
 				2F69F7B71B0FBB6300165250 /* Macro.h in Headers */,
 				5B32F36C18E071C600C07019 /* BPAFHTTPRequestOperationManager.h in Headers */,
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
@@ -986,8 +972,6 @@
 				2F9A59E71B0D4C6C00A72990 /* Sources */,
 				2F9A59E81B0D4C6C00A72990 /* Frameworks */,
 				2F9A59E91B0D4C6C00A72990 /* Headers */,
-				2F9A59EA1B0D4C6C00A72990 /* Resources */,
-				2F5DDDD01B0EA66E0083363B /* Relocate Info.plist */,
 			);
 			buildRules = (
 			);
@@ -1004,7 +988,6 @@
 			buildPhases = (
 				2F9A59F21B0D4C6D00A72990 /* Sources */,
 				2F9A59F31B0D4C6D00A72990 /* Frameworks */,
-				2F9A59F41B0D4C6D00A72990 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1023,7 +1006,6 @@
 				A6291F78165C01800051F83C /* Sources */,
 				A6291F79165C01800051F83C /* Frameworks */,
 				A6291F7A165C01800051F83C /* Headers */,
-				D45A7BB3166235BE000E5257 /* CopyFiles */,
 				C1C239471877BE97000D0089 /* Prepare Framework */,
 				C18F93631884D85F00B46B89 /* Generate Appledocs */,
 			);
@@ -1102,20 +1084,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2F9A59EA1B0D4C6C00A72990 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2F9A59F41B0D4C6D00A72990 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C1E0D1DF1831C2E8001A7A01 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1152,32 +1120,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2F5DDDD01B0EA66E0083363B /* Relocate Info.plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Relocate Info.plist";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\n#if [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\n#then\n#SF_SDK_PLATFORM=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\n\n#if [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\n#then\n#SF_SDK_VERSION=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/BuddySDK\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current\"\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Headers\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Headers\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Resources\"\nln -s \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Headers\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Headers\"\n\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Info.plist\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Resources/Info.plist\"";
-		};
-		2F69F7BC1B12E11A00165250 /* ShellScript */ = {
+		2F69F7BC1B12E11A00165250 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=false\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n# For Swift framework, Swiftmodule needs to be copied in the universal framework\nif [ -d \"${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\n    cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* \\\n      ${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/ | echo\nfi\n                                                                            \n                                                                      \nif [ -d \"${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\n                                                                          cp -f ${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* \"${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" | echo\n                                                                      fi\n                                                                      \n                                                                      ######################\n                                                                      # On Release, copy the result to release directory\n                                                                      ######################\n                                                                      OUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n                                                                      \n                                                                      rm -rf \"$OUTPUT_DIR\"\n                                                                      mkdir -p \"$OUTPUT_DIR\"\n                                                                      \n                                                                      cp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n                                                                      \n                                                                      if [ ${REVEAL_ARCHIVE_IN_FINDER} = true ]; then\n                                                                      open \"${OUTPUT_DIR}/\"\n                                                                      fi";
+			shellScript = "#########\n# Options\n#########\n\nLIBRARY_NAME=\"lib${PROJECT_NAME}.a\"\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}.framework\"\n\nSIMULATOR_TARGET=\"BuddySDK\"\nSIMULATOR_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\nSIMULATOR_FRAMEWORK_PATH=\"${SIMULATOR_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\nDEVICE_TARGET=\"BuddySDK Universal Framework\"\nDEVICE_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nDEVICE_FRAMEWORK_PATH=\"${DEVICE_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\nUNIVERSAL_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_FRAMEWORK_PATH=\"${UNIVERSAL_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\n\n##################\n# Build Frameworks\n##################\n\nxcodebuild -workspace \"../../${PROJECT_NAME}\".xcworkspace -scheme \"${SIMULATOR_TARGET}\" -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace \"../../${PROJECT_NAME}\".xcworkspace -scheme \"${DEVICE_TARGET}\" -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n\n################################\n# Create directory for universal\n################################\n\nrm -rf \"${UNIVERSAL_FRAMEWORK_DIR}\"\n\nmkdir \"${UNIVERSAL_FRAMEWORK_DIR}\"\n\nmkdir \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\n\n#######################################\n# Copy iphonesimulator Framework layout\n#######################################\n\ncp -P -R -v \"${SIMULATOR_FRAMEWORK_PATH}/.\" \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\n\n###################\n# Copy iphone files\n###################\n\ncp -P -R -v \"${DEVICE_FRAMEWORK_PATH}/Modules\" \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\nmkdir -p \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources\"\nln -s \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources\" \"${UNIVERSAL_FRAMEWORK_PATH}/Resources\"\ncp \"${DEVICE_FRAMEWORK_PATH}/Info.plist\" \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources/Info.plist\"\n\ncp \"${DEVICE_FRAMEWORK_DIR}/BuddySDK.h\" \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Headers/BuddySDK.h\"\n\n##########################\n# Make an universal binary\n##########################\n\nlipo \"${SIMULATOR_FRAMEWORK_DIR}/${LIBRARY_NAME}\" \"${DEVICE_FRAMEWORK_PATH}/${PROJECT_NAME}\" -create -output \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/${PROJECT_NAME}\" | echo\n";
 		};
 		AEA5CD38B3E146AA88CA070C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1380,11 +1335,6 @@
 			target = 2F9A59EB1B0D4C6C00A72990 /* BuddySDK Universal Framework */;
 			targetProxy = 2F9A59F81B0D4C6D00A72990 /* PBXContainerItemProxy */;
 		};
-		BFBBE23C1B98CCBF00BB88AB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2F9A59EB1B0D4C6C00A72990 /* BuddySDK Universal Framework */;
-			targetProxy = BFBBE23B1B98CCBF00BB88AB /* PBXContainerItemProxy */;
-		};
 		C18875A7186FFE7F00320A00 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A6291F7B165C01800051F83C /* BuddySDK */;
@@ -1412,6 +1362,7 @@
 		2F69F7B91B12DCFB00165250 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1419,6 +1370,7 @@
 		2F69F7BA1B12DCFB00165250 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1431,7 +1383,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1472,7 +1424,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1510,6 +1462,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1539,6 +1492,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1597,7 +1551,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"INSTALL_PATH[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"/**";
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -1605,7 +1559,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7s armv7 arm64";
+				VALID_ARCHS = "armv7s armv7 arm64 i386 x86_64";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_PREFIX = BuddySDK;
@@ -1643,7 +1597,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"/**";
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
@@ -1651,7 +1605,7 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7s armv7 arm64";
+				VALID_ARCHS = "armv7s armv7 arm64 i386 x86_64";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_PREFIX = BuddySDK;
 			};
