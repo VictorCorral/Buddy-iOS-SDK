@@ -11,6 +11,7 @@
    #import "NSString+JSON.h"
    #import "NSArray+BPSugar.h"
    #import "NSError+BuddyError.h"
+   #import "JAGPropertyConverter.h"
    #import "JAGPropertyConverter+BPJSONConverter.h"
    #import "NSDate+BPDateHelper.h"
 #endif

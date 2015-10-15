@@ -14,8 +14,5 @@
 
 @property (nonatomic,strong) NSString *key;
 @property (nonatomic,strong) NSString *value;
-@property (nonatomic,strong) BPCoordinate *location;
-@property (nonatomic,strong) NSDate *created;
-@property (nonatomic,strong) NSDate *lastModified;
 
 @end
