@@ -44,8 +44,8 @@
     
     [self.window makeKeyAndVisible];
     
-    // Go to http://buddyplatform.com to get an app ID and app key.
-    [Buddy init:\"Your App Id" appKey:\"Your App Key"];
+    #pragma message ("Go to http://buddyplatform.com to get an app ID and app key.")
+    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
 
     [[Buddy currentClient] notifyPushRecieved:launchOptions];
     if([application respondsToSelector:@selector(registerForRemoteNotifications)]){

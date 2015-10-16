@@ -46,6 +46,7 @@
 
 @synthesize currentUser = _currentUser;
 @synthesize connectivityLevel = _connectivityLevel;
+@synthesize lastLocation = _lastLocation;
 
 #pragma mark - Init
 
@@ -640,7 +641,7 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    // Convert any params that dont serialize cleanly
+    // Convert any params that don't serialize cleanly
     for (NSString *name in [dictionary allKeys])
     {
         id val = [dictionary objectForKey:name];
@@ -679,10 +680,6 @@
     
     return parameters;
 }
-
-
-#pragma mark - Notifications
-
 
 #pragma mark - Metrics
 

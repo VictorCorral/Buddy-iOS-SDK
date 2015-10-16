@@ -40,9 +40,6 @@
 /// </summary>
 @property (readonly, nonatomic, strong) BuddyDevice *device;
 
-/**
-  * Most recent BPCoordinate.
-  */
 @property (nonatomic, strong) BPCoordinate *lastLocation;
 
 @property (nonatomic, readonly, assign) BPConnectivityLevel connectivityLevel;
