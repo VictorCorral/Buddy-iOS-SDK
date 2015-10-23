@@ -125,15 +125,15 @@ To reference the local SDK in your project:
 
 Now any changes you make to the local Buddy SDK source will be picked up by your project when you build it in Xcode. If you add or remove files to the Buddy SDK, you will need to do a `pod update` for your project in a Terminal window.
 
-### Using the iOS SDK
+## Using the iOS SDK
 
 Visit the [Buddy Dashboard](https://buddyplatform.com) to obtain an application ID and key, which are needed for your app to communicate with Buddy.
 
 Both Objective-C and Swift-based projects are supported.
 
-#### Initialize the SDK
+### Initialize the SDK
 
-Before you can call any methods in the SDK, it must be initialized. The best place to do this is inside your `AppDelegate`.
+To reference the Buddy SDK in your source file, you need to put an import keyword at the top of the file that contains your `AppDelegate`:
 
 Objective-C: Open the `AppDelegate.m` file and import the BuddySDK:
 
@@ -143,7 +143,7 @@ Swift: Open the `AppDelegate.swift` and import the BuddySDK:
 
     import BuddySDK
     
-Initialize your client in the `didFinishLaunchingWithOptions` method:
+Before you can call any methods in the SDK, it must be initialized. The best place to do this is inside your `AppDelegate`. Initialize your client in the `didFinishLaunchingWithOptions` method:
 
     Objective-C: [Buddy init:@"YOUR_APP_ID" appKey:@"YOUR_APP_KEY"];
     
@@ -151,11 +151,11 @@ Initialize your client in the `didFinishLaunchingWithOptions` method:
 
 Replace "YOUR_APP_ID" and "YOUR_APP_KEY" above with your Buddy app's ID and key from the [Buddy Dashboard](https://buddyplatform.com).
 
-#### User Flow
+### User Flow
 
 The Buddy iOS SDK handles user creation, login, and logout. Here are some example Objective C calls.
 
-##### Create A User
+#### Create A User
 
     [Buddy createUser:self.signupUsername.text
            password:self.signupPassword.text
@@ -173,7 +173,7 @@ The Buddy iOS SDK handles user creation, login, and logout. Here are some exampl
       }
     }];
 
-##### User Login
+#### User Login
 
     [Buddy loginUser:@"username" password:@"password" callback:^(id newBuddyObject, NSError *error)
     {
@@ -183,13 +183,13 @@ The Buddy iOS SDK handles user creation, login, and logout. Here are some exampl
       }
     }];
 
-##### User Logout
+#### User Logout
 
     [Buddy logoutUser:^(NSError *error) {
         // Perform some action on logout
     }];
   
-##### User Authorization selector
+#### User Authorization selector
 
 You can implement a selector named `authorizationNeedsUserLogin` on your AppDelegate that gets called whenever a Buddy call is made that requires a logged-in user. That way, you won't have to manage user login state. Here's an example:
 
@@ -208,13 +208,13 @@ You can implement a selector named `authorizationNeedsUserLogin` on your AppDele
        [self.navController.topViewController presentViewController:loginVC animated:NO completion:nil];
     }
 
-##### REST Interface
+### REST Interface
     
 Each SDK provides wrappers that make REST calls to Buddy. Responses can be handled in two ways: you can create your own wrapper classes, similar to those found in the `Models` folder, or you can use a basic `[NSDictionary class]`.
 
-##### POST
+#### POST
 
-In this example we'll create a checkin. Take a look at the [create checkin documentation](/docs/2/Checkins) then:
+In this example we'll create a checkin. Take a look at the [create checkin documentation](https://buddyplatform.com/docs/Checkins#CreateCheckin) then:
      
     BPCoordinate *coord = BPCoordinateMake(47.1, -121.292);
     
@@ -229,7 +229,7 @@ In this example we'll create a checkin. Take a look at the [create checkin docum
         }
     }];
 
-##### GET
+#### GET
 
 We now can call GET to search for the checkin we just created!
 
@@ -261,17 +261,17 @@ If we wanted to search for the specific checkin, by ID, we can do that too:
     }];
 
 
-##### PUT/PATCH/DELETE
+#### PUT/PATCH/DELETE
 
 Each remaining REST verb is available through the Buddy SDK using the same pattern as the POST example.
      
-#### Working With Files
+### Working With Files
 
 Buddy offers support for binary files. The iOS SDK works with files through our REST interface similarly to other API calls. The key class is `BPFile`, which is a wrapper around NSData along with a MIME content type.
 
 **Note:** Responses for files deviate from the standard Buddy response templates. See the [Buddy Platform documentation](https://buddyplatform.com/docs) for more information.
 
-##### Upload A File
+#### Upload A File
 
 Here we demonstrate uploading a picture. All binary files use the same pattern with a different path and different parameters. To upload a picture POST to `"/pictures"`:
 
@@ -291,7 +291,7 @@ Here we demonstrate uploading a picture. All binary files use the same pattern w
         }
     }];
 
-##### Download A File
+#### Download A File
 
 To download a file send a GET request with BPFile as the operation type. This sample downloads the picture we uploaded in the "Upload File" example:
 
@@ -312,9 +312,9 @@ To download a file send a GET request with BPFile as the operation type. This sa
         
     }];
 
-#### Advanced Usage
+### Advanced Usage
 
-##### Automatically report location for each Buddy call
+#### Automatically report location for each Buddy call
 
 If you set the current location in the Buddy client, each time a Buddy call is made that location will be passed in the call. Most calls that send data to Buddy have a location parameter; if a call is made that doesn't take location, the parameter will be ignored.
 
@@ -322,7 +322,7 @@ If you set the current location in the Buddy client, each time a Buddy call is m
     
     [Buddy setLastLocation: location];
 
-##### Multiple concurrent users
+#### Multiple concurrent users
 
 If you need to have multiple clients (for example if you need to interact with multiple users concurrently from your app), you can capture clients created from `Buddy.init` and use those clients individually:
 
@@ -346,7 +346,7 @@ If you need to have multiple clients (for example if you need to interact with m
          }
      }];
     
-##### Handling connectivity
+#### Handling connectivity
 
 You can implement a selector named `connectivityChanged` on your AppDelegate if you would like to be notified if your device loses and regains ability to communicate to the Buddy servers for whatever reason. Here's an example that notifies the user:
 
@@ -366,7 +366,7 @@ You can implement a selector named `connectivityChanged` on your AppDelegate if 
 
 The Buddy Platform iOS SDK ships with a number of sample apps to get you started. These can be modified to fit your needs, or just used to guide you through the basics. The sample apps are located in the *Samples* directory.
 
-The Buddy SDK is installed into these Apps using Cocoapods. In a Terminal window, cd to the sample project root and type:  `pod install`
+The Buddy SDK is installed into these Apps using Cocoapods. In a Terminal window, `cd` to the sample project root and type:  `pod install`
 
 #### BuddyStarter
 
