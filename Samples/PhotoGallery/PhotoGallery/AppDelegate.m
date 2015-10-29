@@ -23,6 +23,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
 
+    #pragma message ("Go to http://buddyplatform.com to get an app ID and app key.")
     // Go to http://buddyplatform.com to get an app ID and app key.
     [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
 

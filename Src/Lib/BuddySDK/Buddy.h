@@ -27,27 +27,24 @@
 #import "BPPicture.h"
 #import "BPUserList.h"
 #import "BPUserListItem.h"
-#import "BPAlbum.h"
-#import "BPAlbumItem.h"
 #import "BPBlob.h"
 #import "BPIdentity.h"
-#import "BPLocation.h"
 #import "BPMessage.h"
 #import "BPMetadataItem.h"
 #import "BPNotificationResult.h"
 #import "BPSocialAuthenticatedUser.h"
-#import "BPLocation.h"
 #import "BPVideo.h"
 
 #import "BPFile.h"
 
 @interface Buddy : NSObject
 
-/* The currently logged in user. Will be nil if no login has occurred.
- *
- */
+// The currently logged in user. Will be nil if no login has occurred.
 + (BPUser*)user;
 + (void) setUser:(BPUser*)user;
+
++ (BPCoordinate*)lastLocation;
++ (void) setLastLocation:(BPCoordinate*)lastLocation;
 
 + (id<BuddyClientProtocol>) currentClient;
 

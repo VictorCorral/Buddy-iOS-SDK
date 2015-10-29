@@ -37,11 +37,6 @@
                BlueprintName = "BuddySDK Unit Tests"
                ReferencedContainer = "container:BuddySDK.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "RetrySpec">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

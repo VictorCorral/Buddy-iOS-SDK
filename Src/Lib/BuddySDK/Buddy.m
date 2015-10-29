@@ -35,12 +35,22 @@ static BPClient* currentClient;
 
 + (BPUser *)user
 {
-    return [[self currentClient] currentUser];
+    return [[self currentClientObject] currentUser];
 }
 
 + (void) setUser:(BPUser *)user
 {
     [[self currentClientObject] setCurrentUser:user];
+}
+
++ (BPCoordinate *)lastLocation
+{
+    return [[self currentClientObject] lastLocation];
+}
+
++ (void) setLastLocation:(BPCoordinate *)lastLocation
+{
+    [[self currentClientObject] setLastLocation:lastLocation];
 }
 
 +(void)initialize{

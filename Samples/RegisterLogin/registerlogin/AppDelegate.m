@@ -20,9 +20,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Go to http://buddyplatform.com to get an app ID and app key.
-    //[Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
-
+    #pragma message ("Go to http://buddyplatform.com to get an app ID and app key.")
+    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.window.backgroundColor = [UIColor whiteColor];
