@@ -17,6 +17,7 @@ dsa_priv.pem
 *.xcodeproj/xcuserdata/
 *.xccheckout
 xcuserdata
+*.gcno
 
 BuddySDK.xcworkspace/xcuserdata/
 

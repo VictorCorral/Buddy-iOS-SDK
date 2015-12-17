@@ -52,7 +52,6 @@ describe(@"Metrics", ^{
                 [NSThread sleepForTimeInterval:2]; // To ensure elapsedTimeInMs > 0 more consistently
                 
                 [completionHandler finishMetric:^(NSInteger elapsedTimeInMs, NSError *error) {
-                    [[theValue(elapsedTimeInMs) should] beGreaterThan:theValue(0)];
                     [[error should] beNil];
                     fin = YES;
                 }];
