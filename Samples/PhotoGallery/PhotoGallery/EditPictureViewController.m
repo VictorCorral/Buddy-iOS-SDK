@@ -1,10 +1,3 @@
-//
-//  EditPictureViewController.m
-//  PhotoGallery
-//
-//  Created by Nick Ambrose on 1/24/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
 #import <QuartzCore/QuartzCore.h>
 
 #import "Constants.h"

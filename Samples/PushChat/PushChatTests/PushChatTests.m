@@ -1,11 +1,3 @@
-//
-//  PushChatTests.m
-//  PushChatTests
-//
-//  Created by Nick Ambrose on 5/30/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 
 @interface PushChatTests : XCTestCase

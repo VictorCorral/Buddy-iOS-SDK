@@ -1,11 +1,3 @@
-//
-//  MainViewController.m
-//  PhotoGallery
-//
-//  Created by Nick Ambrose on 1/22/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import <QuartzCore/QuartzCore.h>
 
 #import <BuddySDK/Buddy.h>

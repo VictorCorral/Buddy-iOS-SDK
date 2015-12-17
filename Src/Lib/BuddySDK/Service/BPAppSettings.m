@@ -1,11 +1,3 @@
-//
-//  BPAppSettings.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 1/30/14.
-//
-//
-
 #import "BPAppSettings.h"
 #import "JAGPropertyConverter+BPJSONConverter.h"
 

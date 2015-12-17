@@ -501,6 +501,24 @@ describe(@"BPUser", ^{
     
     it(@"Should allow getting a picture", ^{
         
+        
+        BPCoordinateRange *range = BPCoordinateRangeMake(47.1, -121.292, 2500);
+        
+        NSDictionary *params = @{@"locationRange": range};
+        
+        [Buddy GET:@"/checkins" parameters:params class:[BPPageResults class] callback:^(id results, NSError *error) {
+            if(!error) {
+                NSArray *checkins = [(BPPageResults*)results convertPageResultsToType:[BPCheckin class] ];
+                NSLog(@"%@", checkins); // Log or do something with the response
+            } else {
+                NSLog(@"GET checkins was unsuccessful.");
+                NSLog(@"%@", error);
+            }
+        }];
+        
+        
+        
+        
         __block BOOL fin = NO;
         NSMutableDictionary *pic = [NSMutableDictionary new];
         

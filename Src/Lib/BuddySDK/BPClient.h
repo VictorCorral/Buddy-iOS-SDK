@@ -1,11 +1,3 @@
-//
-//  BPClient.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 11/15/13.
-//
-//
-
 #import <Foundation/Foundation.h>
 
 #import "BuddyCallbacks.h"

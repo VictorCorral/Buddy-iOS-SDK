@@ -1,11 +1,3 @@
-//
-//  NSDate+JSON.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 12/20/13.
-//
-//
-
 #import "NSString+JSON.h"
 
 #define DATE_FORMAT_REGEX @"^\\/Date\\((-?[+-]?\\d+)\\)\\/$"

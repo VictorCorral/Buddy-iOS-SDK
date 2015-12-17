@@ -1,11 +1,3 @@
-//
-//  NSArray+BPSugar.m
-//  BuddySDK
-//
-//  Created by Erik.Kerber on 5/1/14.
-//
-//
-
 #import "NSArray+BPSugar.h"
 
 @implementation NSArray (BPSugar)

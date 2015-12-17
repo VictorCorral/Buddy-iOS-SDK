@@ -1,11 +1,3 @@
-//
-//  BPServiceController.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 11/15/13.
-//
-//
-
 #import "BPServiceController.h"
 #import "BPAFNetworking.h"
 #import "BuddyDevice.h"

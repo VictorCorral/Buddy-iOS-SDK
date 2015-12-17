@@ -1,11 +1,3 @@
-//
-//  BPCheckin.h
-//  BuddySDK
-//
-//  Created by Nick Ambrose on 7/16/14.
-//
-//
-
 #import "BPModelBase.h"
 
 @interface BPCheckin : BPModelBase

@@ -1,9 +1,3 @@
-//
-//  BPStarterViewController.m
-//
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import "BPStarterViewController.h"
 #import <BuddySDK/Buddy.h>
 
@@ -32,6 +26,7 @@
         self.message.text = @"";
     }
 }
+
 -(void)refreshUser {
     
     [Buddy GET:@"users/me" parameters:nil class:[BPUser class] callback:^(id u, NSError *error) {
@@ -52,8 +47,6 @@
         [self refreshUser];
     }
 }
-
-
 
 - (IBAction)logoutWasClicked:(id)sender {
     self.message.text = @"";

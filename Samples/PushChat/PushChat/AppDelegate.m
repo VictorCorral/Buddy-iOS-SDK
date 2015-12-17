@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  PushChat
-//
-//  Created by Nick Ambrose on 5/30/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import "iToast.h"
 
 #import "AppDelegate.h"
@@ -40,12 +32,10 @@
     
     [self.navController setNavigationBarHidden:TRUE];
     self.window.rootViewController=self.navController;
-    
-    
+
     [self.window makeKeyAndVisible];
     
-    #pragma message ("Go to http://buddyplatform.com to get an app ID and app key.")
-    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
+    [Buddy init:APP_ID appKey:APP_KEY];
 
     [[Buddy currentClient] notifyPushRecieved:launchOptions];
     if([application respondsToSelector:@selector(registerForRemoteNotifications)]){

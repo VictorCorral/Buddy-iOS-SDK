@@ -1,11 +1,3 @@
-//
-//  BPUser.h
-//  BuddySDK
-//
-//  Created by Nick Ambrose on 7/17/14.
-//
-//
-
 #import "BPModelBase.h"
 
 @interface BPUser : BPModelBase

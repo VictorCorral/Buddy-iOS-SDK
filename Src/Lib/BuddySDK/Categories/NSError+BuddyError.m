@@ -1,10 +1,3 @@
-//
-//  NSError+BuddyError.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 12/29/13.
-//
-//
 #import "Macro.h"
 #import "NSError+BuddyError.h"
 

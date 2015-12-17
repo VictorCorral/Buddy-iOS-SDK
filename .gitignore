@@ -18,6 +18,7 @@ dsa_priv.pem
 *.xccheckout
 xcuserdata
 *.gcno
+*.gcda
 
 BuddySDK.xcworkspace/xcuserdata/
 

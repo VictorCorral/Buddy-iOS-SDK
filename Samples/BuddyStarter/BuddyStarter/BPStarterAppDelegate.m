@@ -1,13 +1,8 @@
-//
-//  BPStarterAppDelegate.m
-//
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import "BPStarterAppDelegate.h"
 #import "BPStarterViewController.h"
 #import "BPStarterLoginViewController.h"
 #import <BuddySDK/Buddy.h>
+#import "Constants.h"
 
 #import <UIKit/UIKit.h>
 
@@ -30,8 +25,7 @@ BOOL loginPresented;
     // This initialization does NOT cause a network call, but will be processed
     // upon the first call to a Buddy API.
 
-    #pragma message ("Go to http://buddyplatform.com to get an app ID and app key.")
-    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
+    [Buddy init:APP_ID appKey:APP_KEY];
     
     self.window = [[UIWindow alloc] initWithFrame:
                    [[UIScreen mainScreen] bounds]];
