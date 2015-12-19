@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.authors             = { 'Brad Serbus' => 'support@buddy.com' }
   s.source              = { :git => 'https://github.com/BuddyPlatform/Buddy-iOS-SDK.git', :tag => 'v3.0.4' }
   s.source_files        = 'Src/Lib/BuddySDK/*.{h,m}', 'Src/Lib/BuddySDK/{Models,Service,Categories}/*.{h,m}', 'Src/Lib/BuddySDK/Vendor/{JAGPropertyConverter,AFNetworking}/**/*.{h,m}'
-  s.public_header_files = 'Src/Lib/BuddySDK/*.h', 'Src/Lib/BuddySDK/{Models,Categories,Service}/*.{h}'
+  s.public_header_files = 'Src/Lib/BuddySDK/*.h', 'Src/Lib/BuddySDK/{Models,Categories,Service}/*.{h}', 'Src/Lib/BuddySDK/Vendor/JAGPropertyConverter/JAGPropertyConverter.h'
   s.platform            = :ios, '6.0'
   s.ios.framework       = 'CoreLocation'
   s.requires_arc        = true
