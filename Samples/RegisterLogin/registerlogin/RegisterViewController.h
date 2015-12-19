@@ -1,11 +1,3 @@
-//
-//  RegisterViewController.h
-//  registerlogin
-//
-//  Created by Nick Ambrose on 1/14/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import "MBProgressHUD.h"
 
 #import <UIKit/UIKit.h>

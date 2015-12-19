@@ -1,10 +1,3 @@
-//
-//  MainViewController.m
-//  PushChat
-//
-//  Created by Nick Ambrose on 5/30/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
 #import <QuartzCore/QuartzCore.h>
 
 #import <BuddySDK/Buddy.h>
@@ -232,13 +225,16 @@
     {
         if(error!=nil)
         {
-            UIAlertView *alert =
-            [[UIAlertView alloc] initWithTitle: @"Server error"
-                                       message: [error localizedDescription]
-                                      delegate: self
-                             cancelButtonTitle: @"OK"
-                             otherButtonTitles: nil];
-            [alert show];
+            if (![error.domain isEqualToString:@"AuthUserAccessTokenRequired"])
+            {
+                UIAlertView *alert =
+                [[UIAlertView alloc] initWithTitle: @"Server error"
+                                           message: [error localizedDescription]
+                                          delegate: self
+                                 cancelButtonTitle: @"OK"
+                                 otherButtonTitles: nil];
+                [alert show];
+            }
             return;
         }
         [[CommonAppDelegate channels] clearChannels];

@@ -50,6 +50,8 @@
 		52E5E7667DCACE340E627605 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		85280783D54D45A9BC813A9D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C4C4685ED8933EC3904B93 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BF9AC5711C224A6100D97223 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = BuddyStarter/Constants.h; sourceTree = SOURCE_ROOT; };
+		BF9AC5721C2253BA00D97223 /* BPStarterAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BPStarterAppDelegate.h; path = BuddyStarter/BPStarterAppDelegate.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,12 +110,14 @@
 		293ABF8219453942003B8922 /* BuddyStarter */ = {
 			isa = PBXGroup;
 			children = (
+				BF9AC5711C224A6100D97223 /* Constants.h */,
 				2900D8B31946750F007F5A89 /* BPStarterLoginViewController.h */,
 				2900D8BA1946750F007F5A89 /* BPStarterLoginViewController.m */,
 				2900D8B41946750F007F5A89 /* BPStarterViewController.h */,
 				2900D8B51946750F007F5A89 /* BPStarterViewController.xib */,
 				2900D8B61946750F007F5A89 /* BPStarterViewController.m */,
 				2900D8B81946750F007F5A89 /* BPStarterLoginViewController.xib */,
+				BF9AC5721C2253BA00D97223 /* BPStarterAppDelegate.h */,
 				2900D8B91946750F007F5A89 /* BPStarterAppDelegate.m */,
 				2900D8BC1946750F007F5A89 /* Images.xcassets */,
 				293ABF8319453942003B8922 /* Supporting Files */,

@@ -1,11 +1,3 @@
-///
-//  BPClient.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 11/15/13.
-//
-//
-
 #import "BPClient.h"
 #import "BPServiceController.h"
 #import "BPRestProvider.h"

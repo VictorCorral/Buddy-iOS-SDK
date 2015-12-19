@@ -1,11 +1,3 @@
-//
-//  BPAppSettings.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 1/30/14.
-//
-//
-
 #import <Foundation/Foundation.h>
 
 @interface BPAppSettings : NSObject

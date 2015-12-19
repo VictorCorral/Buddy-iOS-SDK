@@ -1,11 +1,3 @@
-//
-//  BPCrashManager.m
-//  BuddySDK
-//
-//  Created by Erik.Kerber on 3/11/14.
-//
-//
-
 #import "BPCrashManager.h"
 #import <CrashReporter/CrashReporter.h>
 #include <sys/sysctl.h>

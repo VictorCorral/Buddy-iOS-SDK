@@ -1,11 +1,3 @@
-//
-//  LoginViewController.m
-//  registerlogin
-//
-//  Created by Nick Ambrose on 1/14/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import <QuartzCore/QuartzCore.h>
 
 #import <BuddySDK/Buddy.h>

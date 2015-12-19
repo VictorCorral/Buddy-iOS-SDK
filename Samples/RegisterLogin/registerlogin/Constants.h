@@ -1,18 +1,10 @@
-//
-//  Constants.h
-//  registerlogin
-//
-//  Created by Nick Ambrose on 1/14/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #ifndef registerlogin_Constants_h
 #define registerlogin_Constants_h
 
 #define USERNAME_PREF_KEY @"BD_USERNAME"
 #define PASSWORD_PREF_KEY @"BD_PASSWORD"
 
-
+#pragma message ("Go to http://buddyplatform.com to get an app ID and app key.")
 #define APP_ID \@"Your App ID"
 #define APP_KEY \@"Your App Key"
 

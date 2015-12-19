@@ -1,11 +1,3 @@
-//
-//  NSError+BuddyError.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 12/29/13.
-//
-//
-
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, BuddyErrorType)

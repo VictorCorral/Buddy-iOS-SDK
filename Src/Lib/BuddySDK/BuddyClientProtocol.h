@@ -1,11 +1,3 @@
-//
-//  BuddyClientProtocol.h
-//  BuddySDK
-//
-//  Created by Nick Ambrose on 7/30/14.
-//
-//
-
 #ifndef BuddySDK_BuddyClientProtocol_h
 #define BuddySDK_BuddyClientProtocol_h
 

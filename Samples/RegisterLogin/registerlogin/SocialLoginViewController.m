@@ -1,11 +1,3 @@
-//
-//  SocialLoginViewController.m
-//  registerlogin
-//
-//  Created by devmania on 4/4/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import "SocialLoginViewController.h"
 
 #import <QuartzCore/QuartzCore.h>

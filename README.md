@@ -1,5 +1,6 @@
 # Buddy iOS SDK
-These release notes are for the Buddy Platform iOS SDK.
+
+## Overview
 
 The Buddy iOS SDK helps you get up and running in seconds.  
 
@@ -20,6 +21,8 @@ Application IDs and Keys are obtained at the Buddy Developer Dashboard at [buddy
 
 Full documentation for Buddy's services are available at [buddyplatform.com/docs](https://buddyplatform.com/docs).
 
+## Installing the SDK
+
 ### Prerequisites
 
 * iOS 6.0 or greater
@@ -27,13 +30,9 @@ Full documentation for Buddy's services are available at [buddyplatform.com/docs
 
 The Buddy iOS SDK can be accessed via [Cocoapods](http://cocoapods.org/). Cocoapods version of at least 0.39.0 is required to install the Buddy SDK and sample apps.
 
-### Getting Started
+### Install with Cocoapods
 
-The Buddy iOS SDK is distributed via Cocoapods. Source code for the SDK can be cloned from [GitHub](https://github.com/buddyplatform).
-
-#### Install with Cocoapods
-
-We recommend using Cocoapods to install the BuddySDK. It's fast and makes it much easier to keep up to date with the latest SDK release. If you're new to Cocoapods, see install instructions [here](http://guides.cocoapods.org/using/getting-started.html#installation).  If you have an older Mac, the Cocoapods installer may give you trouble, so you may need to upgrade your Ruby install (`curl -sSL https://get.rvm.io | bash -s stable --ruby`) and/or install Homebrew (`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`) before installing Cocoapods.  Both only take a few seconds to run.
+We recommend using Cocoapods to install the Buddy SDK. It's fast and makes it much easier to keep up to date with the latest SDK release. If you're new to Cocoapods, see install instructions [here](http://guides.cocoapods.org/using/getting-started.html#installation).  If you have an older Mac, the Cocoapods installer may give you trouble, so you may need to upgrade your Ruby install (`curl -sSL https://get.rvm.io | bash -s stable --ruby`) and/or install Homebrew (`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`) before installing Cocoapods.  Both only take a few seconds to run.
 
 To create a new project using the Buddy SDK:
 
@@ -95,7 +94,7 @@ To integrate the Buddy SDK into an existing project:
 
 8) Re-open your `.xcworkspace` file in Xcode.
 
-#### Install from Source
+### Install from Source
 
 Buddy hosts our SDK source on GitHub. To access it, you need to have a GitHub account, and you will also need [Git](http://git-scm.com/download) installed. If you'd like to contribute SDK modifications or additions to Buddy, you'll want to [fork the repository](https://help.github.com/articles/fork-a-repo) so you can issue [pull requests](https://help.github.com/articles/be-social#pull-requests). See the "Contributing Back" section below for details.
 
@@ -109,7 +108,7 @@ This will clone the latest version of the SDK into a directory called **Buddy-iO
 
 The iOS source is in the **Buddy-iOS-SDK\Src** directory.
 
-##### Build the GitHub Source
+#### Build the GitHub Source
 
 To reference the local SDK in your project: 
 
@@ -119,7 +118,7 @@ To reference the local SDK in your project:
 
     pod 'BuddySDK', :path => '../../BuddySDK.podspec'
     
-7) Then in your Terminal window run. It's ok to do this again if you have already done it:
+7) Then in your Terminal window run the following. It's ok to do this again if you have already done it:
 
     pod install
 
@@ -195,7 +194,7 @@ You can implement a selector named `authorizationNeedsUserLogin` on your AppDele
 
     -(void)authorizationNeedsUserLogin
     {    
-        // To ensure that login UI shows even if the selector is called multiple times
+        // To ensure that login UI is not shown twice if the selector is called multiple times
         if (self.loginPresented == TRUE)
         {
             return;
@@ -362,31 +361,31 @@ You can implement a selector named `connectivityChanged` on your AppDelegate if 
         [alert show];
     }
 
-### Sample Apps
+## Sample Apps
 
 The Buddy Platform iOS SDK ships with a number of sample apps to get you started. These can be modified to fit your needs, or just used to guide you through the basics. The sample apps are located in the *Samples* directory.
 
-The Buddy SDK is installed into these Apps using Cocoapods. In a Terminal window, `cd` to the sample project root and type:  `pod install`
+The Buddy SDK is installed into these Apps using Cocoapods. In a Terminal window, `cd` to the sample project root and type: `pod install`
 
-#### BuddyStarter
+### BuddyStarter
 
 Demonstrates simple login and logout. This app implements the authorizationNeedsUserLogin & connectivityChanged selectors on the App Delegate.
 
-#### RegisterLogin
+### RegisterLogin
 
 Demonstrates another way to implement user registration and login with Buddy. This app implements the authorizationNeedsUserLogin selector on the App Delegate.
 
-#### Photo Gallery
+### Photo Gallery
 
 This implements a simple Photo Gallery app where a user can add photos and give them captions and tags. This app is intended to be used in the iOS Simulator.
 
 Before running the app, verify that you have some photos in your gallery (on the simulator). If not, you can add some using Safari (search for some images, long-click on them and then save them).
 
-#### PushChat
+### PushChat
 
 This implements a simple chat app, using Buddy messaging and push notification APIs.
 
-### Contributing Back: Pull Requests
+## Contributing Back: Pull Requests
 
 We'd love to have your help making the Buddy SDK as good as it can be!
 
@@ -400,5 +399,6 @@ To submit a change to the Buddy SDK please do the following:
 
 4) Commit your changes, then [submit a pull request](https://help.github.com/articles/using-pull-requests) for just that commit
 
-### Questions or need help?
-This should have given you the basics of how to work with the Buddy iOS SDK.  If you have further questions or are stuck, send an email to support@buddy.com.  
+## Questions or need help?
+
+This should have given you the basics of how to work with the Buddy iOS SDK. If you have further questions or are stuck, send an email to support@buddy.com.  

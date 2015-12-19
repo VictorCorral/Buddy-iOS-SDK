@@ -1,11 +1,3 @@
-//
-//  NSDate+JSON.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 1/9/14.
-//
-//
-
 #import "NSDate+JSON.h"
 
 @implementation NSDate (JSON)

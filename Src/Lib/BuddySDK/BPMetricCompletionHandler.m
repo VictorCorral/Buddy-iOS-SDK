@@ -1,11 +1,3 @@
-//
-//  BPMetrics.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 2/2/14.
-//
-//
-
 #import "BPMetricCompletionHandler.h"
 #import "BPRestProvider.h"
 

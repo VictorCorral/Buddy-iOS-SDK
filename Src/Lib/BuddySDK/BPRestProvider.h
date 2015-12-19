@@ -1,11 +1,3 @@
-//
-//  BPRestProvider.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 12/29/13.
-//
-//
-
 #import <Foundation/Foundation.h>
 #import "BuddyCallbacks.h"
 
