@@ -1,22 +1,17 @@
 # Buddy iOS SDK
-These release notes are for the Buddy Platform iOS SDK.
 
-Please refer to [buddyplatform.com/docs](https://buddyplatform.com/docs) for more details on the iOS SDK.
+## Overview
 
-**NOTE**: The iOS SDK has recently been updated! Please see the [iOS 3.0 Migration](http://buddyplatform.com/docs/iOS%20SDK%203.0%20Migration) page for a quickstart guide.
+The Buddy iOS SDK helps you get up and running in seconds.  
 
-## Introduction
-
-We realized most app developers end up writing the same code over and over again: user management, photo management, geolocation, checkins, metadata, and other basic features. Buddy enables developers to build cloud-connected apps without having to write, test, manage or scale server-side code and infrastructure.
-
-Buddy's easy-to-use, scenario-focused APIs let you spend more time building your app and less time worrying about backend infrastructure.
-
-The iOS SDK handles the following functionality:
+For the most part, the Buddy iOS SDK takes care of all the housekeeping of making requests against the Buddy REST API:
 
 * Building and formatting requests
 * Managing authentication
 * Parsing responses
 * Loading and saving credentials
+
+With that handled, all you have to do is initialize the SDK and start making some calls!
 
 ## Getting Started
 
@@ -31,21 +26,23 @@ Full documentation for Buddy's services are available at [buddyplatform.com/docs
 ### Prerequisites
 
 * iOS 6.0 or greater
-* Xcode 5.1 or greater
+* Xcode 6.4 or greater
 
-### Install from Cocoapods
+The Buddy iOS SDK can be accessed via [Cocoapods](http://cocoapods.org/). Cocoapods version of at least 0.39.0 is required to install the Buddy SDK and sample apps.
 
-We recommend using Cocoapods to install the BuddySDK because it's fast and easy and makes it much easier to keep up to date with SDK releases.  If you're new to Cocoapods, see install instructions [here](http://guides.cocoapods.org/using/getting-started.html#installation).
+### Install with Cocoapods
+
+We recommend using Cocoapods to install the Buddy SDK. It's fast and makes it much easier to keep up to date with the latest SDK release. If you're new to Cocoapods, see install instructions [here](http://guides.cocoapods.org/using/getting-started.html#installation).  If you have an older Mac, the Cocoapods installer may give you trouble, so you may need to upgrade your Ruby install (`curl -sSL https://get.rvm.io | bash -s stable --ruby`) and/or install Homebrew (`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`) before installing Cocoapods.  Both only take a few seconds to run.
 
 To create a new project using the Buddy SDK:
 
-1) Create a new Xcode project 
+1) Create a new Xcode project.
 
-2) In a Terminal window
+2) In a Terminal window run:
 
     cd <project-dir>
 
-3) Create a Podfile 
+3) Create a Podfile:
 
     touch Podfile
 
@@ -54,68 +51,111 @@ To create a new project using the Buddy SDK:
     platform :ios, '6.0'
     pod 'BuddySDK'
 
-5) Save the Podfile
+6) If you created a Swift-based project, add:
 
-6) In your terminal run
+    use_frameworks!
+
+7) Save the Podfile.
+
+8) In your Terminal window run:
 
     pod install
 
-### Install Locally
+9) In Xcode open the just-generated `.xcworkspace` file for your project (not the `.xcodeproj` file).
 
-#### Install from GitHub
+To integrate the Buddy SDK into an existing project:
 
-1) Clone this repository
+1) In a Terminal window run:
+
+    cd <project-dir>
+
+2) Create a Podfile:
+
+    touch Podfile
+
+3) Open the file with your favorite editor and add:
+
+    platform :ios, '6.0'
+    pod 'BuddySDK'
+
+4) If your project is Swift-based, add:
+
+    use_frameworks!
+
+5) Integrating CocoaPods with an existing workspace requires one extra line in your Podfile. Simply specify the relative path and `.xcworkspace` root filename like so:
+
+    workspace '../MyWorkspace.xcworkspace'
+
+6) Save the Podfile.
+
+7) Make sure your workspace is closed in Xcode. Then in your Terminal window run:
+
+    pod install
+
+8) Re-open your `.xcworkspace` file in Xcode.
+
+### Install from Source
+
+Buddy hosts our SDK source on GitHub. To access it, you need to have a GitHub account, and you will also need [Git](http://git-scm.com/download) installed. If you'd like to contribute SDK modifications or additions to Buddy, you'll want to [fork the repository](https://help.github.com/articles/fork-a-repo) so you can issue [pull requests](https://help.github.com/articles/be-social#pull-requests). See the "Contributing Back" section below for details.
+
+1) In a Terminal window run:
 
     git clone https://github.com/BuddyPlatform/Buddy-iOS-SDK.git
 
-2) Build the project (for specific build instructions see our [iOS documentation](https://buddyplatform.com/docs/iOS%20SDK))
+This will clone the latest version of the SDK into a directory called **Buddy-iOS-SDK**.
 
-3) Include the BuddySDK.framework into the Frameworks section of your project in Xcode
+2) Navigate to the **Buddy-iOS-SDK** directory that was created when you cloned the Buddy GitHub repository.
 
-4) Ensure the following Frameworks are linked to your project
+The iOS source is in the **Buddy-iOS-SDK\Src** directory.
 
-    * CoreLocation
-    * MobileCoreServices
-    * SystemConfiguration
-    * CFNetwork
+#### Build the GitHub Source
+
+To reference the local SDK in your project: 
+
+1) Follow the "Install with Cocoapods" steps above to create a Podfile.
+
+2) You must add a `:path` parameter to your Podfile to indicate the relative path from your project to the Buddy SDK. It should look something like this:
+
+    pod 'BuddySDK', :path => '../../BuddySDK.podspec'
+    
+7) Then in your Terminal window run the following. It's ok to do this again if you have already done it:
+
+    pod install
+
+Now any changes you make to the local Buddy SDK source will be picked up by your project when you build it in Xcode. If you add or remove files to the Buddy SDK, you will need to do a `pod update` for your project in a Terminal window.
 
 ## Using the iOS SDK
 
-Visit the [Buddy Dashboard](https://buddyplatform.com) to obtain your application ID and key.
+Visit the [Buddy Dashboard](https://buddyplatform.com) to obtain an application ID and key, which are needed for your app to communicate with Buddy.
+
+Both Objective-C and Swift-based projects are supported.
 
 ### Initialize the SDK
 
-    #import "BuddySDK/Buddy.h"
-    // ...
-    // Create the SDK client
-    [Buddy init:@"myAppId" appKey: @"myAppKey"]
-    
-If you want to utilize multiple clients at once you can use:
+To reference the Buddy SDK in your source file, you need to put an import keyword at the top of the file that contains your `AppDelegate`:
+
+Objective-C: Open the `AppDelegate.m` file and import the BuddySDK:
 
     #import "BuddySDK/Buddy.h"
-    // ...
-    // Create the SDK client
-    NSDictionary *options1 = @{@"instanceName": @"firstInstance"};
-    NSDictionary *options2 = @{@"instanceName": @"secondInstance"};
-    BPClient* firstClient = [Buddy init:@"myAppId" appKey:@"myAppKey" withOptions:options1];
-    BPClient* secondClient = [Buddy init:@"myAppId" appKey:@"myAppKey" withOptions:options2];
-    [firstClient GET:@"/videos" parameters:@{@"caption": @"caption search string"} callback:^(id json, NSError *error) {
-      // Display the video
-    }];
-    [secondClient loginUser:@"username" password:@"password" callback:^(id newBuddyObject, NSError *error) {
-      // Direct user 2 to the video user 1 uploaded
-    }];
-This allows you to have two users logged in at the same time, or manage multiple of any other thing the SDK tracks ( device information, location, etc.). The Buddy object will always be referencing the last client that was created.
+
+Swift: Open the `AppDelegate.swift` and import the BuddySDK:
+
+    import BuddySDK
+    
+Before you can call any methods in the SDK, it must be initialized. The best place to do this is inside your `AppDelegate`. Initialize your client in the `didFinishLaunchingWithOptions` method:
+
+    Objective-C: [Buddy init:@"YOUR_APP_ID" appKey:@"YOUR_APP_KEY"];
+    
+    Swift: Buddy.init("YOUR_APP_ID", appKey: "YOUR_APP_KEY");
+
+Replace "YOUR_APP_ID" and "YOUR_APP_KEY" above with your Buddy app's ID and key from the [Buddy Dashboard](https://buddyplatform.com).
 
 ### User Flow
 
-The Buddy iOS SDK handles user creation, login, and logout.
+The Buddy iOS SDK handles user creation, login, and logout. Here are some example Objective C calls.
 
 #### Create A User
 
-    // Create a user
-    BuddyObjectCallback loginCallback = [self getLoginCallback];
-    // Only Username and Password are required
     [Buddy createUser:self.signupUsername.text
            password:self.signupPassword.text
            firstName:self.signupFirstName.text
@@ -124,14 +164,19 @@ The Buddy iOS SDK handles user creation, login, and logout.
            dateOfBirth:nil 
            gender:nil 
            tag:nil 
-           callback:loginCallback];
+           callback:^(id newBuddyObject, NSError *error)
+    {
+      if (!error)
+      {
+        // Greet the user
+      }
+    }];
 
 #### User Login
 
-    // Login a user
     [Buddy loginUser:@"username" password:@"password" callback:^(id newBuddyObject, NSError *error)
     {
-      if(!error)
+      if (!error)
       {
         // Greet the user
       }
@@ -139,27 +184,44 @@ The Buddy iOS SDK handles user creation, login, and logout.
 
 #### User Logout
 
-    // Logout a user
     [Buddy logoutUser:^(NSError *error) {
-      // Perform some action on logout
+        // Perform some action on logout
     }];
-	
+  
+#### User Authorization selector
+
+You can implement a selector named `authorizationNeedsUserLogin` on your AppDelegate that gets called whenever a Buddy call is made that requires a logged-in user. That way, you won't have to manage user login state. Here's an example:
+
+    -(void)authorizationNeedsUserLogin
+    {    
+        // To ensure that login UI is not shown twice if the selector is called multiple times
+        if (self.loginPresented == TRUE)
+        {
+            return;
+        }
+        self.loginPresented = TRUE;
+        
+        LoginViewController *loginVC = [[LoginViewController alloc]
+                                    initWithNibName:@"LoginViewController" bundle:nil];
+    
+       [self.navController.topViewController presentViewController:loginVC animated:NO completion:nil];
+    }
+
 ### REST Interface
-	  
+    
 Each SDK provides wrappers that make REST calls to Buddy. Responses can be handled in two ways: you can create your own wrapper classes, similar to those found in the `Models` folder, or you can use a basic `[NSDictionary class]`.
 
 #### POST
 
-In this example we'll create a checkin. Take a look at the [create checkin REST documentation](https://buddyplatform.com/docs/Create%20Checkin/HTTP) then:
-	 
- 	  // Create a checkin
- 	  BPCoordinate *coord = BPCoordinateMake(47.1, -121.292);
+In this example we'll create a checkin. Take a look at the [create checkin documentation](https://buddyplatform.com/docs/Checkins#CreateCheckin) then:
+     
+    BPCoordinate *coord = BPCoordinateMake(47.1, -121.292);
     
     NSDictionary *params = @{@"location": coord,
                              @"comment": @"A comment about this awesome place!"};
     
-    [Buddy POST:@"/checkins" parameters:params class:[NSDictionary class] callback:^(id obj, NSError *error) {
-        if(!error) {
+    [Buddy POST:@"/checkins" parameters:params class:[NSDictionary class] callback:^(id checkin, NSError *error) {
+        if (!error) {
           NSLog(@"Checkin post went as planned");
         } else {
           NSLog(@"%@", error);
@@ -174,10 +236,9 @@ We now can call GET to search for the checkin we just created!
     
     NSDictionary *params = @{@"locationRange": range};
     
-    [Buddy GET:@"/checkins" parameters:params class:[BPPageResults class] callback:^(id obj, NSError *error) {
-        if(!error) {
-          BPPageResults *searchResults = (BPPageResults*)obj
-          NSArray *checkins = [searchResults convertPageResultsToType:[BPCheckin class] ];
+    [Buddy GET:@"/checkins" parameters:params class:[BPPageResults class] callback:^(id results, NSError *error) {
+        if (!error) {
+          NSArray *checkins = [(BPPageResults*)results convertPageResultsToType:[BPCheckin class] ];
           NSLog(@"%@", checkins); // Log or do something with the response
         } else {
           NSLog(@"GET checkins was unsuccessful.");
@@ -185,10 +246,24 @@ We now can call GET to search for the checkin we just created!
         }
     }];
 
+If we wanted to search for the specific checkin, by ID, we can do that too:
+
+    NSString* path = [NSString stringWithFormat:@"/checkins/%@", checkinId];
+    [Buddy GET:path parameters:nil class:[BPCheckin class] callback:^(id checkin, NSError *error) {
+        if (!error) {
+          BPCheckin *checkin = (BPCheckin*)checkin;
+          // do something with the response
+        } else {
+          NSLog(@"GET checkin was unsuccessful.");
+          NSLog(@"%@", error);
+        }
+    }];
+
+
 #### PUT/PATCH/DELETE
 
 Each remaining REST verb is available through the Buddy SDK using the same pattern as the POST example.
-	 
+     
 ### Working With Files
 
 Buddy offers support for binary files. The iOS SDK works with files through our REST interface similarly to other API calls. The key class is `BPFile`, which is a wrapper around NSData along with a MIME content type.
@@ -206,7 +281,7 @@ Here we demonstrate uploading a picture. All binary files use the same pattern w
     NSDictionary *parameters = @{@"data": file,
                                  @"caption": @"Koi are awesome fish."};
     
-    [Buddy POST:@"/pictures" parameters:parameters class:[NSDictionary class] callback:^(id obj, NSError *error) {
+    [Buddy POST:@"/pictures" parameters:parameters class:[NSDictionary class] callback:^(id picture, NSError *error) {
         if (!error) {
           NSLog(@"Image uploaded successfully");
         } else {
@@ -221,9 +296,8 @@ To download a file send a GET request with BPFile as the operation type. This sa
 
     // Don't forget to store the picture ID in pictureId!
 
-    [Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file", pictureId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error) {
-        
-        if(!error)
+    [Buddy GET:[NSString stringWithFormat:@"/pictures/%@/file", pictureId] parameters:nil class:[BPFile class] callback:^(id obj, NSError *error) {     
+        if (!error)
         {
           BPFile *file = (BPFile*)obj;
             
@@ -236,6 +310,80 @@ To download a file send a GET request with BPFile as the operation type. This sa
         }
         
     }];
+
+### Advanced Usage
+
+#### Automatically report location for each Buddy call
+
+If you set the current location in the Buddy client, each time a Buddy call is made that location will be passed in the call. Most calls that send data to Buddy have a location parameter; if a call is made that doesn't take location, the parameter will be ignored.
+
+    BPCoordinate *location = BPCoordinateMake(47.1, -121.292);
+    
+    [Buddy setLastLocation: location];
+
+#### Multiple concurrent users
+
+If you need to have multiple clients (for example if you need to interact with multiple users concurrently from your app), you can capture clients created from `Buddy.init` and use those clients individually:
+
+    id<BuddyClientProtocol> client1 = [Buddy init:@"Your App ID 1" appKey:@"Your App Key1"];
+    
+    id<BuddyClientProtocol> client2 = [Buddy init:@"Your App ID 2" appKey:@"Your App Key2"];
+    
+    [client1 loginUser:@"user1" password:@"password1" callback:<#^(id newBuddyObject, NSError *error)callback#>
+    {
+         if (!error)
+         {
+             // Greet user1
+         }
+    }];
+
+    [client2 loginUser:@"user2" password:@"password2" callback:<#^(id newBuddyObject, NSError *error)callback#>
+     {
+         if (!error)
+         {
+             // Greet user2
+         }
+     }];
+    
+#### Handling connectivity
+
+You can implement a selector named `connectivityChanged` on your AppDelegate if you would like to be notified if your device loses and regains ability to communicate to the Buddy servers for whatever reason. Here's an example that notifies the user:
+
+    - (void)connectivityChanged:(NSNumber *)level
+    {
+        BPConnectivityLevel connectivityLevel = [level intValue];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Connectivity Alert"
+                                                        message: level == BPConnectivityNone ? @"No connectivity..." : @"Connected!"
+                                                       delegate: self
+                                              cancelButtonTitle: @"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+    }
+
+## Sample Apps
+
+The Buddy Platform iOS SDK ships with a number of sample apps to get you started. These can be modified to fit your needs, or just used to guide you through the basics. The sample apps are located in the *Samples* directory.
+
+The Buddy SDK is installed into these Apps using Cocoapods. In a Terminal window, `cd` to the sample project root and type: `pod install`
+
+### BuddyStarter
+
+Demonstrates simple login and logout. This app implements the authorizationNeedsUserLogin & connectivityChanged selectors on the App Delegate.
+
+### RegisterLogin
+
+Demonstrates another way to implement user registration and login with Buddy. This app implements the authorizationNeedsUserLogin selector on the App Delegate.
+
+### Photo Gallery
+
+This implements a simple Photo Gallery app where a user can add photos and give them captions and tags. This app is intended to be used in the iOS Simulator.
+
+Before running the app, verify that you have some photos in your gallery (on the simulator). If not, you can add some using Safari (search for some images, long-click on them and then save them).
+
+### PushChat
+
+This implements a simple chat app, using Buddy messaging and push notification APIs.
 
 ## Contributing Back: Pull Requests
 
@@ -251,18 +399,6 @@ To submit a change to the Buddy SDK please do the following:
 
 4) Commit your changes, then [submit a pull request](https://help.github.com/articles/using-pull-requests) for just that commit
 
-## License
+## Questions or need help?
 
-#### Copyright (C) 2014 Buddy Platform, Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not
-use this file except in compliance with the License. You may obtain a copy of
-the License at
-
-  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-License for the specific language governing permissions and limitations under
-the License.
+This should have given you the basics of how to work with the Buddy iOS SDK. If you have further questions or are stuck, send an email to support@buddy.com.  

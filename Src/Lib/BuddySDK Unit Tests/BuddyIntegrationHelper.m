@@ -15,13 +15,13 @@
 + (void) bootstrapInit
 {
     [Buddy init:APP_ID appKey:APP_KEY];
+
+    [BPAppSettings resetSettings];
 }
 
 + (void) bootstrapLogin:(void(^)())callback
 {
-    [BPAppSettings resetSettings:nil];
-    
-    [Buddy init:APP_ID appKey:APP_KEY];
+    [BuddyIntegrationHelper bootstrapInit];
     
     [Buddy loginUser:TEST_USERNAME password:TEST_PASSWORD callback:^(BPUser *loggedInUser, NSError *error)
     {
@@ -42,8 +42,6 @@
             }];
         }
     }];
-        
-
 }
 
 + (NSDate *)randomDate

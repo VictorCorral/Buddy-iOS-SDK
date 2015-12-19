@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  registerlogin
-//
-//  Created by Nick Ambrose on 1/13/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import "AppDelegate.h"
 
 #import <BuddySDK/Buddy.h>
@@ -20,9 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Go to http://buddyplatform.com to get an app ID and app key.
-    //[Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
-
+    [Buddy init:APP_ID appKey:APP_KEY];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.window.backgroundColor = [UIColor whiteColor];

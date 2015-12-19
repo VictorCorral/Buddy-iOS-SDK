@@ -1,11 +1,3 @@
-//
-//  BPClient.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 11/15/13.
-//
-//
-
 #import <Foundation/Foundation.h>
 
 #import "BuddyCallbacks.h"
@@ -16,17 +8,6 @@
 @class BuddyDevice;
 @class BPUser;
 
-/**
- * Enum specifying the current authentication level.
- */
-typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
-    /** No authentication */
-    BPAuthenticationLevelNone,
-    /** App/Device level authentication */
-    BPAuthenticationLevelDevice,
-    /** User level authentication */
-    BPAuthenticationLevelUser
-};
 
 @interface BPClient : NSObject <BPRestProvider,BuddyClientProtocol>
 
@@ -51,15 +32,9 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
 /// </summary>
 @property (readonly, nonatomic, strong) BuddyDevice *device;
 
-/**
-  * Most recent BPCoordinate.
-  */
 @property (nonatomic, strong) BPCoordinate *lastLocation;
 
-/**
- * Current reachability level.
- */
-@property (nonatomic, readonly, assign) BPReachabilityLevel reachabilityLevel;
+@property (nonatomic, readonly, assign) BPConnectivityLevel connectivityLevel;
 
 @property (nonatomic, strong) BPUser *currentUser;
 
@@ -142,5 +117,6 @@ typedef NS_ENUM(NSInteger, BPAuthenticationLevel) {
 - (void)registerPushTokenWithData:(NSData *)token callback:(BuddyObjectCallback) callback;
 - (void)registerPushToken:(NSString *)token callback:(BuddyObjectCallback)callback;
 
+- (void)setConnectivityLevel:(BPConnectivityLevel)level;
 
 @end

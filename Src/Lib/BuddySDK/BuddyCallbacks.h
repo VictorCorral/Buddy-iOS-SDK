@@ -1,11 +1,3 @@
-//
-//  BuddyCallbacks.h
-//  BuddySDK
-//
-//  Created by Nick Ambrose on 7/30/14.
-//
-//
-
 #ifndef BuddySDK_BuddyCallbacks_h
 #define BuddySDK_BuddyCallbacks_h
 

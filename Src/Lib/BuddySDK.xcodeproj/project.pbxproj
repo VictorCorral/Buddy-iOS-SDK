@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 2F69F7BB1B12DCFB00165250 /* Build configuration list for PBXAggregateTarget "BuddySDK-Universal" */;
 			buildPhases = (
-				2F69F7BC1B12E11A00165250 /* ShellScript */,
+				2F69F7BC1B12E11A00165250 /* Run Script */,
 			);
 			dependencies = (
 			);
@@ -45,10 +45,6 @@
 		01274B51198AAC5500DB31BA /* BPPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 01274B4F198AAC5500DB31BA /* BPPicture.m */; };
 		012E59D219AD492C0034B926 /* BPBinaryModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D019AD492C0034B926 /* BPBinaryModelBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E59D319AD492C0034B926 /* BPBinaryModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D119AD492C0034B926 /* BPBinaryModelBase.m */; };
-		012E59D619AD4B550034B926 /* BPAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D419AD4B550034B926 /* BPAlbum.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		012E59D719AD4B550034B926 /* BPAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D519AD4B550034B926 /* BPAlbum.m */; };
-		012E59DA19AD4C330034B926 /* BPAlbumItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D819AD4C330034B926 /* BPAlbumItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		012E59DB19AD4C330034B926 /* BPAlbumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D919AD4C330034B926 /* BPAlbumItem.m */; };
 		012E59F619AD4F120034B926 /* BPNotificationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59F419AD4F120034B926 /* BPNotificationResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E59F719AD4F120034B926 /* BPNotificationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59F519AD4F120034B926 /* BPNotificationResult.m */; };
 		012E5A0419AD4FA40034B926 /* BPBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59F819AD4FA40034B926 /* BPBlob.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,8 +53,6 @@
 		012E5A0719AD4FA40034B926 /* BPCheckin.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FB19AD4FA40034B926 /* BPCheckin.m */; };
 		012E5A0819AD4FA40034B926 /* BPIdentity.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FC19AD4FA40034B926 /* BPIdentity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A0919AD4FA40034B926 /* BPIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FD19AD4FA40034B926 /* BPIdentity.m */; };
-		012E5A0A19AD4FA40034B926 /* BPLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FE19AD4FA40034B926 /* BPLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		012E5A0B19AD4FA40034B926 /* BPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FF19AD4FA40034B926 /* BPLocation.m */; };
 		012E5A0C19AD4FA40034B926 /* BPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A0019AD4FA40034B926 /* BPMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		012E5A0D19AD4FA40034B926 /* BPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A0119AD4FA40034B926 /* BPMessage.m */; };
 		012E5A0E19AD4FA40034B926 /* BPMetadataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A0219AD4FA40034B926 /* BPMetadataItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,7 +67,6 @@
 		016FAB3C198C19B20021D3A8 /* BPUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 016FAB3A198C19B20021D3A8 /* BPUserList.m */; };
 		018AB0E31977176B0025677B /* BPModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 018AB0E11977176B0025677B /* BPModelBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		018AB0E41977176B0025677B /* BPModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0E21977176B0025677B /* BPModelBase.m */; };
-		018AB0EB197719620025677B /* BPRest.m in Sources */ = {isa = PBXBuildFile; fileRef = 018AB0EA197719620025677B /* BPRest.m */; };
 		01BC51CB1992B15900E04478 /* CryptoTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 01BC51C91992B15900E04478 /* CryptoTools.h */; };
 		01BC51CC1992B15900E04478 /* CryptoTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BC51CA1992B15900E04478 /* CryptoTools.m */; };
 		01BC51CF1992B37D00E04478 /* NSData+BPConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 01BC51CD1992B37D00E04478 /* NSData+BPConversion.h */; };
@@ -83,7 +76,6 @@
 		01DB07C0197878B40008A35E /* BPUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01DB07BE197878B40008A35E /* BPUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01DB07C1197878B40008A35E /* BPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DB07BF197878B40008A35E /* BPUser.m */; };
 		2F69F7B71B0FBB6300165250 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9A5AAB1B0E244300A72990 /* Macro.h */; };
-		2F9A59F11B0D4C6D00A72990 /* BuddySDK Universal Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9A59F01B0D4C6D00A72990 /* BuddySDK Universal Framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F9A59F71B0D4C6D00A72990 /* BuddySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9A59EC1B0D4C6C00A72990 /* BuddySDK.framework */; };
 		2F9A59FE1B0D4C6D00A72990 /* BuddySDK_Universal_FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A59FD1B0D4C6D00A72990 /* BuddySDK_Universal_FrameworkTests.m */; };
 		2F9A5A411B0E1C1700A72990 /* BPUIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B0F50A189373EB000403E0 /* BPUIImageView+AFNetworking.m */; };
@@ -108,7 +100,6 @@
 		2F9A5A541B0E1CCC00A72990 /* BPBlob.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59F919AD4FA40034B926 /* BPBlob.m */; };
 		2F9A5A551B0E1CD300A72990 /* BPCheckin.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FB19AD4FA40034B926 /* BPCheckin.m */; };
 		2F9A5A561B0E1CD900A72990 /* BPIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FD19AD4FA40034B926 /* BPIdentity.m */; };
-		2F9A5A571B0E1CDF00A72990 /* BPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59FF19AD4FA40034B926 /* BPLocation.m */; };
 		2F9A5A581B0E1CE600A72990 /* BPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A0119AD4FA40034B926 /* BPMessage.m */; };
 		2F9A5A591B0E1CEF00A72990 /* BPMetadataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A0319AD4FA40034B926 /* BPMetadataItem.m */; };
 		2F9A5A5A1B0E1CF700A72990 /* BPFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 012311A9199D407B003081CA /* BPFile.m */; };
@@ -120,8 +111,6 @@
 		2F9A5A601B0E1D3500A72990 /* BPAFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F35818E071C600C07019 /* BPAFHTTPRequestOperation.m */; };
 		2F9A5A611B0E1D4400A72990 /* BPUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 016FAB3A198C19B20021D3A8 /* BPUserList.m */; };
 		2F9A5A621B0E1D4D00A72990 /* BPBinaryModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D119AD492C0034B926 /* BPBinaryModelBase.m */; };
-		2F9A5A631B0E1D5700A72990 /* BPAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D519AD4B550034B926 /* BPAlbum.m */; };
-		2F9A5A641B0E1D6000A72990 /* BPAlbumItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59D919AD4C330034B926 /* BPAlbumItem.m */; };
 		2F9A5A651B0E1D6C00A72990 /* BPNotificationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E59F519AD4F120034B926 /* BPNotificationResult.m */; };
 		2F9A5A661B0E1D7900A72990 /* BPUserListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A1119AD519F0034B926 /* BPUserListItem.m */; };
 		2F9A5A671B0E1D8400A72990 /* BPSocialAuthenticatedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 012E5A1919AD53E60034B926 /* BPSocialAuthenticatedUser.m */; };
@@ -162,7 +151,6 @@
 		2F9A5A8A1B0E207F00A72990 /* BPBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59F819AD4FA40034B926 /* BPBlob.h */; };
 		2F9A5A8B1B0E208B00A72990 /* BPCheckin.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FA19AD4FA40034B926 /* BPCheckin.h */; };
 		2F9A5A8C1B0E209500A72990 /* BPIdentity.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FC19AD4FA40034B926 /* BPIdentity.h */; };
-		2F9A5A8D1B0E209B00A72990 /* BPLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59FE19AD4FA40034B926 /* BPLocation.h */; };
 		2F9A5A8E1B0E20A300A72990 /* BPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A0019AD4FA40034B926 /* BPMessage.h */; };
 		2F9A5A8F1B0E20AA00A72990 /* BPMetadataItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A0219AD4FA40034B926 /* BPMetadataItem.h */; };
 		2F9A5A901B0E20B400A72990 /* BPFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 012311A8199D407B003081CA /* BPFile.h */; };
@@ -173,8 +161,6 @@
 		2F9A5A951B0E20DF00A72990 /* BPPicture.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B4E198AAC5500DB31BA /* BPPicture.h */; };
 		2F9A5A961B0E20EE00A72990 /* BPUserList.h in Headers */ = {isa = PBXBuildFile; fileRef = 016FAB39198C19B20021D3A8 /* BPUserList.h */; };
 		2F9A5A971B0E20F800A72990 /* BPBinaryModelBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D019AD492C0034B926 /* BPBinaryModelBase.h */; };
-		2F9A5A981B0E210500A72990 /* BPAlbum.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D419AD4B550034B926 /* BPAlbum.h */; };
-		2F9A5A991B0E210D00A72990 /* BPAlbumItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59D819AD4C330034B926 /* BPAlbumItem.h */; };
 		2F9A5A9A1B0E211900A72990 /* BPNotificationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E59F419AD4F120034B926 /* BPNotificationResult.h */; };
 		2F9A5A9B1B0E212300A72990 /* BPUserListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A1019AD519F0034B926 /* BPUserListItem.h */; };
 		2F9A5A9C1B0E212A00A72990 /* BPVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 012E5A1419AD51F10034B926 /* BPVideo.h */; };
@@ -212,8 +198,6 @@
 		5B32F37918E071C600C07019 /* BPAFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B32F36618E071C600C07019 /* BPAFURLResponseSerialization.h */; };
 		5B32F37A18E071C600C07019 /* BPAFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F36718E071C600C07019 /* BPAFURLResponseSerialization.m */; };
 		5B56973718D6B29B00917ED8 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BCF3F4A18D692200065842D /* CrashReporter.framework */; };
-		5B6E84CE18F2138E005E7FEE /* NotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E84CD18F2138E005E7FEE /* NotificationTests.m */; };
-		5B7EC9FB19453ACF00F33589 /* AppSettingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7EC9FA19453ACF00F33589 /* AppSettingsTests.m */; };
 		5B91C50E18D0CE3900CB7119 /* small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5B91C50D18D0CE3900CB7119 /* small.mp4 */; };
 		5B984DA018C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B984D9E18C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h */; };
 		5B984DA118C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B984D9F18C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.m */; };
@@ -227,6 +211,17 @@
 		5BCF829A191300DD00A26EA7 /* NSArray+BPSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF8298191300DD00A26EA7 /* NSArray+BPSugar.m */; };
 		5BCF9D7C192947A6000D173B /* BPAFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BCF9D7A192947A6000D173B /* BPAFSecurityPolicy.h */; };
 		5BCF9D7D192947A6000D173B /* BPAFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF9D7B192947A6000D173B /* BPAFSecurityPolicy.m */; };
+		BF0615141B8F6B130036AF12 /* AppSettingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF06150E1B8F6B130036AF12 /* AppSettingsTests.m */; };
+		BF0615151B8F6B130036AF12 /* BPRest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF06150F1B8F6B130036AF12 /* BPRest.m */; };
+		BF0615161B8F6B130036AF12 /* BPUserIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0615101B8F6B130036AF12 /* BPUserIntegrationTests.m */; };
+		BF0615171B8F6B130036AF12 /* MetricsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0615111B8F6B130036AF12 /* MetricsTests.m */; };
+		BF0615181B8F6B130036AF12 /* NotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0615121B8F6B130036AF12 /* NotificationTests.m */; };
+		BF25291E1BA0C86E00469EF9 /* BuddySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BF25291D1BA0C86E00469EF9 /* BuddySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF25291F1BA0FD6E00469EF9 /* Macro.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9A5AAB1B0E244300A72990 /* Macro.h */; };
+		BF2529201BA101AD00469EF9 /* Buddy+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 01274B2F1989930F00DB31BA /* Buddy+Private.h */; };
+		BF2529211BA101B700469EF9 /* BPAppSettings+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1DF8491949506C00B2FD52 /* BPAppSettings+Private.h */; };
+		BFA315F51B8BD33C0032058D /* RetryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA315F41B8BD33C0032058D /* RetryTests.m */; };
+		BFF44A811BD16DF3006D5174 /* LocationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF44A801BD16DF3006D5174 /* LocationTests.m */; };
 		C1010D31187A4CC3009EB04E /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D2C187A4CC3009EB04E /* 0.jpg */; };
 		C1010D32187A4CC3009EB04E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D2D187A4CC3009EB04E /* 1.jpg */; };
 		C1010D33187A4CC3009EB04E /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1010D2E187A4CC3009EB04E /* 2.jpg */; };
@@ -239,16 +234,13 @@
 		C10F1B78187095EA00D5364C /* BuddyIntegrationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C10F1B77187095EA00D5364C /* BuddyIntegrationHelper.m */; };
 		C10F1B7B1870A6F500D5364C /* NSError+BuddyError.h in Headers */ = {isa = PBXBuildFile; fileRef = C10F1B791870A6F500D5364C /* NSError+BuddyError.h */; };
 		C10F1B7C1870A6F500D5364C /* NSError+BuddyError.m in Sources */ = {isa = PBXBuildFile; fileRef = C10F1B7A1870A6F500D5364C /* NSError+BuddyError.m */; };
-		C10F1B80187103E500D5364C /* BPUserIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1AA90E318373BF80074B7E8 /* BPUserIntegrationTests.m */; };
 		C1427672189AAC3700D5DD85 /* BPAppSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = C1427670189AAC3700D5DD85 /* BPAppSettings.h */; };
 		C1427673189AAC3700D5DD85 /* BPAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C1427671189AAC3700D5DD85 /* BPAppSettings.m */; };
 		C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = C1427675189ECA2300D5DD85 /* BPMetricCompletionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1427678189ECA2300D5DD85 /* BPMetricCompletionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C1427676189ECA2300D5DD85 /* BPMetricCompletionHandler.m */; };
-		C142767A189ECC1600D5DD85 /* MetricsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1427679189ECC1600D5DD85 /* MetricsTests.m */; };
 		C153F87017E15FC1009CDC81 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = C153F86F17E15FC1009CDC81 /* Util.h */; };
 		C154CEFA187FAE8600EACE4B /* NSDate+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = C154CEF8187FAE8600EACE4B /* NSDate+JSON.h */; };
 		C154CEFB187FAE8600EACE4B /* NSDate+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = C154CEF9187FAE8600EACE4B /* NSDate+JSON.m */; };
-		C15B5F08186FB465004F2717 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F091B217FD043500B2B9F2 /* SenTestingKit.framework */; };
 		C16FE35018944D0A0033EFAF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17E2B4E180391D700F64FB6 /* SystemConfiguration.framework */; };
 		C16FE35118944D660033EFAF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17E2B501803924300F64FB6 /* MobileCoreServices.framework */; };
 		C18875A8186FFF4E00320A00 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1FBCED817E671A900275F6A /* CoreLocation.framework */; };
@@ -261,7 +253,6 @@
 		C1B2375F1865569F005C841E /* NSString+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B2375D1865569E005C841E /* NSString+JSON.h */; };
 		C1B237601865569F005C841E /* NSString+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B2375E1865569E005C841E /* NSString+JSON.m */; };
 		C1B8076C18441B1A0086B843 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E0D1E21831C2E8001A7A01 /* XCTest.framework */; };
-		C1B8076F18441BD30086B843 /* BuddyIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B8076E18441BD30086B843 /* BuddyIntegrationTests.m */; };
 		C1B8077218441D660086B843 /* libBuddySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6291F7C165C01800051F83C /* libBuddySDK.a */; };
 		C1B95A2A18370817000C8417 /* BuddySDK-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A6291F83165C01800051F83C /* BuddySDK-Prefix.pch */; };
 		C1BFD88B187D15D000A1FADF /* blob.json in Resources */ = {isa = PBXBuildFile; fileRef = C1BFD88A187D15D000A1FADF /* blob.json */; };
@@ -302,18 +293,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		D45A7BB3166235BE000E5257 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = include;
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		012311A8199D407B003081CA /* BPFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPFile.h; path = Models/BPFile.h; sourceTree = "<group>"; };
 		012311A9199D407B003081CA /* BPFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPFile.m; path = Models/BPFile.m; sourceTree = "<group>"; };
@@ -328,10 +307,6 @@
 		01274B4F198AAC5500DB31BA /* BPPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPPicture.m; path = Models/BPPicture.m; sourceTree = "<group>"; };
 		012E59D019AD492C0034B926 /* BPBinaryModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPBinaryModelBase.h; path = Models/BPBinaryModelBase.h; sourceTree = "<group>"; };
 		012E59D119AD492C0034B926 /* BPBinaryModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPBinaryModelBase.m; path = Models/BPBinaryModelBase.m; sourceTree = "<group>"; };
-		012E59D419AD4B550034B926 /* BPAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPAlbum.h; path = Models/BPAlbum.h; sourceTree = "<group>"; };
-		012E59D519AD4B550034B926 /* BPAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPAlbum.m; path = Models/BPAlbum.m; sourceTree = "<group>"; };
-		012E59D819AD4C330034B926 /* BPAlbumItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPAlbumItem.h; path = Models/BPAlbumItem.h; sourceTree = "<group>"; };
-		012E59D919AD4C330034B926 /* BPAlbumItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPAlbumItem.m; path = Models/BPAlbumItem.m; sourceTree = "<group>"; };
 		012E59F419AD4F120034B926 /* BPNotificationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPNotificationResult.h; path = Models/BPNotificationResult.h; sourceTree = "<group>"; };
 		012E59F519AD4F120034B926 /* BPNotificationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPNotificationResult.m; path = Models/BPNotificationResult.m; sourceTree = "<group>"; };
 		012E59F819AD4FA40034B926 /* BPBlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPBlob.h; path = Models/BPBlob.h; sourceTree = "<group>"; };
@@ -340,8 +315,6 @@
 		012E59FB19AD4FA40034B926 /* BPCheckin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPCheckin.m; path = Models/BPCheckin.m; sourceTree = "<group>"; };
 		012E59FC19AD4FA40034B926 /* BPIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPIdentity.h; path = Models/BPIdentity.h; sourceTree = "<group>"; };
 		012E59FD19AD4FA40034B926 /* BPIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPIdentity.m; path = Models/BPIdentity.m; sourceTree = "<group>"; };
-		012E59FE19AD4FA40034B926 /* BPLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPLocation.h; path = Models/BPLocation.h; sourceTree = "<group>"; };
-		012E59FF19AD4FA40034B926 /* BPLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPLocation.m; path = Models/BPLocation.m; sourceTree = "<group>"; };
 		012E5A0019AD4FA40034B926 /* BPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPMessage.h; path = Models/BPMessage.h; sourceTree = "<group>"; };
 		012E5A0119AD4FA40034B926 /* BPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPMessage.m; path = Models/BPMessage.m; sourceTree = "<group>"; };
 		012E5A0219AD4FA40034B926 /* BPMetadataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPMetadataItem.h; path = Models/BPMetadataItem.h; sourceTree = "<group>"; };
@@ -356,7 +329,6 @@
 		016FAB3A198C19B20021D3A8 /* BPUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPUserList.m; path = Models/BPUserList.m; sourceTree = "<group>"; };
 		018AB0E11977176B0025677B /* BPModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BPModelBase.h; path = Models/BPModelBase.h; sourceTree = "<group>"; };
 		018AB0E21977176B0025677B /* BPModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPModelBase.m; path = Models/BPModelBase.m; sourceTree = "<group>"; };
-		018AB0EA197719620025677B /* BPRest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRest.m; sourceTree = "<group>"; };
 		01BC51C91992B15900E04478 /* CryptoTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoTools.h; sourceTree = "<group>"; };
 		01BC51CA1992B15900E04478 /* CryptoTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptoTools.m; sourceTree = "<group>"; };
 		01BC51CD1992B37D00E04478 /* NSData+BPConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+BPConversion.h"; sourceTree = "<group>"; };
@@ -369,7 +341,6 @@
 		29345ABD1773DB3B00EEB8F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2F9A59EC1B0D4C6C00A72990 /* BuddySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuddySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F9A59EF1B0D4C6D00A72990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2F9A59F01B0D4C6D00A72990 /* BuddySDK Universal Framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BuddySDK Universal Framework.h"; sourceTree = "<group>"; };
 		2F9A59F61B0D4C6D00A72990 /* BuddySDK Universal FrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BuddySDK Universal FrameworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F9A59FC1B0D4C6D00A72990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F9A59FD1B0D4C6D00A72990 /* BuddySDK_Universal_FrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuddySDK_Universal_FrameworkTests.m; sourceTree = "<group>"; };
@@ -395,8 +366,6 @@
 		5B32F36518E071C600C07019 /* BPAFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAFURLRequestSerialization.m; sourceTree = "<group>"; };
 		5B32F36618E071C600C07019 /* BPAFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAFURLResponseSerialization.h; sourceTree = "<group>"; };
 		5B32F36718E071C600C07019 /* BPAFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAFURLResponseSerialization.m; sourceTree = "<group>"; };
-		5B6E84CD18F2138E005E7FEE /* NotificationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTests.m; sourceTree = "<group>"; };
-		5B7EC9FA19453ACF00F33589 /* AppSettingsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettingsTests.m; sourceTree = "<group>"; };
 		5B91C50D18D0CE3900CB7119 /* small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = small.mp4; sourceTree = "<group>"; };
 		5B984D9E18C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JAGPropertyConverter+BPJSONConverter.h"; sourceTree = "<group>"; };
 		5B984D9F18C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JAGPropertyConverter+BPJSONConverter.m"; sourceTree = "<group>"; };
@@ -414,6 +383,14 @@
 		A6291F7C165C01800051F83C /* libBuddySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBuddySDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6291F7F165C01800051F83C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A6291F83165C01800051F83C /* BuddySDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BuddySDK-Prefix.pch"; sourceTree = "<group>"; };
+		BF06150E1B8F6B130036AF12 /* AppSettingsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettingsTests.m; sourceTree = "<group>"; };
+		BF06150F1B8F6B130036AF12 /* BPRest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRest.m; sourceTree = "<group>"; };
+		BF0615101B8F6B130036AF12 /* BPUserIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPUserIntegrationTests.m; sourceTree = "<group>"; };
+		BF0615111B8F6B130036AF12 /* MetricsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsTests.m; sourceTree = "<group>"; };
+		BF0615121B8F6B130036AF12 /* NotificationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTests.m; sourceTree = "<group>"; };
+		BF25291D1BA0C86E00469EF9 /* BuddySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuddySDK.h; sourceTree = "<group>"; };
+		BFA315F41B8BD33C0032058D /* RetryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetryTests.m; sourceTree = "<group>"; };
+		BFF44A801BD16DF3006D5174 /* LocationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTests.m; sourceTree = "<group>"; };
 		C1010D2C187A4CC3009EB04E /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
 		C1010D2D187A4CC3009EB04E /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		C1010D2E187A4CC3009EB04E /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
@@ -431,7 +408,6 @@
 		C1427671189AAC3700D5DD85 /* BPAppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPAppSettings.m; sourceTree = "<group>"; };
 		C1427675189ECA2300D5DD85 /* BPMetricCompletionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMetricCompletionHandler.h; sourceTree = "<group>"; };
 		C1427676189ECA2300D5DD85 /* BPMetricCompletionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPMetricCompletionHandler.m; sourceTree = "<group>"; };
-		C1427679189ECC1600D5DD85 /* MetricsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetricsTests.m; sourceTree = "<group>"; };
 		C153F86F17E15FC1009CDC81 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = ../../Lib/BuddySDK/Util.h; sourceTree = "<group>"; };
 		C154CEF8187FAE8600EACE4B /* NSDate+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JSON.h"; sourceTree = "<group>"; };
 		C154CEF9187FAE8600EACE4B /* NSDate+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JSON.m"; sourceTree = "<group>"; };
@@ -444,13 +420,11 @@
 		C1A46532189753AC00FCCBF9 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		C1AA90D618371FF70074B7E8 /* BPServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BPServiceController.h; sourceTree = "<group>"; };
 		C1AA90D718371FF70074B7E8 /* BPServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BPServiceController.m; sourceTree = "<group>"; };
-		C1AA90E318373BF80074B7E8 /* BPUserIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BPUserIntegrationTests.m; path = "../../Lib/BuddySDK Unit Tests/BPUserIntegrationTests.m"; sourceTree = "<group>"; };
 		C1B0F509189373EB000403E0 /* BPUIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BPUIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		C1B0F50A189373EB000403E0 /* BPUIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BPUIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		C1B2375C18654884005C841E /* BuddyTestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddyTestData.h; path = "../../Lib/BuddySDK Unit Tests/BuddyTestData.h"; sourceTree = "<group>"; };
 		C1B2375D1865569E005C841E /* NSString+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSON.h"; sourceTree = "<group>"; };
 		C1B2375E1865569E005C841E /* NSString+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSON.m"; sourceTree = "<group>"; };
-		C1B8076E18441BD30086B843 /* BuddyIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = BuddyIntegrationTests.m; path = "../../Lib/BuddySDK Unit Tests/BuddyIntegrationTests.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C1BFD88A187D15D000A1FADF /* blob.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blob.json; sourceTree = "<group>"; };
 		C1E0D1CA1831BAD3001A7A01 /* JAGProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAGProperty.h; sourceTree = "<group>"; };
 		C1E0D1CB1831BAD3001A7A01 /* JAGProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAGProperty.m; sourceTree = "<group>"; };
@@ -505,7 +479,6 @@
 				C16FE35118944D660033EFAF /* MobileCoreServices.framework in Frameworks */,
 				C16FE35018944D0A0033EFAF /* SystemConfiguration.framework in Frameworks */,
 				C18875A8186FFF4E00320A00 /* CoreLocation.framework in Frameworks */,
-				C15B5F08186FB465004F2717 /* SenTestingKit.framework in Frameworks */,
 				C1B8077218441D660086B843 /* libBuddySDK.a in Frameworks */,
 				5B56973718D6B29B00917ED8 /* CrashReporter.framework in Frameworks */,
 				C1B8076C18441B1A0086B843 /* XCTest.framework in Frameworks */,
@@ -527,8 +500,6 @@
 				012E59FB19AD4FA40034B926 /* BPCheckin.m */,
 				012E59FC19AD4FA40034B926 /* BPIdentity.h */,
 				012E59FD19AD4FA40034B926 /* BPIdentity.m */,
-				012E59FE19AD4FA40034B926 /* BPLocation.h */,
-				012E59FF19AD4FA40034B926 /* BPLocation.m */,
 				012E5A0019AD4FA40034B926 /* BPMessage.h */,
 				012E5A0119AD4FA40034B926 /* BPMessage.m */,
 				012E5A0219AD4FA40034B926 /* BPMetadataItem.h */,
@@ -549,10 +520,6 @@
 				016FAB3A198C19B20021D3A8 /* BPUserList.m */,
 				012E59D019AD492C0034B926 /* BPBinaryModelBase.h */,
 				012E59D119AD492C0034B926 /* BPBinaryModelBase.m */,
-				012E59D419AD4B550034B926 /* BPAlbum.h */,
-				012E59D519AD4B550034B926 /* BPAlbum.m */,
-				012E59D819AD4C330034B926 /* BPAlbumItem.h */,
-				012E59D919AD4C330034B926 /* BPAlbumItem.m */,
 				012E59F419AD4F120034B926 /* BPNotificationResult.h */,
 				012E59F519AD4F120034B926 /* BPNotificationResult.m */,
 				012E5A1019AD519F0034B926 /* BPUserListItem.h */,
@@ -568,7 +535,7 @@
 		2F9A59ED1B0D4C6D00A72990 /* BuddySDK Universal Framework */ = {
 			isa = PBXGroup;
 			children = (
-				2F9A59F01B0D4C6D00A72990 /* BuddySDK Universal Framework.h */,
+				BF25291D1BA0C86E00469EF9 /* BuddySDK.h */,
 				2F9A59EE1B0D4C6D00A72990 /* Supporting Files */,
 			);
 			path = "BuddySDK Universal Framework";
@@ -814,17 +781,18 @@
 		C1E0D1E61831C2E8001A7A01 /* BuddySDK Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				BF06150E1B8F6B130036AF12 /* AppSettingsTests.m */,
+				BF06150F1B8F6B130036AF12 /* BPRest.m */,
+				BF0615101B8F6B130036AF12 /* BPUserIntegrationTests.m */,
+				BF0615111B8F6B130036AF12 /* MetricsTests.m */,
+				BF0615121B8F6B130036AF12 /* NotificationTests.m */,
 				C1B95A2B183708E8000C8417 /* Test Data */,
 				C1E0D1E71831C2E8001A7A01 /* Supporting Files */,
-				C1427679189ECC1600D5DD85 /* MetricsTests.m */,
-				5B6E84CD18F2138E005E7FEE /* NotificationTests.m */,
-				5B7EC9FA19453ACF00F33589 /* AppSettingsTests.m */,
-				C1AA90E318373BF80074B7E8 /* BPUserIntegrationTests.m */,
-				C1B8076E18441BD30086B843 /* BuddyIntegrationTests.m */,
 				C1B2375C18654884005C841E /* BuddyTestData.h */,
 				C10F1B76187095EA00D5364C /* BuddyIntegrationHelper.h */,
 				C10F1B77187095EA00D5364C /* BuddyIntegrationHelper.m */,
-				018AB0EA197719620025677B /* BPRest.m */,
+				BFA315F41B8BD33C0032058D /* RetryTests.m */,
+				BFF44A801BD16DF3006D5174 /* LocationTests.m */,
 			);
 			path = "BuddySDK Unit Tests";
 			sourceTree = "<group>";
@@ -846,7 +814,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F9A59F11B0D4C6D00A72990 /* BuddySDK Universal Framework.h in Headers */,
+				BF25291E1BA0C86E00469EF9 /* BuddySDK.h in Headers */,
+				BF25291F1BA0FD6E00469EF9 /* Macro.h in Headers */,
 				2F9A5AAA1B0E21B700A72990 /* CryptoTools.h in Headers */,
 				2F9A5AA91B0E21AB00A72990 /* BPMetricCompletionHandler.h in Headers */,
 				2F9A5AA81B0E219E00A72990 /* Util.h in Headers */,
@@ -864,8 +833,6 @@
 				2F9A5A9C1B0E212A00A72990 /* BPVideo.h in Headers */,
 				2F9A5A9B1B0E212300A72990 /* BPUserListItem.h in Headers */,
 				2F9A5A9A1B0E211900A72990 /* BPNotificationResult.h in Headers */,
-				2F9A5A991B0E210D00A72990 /* BPAlbumItem.h in Headers */,
-				2F9A5A981B0E210500A72990 /* BPAlbum.h in Headers */,
 				2F9A5A971B0E20F800A72990 /* BPBinaryModelBase.h in Headers */,
 				2F9A5A961B0E20EE00A72990 /* BPUserList.h in Headers */,
 				2F9A5A951B0E20DF00A72990 /* BPPicture.h in Headers */,
@@ -876,7 +843,6 @@
 				2F9A5A901B0E20B400A72990 /* BPFile.h in Headers */,
 				2F9A5A8F1B0E20AA00A72990 /* BPMetadataItem.h in Headers */,
 				2F9A5A8E1B0E20A300A72990 /* BPMessage.h in Headers */,
-				2F9A5A8D1B0E209B00A72990 /* BPLocation.h in Headers */,
 				2F9A5A8C1B0E209500A72990 /* BPIdentity.h in Headers */,
 				2F9A5A8B1B0E208B00A72990 /* BPCheckin.h in Headers */,
 				2F9A5A8A1B0E207F00A72990 /* BPBlob.h in Headers */,
@@ -917,17 +883,14 @@
 				01274B4C198AA96D00DB31BA /* BPCoordinate.h in Headers */,
 				01274B32198A9A1D00DB31BA /* BuddyClientProtocol.h in Headers */,
 				01274B50198AAC5500DB31BA /* BPPicture.h in Headers */,
-				012E59D619AD4B550034B926 /* BPAlbum.h in Headers */,
 				012E5A0C19AD4FA40034B926 /* BPMessage.h in Headers */,
 				012311AA199D407B003081CA /* BPFile.h in Headers */,
 				016FAB3B198C19B20021D3A8 /* BPUserList.h in Headers */,
 				012E5A0E19AD4FA40034B926 /* BPMetadataItem.h in Headers */,
-				012E59DA19AD4C330034B926 /* BPAlbumItem.h in Headers */,
 				5B0302FB18DFDB2000EA6B08 /* BPRestProvider.h in Headers */,
 				012E5A1619AD51F10034B926 /* BPVideo.h in Headers */,
 				012E5A0619AD4FA40034B926 /* BPCheckin.h in Headers */,
 				01274B35198A9A6B00DB31BA /* BuddyCallbacks.h in Headers */,
-				012E5A0A19AD4FA40034B926 /* BPLocation.h in Headers */,
 				012E5A1219AD519F0034B926 /* BPUserListItem.h in Headers */,
 				012E59D219AD492C0034B926 /* BPBinaryModelBase.h in Headers */,
 				012E5A0419AD4FA40034B926 /* BPBlob.h in Headers */,
@@ -937,6 +900,8 @@
 				5B984DA018C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.h in Headers */,
 				01DB07BC197855350008A35E /* BPPageResults.h in Headers */,
 				C1427677189ECA2300D5DD85 /* BPMetricCompletionHandler.h in Headers */,
+				BF2529211BA101B700469EF9 /* BPAppSettings+Private.h in Headers */,
+				BF2529201BA101AD00469EF9 /* Buddy+Private.h in Headers */,
 				2F69F7B71B0FBB6300165250 /* Macro.h in Headers */,
 				5B32F36C18E071C600C07019 /* BPAFHTTPRequestOperationManager.h in Headers */,
 				5B32F37018E071C600C07019 /* BPAFNetworking.h in Headers */,
@@ -978,8 +943,6 @@
 				2F9A59E71B0D4C6C00A72990 /* Sources */,
 				2F9A59E81B0D4C6C00A72990 /* Frameworks */,
 				2F9A59E91B0D4C6C00A72990 /* Headers */,
-				2F9A59EA1B0D4C6C00A72990 /* Resources */,
-				2F5DDDD01B0EA66E0083363B /* Relocate Info.plist */,
 			);
 			buildRules = (
 			);
@@ -996,7 +959,6 @@
 			buildPhases = (
 				2F9A59F21B0D4C6D00A72990 /* Sources */,
 				2F9A59F31B0D4C6D00A72990 /* Frameworks */,
-				2F9A59F41B0D4C6D00A72990 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1015,7 +977,6 @@
 				A6291F78165C01800051F83C /* Sources */,
 				A6291F79165C01800051F83C /* Frameworks */,
 				A6291F7A165C01800051F83C /* Headers */,
-				D45A7BB3166235BE000E5257 /* CopyFiles */,
 				C1C239471877BE97000D0089 /* Prepare Framework */,
 				C18F93631884D85F00B46B89 /* Generate Appledocs */,
 			);
@@ -1055,7 +1016,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0630;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0710;
 				TargetAttributes = {
 					2F69F7B81B12DCFB00165250 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1094,20 +1055,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2F9A59EA1B0D4C6C00A72990 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2F9A59F41B0D4C6D00A72990 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C1E0D1DF1831C2E8001A7A01 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1144,32 +1091,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		2F5DDDD01B0EA66E0083363B /* Relocate Info.plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Relocate Info.plist";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\n#if [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\n#then\n#SF_SDK_PLATFORM=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\n\n#if [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\n#then\n#SF_SDK_VERSION=${BASH_REMATCH[1]}\n#else\n#echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n#exit 1\n#fi\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/BuddySDK\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current\"\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Headers\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Headers\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Resources\"\nln -s \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Headers\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Headers\"\n\nmv \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Info.plist\" \"${BUILT_PRODUCTS_DIR}/BuddySDK.framework/Versions/Current/Resources/Info.plist\"";
-		};
-		2F69F7BC1B12E11A00165250 /* ShellScript */ = {
+		2F69F7BC1B12E11A00165250 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=false\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n# For Swift framework, Swiftmodule needs to be copied in the universal framework\nif [ -d \"${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\n    cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* \\\n      ${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/ | echo\nfi\n                                                                            \n                                                                      \nif [ -d \"${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" ]; then\n                                                                          cp -f ${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* \"${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/\" | echo\n                                                                      fi\n                                                                      \n                                                                      ######################\n                                                                      # On Release, copy the result to release directory\n                                                                      ######################\n                                                                      OUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n                                                                      \n                                                                      rm -rf \"$OUTPUT_DIR\"\n                                                                      mkdir -p \"$OUTPUT_DIR\"\n                                                                      \n                                                                      cp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n                                                                      \n                                                                      if [ ${REVEAL_ARCHIVE_IN_FINDER} = true ]; then\n                                                                      open \"${OUTPUT_DIR}/\"\n                                                                      fi";
+			shellScript = "#########\n# Options\n#########\n\nLIBRARY_NAME=\"lib${PROJECT_NAME}.a\"\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}.framework\"\n\nSIMULATOR_TARGET=\"BuddySDK\"\nSIMULATOR_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\nSIMULATOR_FRAMEWORK_PATH=\"${SIMULATOR_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\nDEVICE_TARGET=\"BuddySDK Universal Framework\"\nDEVICE_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nDEVICE_FRAMEWORK_PATH=\"${DEVICE_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\nUNIVERSAL_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_FRAMEWORK_PATH=\"${UNIVERSAL_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\n\n##################\n# Build Frameworks\n##################\n\nxcodebuild -workspace \"../../${PROJECT_NAME}\".xcworkspace -scheme \"${SIMULATOR_TARGET}\" -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace \"../../${PROJECT_NAME}\".xcworkspace -scheme \"${DEVICE_TARGET}\" -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n\n################################\n# Create directory for universal\n################################\n\nrm -rf \"${UNIVERSAL_FRAMEWORK_DIR}\"\n\nmkdir \"${UNIVERSAL_FRAMEWORK_DIR}\"\n\nmkdir \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\n\n#######################################\n# Copy iphonesimulator Framework layout\n#######################################\n\ncp -P -R -v \"${SIMULATOR_FRAMEWORK_PATH}/.\" \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\n\n###################\n# Copy iphone files\n###################\n\ncp -P -R -v \"${DEVICE_FRAMEWORK_PATH}/Modules\" \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\nmkdir -p \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources\"\nln -s \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources\" \"${UNIVERSAL_FRAMEWORK_PATH}/Resources\"\ncp \"${DEVICE_FRAMEWORK_PATH}/Info.plist\" \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources/Info.plist\"\n\ncp \"${DEVICE_FRAMEWORK_DIR}/BuddySDK.h\" \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Headers/BuddySDK.h\"\n\n##########################\n# Make an universal binary\n##########################\n\nlipo \"${SIMULATOR_FRAMEWORK_DIR}/${LIBRARY_NAME}\" \"${DEVICE_FRAMEWORK_PATH}/${PROJECT_NAME}\" -create -output \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/${PROJECT_NAME}\" | echo\n";
 		};
 		AEA5CD38B3E146AA88CA070C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1249,8 +1183,6 @@
 				2F9A5A671B0E1D8400A72990 /* BPSocialAuthenticatedUser.m in Sources */,
 				2F9A5A661B0E1D7900A72990 /* BPUserListItem.m in Sources */,
 				2F9A5A651B0E1D6C00A72990 /* BPNotificationResult.m in Sources */,
-				2F9A5A641B0E1D6000A72990 /* BPAlbumItem.m in Sources */,
-				2F9A5A631B0E1D5700A72990 /* BPAlbum.m in Sources */,
 				2F9A5A621B0E1D4D00A72990 /* BPBinaryModelBase.m in Sources */,
 				2F9A5A611B0E1D4400A72990 /* BPUserList.m in Sources */,
 				2F9A5A601B0E1D3500A72990 /* BPAFHTTPRequestOperation.m in Sources */,
@@ -1262,7 +1194,6 @@
 				2F9A5A5A1B0E1CF700A72990 /* BPFile.m in Sources */,
 				2F9A5A591B0E1CEF00A72990 /* BPMetadataItem.m in Sources */,
 				2F9A5A581B0E1CE600A72990 /* BPMessage.m in Sources */,
-				2F9A5A571B0E1CDF00A72990 /* BPLocation.m in Sources */,
 				2F9A5A561B0E1CD900A72990 /* BPIdentity.m in Sources */,
 				2F9A5A551B0E1CD300A72990 /* BPCheckin.m in Sources */,
 				2F9A5A541B0E1CCC00A72990 /* BPBlob.m in Sources */,
@@ -1314,7 +1245,6 @@
 				01274B51198AAC5500DB31BA /* BPPicture.m in Sources */,
 				012E5A1719AD51F10034B926 /* BPVideo.m in Sources */,
 				5B32F37618E071C600C07019 /* BPAFURLConnectionOperation.m in Sources */,
-				012E5A0B19AD4FA40034B926 /* BPLocation.m in Sources */,
 				5B19875C18CB67D800FBB502 /* NSDate+BPDateHelper.m in Sources */,
 				5B32F37A18E071C600C07019 /* BPAFURLResponseSerialization.m in Sources */,
 				012E5A0519AD4FA40034B926 /* BPBlob.m in Sources */,
@@ -1323,7 +1253,6 @@
 				5B984DA118C6BFE400CE8E2C /* JAGPropertyConverter+BPJSONConverter.m in Sources */,
 				01BC51CC1992B15900E04478 /* CryptoTools.m in Sources */,
 				C1E0D1D21831BAD3001A7A01 /* JAGProperty.m in Sources */,
-				012E59D719AD4B550034B926 /* BPAlbum.m in Sources */,
 				5B32F37818E071C600C07019 /* BPAFURLRequestSerialization.m in Sources */,
 				C1427673189AAC3700D5DD85 /* BPAppSettings.m in Sources */,
 				012311AB199D407B003081CA /* BPFile.m in Sources */,
@@ -1332,7 +1261,6 @@
 				012E5A0919AD4FA40034B926 /* BPIdentity.m in Sources */,
 				012E5A0F19AD4FA40034B926 /* BPMetadataItem.m in Sources */,
 				C1E0D1D61831BAD3001A7A01 /* JAGPropertyConverter.m in Sources */,
-				012E59DB19AD4C330034B926 /* BPAlbumItem.m in Sources */,
 				5B32F36D18E071C600C07019 /* BPAFHTTPRequestOperationManager.m in Sources */,
 				016FAB3C198C19B20021D3A8 /* BPUserList.m in Sources */,
 				5B984DA518C6DB9700CE8E2C /* BPDateRange.m in Sources */,
@@ -1354,13 +1282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C10F1B80187103E500D5364C /* BPUserIntegrationTests.m in Sources */,
+				BF0615181B8F6B130036AF12 /* NotificationTests.m in Sources */,
+				BF0615161B8F6B130036AF12 /* BPUserIntegrationTests.m in Sources */,
+				BF0615171B8F6B130036AF12 /* MetricsTests.m in Sources */,
+				BFA315F51B8BD33C0032058D /* RetryTests.m in Sources */,
+				BF0615141B8F6B130036AF12 /* AppSettingsTests.m in Sources */,
 				C10F1B78187095EA00D5364C /* BuddyIntegrationHelper.m in Sources */,
-				5B7EC9FB19453ACF00F33589 /* AppSettingsTests.m in Sources */,
-				018AB0EB197719620025677B /* BPRest.m in Sources */,
-				5B6E84CE18F2138E005E7FEE /* NotificationTests.m in Sources */,
-				C142767A189ECC1600D5DD85 /* MetricsTests.m in Sources */,
-				C1B8076F18441BD30086B843 /* BuddyIntegrationTests.m in Sources */,
+				BFF44A811BD16DF3006D5174 /* LocationTests.m in Sources */,
+				BF0615151B8F6B130036AF12 /* BPRest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1399,6 +1328,7 @@
 		2F69F7B91B12DCFB00165250 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1406,6 +1336,7 @@
 		2F69F7BA1B12DCFB00165250 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1418,7 +1349,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1443,6 +1374,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.BuddySDK;
 				PRODUCT_NAME = BuddySDK;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1459,7 +1391,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1481,6 +1413,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.BuddySDK;
 				PRODUCT_NAME = BuddySDK;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1497,6 +1430,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1514,6 +1448,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1526,6 +1461,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1541,6 +1477,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1560,12 +1497,13 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3.0.3;
+				CURRENT_PROJECT_VERSION = 3.0.4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1584,7 +1522,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"INSTALL_PATH[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"/**";
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -1592,7 +1530,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7s armv7 arm64";
+				VALID_ARCHS = "armv7s armv7 arm64 i386 x86_64";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_PREFIX = BuddySDK;
@@ -1614,11 +1552,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 3.0.3;
+				CURRENT_PROJECT_VERSION = 3.0.4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1630,7 +1568,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"/**";
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
@@ -1638,7 +1576,7 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7s armv7 arm64";
+				VALID_ARCHS = "armv7s armv7 arm64 i386 x86_64";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_PREFIX = BuddySDK;
 			};
@@ -1651,7 +1589,7 @@
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				CURRENT_PROJECT_VERSION = 3.0.3;
+				CURRENT_PROJECT_VERSION = 3.0.4;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/BuddySDK.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1667,8 +1605,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"BP_NAMESPACE=BP\nBP_NAMESPACE=BP",
-					"NOLOG=1",
+					"BP_NAMESPACE=BP",
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -1715,7 +1652,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3.0.3;
+				CURRENT_PROJECT_VERSION = 3.0.4;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/BuddySDK.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1731,7 +1668,6 @@
 					"$(inherited)",
 					"COCOAPODS=1",
 					"BP_NAMESPACE=BP",
-					"NOLOG=1",
 				);
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -1772,7 +1708,7 @@
 		C19ECC3517DEA28D008A9130 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 3.0.3;
+				CURRENT_PROJECT_VERSION = 3.0.4;
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1783,8 +1719,8 @@
 		C19ECC3617DEA28D008A9130 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 3.0.3;
-				GCC_PREPROCESSOR_DEFINITIONS = "NOLOG=1";
+				CURRENT_PROJECT_VERSION = 3.0.4;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1823,6 +1759,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
@@ -1858,6 +1795,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "x86_64 i386";

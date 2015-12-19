@@ -1,11 +1,3 @@
-//
-//  BPCrashManager.h
-//  BuddySDK
-//
-//  Created by Erik.Kerber on 3/11/14.
-//
-//
-
 #import <Foundation/Foundation.h>
 #import "BPRestProvider.h"
 #import "Buddy.h"

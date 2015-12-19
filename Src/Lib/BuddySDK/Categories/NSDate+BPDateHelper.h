@@ -1,11 +1,3 @@
-//
-//  NSDate+BPDateHelper.h
-//  BuddySDK
-//
-//  Created by Erik.Kerber on 3/8/14.
-//
-//
-
 #import <Foundation/Foundation.h>
 
 @interface NSDate (BPDateHelper)

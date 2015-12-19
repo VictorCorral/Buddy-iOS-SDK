@@ -1,11 +1,3 @@
-//
-//  NSDate+BPDateHelper.m
-//  BuddySDK
-//
-//  Created by Erik.Kerber on 3/8/14.
-//
-//
-
 #import "NSDate+BPDateHelper.h"
 
 #define DATE_COMPONENTS (NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit |  NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit | NSWeekdayOrdinalCalendarUnit)

@@ -1,11 +1,3 @@
-//
-//  NSError+BuddyError.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 12/29/13.
-//
-//
-
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, BuddyErrorType)
@@ -45,8 +37,10 @@ typedef NS_ENUM(NSInteger, BuddyErrorType)
 + (NSError *)bp_noInternetError:(NSInteger)code message:(NSString *)message;
 + (NSError *)buildBuddyError:(id)buddyJSON;
 + (NSError *)invalidObjectOperationError;
++ (NSError *)bp_buildError:(NSInteger)httpResponseCode result:(id)result;
 
 - (BOOL)needsLogin;
 - (BOOL)credentialsInvalid;
+- (BOOL)noInternet;
 
 @end

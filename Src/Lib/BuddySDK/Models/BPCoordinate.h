@@ -1,11 +1,3 @@
-//
-//  BPCoordinate.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 12/9/13.
-//
-//
-
 #import <Foundation/Foundation.h>
 
 @interface BPCoordinate : NSObject

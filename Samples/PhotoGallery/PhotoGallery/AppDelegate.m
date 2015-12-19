@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  PhotoGallery
-//
-//  Created by Nick Ambrose on 1/22/14.
-//  Copyright (c) 2014 Buddy Platform. All rights reserved.
-//
-
 #import "AppDelegate.h"
 #import <BuddySDK/Buddy.h>
 
@@ -23,8 +15,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
 
-    // Go to http://buddyplatform.com to get an app ID and app key.
-    [Buddy init:\@"Your App ID" appKey:\@"Your App Key"];
+    [Buddy init:APP_ID appKey:APP_KEY];
 
     // Create/Clear all caches/data etc.
     [self clearDownloadedData];

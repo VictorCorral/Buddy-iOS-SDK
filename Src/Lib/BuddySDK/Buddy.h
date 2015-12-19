@@ -1,12 +1,18 @@
-//
-//  Buddy.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 11/15/13.
-//
-//
-
-
+/*
+ * Copyright (C) 2016 Buddy Platform, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -26,16 +32,25 @@
 #import "BPPageResults.h"
 #import "BPPicture.h"
 #import "BPUserList.h"
+#import "BPUserListItem.h"
+#import "BPBlob.h"
+#import "BPIdentity.h"
+#import "BPMessage.h"
+#import "BPMetadataItem.h"
+#import "BPNotificationResult.h"
+#import "BPSocialAuthenticatedUser.h"
+#import "BPVideo.h"
 
 #import "BPFile.h"
 
 @interface Buddy : NSObject
 
-/* The currently logged in user. Will be nil if no login has occurred.
- *
- */
+// The currently logged in user. Will be nil if no login has occurred.
 + (BPUser*)user;
 + (void) setUser:(BPUser*)user;
+
++ (BPCoordinate*)lastLocation;
++ (void) setLastLocation:(BPCoordinate*)lastLocation;
 
 + (id<BuddyClientProtocol>) currentClient;
 

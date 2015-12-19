@@ -1,11 +1,3 @@
-//
-//  BPModelBase.m
-//  BuddySDK
-//
-//  Created by Nick Ambrose on 7/16/14.
-//
-//
-
 #import "NSArray+BPSugar.h"
 #import "JAGPropertyConverter+BPJSONConverter.h"
 #import "BPModelBase.h"

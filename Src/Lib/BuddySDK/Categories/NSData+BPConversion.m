@@ -1,11 +1,3 @@
-//
-//  NSData+BPConversion.m
-//  BuddySDK
-//
-//  Created by Nick Ambrose on 8/6/14.
-//
-//
-
 #import "NSData+BPConversion.h"
 
 @implementation NSData (NSData_Conversion)

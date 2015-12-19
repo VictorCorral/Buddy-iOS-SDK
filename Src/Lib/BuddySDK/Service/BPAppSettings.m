@@ -1,11 +1,3 @@
-//
-//  BPAppSettings.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 1/30/14.
-//
-//
-
 #import "BPAppSettings.h"
 #import "JAGPropertyConverter+BPJSONConverter.h"
 
@@ -31,6 +23,11 @@
     return self;
 }
 
++ (NSString*)buildKeyString:(NSString*)prefix andAppID:(NSString*)appID {
+    
+    return [NSString stringWithFormat:@"BPUserSettings-%@-%@", prefix, appID];
+}
+
 - (instancetype)initWithAppId:(NSString *)appID andKey:(NSString *)appKey initialURL:(NSString *)initialURL prefix:(NSString *)prefix
 {
     self = [super init];
@@ -38,10 +35,10 @@
         _appID = appID;
         _appKey = appKey;
         _initialURL = initialURL;
-        _keyString = [NSString stringWithFormat:@"%@BPUserSettings", prefix];
+        _keyString = [BPAppSettings buildKeyString:prefix andAppID:appID];
 
         if (_appID) {
-            [self restoreSettings:prefix];
+            [self restoreSettings];
         }
         
         [self addObserver:self forKeyPath:@"appID" options:NSKeyValueObservingOptionNew context:nil];
@@ -111,7 +108,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:settings forKey:self.keyString];
 }
 
-- (void)restoreSettings:(NSString *)prefix
+- (void)restoreSettings
 {
     NSDictionary *restoredSettings = [[NSUserDefaults standardUserDefaults] objectForKey:self.keyString];
     
@@ -127,13 +124,15 @@
 
 + (void)resetSettings
 {
-    [self resetSettings:nil];
-}
-
-+ (void)resetSettings:(NSString *)prefix
-{
-    NSString *keyString = [NSString stringWithFormat:@"%@BPUserSettings", prefix];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:keyString];
+    
+    NSArray *keys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
+    
+    for(NSString* key in keys){
+      
+        if ([key hasPrefix:@"BPUserSettings"]) {
+             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:key];
+        }
+    }
 }
 
 @end

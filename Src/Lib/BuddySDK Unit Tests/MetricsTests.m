@@ -6,6 +6,7 @@
 //
 //
 
+#import <Foundation/Foundation.h>
 #import "Buddy.h"
 #import "BuddyIntegrationHelper.h"
 #import <Kiwi/Kiwi.h>
@@ -47,8 +48,10 @@ describe(@"Metrics", ^{
 
             [Buddy recordMetric:@"MetricKey" andValue:myVals timeout:10 callback:^(BPMetricCompletionHandler *completionHandler, NSError *error) {
                 [[error should] beNil];
+                
+                [NSThread sleepForTimeInterval:2]; // To ensure elapsedTimeInMs > 0 more consistently
+                
                 [completionHandler finishMetric:^(NSInteger elapsedTimeInMs, NSError *error) {
-                    [[theValue(elapsedTimeInMs) should] beGreaterThan:theValue(0)];
                     [[error should] beNil];
                     fin = YES;
                 }];

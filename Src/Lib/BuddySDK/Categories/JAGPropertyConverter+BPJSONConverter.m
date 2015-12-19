@@ -1,11 +1,3 @@
-//
-//  JAGPropertyConverter+BPJSONConverter.m
-//  BuddySDK
-//
-//  Created by Erik.Kerber on 3/4/14.
-//
-//
-
 #import "JAGPropertyConverter+BPJSONConverter.h"
 #import "BPSize.h"
 #import "BPCoordinate.h"

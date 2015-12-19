@@ -1,14 +1,7 @@
-//
-//  BPServiceController.h
-//  BuddySDK
-//
-//  Created by Erik Kerber on 11/15/13.
-//
-//
-
 #import <Foundation/Foundation.h>
 #import "BPAppSettings.h"
 #import "BPRestProvider.h"
+#import "BuddyClientProtocol.h"
 
 
 typedef void (^REST_ServiceResponse)(NSInteger responseCode, NSDictionary* responseHeaders,id response, NSError *error);
@@ -29,5 +22,6 @@ typedef void (^REST_ServiceResponse)(NSInteger responseCode, NSDictionary* respo
 - (void)REST_PUT:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback;
 - (void)REST_DELETE:(NSString *)servicePath parameters:(NSDictionary *)parameters callback:(REST_ServiceResponse)callback;
 
+-(BPConnectivityLevel) getConnectivityLevel;
 
 @end

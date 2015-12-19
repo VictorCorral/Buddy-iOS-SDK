@@ -1,11 +1,3 @@
-//
-//  BPServiceController.m
-//  BuddySDK
-//
-//  Created by Erik Kerber on 11/15/13.
-//
-//
-
 #import "BPServiceController.h"
 #import "BPAFNetworking.h"
 #import "BuddyDevice.h"
@@ -266,4 +258,20 @@ typedef void (^AFSuccessCallback)(AFHTTPRequestOperation *operation, id response
     };
 }
 
+-(BPConnectivityLevel) getConnectivityLevel
+{
+    switch (_manager.reachabilityManager.networkReachabilityStatus)
+    {
+        case AFNetworkReachabilityStatusNotReachable:
+            return BPConnectivityNone;
+            
+        case AFNetworkReachabilityStatusReachableViaWWAN:
+        case AFNetworkReachabilityStatusUnknown:
+        default:
+            return BPConnectivityCarrier;
+            
+        case AFNetworkReachabilityStatusReachableViaWiFi:
+            return BPConnectivityWiFi;
+    }
+}
 @end
