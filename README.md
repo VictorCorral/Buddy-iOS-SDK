@@ -28,11 +28,11 @@ Full documentation for Buddy's services are available at [buddyplatform.com/docs
 * iOS 6.0 or greater
 * Xcode 6.4 or greater
 
-The Buddy iOS SDK can be accessed via [Cocoapods](http://cocoapods.org/). Cocoapods version of at least 0.39.0 is required to install the Buddy SDK and sample apps.
+The Buddy iOS SDK can be accessed via [CocoaPods](http://cocoapods.org/). CocoaPods version of at least 0.39.0 is required to install the Buddy SDK and sample apps.
 
-### Install with Cocoapods
+### Install with CocoaPods
 
-We recommend using Cocoapods to install the Buddy SDK. It's fast and makes it much easier to keep up to date with the latest SDK release. If you're new to Cocoapods, see install instructions [here](http://guides.cocoapods.org/using/getting-started.html#installation).  If you have an older Mac, the Cocoapods installer may give you trouble, so you may need to upgrade your Ruby install (`curl -sSL https://get.rvm.io | bash -s stable --ruby`) and/or install Homebrew (`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`) before installing Cocoapods.  Both only take a few seconds to run.
+We recommend using CocoaPods to install the Buddy SDK. It's fast and makes it much easier to keep up to date with the latest SDK release. If you're new to CocoaPods, see install instructions [here](http://guides.cocoapods.org/using/getting-started.html#installation).  If you have an older Mac, the CocoaPods installer may give you trouble, so you may need to upgrade your Ruby install (`curl -sSL https://get.rvm.io | bash -s stable --ruby`) and/or install Homebrew (`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`) before installing CocoaPods.  Both only take a few seconds to run.
 
 To create a new project using the Buddy SDK:
 
@@ -112,7 +112,7 @@ The iOS source is in the **Buddy-iOS-SDK\Src** directory.
 
 To reference the local SDK in your project: 
 
-1) Follow the "Install with Cocoapods" steps above to create a Podfile.
+1) Follow the "Install with CocoaPods" steps above to create a Podfile.
 
 2) You must add a `:path` parameter to your Podfile to indicate the relative path from your project to the Buddy SDK. It should look something like this:
 
@@ -365,7 +365,7 @@ You can implement a selector named `connectivityChanged` on your AppDelegate if 
 
 The Buddy Platform iOS SDK ships with a number of sample apps to get you started. These can be modified to fit your needs, or just used to guide you through the basics. The sample apps are located in the *Samples* directory.
 
-The Buddy SDK is installed into these Apps using Cocoapods. In a Terminal window, `cd` to the sample project root and type: `pod install`
+The Buddy SDK is installed into these Apps using CocoaPods. In a Terminal window, `cd` to the sample project root and type: `pod install`
 
 ### BuddyStarter
 
