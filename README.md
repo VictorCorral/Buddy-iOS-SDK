@@ -2,137 +2,174 @@
 
 ## Overview
 
-The Buddy iOS SDK helps you get up and running in seconds.  
+The Buddy iOS SDK helps you get up and running in seconds.
 
 For the most part, the Buddy iOS SDK takes care of all the housekeeping of making requests against the Buddy REST API:
 
-* Building and formatting requests
-* Managing authentication
-* Parsing responses
-* Loading and saving credentials
+  * Building and formatting requests
+  * Managing authentication
+  * Parsing responses
+  * Loading and saving credentials 
 
 With that handled, all you have to do is initialize the SDK and start making some calls!
 
 ## Getting Started
+To get started with the Buddy Platform SDK, please reference the Getting Started series of documents at [Intro To Buddy](doc:intro-to-buddy). You will need an App ID and Key before you can use the SDK. The Getting Started documents will walk you through obtaining everything you need and show you where to find the SDK for your platform.
 
-To get started with the Buddy Platform SDK, please reference the _Getting Started_ series of documents at [buddyplatform.com/docs](https://buddyplatform.com/docs). You will need an App ID and Key before you can use the SDK. The _Getting Started_ documents will walk you through obtaining everything you need and show you where to find the SDK for your platform.
+Application IDs and Keys are obtained at the Buddy Developer Dashboard at [buddyplatform.com](https://buddyplatform.com).
 
-Application IDs and Keys are obtained at the Buddy Developer Dashboard at [buddyplatform.com](https://buddyplatform.com/login).
-
-Full documentation for Buddy's services are available at [buddyplatform.com/docs](https://buddyplatform.com/docs).
+Full documentation for Buddy's services are available at [docs.buddy.com](https://docs.buddy.com).
 
 ## Installing the SDK
 
 ### Prerequisites
 
-* iOS 6.0 or greater
-* Xcode 6.4 or greater
+  * iOS 6.0 or greater
+  * Xcode 6.4 or greater
 
 The Buddy iOS SDK can be accessed via [Cocoapods](http://cocoapods.org/). Cocoapods version of at least 0.39.0 is required to install the Buddy SDK and sample apps.
 
 ### Install with Cocoapods
 
-We recommend using Cocoapods to install the Buddy SDK. It's fast and makes it much easier to keep up to date with the latest SDK release. If you're new to Cocoapods, see install instructions [here](http://guides.cocoapods.org/using/getting-started.html#installation).  If you have an older Mac, the Cocoapods installer may give you trouble, so you may need to upgrade your Ruby install (`curl -sSL https://get.rvm.io | bash -s stable --ruby`) and/or install Homebrew (`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`) before installing Cocoapods.  Both only take a few seconds to run.
+We highly recommend using Cocoapods to install the Buddy SDK. It's fast and makes it much easier to keep up to date with the latest SDK release. If you're new to Cocoapods, see install instructions [here](https://guides.cocoapods.org/using/getting-started.html). Cocoapods depends on Ruby, and depending on your Ruby version the Cocoapods installer may give you trouble; you may need to upgrade Ruby (we recommend using [RVM](https://rvm.io)). (For more Cocoapods troubleshooting steps see [here](https://guides.cocoapods.org/using/troubleshooting#installing-cocoapods)).
 
-To create a new project using the Buddy SDK:
+#### To create a new project using the Buddy SDK:
 
-1) Create a new Xcode project.
+1\.  Create a new Xcode project.
 
-2) In a Terminal window run:
+2\.  In a Terminal window run:
 
-    cd <project-dir>
+```
+cd <project-dir>
+```
 
-3) Create a Podfile:
+3\. Create a Podfile:
 
-    touch Podfile
+```
+touch Podfile
+```
 
-4) Open the file with your favorite editor and add:
+4\. Open the file with your favorite editor and add:
 
-    platform :ios, '6.0'
+```
+platform :ios, '6.0'
+target '<project name>' do
     pod 'BuddySDK'
+end
+```
+\<project name> should be the name of your Xcode project.
 
-6) If you created a Swift-based project, add:
+5\. If you created a Swift-based project, add:
 
-    use_frameworks!
+```
+use_frameworks!
+```
 
-7) Save the Podfile.
+6\. Save the Podfile.
 
-8) In your Terminal window run:
+7\. In your Terminal window run:
 
-    pod install
+```
+pod install
+```
 
-9) In Xcode open the just-generated `.xcworkspace` file for your project (not the `.xcodeproj` file).
+8\. **In Xcode open the just-generated `.xcworkspace` file for your project (not the `.xcodeproj` file).**
 
-To integrate the Buddy SDK into an existing project:
+#### To integrate the Buddy SDK into an existing project:
 
-1) In a Terminal window run:
+1\. In a Terminal window run:
 
-    cd <project-dir>
+```
+cd <project-dir>
+```
 
-2) Create a Podfile:
+2\. Create a Podfile:
 
-    touch Podfile
+```
+touch Podfile
+```
 
-3) Open the file with your favorite editor and add:
+3\. Open the file with your favorite editor and add:
 
-    platform :ios, '6.0'
+```
+platform :ios, '6.0'
+target '<project name>' do
     pod 'BuddySDK'
+end
+```
+\<project name> should be the name of your Xcode project.
 
-4) If your project is Swift-based, add:
+4\. If your project is Swift-based, add:
 
-    use_frameworks!
+```
+use_frameworks!
+```
 
-5) Integrating CocoaPods with an existing workspace requires one extra line in your Podfile. Simply specify the relative path and `.xcworkspace` root filename like so:
+5\. Integrating CocoaPods with an existing workspace requires one extra line in your Podfile. Simply specify the relative path and `.xcworkspace` root filename like so:
 
-    workspace '../MyWorkspace.xcworkspace'
+```
+workspace '../MyWorkspace.xcworkspace'
+```
 
-6) Save the Podfile.
+6\. Save the Podfile.
 
-7) Make sure your workspace is closed in Xcode. Then in your Terminal window run:
+7\. Make sure your workspace is closed in Xcode. Then in your Terminal window run:
 
-    pod install
+```
+pod install
+```
 
-8) Re-open your `.xcworkspace` file in Xcode.
+8\. **Re-open your `.xcworkspace` file in Xcode.**
 
 ### Install from Source
 
 Buddy hosts our SDK source on GitHub. To access it, you need to have a GitHub account, and you will also need [Git](http://git-scm.com/download) installed. If you'd like to contribute SDK modifications or additions to Buddy, you'll want to [fork the repository](https://help.github.com/articles/fork-a-repo) so you can issue [pull requests](https://help.github.com/articles/be-social#pull-requests). See the "Contributing Back" section below for details.
 
-1) In a Terminal window run:
+1\. In a Terminal window run:
 
-    git clone https://github.com/BuddyPlatform/Buddy-iOS-SDK.git
+```
+git clone https://github.com/BuddyPlatform/Buddy-iOS-SDK.git
+```
 
-This will clone the latest version of the SDK into a directory called **Buddy-iOS-SDK**.
+This will clone the latest version of the SDK into a directory called **Buddy-iOS-SDK.**
 
-2) Navigate to the **Buddy-iOS-SDK** directory that was created when you cloned the Buddy GitHub repository.
+2\. Navigate to the **Buddy-iOS-SDK** directory that was created when you cloned the Buddy GitHub repository.
 
 The iOS source is in the **Buddy-iOS-SDK\Src** directory.
 
 #### Build the GitHub Source
 
-To reference the local SDK in your project: 
+To reference the local SDK in your project:
 
-1) Follow the "Install with Cocoapods" steps above to create a Podfile.
+1\. Follow the "Install with Cocoapods" steps above to create a Podfile.
 
-2) You must add a `:path` parameter to your Podfile to indicate the relative path from your project to the Buddy SDK. It should look something like this:
+2\. You must add a `:path` parameter to your Podfile to indicate the relative path from your project to the Buddy SDK. It should look something like this:
 
+```
+platform :ios, '6.0'
+target '<project name>' do
     pod 'BuddySDK', :path => '../../BuddySDK.podspec'
-    
-7) Then in your Terminal window run the following. It's ok to do this again if you have already done it:
+end
+```
+<project name> should be the name of your Xcode project.
 
-    pod install
+3\. Then in your Terminal window run the following. It's ok to do this again if you have already done it:
+
+```
+pod install
+```
 
 Now any changes you make to the local Buddy SDK source will be picked up by your project when you build it in Xcode. If you add or remove files to the Buddy SDK, you will need to do a `pod update` for your project in a Terminal window.
 
 ## Using the iOS SDK
 
-Visit the [Buddy Dashboard](https://buddyplatform.com) to obtain an application ID and key, which are needed for your app to communicate with Buddy.
+Visit the [Buddy Dashboard](https://buddyplatform.com/) to obtain an application ID and key, which are needed for your app to communicate with Buddy.
 
 Both Objective-C and Swift-based projects are supported.
 
 ### Initialize the SDK
 
-To reference the Buddy SDK in your source file, you need to put an import keyword at the top of the file that contains your `AppDelegate`:
+To reference the Buddy SDK in your source file, you need to put an import keyword at the top of the file that contains your AppDelegate:
 
 Objective-C: Open the `AppDelegate.m` file and import the BuddySDK:
 
@@ -361,44 +398,40 @@ You can implement a selector named `connectivityChanged` on your AppDelegate if 
         [alert show];
     }
 
-## Sample Apps
+### Sample Apps
 
 The Buddy Platform iOS SDK ships with a number of sample apps to get you started. These can be modified to fit your needs, or just used to guide you through the basics. The sample apps are located in the *Samples* directory.
 
-The Buddy SDK is installed into these Apps using Cocoapods. In a Terminal window, `cd` to the sample project root and type: `pod install`
+The Buddy SDK is installed into these Apps using CocoaPods. In a Terminal window, `cd` to the sample project root and type: `pod install`
 
-### BuddyStarter
+#### BuddyStarter
 
 Demonstrates simple login and logout. This app implements the authorizationNeedsUserLogin & connectivityChanged selectors on the App Delegate.
 
-### RegisterLogin
+#### RegisterLogin
 
 Demonstrates another way to implement user registration and login with Buddy. This app implements the authorizationNeedsUserLogin selector on the App Delegate.
 
-### Photo Gallery
+#### Photo Gallery
 
 This implements a simple Photo Gallery app where a user can add photos and give them captions and tags. This app is intended to be used in the iOS Simulator.
 
 Before running the app, verify that you have some photos in your gallery (on the simulator). If not, you can add some using Safari (search for some images, long-click on them and then save them).
 
-### PushChat
+#### PushChat
 
 This implements a simple chat app, using Buddy messaging and push notification APIs.
 
-## Contributing Back: Pull Requests
+### Contributing Back: Pull Requests
 
 We'd love to have your help making the Buddy SDK as good as it can be!
 
 To submit a change to the Buddy SDK please do the following:
 
-1) Create your own fork of the Buddy SDK
-
-2) Make the change to your fork
-
-3) Before creating your pull request, please sync your repository to the current state of the parent repository: `git pull origin master`
-
-4) Commit your changes, then [submit a pull request](https://help.github.com/articles/using-pull-requests) for just that commit
-
+1. Create your own fork of the Buddy SDK.
+2. Make the change to your fork.
+3. Before creating your pull request, please sync your repository to the current state of the parent repository: git pull origin master.
+4. Commit your changes, then [submit a pull request](https://help.github.com/articles/using-pull-requests) for just that commit.
 ## Questions or need help?
 
-This should have given you the basics of how to work with the Buddy iOS SDK. If you have further questions or are stuck, send an email to support@buddy.com.  
+This should have given you the basics of how to work with the Buddy iOS SDK. If you have further questions or are stuck, send an email to [support@buddy.com](mailto:support@buddy.com).
