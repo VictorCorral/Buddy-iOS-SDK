@@ -550,7 +550,7 @@
     
     // http://www.awsarchitectureblog.com/2015/03/backoff.html
     int intervalToWait = arc4random_uniform(MIN(retryCapInMilliseconds, retryBaseInMilliseconds *
-                                                (int) pow(2, MIN(retryCount, 32))));
+                                                (int) (pow(2, retryCount) - 1)));
     
     dispatch_time_t delay = dispatch_time(0, (int64_t) (intervalToWait * NSEC_PER_MSEC));
     
@@ -568,8 +568,8 @@
                         }
                         else
                         {
-                            NSLog(@"Retry: Pong retry...");
-                            [self checkConnectivity:retryCount + 1];
+                            NSLog(@"Retry: Pong retry %d...", retryCount);
+                            [self checkConnectivity:retryCount + (retryCount < 21 ? 1 : 0)];
                         }
                     }];
     });
