@@ -31,7 +31,7 @@
 		0171965A18879B8500478055 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0171965918879B8500478055 /* QuartzCore.framework */; };
 		0171965C18879B9B00478055 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0171965B18879B9B00478055 /* CoreLocation.framework */; };
 		019BC4D418A05BFA0034CF7E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 019BC4D318A05BFA0034CF7E /* MobileCoreServices.framework */; };
-		8682E4A5CE3D4C49AA8E052F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E065844A2E41C4A8D13C68 /* libPods.a */; };
+		3674F6272E5AE033204B6546 /* libPods-registerlogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F4D711148E339921A4A6DB /* libPods-registerlogin.a */; };
 		EE2510E318E5120E001509D9 /* SearchUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2510E118E5120E001509D9 /* SearchUsersViewController.m */; };
 		EE2510E418E5120E001509D9 /* SearchUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE2510E218E5120E001509D9 /* SearchUsersViewController.xib */; };
 		EE2510E818E51F8D001509D9 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2510E618E51F8D001509D9 /* UserDetailViewController.m */; };
@@ -89,8 +89,9 @@
 		0171965918879B8500478055 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0171965B18879B9B00478055 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		019BC4D318A05BFA0034CF7E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		A6E065844A2E41C4A8D13C68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E207BBC56783C8023C20136F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7D56B0A170EEACF223A47E20 /* Pods-registerlogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-registerlogin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-registerlogin/Pods-registerlogin.debug.xcconfig"; sourceTree = "<group>"; };
+		94C9C8BE31DC45E2D0B163FB /* Pods-registerlogin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-registerlogin.release.xcconfig"; path = "Pods/Target Support Files/Pods-registerlogin/Pods-registerlogin.release.xcconfig"; sourceTree = "<group>"; };
+		D7F4D711148E339921A4A6DB /* libPods-registerlogin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-registerlogin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE2510E018E5120E001509D9 /* SearchUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUsersViewController.h; sourceTree = "<group>"; };
 		EE2510E118E5120E001509D9 /* SearchUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUsersViewController.m; sourceTree = "<group>"; };
 		EE2510E218E5120E001509D9 /* SearchUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchUsersViewController.xib; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		EE595DFB18DCD30200123A12 /* ChangeProfilePictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeProfilePictureViewController.h; sourceTree = "<group>"; };
 		EE595DFC18DCD30200123A12 /* ChangeProfilePictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeProfilePictureViewController.m; sourceTree = "<group>"; };
 		EE595DFD18DCD30200123A12 /* ChangeProfilePictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeProfilePictureViewController.xib; sourceTree = "<group>"; };
-		FA83D39EFC1455172216EF0B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 				0171960D18879A8F00478055 /* CoreGraphics.framework in Frameworks */,
 				0171960F18879A8F00478055 /* UIKit.framework in Frameworks */,
 				0171960B18879A8F00478055 /* Foundation.framework in Frameworks */,
-				8682E4A5CE3D4C49AA8E052F /* libPods.a in Frameworks */,
+				3674F6272E5AE033204B6546 /* libPods-registerlogin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +145,7 @@
 				0171962918879A8F00478055 /* registerloginTests */,
 				0171960918879A8F00478055 /* Frameworks */,
 				0171960818879A8F00478055 /* Products */,
-				B1E892AA16D825BFDB8BED20 /* Pods */,
+				1592AAA45A9F44515CDD1C80 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,7 +169,7 @@
 				0171960C18879A8F00478055 /* CoreGraphics.framework */,
 				0171960E18879A8F00478055 /* UIKit.framework */,
 				0171962318879A8F00478055 /* XCTest.framework */,
-				A6E065844A2E41C4A8D13C68 /* libPods.a */,
+				D7F4D711148E339921A4A6DB /* libPods-registerlogin.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -264,11 +264,11 @@
 			name = Auth;
 			sourceTree = "<group>";
 		};
-		B1E892AA16D825BFDB8BED20 /* Pods */ = {
+		1592AAA45A9F44515CDD1C80 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E207BBC56783C8023C20136F /* Pods.debug.xcconfig */,
-				FA83D39EFC1455172216EF0B /* Pods.release.xcconfig */,
+				7D56B0A170EEACF223A47E20 /* Pods-registerlogin.debug.xcconfig */,
+				94C9C8BE31DC45E2D0B163FB /* Pods-registerlogin.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -299,12 +299,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0171963318879A8F00478055 /* Build configuration list for PBXNativeTarget "registerlogin" */;
 			buildPhases = (
-				E7D17BD375FC46A6A08996BD /* Check Pods Manifest.lock */,
+				D3A37AF5D00C1F533B382789 /* [CP] Check Pods Manifest.lock */,
 				0171960318879A8F00478055 /* Sources */,
 				0171960418879A8F00478055 /* Frameworks */,
 				0171960518879A8F00478055 /* Resources */,
-				67330778AA0D4A32A9B2314E /* Copy Pods Resources */,
-				C8700A31A2D497527071D7E9 /* Embed Pods Frameworks */,
+				A7C958022FA8B0165F77189E /* [CP] Embed Pods Frameworks */,
+				1D5A5733864DC72E54DEFF4D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -339,9 +339,12 @@
 		017195FF18879A8F00478055 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Buddy Platform";
 				TargetAttributes = {
+					0171960618879A8F00478055 = {
+						DevelopmentTeam = 7Y6T4GKQ2K;
+					};
 					0171962118879A8F00478055 = {
 						TestTargetID = 0171960618879A8F00478055;
 					};
@@ -394,44 +397,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		67330778AA0D4A32A9B2314E /* Copy Pods Resources */ = {
+		1D5A5733864DC72E54DEFF4D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-registerlogin/Pods-registerlogin-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C8700A31A2D497527071D7E9 /* Embed Pods Frameworks */ = {
+		A7C958022FA8B0165F77189E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-registerlogin/Pods-registerlogin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E7D17BD375FC46A6A08996BD /* Check Pods Manifest.lock */ = {
+		D3A37AF5D00C1F533B382789 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,11 +574,12 @@
 		};
 		0171963418879A8F00478055 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E207BBC56783C8023C20136F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 7D56B0A170EEACF223A47E20 /* Pods-registerlogin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jon Little (R66W85PMTQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -585,19 +589,21 @@
 				GCC_PREFIX_HEADER = "registerlogin/registerlogin-Prefix.pch";
 				INFOPLIST_FILE = "registerlogin/registerlogin-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "533C22D4-D9FA-49F4-AC71-7E4B4E6A012E";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		0171963518879A8F00478055 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA83D39EFC1455172216EF0B /* Pods.release.xcconfig */;
+			baseConfigurationReference = 94C9C8BE31DC45E2D0B163FB /* Pods-registerlogin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jon Little (R66W85PMTQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -607,8 +613,9 @@
 				GCC_PREFIX_HEADER = "registerlogin/registerlogin-Prefix.pch";
 				INFOPLIST_FILE = "registerlogin/registerlogin-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "533C22D4-D9FA-49F4-AC71-7E4B4E6A012E";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -629,6 +636,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "registerloginTests/registerloginTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -647,6 +655,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "registerlogin/registerlogin-Prefix.pch";
 				INFOPLIST_FILE = "registerloginTests/registerloginTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

@@ -49,7 +49,7 @@
 		01A710FE1939147300688562 /* ChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A710FC1939147300688562 /* ChannelViewController.xib */; };
 		01A711041939228700688562 /* SendMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A711021939228700688562 /* SendMessageViewController.m */; };
 		01A711051939228700688562 /* SendMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A711031939228700688562 /* SendMessageViewController.xib */; };
-		DEC510D4014D49EF9E74D509 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B50EF96A7746629EAD2E75 /* libPods.a */; };
+		BE62B6DD9B0ED7F89DAE09A8 /* libPods-PushChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12036AFEDAEACB33CAFE764 /* libPods-PushChat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,9 +128,9 @@
 		01A711011939228700688562 /* SendMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMessageViewController.h; sourceTree = "<group>"; };
 		01A711021939228700688562 /* SendMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMessageViewController.m; sourceTree = "<group>"; };
 		01A711031939228700688562 /* SendMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendMessageViewController.xib; sourceTree = "<group>"; };
-		26DE5F0E5D4981B5FEB149D2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A9B50EF96A7746629EAD2E75 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDC994512700410DE9470600 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6EBA80163CB3205A681CBF71 /* Pods-PushChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PushChat/Pods-PushChat.debug.xcconfig"; sourceTree = "<group>"; };
+		C1E573DCC328B36E9004B969 /* Pods-PushChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PushChat/Pods-PushChat.release.xcconfig"; sourceTree = "<group>"; };
+		D12036AFEDAEACB33CAFE764 /* libPods-PushChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PushChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,7 @@
 				01A7108D1938F51A00688562 /* CoreGraphics.framework in Frameworks */,
 				01A7108F1938F51A00688562 /* UIKit.framework in Frameworks */,
 				01A7108B1938F51A00688562 /* Foundation.framework in Frameworks */,
-				DEC510D4014D49EF9E74D509 /* libPods.a in Frameworks */,
+				BE62B6DD9B0ED7F89DAE09A8 /* libPods-PushChat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +175,7 @@
 				01A710A91938F51A00688562 /* PushChatTests */,
 				01A710891938F51A00688562 /* Frameworks */,
 				01A710881938F51A00688562 /* Products */,
-				5B15D27D4F16B477D787D32D /* Pods */,
+				38E6CE6B49C2C0AB93F864E5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,7 +195,7 @@
 				01A7108C1938F51A00688562 /* CoreGraphics.framework */,
 				01A7108E1938F51A00688562 /* UIKit.framework */,
 				01A710A31938F51A00688562 /* XCTest.framework */,
-				A9B50EF96A7746629EAD2E75 /* libPods.a */,
+				D12036AFEDAEACB33CAFE764 /* libPods-PushChat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -375,11 +375,11 @@
 			name = SendMessage;
 			sourceTree = "<group>";
 		};
-		5B15D27D4F16B477D787D32D /* Pods */ = {
+		38E6CE6B49C2C0AB93F864E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BDC994512700410DE9470600 /* Pods.debug.xcconfig */,
-				26DE5F0E5D4981B5FEB149D2 /* Pods.release.xcconfig */,
+				6EBA80163CB3205A681CBF71 /* Pods-PushChat.debug.xcconfig */,
+				C1E573DCC328B36E9004B969 /* Pods-PushChat.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -391,12 +391,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01A710B31938F51A00688562 /* Build configuration list for PBXNativeTarget "PushChat" */;
 			buildPhases = (
-				FAC3B33AEDC340CBADF684E1 /* Check Pods Manifest.lock */,
+				7B39090B75713CA5C8A8337B /* [CP] Check Pods Manifest.lock */,
 				01A710831938F51A00688562 /* Sources */,
 				01A710841938F51A00688562 /* Frameworks */,
 				01A710851938F51A00688562 /* Resources */,
-				74EC1A9582C14FE28A2E1582 /* Copy Pods Resources */,
-				E923F69E6C436578AD682FFF /* Embed Pods Frameworks */,
+				69C32CA35129C4DD11AE648F /* [CP] Embed Pods Frameworks */,
+				A732545243DBC66FCA4B60CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -431,11 +431,11 @@
 		01A7107F1938F51A00688562 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Buddy Platform";
 				TargetAttributes = {
 					01A710861938F51A00688562 = {
-						DevelopmentTeam = TRBE7YQ5LS;
+						DevelopmentTeam = 8XJ473AU5H;
 					};
 					01A710A11938F51A00688562 = {
 						TestTargetID = 01A710861938F51A00688562;
@@ -493,49 +493,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		74EC1A9582C14FE28A2E1582 /* Copy Pods Resources */ = {
+		69C32CA35129C4DD11AE648F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PushChat/Pods-PushChat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E923F69E6C436578AD682FFF /* Embed Pods Frameworks */ = {
+		7B39090B75713CA5C8A8337B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FAC3B33AEDC340CBADF684E1 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A732545243DBC66FCA4B60CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PushChat/Pods-PushChat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -678,7 +678,7 @@
 		};
 		01A710B41938F51A00688562 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BDC994512700410DE9470600 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 6EBA80163CB3205A681CBF71 /* Pods-PushChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -688,6 +688,7 @@
 				GCC_PREFIX_HEADER = "PushChat/PushChat-Prefix.pch";
 				INFOPLIST_FILE = "PushChat/PushChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.PushChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -696,7 +697,7 @@
 		};
 		01A710B51938F51A00688562 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26DE5F0E5D4981B5FEB149D2 /* Pods.release.xcconfig */;
+			baseConfigurationReference = C1E573DCC328B36E9004B969 /* Pods-PushChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -706,6 +707,7 @@
 				GCC_PREFIX_HEADER = "PushChat/PushChat-Prefix.pch";
 				INFOPLIST_FILE = "PushChat/PushChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.PushChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -728,6 +730,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PushChatTests/PushChatTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -746,6 +749,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushChat/PushChat-Prefix.pch";
 				INFOPLIST_FILE = "PushChatTests/PushChatTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

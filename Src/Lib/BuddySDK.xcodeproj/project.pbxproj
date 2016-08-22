@@ -1103,7 +1103,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#########\n# Options\n#########\n\nLIBRARY_NAME=\"lib${PROJECT_NAME}.a\"\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}.framework\"\n\nSIMULATOR_TARGET=\"BuddySDK\"\nSIMULATOR_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\nSIMULATOR_FRAMEWORK_PATH=\"${SIMULATOR_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\nDEVICE_TARGET=\"BuddySDK Universal Framework\"\nDEVICE_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nDEVICE_FRAMEWORK_PATH=\"${DEVICE_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\nUNIVERSAL_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_FRAMEWORK_PATH=\"${UNIVERSAL_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\n\n##################\n# Build Frameworks\n##################\n\nxcodebuild -workspace \"../../${PROJECT_NAME}\".xcworkspace -scheme \"${SIMULATOR_TARGET}\" -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace \"../../${PROJECT_NAME}\".xcworkspace -scheme \"${DEVICE_TARGET}\" -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n\n################################\n# Create directory for universal\n################################\n\nrm -rf \"${UNIVERSAL_FRAMEWORK_DIR}\"\n\nmkdir \"${UNIVERSAL_FRAMEWORK_DIR}\"\n\nmkdir \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\n\n#######################################\n# Copy iphonesimulator Framework layout\n#######################################\n\ncp -P -R -v \"${SIMULATOR_FRAMEWORK_PATH}/.\" \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\n\n###################\n# Copy iphone files\n###################\n\ncp -P -R -v \"${DEVICE_FRAMEWORK_PATH}/Modules\" \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\nmkdir -p \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources\"\nln -s \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources\" \"${UNIVERSAL_FRAMEWORK_PATH}/Resources\"\ncp \"${DEVICE_FRAMEWORK_PATH}/Info.plist\" \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources/Info.plist\"\n\ncp \"${DEVICE_FRAMEWORK_DIR}/BuddySDK.h\" \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Headers/BuddySDK.h\"\n\n##########################\n# Make an universal binary\n##########################\n\nlipo \"${SIMULATOR_FRAMEWORK_DIR}/${LIBRARY_NAME}\" \"${DEVICE_FRAMEWORK_PATH}/${PROJECT_NAME}\" -create -output \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/${PROJECT_NAME}\" | echo\n";
+			shellScript = "#########\n# Options\n#########\n\nLIBRARY_NAME=\"lib${PROJECT_NAME}.a\"\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}.framework\"\n\nSIMULATOR_TARGET=\"BuddySDK\"\nSIMULATOR_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\nSIMULATOR_FRAMEWORK_PATH=\"${SIMULATOR_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\nDEVICE_TARGET=\"BuddySDK Universal Framework\"\nDEVICE_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nDEVICE_FRAMEWORK_PATH=\"${DEVICE_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\nUNIVERSAL_FRAMEWORK_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\nUNIVERSAL_FRAMEWORK_PATH=\"${UNIVERSAL_FRAMEWORK_DIR}/${FRAMEWORK_NAME}\"\n\n\n##################\n# Build Frameworks\n##################\n\nxcodebuild -workspace \"../../${PROJECT_NAME}\".xcworkspace -scheme \"${SIMULATOR_TARGET}\" -sdk iphonesimulator -configuration ${CONFIGURATION} -arch arm7 -arch arm64 -arch x86_64 clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace \"../../${PROJECT_NAME}\".xcworkspace -scheme \"${DEVICE_TARGET}\" -sdk iphoneos -configuration ${CONFIGURATION} -arch arm7 -arch arm64 clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n\n################################\n# Create directory for universal\n################################\n\nrm -rf \"${UNIVERSAL_FRAMEWORK_DIR}\"\n\nmkdir \"${UNIVERSAL_FRAMEWORK_DIR}\"\n\nmkdir \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\n\n#######################################\n# Copy iphonesimulator Framework layout\n#######################################\n\ncp -P -R -v \"${SIMULATOR_FRAMEWORK_PATH}/.\" \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\n\n###################\n# Copy iphone files\n###################\n\ncp -P -R -v \"${DEVICE_FRAMEWORK_PATH}/Modules\" \"${UNIVERSAL_FRAMEWORK_PATH}\"\n\nmkdir -p \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources\"\nln -s \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources\" \"${UNIVERSAL_FRAMEWORK_PATH}/Resources\"\ncp \"${DEVICE_FRAMEWORK_PATH}/Info.plist\" \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Resources/Info.plist\"\n\ncp \"${DEVICE_FRAMEWORK_DIR}/BuddySDK.h\" \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/Headers/BuddySDK.h\"\n\n##########################\n# Make an universal binary\n##########################\n\nlipo \"${SIMULATOR_FRAMEWORK_DIR}/${LIBRARY_NAME}\" \"${DEVICE_FRAMEWORK_PATH}/${PROJECT_NAME}\" -create -output \"${UNIVERSAL_FRAMEWORK_PATH}/Versions/A/${PROJECT_NAME}\" | echo\n";
 		};
 		AEA5CD38B3E146AA88CA070C /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1486,6 +1486,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					x86_64,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -1497,7 +1501,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3.0.5;
+				CURRENT_PROJECT_VERSION = 3.0.6;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1523,15 +1527,14 @@
 				"INSTALL_PATH[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7s armv7 arm64 i386 x86_64";
-				"VALID_ARCHS[sdk=iphonesimulator*]" = "";
+				VALID_ARCHS = "armv7 arm64 x86_64";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_PREFIX = BuddySDK;
 			};
@@ -1541,6 +1544,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					x86_64,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -1552,7 +1559,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 3.0.5;
+				CURRENT_PROJECT_VERSION = 3.0.6;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -1569,6 +1576,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
@@ -1576,7 +1584,7 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7s armv7 arm64 i386 x86_64";
+				VALID_ARCHS = "armv7 arm64 x86_64";
 				VERSIONING_SYSTEM = "";
 				VERSION_INFO_PREFIX = BuddySDK;
 			};
@@ -1589,7 +1597,7 @@
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
-				CURRENT_PROJECT_VERSION = 3.0.5;
+				CURRENT_PROJECT_VERSION = 3.0.6;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/BuddySDK.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1652,7 +1660,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3.0.5;
+				CURRENT_PROJECT_VERSION = 3.0.6;
 				DEAD_CODE_STRIPPING = NO;
 				DSTROOT = /tmp/BuddySDK.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1708,7 +1716,7 @@
 		C19ECC3517DEA28D008A9130 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 3.0.5;
+				CURRENT_PROJECT_VERSION = 3.0.6;
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1719,7 +1727,7 @@
 		C19ECC3617DEA28D008A9130 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 3.0.5;
+				CURRENT_PROJECT_VERSION = 3.0.6;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GENERATE_MASTER_OBJECT_FILE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

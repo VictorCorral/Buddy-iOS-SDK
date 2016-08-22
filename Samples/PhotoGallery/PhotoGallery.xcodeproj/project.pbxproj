@@ -38,7 +38,7 @@
 		01AEB8D11890957B003B051A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01AEB8D01890957B003B051A /* CoreLocation.framework */; };
 		01AEB8D918909D24003B051A /* AddPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AEB8D718909D24003B051A /* AddPictureViewController.m */; };
 		01AEB8DA18909D24003B051A /* AddPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01AEB8D818909D24003B051A /* AddPictureViewController.xib */; };
-		BA030D2643994ADBAAA6B334 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B76C766856424C499747BCFA /* libPods.a */; };
+		CC72078CA040F25E827766DA /* libPods-PhotoGallery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00C97C33AB557E212E26C2 /* libPods-PhotoGallery.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,9 +97,9 @@
 		01AEB8D618909D24003B051A /* AddPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPictureViewController.h; sourceTree = "<group>"; };
 		01AEB8D718909D24003B051A /* AddPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPictureViewController.m; sourceTree = "<group>"; };
 		01AEB8D818909D24003B051A /* AddPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPictureViewController.xib; sourceTree = "<group>"; };
-		A0E0F6B7E6C34DE212939D7C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B76C766856424C499747BCFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA06F007AB26DC9F54DBBBCC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		0692679A1D40A7F42D9D8953 /* Pods-PhotoGallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoGallery/Pods-PhotoGallery.release.xcconfig"; sourceTree = "<group>"; };
+		3A00C97C33AB557E212E26C2 /* libPods-PhotoGallery.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoGallery.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF4D5863C02D5521F4D78AA2 /* Pods-PhotoGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoGallery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoGallery/Pods-PhotoGallery.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				01AEB8891890914C003B051A /* CoreGraphics.framework in Frameworks */,
 				01AEB88B1890914C003B051A /* UIKit.framework in Frameworks */,
 				01AEB8871890914C003B051A /* Foundation.framework in Frameworks */,
-				BA030D2643994ADBAAA6B334 /* libPods.a in Frameworks */,
+				CC72078CA040F25E827766DA /* libPods-PhotoGallery.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +138,7 @@
 				01AEB8A51890914C003B051A /* PhotoGalleryTests */,
 				01AEB8851890914C003B051A /* Frameworks */,
 				01AEB8841890914C003B051A /* Products */,
-				F63D850850F1D7B1DE0CE440 /* Pods */,
+				DB2BC191FC0B60524EE17CA5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,7 +162,7 @@
 				01AEB8881890914C003B051A /* CoreGraphics.framework */,
 				01AEB88A1890914C003B051A /* UIKit.framework */,
 				01AEB89F1890914C003B051A /* XCTest.framework */,
-				B76C766856424C499747BCFA /* libPods.a */,
+				3A00C97C33AB557E212E26C2 /* libPods-PhotoGallery.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -288,11 +288,11 @@
 			name = AddEdit;
 			sourceTree = "<group>";
 		};
-		F63D850850F1D7B1DE0CE440 /* Pods */ = {
+		DB2BC191FC0B60524EE17CA5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DA06F007AB26DC9F54DBBBCC /* Pods.debug.xcconfig */,
-				A0E0F6B7E6C34DE212939D7C /* Pods.release.xcconfig */,
+				CF4D5863C02D5521F4D78AA2 /* Pods-PhotoGallery.debug.xcconfig */,
+				0692679A1D40A7F42D9D8953 /* Pods-PhotoGallery.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -304,12 +304,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01AEB8AF1890914C003B051A /* Build configuration list for PBXNativeTarget "PhotoGallery" */;
 			buildPhases = (
-				B0432765AE404B5AB95209F7 /* Check Pods Manifest.lock */,
+				F038455EE8066A9AD191C689 /* [CP] Check Pods Manifest.lock */,
 				01AEB87F1890914C003B051A /* Sources */,
 				01AEB8801890914C003B051A /* Frameworks */,
 				01AEB8811890914C003B051A /* Resources */,
-				C17115D0CD4648C2AD7B5DA4 /* Copy Pods Resources */,
-				BD6A4D9485D7C48E372C4E31 /* Embed Pods Frameworks */,
+				9C92501EB2A75214D871C0FA /* [CP] Embed Pods Frameworks */,
+				3FCC0AFE51B468DE89D4700C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,7 +344,7 @@
 		01AEB87B1890914B003B051A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Buddy Platform";
 				TargetAttributes = {
 					01AEB89D1890914C003B051A = {
@@ -397,49 +397,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B0432765AE404B5AB95209F7 /* Check Pods Manifest.lock */ = {
+		3FCC0AFE51B468DE89D4700C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoGallery/Pods-PhotoGallery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C92501EB2A75214D871C0FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoGallery/Pods-PhotoGallery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F038455EE8066A9AD191C689 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		BD6A4D9485D7C48E372C4E31 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C17115D0CD4648C2AD7B5DA4 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -573,10 +573,11 @@
 		};
 		01AEB8B01890914C003B051A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA06F007AB26DC9F54DBBBCC /* Pods.debug.xcconfig */;
+			baseConfigurationReference = CF4D5863C02D5521F4D78AA2 /* Pods-PhotoGallery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -589,6 +590,7 @@
 					"-framework",
 					CrashReporter,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -596,10 +598,11 @@
 		};
 		01AEB8B11890914C003B051A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0E0F6B7E6C34DE212939D7C /* Pods.release.xcconfig */;
+			baseConfigurationReference = 0692679A1D40A7F42D9D8953 /* Pods-PhotoGallery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -612,6 +615,7 @@
 					"-framework",
 					CrashReporter,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -633,6 +637,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGalleryTests/PhotoGalleryTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -651,6 +656,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGallery/PhotoGallery-Prefix.pch";
 				INFOPLIST_FILE = "PhotoGalleryTests/PhotoGalleryTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.buddy.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
