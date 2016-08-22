@@ -1,1 +1,4 @@
-pod 'BuddySDK', :path => '../../BuddySDK.podspec'
+platform :ios, '6.0'
+target 'PhotoGallery' do
+    pod 'BuddySDK', :path => '../../BuddySDK.podspec'
+end
